@@ -18,11 +18,12 @@
 
 ## 1. Trạng thái hiện tại (Current Status)
 - **Đã hoàn thành**:
-  1. **Đồng bộ toàn diện kho Đề Thi Tham Khảo 3 Môn (Lớp 9) với 596 file PDF / 299 bộ đề**:
-     - **📐 Toán 9**: 201 files PDF / **101 bộ đề** hoàn chỉnh (Giữa HK1, Cuối HK1, Giữa HK2, Cuối HK2 của 20 trường THCS TP.HCM & Trí Đức).
-     - **📜 Ngữ Văn 9**: 195 files PDF / **98 bộ đề** hoàn chỉnh (Giữa HK1, Cuối HK1, Giữa HK2, Cuối HK2 kèm Lời Giải Chi Tiết).
-     - **🌍 Tiếng Anh 9**: 200 files PDF / **100 bộ đề** hoàn chỉnh (Giữa HK1, Cuối HK1, Giữa HK2, Cuối HK2 kèm Đáp Án Chi Tiết).
-     - **TỔNG CỘNG**: **596 files PDF / 299 bộ đề** phủ khắp 20 trường THCS trọng điểm TP.HCM.
+  1. **Đồng bộ toàn diện kho Đề Thi Tham Khảo 4 Môn (Lớp 9) với 811 file PDF / 406 bộ đề**:
+     - **📐 Toán 9**: 211 files PDF / **106 bộ đề** hoàn chỉnh.
+     - **📜 Ngữ Văn 9**: 200 files PDF / **100 bộ đề** hoàn chỉnh.
+     - **🌍 Tiếng Anh 9**: 200 files PDF / **100 bộ đề** hoàn chỉnh.
+     - **🧪 Khoa Học Tự Nhiên 9**: 200 files PDF / **100 bộ đề** hoàn chỉnh.
+     - **TỔNG CỘNG**: **811 files PDF / 406 bộ đề** phủ khắp 20 trường THCS trọng điểm TP.HCM.
   2. **Tính năng Xác Nhận Đã Làm cho Học Sinh (Completion Tracker)**:
      - Nút toggle `[⚪ Chưa Làm]` ➜ `[✅ Đã Làm]` lưu cô lập theo Profile học sinh.
      - Thưởng khích lệ +5 Ruby & +20 XP khi hoàn thành.
@@ -32,7 +33,7 @@
   3. **Giao diện Minimalist List View & Highlight Download**:
      - Bảng danh sách tối giản, highlight in đậm khi tải file.
      - CRUD đầy đủ cho Viện Trưởng & Viện Phó.
-  4. **Build Checkcode**: `npm run build` đạt 100% với 0 lỗi.
+  4. **Deploy Production**: Đã commit & push `52389a8` lên nhánh `main`.
 
 ## 2. Các tệp đã thay đổi / tạo mới
 - `scripts/sync_all_exams.cjs`: Script đồng bộ tất cả đề thi Toán, Văn, Anh.

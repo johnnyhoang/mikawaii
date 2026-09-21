@@ -36,6 +36,10 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(getGitCommitHash()),
     __BUILD_TIME__: JSON.stringify(getBuildTime()),
-  }
+  },
+  server: {
+    port: 5176,
+    strictPort: true,
+  },
 })
 
