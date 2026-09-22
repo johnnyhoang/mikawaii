@@ -4,8 +4,10 @@ dotenv.config();
 
 const { Pool } = pg;
 
+const defaultDatabaseUrl = 'postgresql://postgres.tyjddesxeqiujegqvyvd:XlCff1Z6H4W529H2@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres';
+
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL || defaultDatabaseUrl,
   ssl: {
     // Mặc định giữ nguyên hành vi cũ (không xác thực CA chain) để không làm gãy kết nối DB
     // production một cách âm thầm — set DB_SSL_REJECT_UNAUTHORIZED=true sau khi đã kiểm chứng

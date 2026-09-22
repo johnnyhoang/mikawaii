@@ -286,60 +286,70 @@ function App() {
   useEffect(() => {
     let mounted = true;
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
-      // QUAN TRỌNG: không gọi lại các method supabase.auth.* (getSession/signOut...) TRỰC TIẾP
-      // trong callback này — onAuthStateChange chạy trong lúc GoTrueClient đang giữ internal
-      // lock, rõ nhất ở sự kiện INITIAL_SESSION (bắn ra ngay trong initialize() khi F5 lại trang
-      // đã có session cũ). Gọi lại getSession()/signOut() lồng vào sẽ deadlock vô thời hạn —
-      // treo mãi ở màn hình loading, không log/lỗi gì (đúng bug OOM-khi-refresh đã gặp).
-      // Fix chính thức theo khuyến nghị của Supabase: defer ra khỏi lock bằng setTimeout(0).
-      setTimeout(async () => {
-        if (session && session.user) {
-          const state = useGameState.getState();
-          if (state.sessionAccountId !== session.user.id) {
-            state.setSessionAccountId(session.user.id);
-            // Clear every profile-scoped value to force profile selection when switching or logging
-            // in to a new account — otherwise the previous account's player/pet/classLinks/etc. would
-            // stay visible until the new profile's fetch completes (or leak if it fails).
-            useGameState.setState(getProfileScopedResetState());
-            await state.fetchProfiles();
+    // Detect if we are handling an OAuth return callback
+    const hasAuthCallbackInUrl =
+      window.location.hash.includes('access_token') ||
+      window.location.search.includes('code=');
 
-            // Auto-select saved profile if available
-            const savedProfileId = localStorage.getItem('mkw_selected_profile_id') || localStorage.getItem('ge10_selected_profile_id');
-            if (savedProfileId) {
-              const profiles = useGameState.getState().availableProfiles;
-              const hasProfile = profiles.some((p: any) => p.id === savedProfileId);
-              if (hasProfile) {
-                await state.selectProfile(savedProfileId);
-              } else {
-                localStorage.removeItem('mkw_selected_profile_id');
-                localStorage.removeItem('ge10_selected_profile_id');
-              }
+    const handleSession = async (session: Session | null) => {
+      if (!mounted) return;
+      if (session && session.user) {
+        const state = useGameState.getState();
+        if (state.sessionAccountId !== session.user.id) {
+          state.setSessionAccountId(session.user.id);
+          useGameState.setState(getProfileScopedResetState());
+          try {
+            await state.fetchProfiles();
+          } catch (err) {
+            console.error('Error fetching profiles in auth change:', err);
+          }
+
+          // Auto-select saved profile if available
+          const savedProfileId = localStorage.getItem('mkw_selected_profile_id') || localStorage.getItem('ge10_selected_profile_id');
+          if (savedProfileId) {
+            const profiles = useGameState.getState().availableProfiles;
+            const hasProfile = profiles.some((p: any) => p.id === savedProfileId);
+            if (hasProfile) {
+              await state.selectProfile(savedProfileId);
+            } else {
+              localStorage.removeItem('mkw_selected_profile_id');
+              localStorage.removeItem('ge10_selected_profile_id');
             }
           }
-        } else {
-          const state = useGameState.getState();
-          if (state.sessionAccountId && !state.sessionAccountId.startsWith('mock-')) {
-            state.logout();
-          }
         }
-
-        if (mounted) {
+        if (mounted) setAuthLoading(false);
+      } else {
+        // Only set authLoading false if we are NOT waiting for an OAuth callback to exchange
+        if (!hasAuthCallbackInUrl && mounted) {
           setAuthLoading(false);
         }
+      }
+    };
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
+      setTimeout(() => {
+        void handleSession(session);
       }, 0);
     });
 
     // Check initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session && mounted) {
+      if (session) {
+        void handleSession(session);
+      } else if (!hasAuthCallbackInUrl && mounted) {
         setAuthLoading(false);
       }
     });
 
+    // Liveness fallback: stop spinner after 5s max
+    const timer = setTimeout(() => {
+      if (mounted) setAuthLoading(false);
+    }, 5000);
+
     return () => {
       mounted = false;
       subscription.unsubscribe();
+      clearTimeout(timer);
     };
   }, []);
 

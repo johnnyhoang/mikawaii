@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../utils/supabaseClient';
 import { Sparkles, LogIn } from 'lucide-react';
 import { toast } from '../utils/toast';
 
 export const GoogleLoginScreen: React.FC = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  useEffect(() => {
+    // Detect OAuth errors passed back in URL query or hash
+    const params = new URLSearchParams(window.location.search);
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const errorMsg = params.get('error_description') || params.get('error') || hashParams.get('error_description') || hashParams.get('error');
+
+    if (errorMsg) {
+      toast.error(`Đăng nhập Google thất bại: ${decodeURIComponent(errorMsg)}`);
+      // Clean query and hash params so the toast doesn't re-trigger
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
 
   const handleSupabaseGoogleLogin = async () => {
     if (isLoggingIn) return;
@@ -13,7 +26,7 @@ export const GoogleLoginScreen: React.FC = () => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: `${window.location.origin}/`,
           queryParams: {
             access_type: 'offline',
             prompt: 'select_account',
