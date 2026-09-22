@@ -1,5 +1,5 @@
 {
-  "name": "gameengg10-monorepo",
+  "name": "mikawaii-monorepo",
   "private": true,
   "packageManager": "npm@11.6.3",
   "workspaces": [
