@@ -1,6 +1,6 @@
--- Migration to create ge10_match_pairs table and seed match pairs data
+-- Migration to create mkw_match_pairs table and seed match pairs data
 
-CREATE TABLE IF NOT EXISTS ge10_match_pairs (
+CREATE TABLE IF NOT EXISTS mkw_match_pairs (
   id VARCHAR(64) PRIMARY KEY,
   subject VARCHAR(32) NOT NULL,
   grade_tier INT NOT NULL DEFAULT 9,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS ge10_match_pairs (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO ge10_match_pairs (id, subject, grade_tier, left_text, right_text, is_active) VALUES
+INSERT INTO mkw_match_pairs (id, subject, grade_tier, left_text, right_text, is_active) VALUES
   ('eng-1', 'english', 9, 'Procrastinate', 'Trì hoãn, khất lần', TRUE),
   ('eng-2', 'english', 9, 'Benevolent', 'Nhân từ, rộng lượng', TRUE),
   ('eng-3', 'english', 9, 'Elaborate', 'Chi tiết, tỉ mỉ', TRUE),

@@ -4,12 +4,12 @@
 BEGIN;
 
 -- 2. Seed Questions for cs_artificial_intelligence (grade_tier = 13)
-DELETE FROM ge10_custom_questions WHERE grade_tier = 13 AND subject = 'cs_artificial_intelligence';
+DELETE FROM mkw_custom_questions WHERE grade_tier = 13 AND subject = 'cs_artificial_intelligence';
 
 -- ======================================================================================
 -- BÀI GIẢNG 1: Tìm kiếm mù và tìm kiếm heuristics (cs_ai_01) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_001', 'mcq', 'search-heuristics',
@@ -95,7 +95,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 2: Tìm kiếm đối kháng (cs_ai_02) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_011', 'mcq', 'search-heuristics',
@@ -181,7 +181,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 3: Logic mệnh đề & Logic vị từ bậc nhất (cs_ai_03) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_021', 'mcq', 'knowledge-logic',
@@ -267,7 +267,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 4: Hệ chuyên gia & Suy diễn logic (cs_ai_04) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_031', 'mcq', 'knowledge-logic',
@@ -353,7 +353,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 5: Học có giám sát vs Học không giám sát (cs_ai_05) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_041', 'mcq', 'machine-learning',
@@ -439,7 +439,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 6: Hồi quy tuyến tính & Logistic Regression (cs_ai_06) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_051', 'mcq', 'machine-learning',
@@ -525,7 +525,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 7: Cây quyết định & Rừng ngẫu nhiên (cs_ai_07) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_061', 'mcq', 'machine-learning',
@@ -611,7 +611,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 8: Mạng nơ-ron nhân tạo (cs_ai_08) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_071', 'mcq', 'neural-networks',
@@ -697,7 +697,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 9: Lan truyền ngược (cs_ai_09) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_081', 'mcq', 'neural-networks',
@@ -783,7 +783,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 10: Xử lý ngôn ngữ tự nhiên & Mô hình Transformers (cs_ai_10) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_ai_q_091', 'mcq', 'neural-networks',

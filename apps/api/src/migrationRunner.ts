@@ -17,7 +17,7 @@ const MIGRATION_FILES = [
   '20260713_learning_context.sql',
   '20260713_canonical_content_payload.sql',
   '20260713_seed_canonical_learning_content.sql',
-  '20260713_harden_ge10_data_api.sql',
+  '20260713_harden_mkw_data_api.sql',
   '20260713_isolate_profile_identity.sql',
   '20260713_remove_profile_pin.sql',
   '20260713_normalize_legacy_pet_name.sql',
@@ -90,6 +90,7 @@ const MIGRATION_FILES = [
   '20260815_reward_unlimited_and_class_ownership.sql',
   '20260815_terminology_wording_fix.sql',
   '20260816_reference_exams.sql',
+  '20260922_rename_ge10_to_mkw.sql',
 ];
 
 async function ensureMigrationsTable() {
@@ -157,22 +158,22 @@ export async function runMigrations(): Promise<void> {
   // Các ALTER TABLE lẻ này chưa được gộp vào file migration riêng — giữ nguyên hành vi cũ
   // (IF NOT EXISTS nên an toàn khi lặp lại) thay vì tách migration mới trong lúc chỉ đang
   // khôi phục cơ chế chạy migration.
-  await pool.query(`ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS subject VARCHAR(50) DEFAULT 'english';`);
-  await pool.query(`ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS image_url TEXT;`);
-  await pool.query(`ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::jsonb;`);
-  await pool.query(`ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS is_confused BOOLEAN DEFAULT FALSE;`);
-  await pool.query(`ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS topic_id VARCHAR(100);`);
-  await pool.query(`ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS server_updated_at TIMESTAMP DEFAULT NOW();`);
-  await pool.query(`ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS ui_theme VARCHAR(50) DEFAULT 'current';`);
-  await pool.query(`ALTER TABLE ge10_lessons ADD COLUMN IF NOT EXISTS is_standard BOOLEAN DEFAULT FALSE;`);
-  await pool.query(`ALTER TABLE ge10_lessons ALTER COLUMN grade_tier SET DEFAULT 9;`);
-  await pool.query(`ALTER TABLE ge10_topics ALTER COLUMN grade_tier SET DEFAULT 9;`);
-  await pool.query(`ALTER TABLE ge10_activities ALTER COLUMN grade_tier SET DEFAULT 9;`);
+  await pool.query(`ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS subject VARCHAR(50) DEFAULT 'english';`);
+  await pool.query(`ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS image_url TEXT;`);
+  await pool.query(`ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::jsonb;`);
+  await pool.query(`ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS is_confused BOOLEAN DEFAULT FALSE;`);
+  await pool.query(`ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS topic_id VARCHAR(100);`);
+  await pool.query(`ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS server_updated_at TIMESTAMP DEFAULT NOW();`);
+  await pool.query(`ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS ui_theme VARCHAR(50) DEFAULT 'current';`);
+  await pool.query(`ALTER TABLE mkw_lessons ADD COLUMN IF NOT EXISTS is_standard BOOLEAN DEFAULT FALSE;`);
+  await pool.query(`ALTER TABLE mkw_lessons ALTER COLUMN grade_tier SET DEFAULT 9;`);
+  await pool.query(`ALTER TABLE mkw_topics ALTER COLUMN grade_tier SET DEFAULT 9;`);
+  await pool.query(`ALTER TABLE mkw_activities ALTER COLUMN grade_tier SET DEFAULT 9;`);
 
   // Seed lessons
   for (const lesson of SEED_LESSONS) {
     await pool.query(
-      `INSERT INTO ge10_lessons (id, subject, topic, title, theory, category)
+      `INSERT INTO mkw_lessons (id, subject, topic, title, theory, category)
        VALUES ($1, $2, $3, $4, $5, $6)
        ON CONFLICT (id) DO NOTHING`,
       [lesson.id, lesson.subject, lesson.topic, lesson.title, lesson.theory, lesson.category]
@@ -205,7 +206,7 @@ export async function runMigrations(): Promise<void> {
       );
     });
     await pool.query(
-      `INSERT INTO ge10_custom_questions
+      `INSERT INTO mkw_custom_questions
          (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
        VALUES ${placeholders.join(', ')}
        ON CONFLICT (id) DO NOTHING`,
@@ -215,11 +216,11 @@ export async function runMigrations(): Promise<void> {
 
   // Auto-link existing questions to their lessons by category.
   await pool.query(
-    `UPDATE ge10_custom_questions
-     SET lesson_id = (SELECT id FROM ge10_lessons
-       WHERE ge10_lessons.category = ge10_custom_questions.category
-         AND ge10_lessons.grade_tier = ge10_custom_questions.grade_tier
-         AND ge10_lessons.subject = ge10_custom_questions.subject
+    `UPDATE mkw_custom_questions
+     SET lesson_id = (SELECT id FROM mkw_lessons
+       WHERE mkw_lessons.category = mkw_custom_questions.category
+         AND mkw_lessons.grade_tier = mkw_custom_questions.grade_tier
+         AND mkw_lessons.subject = mkw_custom_questions.subject
        LIMIT 1)
      WHERE lesson_id IS NULL`
   );
@@ -231,9 +232,9 @@ export async function runMigrations(): Promise<void> {
 
   console.log('[migrate] seeding default classroom rewards for existing teachers...');
   const teachersRes = await pool.query(
-    `SELECT DISTINCT tutor_id FROM ge10_class_links
+    `SELECT DISTINCT tutor_id FROM mkw_class_links
      WHERE status = 'active'
-       AND tutor_id IN (SELECT id FROM ge10_users WHERE role IN ('tutor', 'secondary_tutor', 'truong_vien', 'pho_vien'))`
+       AND tutor_id IN (SELECT id FROM mkw_users WHERE role IN ('tutor', 'secondary_tutor', 'truong_vien', 'pho_vien'))`
   );
   for (const row of teachersRes.rows) {
     await ensureDefaultClassRewards(row.tutor_id);

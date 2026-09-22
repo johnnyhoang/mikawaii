@@ -1,5 +1,5 @@
--- Lock GameEngG10 application data behind the authenticated Express API.
--- Frontend uses Supabase Auth only; it does not access ge10_* through PostgREST.
+-- Lock Mikawaii application data behind the authenticated Express API.
+-- Frontend uses Supabase Auth only; it does not access mkw_* through PostgREST.
 
 BEGIN;
 
@@ -29,11 +29,11 @@ BEGIN
   FOR target_function IN
     SELECT to_regprocedure(function_name)
     FROM unnest(ARRAY[
-      'public.ge10_process_np_transaction(character varying,integer)',
-      'public.ge10_process_ruby_transaction(character varying,integer)',
-      'public.ge10_sync_player_ruby_legacy()',
-      'public.ge10_sync_ruby_pair()',
-      'public.ge10_sync_session_ruby_legacy()'
+      'public.mkw_process_np_transaction(character varying,integer)',
+      'public.mkw_process_ruby_transaction(character varying,integer)',
+      'public.mkw_sync_player_ruby_legacy()',
+      'public.mkw_sync_ruby_pair()',
+      'public.mkw_sync_session_ruby_legacy()'
     ]) AS function_name
     WHERE to_regprocedure(function_name) IS NOT NULL
   LOOP
@@ -60,9 +60,9 @@ COMMIT;
 --     EXECUTE format('GRANT ALL PRIVILEGES ON TABLE %s TO anon, authenticated', target_table);
 --   END LOOP;
 -- END $$;
--- GRANT EXECUTE ON FUNCTION public.ge10_process_np_transaction(VARCHAR, INTEGER) TO PUBLIC;
--- GRANT EXECUTE ON FUNCTION public.ge10_process_ruby_transaction(VARCHAR, INTEGER) TO PUBLIC;
--- GRANT EXECUTE ON FUNCTION public.ge10_sync_player_ruby_legacy() TO PUBLIC;
--- GRANT EXECUTE ON FUNCTION public.ge10_sync_ruby_pair() TO PUBLIC;
--- GRANT EXECUTE ON FUNCTION public.ge10_sync_session_ruby_legacy() TO PUBLIC;
+-- GRANT EXECUTE ON FUNCTION public.mkw_process_np_transaction(VARCHAR, INTEGER) TO PUBLIC;
+-- GRANT EXECUTE ON FUNCTION public.mkw_process_ruby_transaction(VARCHAR, INTEGER) TO PUBLIC;
+-- GRANT EXECUTE ON FUNCTION public.mkw_sync_player_ruby_legacy() TO PUBLIC;
+-- GRANT EXECUTE ON FUNCTION public.mkw_sync_ruby_pair() TO PUBLIC;
+-- GRANT EXECUTE ON FUNCTION public.mkw_sync_session_ruby_legacy() TO PUBLIC;
 -- COMMIT;

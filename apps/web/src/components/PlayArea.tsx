@@ -562,7 +562,7 @@ export const PlayArea: React.FC<PlayAreaProps> = ({ mode, bossId, lessonId, less
           question: activeQuestion,
           answer: typedAnswer,
           token,
-          profileId: localStorage.getItem('ge10_selected_profile_id') || '',
+          profileId: localStorage.getItem('mkw_selected_profile_id') || '',
           backendUrl,
         });
         data = { result: assessmentResult };

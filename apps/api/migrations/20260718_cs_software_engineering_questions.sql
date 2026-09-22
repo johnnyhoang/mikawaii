@@ -4,12 +4,12 @@
 BEGIN;
 
 -- 2. Seed Questions for cs_software_engineering (grade_tier = 13)
-DELETE FROM ge10_custom_questions WHERE grade_tier = 13 AND subject = 'cs_software_engineering';
+DELETE FROM mkw_custom_questions WHERE grade_tier = 13 AND subject = 'cs_software_engineering';
 
 -- ======================================================================================
 -- BÀI GIẢNG 1: Các mô hình quy trình phần mềm (cs_se_01) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_001', 'mcq', 'software-processes',
@@ -95,7 +95,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 2: Tuyên ngôn Agile & Quy trình Scrum (cs_se_02) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_011', 'mcq', 'software-processes',
@@ -181,7 +181,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 3: Phân tích yêu cầu (cs_se_03) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_021', 'mcq', 'software-requirements',
@@ -267,7 +267,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 4: Mô hình hóa hệ thống với UML (cs_se_04) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_031', 'mcq', 'software-requirements',
@@ -353,7 +353,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 5: Kiến trúc phần mềm phổ biến (cs_se_05) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_041', 'mcq', 'architecture-design',
@@ -439,7 +439,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 6: Các mẫu thiết kế GoF khởi tạo (cs_se_06) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_051', 'mcq', 'architecture-design',
@@ -525,7 +525,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 7: Các mẫu thiết kế GoF hành vi và cấu trúc (cs_se_07) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_061', 'mcq', 'architecture-design',
@@ -611,7 +611,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 8: Phương pháp kiểm thử (cs_se_08) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_071', 'mcq', 'quality-testing',
@@ -697,7 +697,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 9: Nguyên lý SOLID & Tái cấu trúc code (cs_se_09) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_081', 'mcq', 'quality-testing',
@@ -783,7 +783,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 10: Tích hợp và triển khai liên tục (cs_se_10) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_se_q_091', 'mcq', 'quality-testing',

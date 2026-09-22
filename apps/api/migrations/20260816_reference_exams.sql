@@ -1,7 +1,7 @@
 -- Migration: 20260816_reference_exams.sql
--- Description: Create ge10_reference_exams table for PDF exam vaults across subjects and grades.
+-- Description: Create mkw_reference_exams table for PDF exam vaults across subjects and grades.
 
-CREATE TABLE IF NOT EXISTS ge10_reference_exams (
+CREATE TABLE IF NOT EXISTS mkw_reference_exams (
     id VARCHAR(100) PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     subject_id VARCHAR(50) NOT NULL,
@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS ge10_reference_exams (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS idx_ge10_ref_exams_context 
-ON ge10_reference_exams (grade_tier, subject_id, category);
+CREATE INDEX IF NOT EXISTS idx_mkw_ref_exams_context 
+ON mkw_reference_exams (grade_tier, subject_id, category);
 
 -- Enable RLS
-ALTER TABLE ge10_reference_exams ENABLE ROW LEVEL SECURITY;
+ALTER TABLE mkw_reference_exams ENABLE ROW LEVEL SECURITY;

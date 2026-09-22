@@ -4,7 +4,7 @@ import { Crown, Shield, Users, User, GraduationCap } from 'lucide-react';
 interface OrgChartProps {
   currentUser: any;
   adminStudents: any[]; // danh sách tất cả user trong viện
-  adminLinks: any[];    // danh sách tất cả các liên kết ge10_family_links active
+  adminLinks: any[];    // danh sách tất cả các liên kết mkw_family_links active
 }
 
 export const OrgChart: React.FC<OrgChartProps> = ({

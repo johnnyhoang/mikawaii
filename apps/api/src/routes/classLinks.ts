@@ -25,7 +25,7 @@ router.get('/users/search', authMiddleware, async (req: any, res) => {
     const searchTerm = `%${q.trim()}%`;
     let queryText = `
       SELECT id, name, email, avatar_url, role 
-      FROM ge10_users 
+      FROM mkw_users 
       WHERE is_active = TRUE 
         AND id <> $1
         AND (LOWER(name) LIKE LOWER($2) OR LOWER(email) LIKE LOWER($2))
@@ -38,10 +38,10 @@ router.get('/users/search', authMiddleware, async (req: any, res) => {
         if (callerProfileId) {
           queryText += `
             AND NOT EXISTS (
-              SELECT 1 FROM ge10_class_links
-              WHERE tutor_id = ge10_users.id
+              SELECT 1 FROM mkw_class_links
+              WHERE tutor_id = mkw_users.id
                 AND student_id IN (
-                  SELECT student_id FROM ge10_class_links WHERE tutor_id = $3 AND status = 'active'
+                  SELECT student_id FROM mkw_class_links WHERE tutor_id = $3 AND status = 'active'
                 )
                 AND status IN ('active', 'pending_primary')
             )
@@ -58,8 +58,8 @@ router.get('/users/search', authMiddleware, async (req: any, res) => {
           // Bắt buộc học sinh chưa có primary link
           queryText += `
             AND NOT EXISTS (
-              SELECT 1 FROM ge10_class_links 
-              WHERE student_id = ge10_users.id 
+              SELECT 1 FROM mkw_class_links 
+              WHERE student_id = mkw_users.id 
                 AND status = 'active' 
                 AND link_type = 'primary'
             )
@@ -69,8 +69,8 @@ router.get('/users/search', authMiddleware, async (req: any, res) => {
             const nextParamIdx = params.length + 1;
             queryText += `
               AND NOT EXISTS (
-                SELECT 1 FROM ge10_class_links
-                WHERE student_id = ge10_users.id
+                SELECT 1 FROM mkw_class_links
+                WHERE student_id = mkw_users.id
                   AND tutor_id = $${nextParamIdx}
                   AND status IN ('active', 'pending_student', 'pending_tutor')
               )
@@ -97,7 +97,7 @@ router.get('/class-links/:profileId', authMiddleware, async (req: any, res) => {
   
   try {
     // 1. Verify ownership
-    const check = await pool.query('SELECT id, role FROM ge10_users WHERE id = $1 AND is_active = TRUE', [profileId]);
+    const check = await pool.query('SELECT id, role FROM mkw_users WHERE id = $1 AND is_active = TRUE', [profileId]);
     if (check.rowCount === 0) return res.status(403).json({ error: 'Unauthorized' });
     const myRole = check.rows[0].role;
 
@@ -105,8 +105,8 @@ router.get('/class-links/:profileId', authMiddleware, async (req: any, res) => {
     if (myRole === 'student') {
       const linkRes = await pool.query(`
         SELECT l.id, l.status, l.link_type, l.secondary_permissions, l.student_id, u.id as tutor_id, u.name as tutor_name, u.email as tutor_email, u.avatar_url as tutor_avatar 
-        FROM ge10_class_links l 
-        JOIN ge10_users u ON l.tutor_id = u.id 
+        FROM mkw_class_links l 
+        JOIN mkw_users u ON l.tutor_id = u.id 
         WHERE l.student_id = $1
       `, [profileId]);
       
@@ -114,15 +114,15 @@ router.get('/class-links/:profileId', authMiddleware, async (req: any, res) => {
     } else if (myRole === 'tutor') {
       const studentLinks = await pool.query(`
         SELECT l.id, l.status, l.link_type, l.secondary_permissions, l.tutor_id, u.id as student_id, u.name as student_name, u.email as student_email, u.avatar_url as student_avatar 
-        FROM ge10_class_links l 
-        JOIN ge10_users u ON l.student_id = u.id 
+        FROM mkw_class_links l 
+        JOIN mkw_users u ON l.student_id = u.id 
         WHERE l.tutor_id = $1 AND l.link_type = 'primary'
       `, [profileId]);
 
       const classSecondaryLinks = await pool.query(`
         SELECT l.id, l.status, l.link_type, u.id as tutor_id, u.name as tutor_name, u.email as tutor_email, u.avatar_url as tutor_avatar
-        FROM ge10_class_links l 
-        JOIN ge10_users u ON l.student_id = u.id 
+        FROM mkw_class_links l 
+        JOIN mkw_users u ON l.student_id = u.id 
         WHERE l.tutor_id = $1 AND l.link_type = 'secondary' AND u.role IN ('tutor', 'secondary_tutor')
       `, [profileId]);
       
@@ -134,15 +134,15 @@ router.get('/class-links/:profileId', authMiddleware, async (req: any, res) => {
     } else if (myRole === 'secondary_tutor') {
       const studentLinks = await pool.query(`
         SELECT l.id, l.status, l.link_type, l.secondary_permissions, l.tutor_id, u.id as student_id, u.name as student_name, u.email as student_email, u.avatar_url as student_avatar 
-        FROM ge10_class_links l 
-        JOIN ge10_users u ON l.student_id = u.id 
+        FROM mkw_class_links l 
+        JOIN mkw_users u ON l.student_id = u.id 
         WHERE l.tutor_id = $1 AND l.link_type = 'secondary'
       `, [profileId]);
 
       const classSecondaryLinks = await pool.query(`
         SELECT l.id, l.status, l.link_type, u.id as tutor_id, u.name as tutor_name, u.email as tutor_email, u.avatar_url as tutor_avatar
-        FROM ge10_class_links l 
-        JOIN ge10_users u ON l.tutor_id = u.id 
+        FROM mkw_class_links l 
+        JOIN mkw_users u ON l.tutor_id = u.id 
         WHERE l.student_id = $1 AND l.link_type = 'secondary'
       `, [profileId]);
 
@@ -156,8 +156,8 @@ router.get('/class-links/:profileId', authMiddleware, async (req: any, res) => {
         SELECT l.id, l.status, l.link_type, l.created_at,
                u.id as peer_id, u.name as peer_name, u.email as peer_email, u.avatar_url as peer_avatar, u.role as peer_role,
                l.tutor_id as sender_id
-        FROM ge10_class_links l
-        JOIN ge10_users u ON (l.tutor_id = u.id AND l.student_id = $1) OR (l.student_id = u.id AND l.tutor_id = $1)
+        FROM mkw_class_links l
+        JOIN mkw_users u ON (l.tutor_id = u.id AND l.student_id = $1) OR (l.student_id = u.id AND l.tutor_id = $1)
         WHERE l.link_type = 'admin_connection'
       `, [profileId]);
       
@@ -185,7 +185,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
   try {
     // 1. Verify sender profile and active account
     const senderRes = await pool.query(
-      'SELECT id, role, name, email, avatar_url FROM ge10_users WHERE id = $1 AND is_active = TRUE',
+      'SELECT id, role, name, email, avatar_url FROM mkw_users WHERE id = $1 AND is_active = TRUE',
       [senderProfileId]
     );
     if (senderRes.rowCount === 0) {
@@ -195,7 +195,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
 
     // 2. Find target user by email (case-insensitive)
     const targetCheck = await pool.query(
-      'SELECT id, account_id, name, email, avatar_url, role FROM ge10_users WHERE LOWER(email) = LOWER($1) AND is_active = TRUE ORDER BY created_at ASC',
+      'SELECT id, account_id, name, email, avatar_url, role FROM mkw_users WHERE LOWER(email) = LOWER($1) AND is_active = TRUE ORDER BY created_at ASC',
       [targetEmail.trim()]
     );
     if (targetCheck.rowCount === 0) {
@@ -216,7 +216,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
         // Auto-create parent profile
         const newParentId = 'prof-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9);
         await pool.query(
-          `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+          `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
            VALUES ($1, $2, $3, $4, $5, 'tutor', TRUE)`,
           [newParentId, targetAccountId, targetName, targetEmailVal, targetAvatar]
         );
@@ -227,7 +227,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
 
       // Clear any other pending primary requests for this student (avoid duplicate invitations)
       await pool.query(
-        "DELETE FROM ge10_class_links WHERE student_id = $1 AND link_type = 'primary' AND status IN ('pending_student', 'pending_tutor')",
+        "DELETE FROM mkw_class_links WHERE student_id = $1 AND link_type = 'primary' AND status IN ('pending_student', 'pending_tutor')",
         [senderProfileId]
       );
 
@@ -242,12 +242,12 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
         // Auto-create student profile
         const newStudentId = 'prof-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9);
         await pool.query(
-          `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+          `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
            VALUES ($1, $2, $3, $4, $5, 'student', TRUE)`,
           [newStudentId, targetAccountId, targetName, targetEmailVal, targetAvatar]
         );
-        await pool.query(`INSERT INTO ge10_player_profiles (user_id) VALUES ($1)`, [newStudentId]);
-        await pool.query(`INSERT INTO ge10_pet_states (user_id) VALUES ($1)`, [newStudentId]);
+        await pool.query(`INSERT INTO mkw_player_profiles (user_id) VALUES ($1)`, [newStudentId]);
+        await pool.query(`INSERT INTO mkw_pet_states (user_id) VALUES ($1)`, [newStudentId]);
         studentId = newStudentId;
       } else {
         studentId = studentProfile.id;
@@ -255,7 +255,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
 
       // Check if student already has a primary parent
       const existCheck = await pool.query(
-        "SELECT l.id, u.name as tutor_name FROM ge10_class_links l JOIN ge10_users u ON l.tutor_id = u.id WHERE l.student_id = $1 AND l.link_type = 'primary' AND l.status IN ('active', 'pending_student', 'pending_tutor')",
+        "SELECT l.id, u.name as tutor_name FROM mkw_class_links l JOIN mkw_users u ON l.tutor_id = u.id WHERE l.student_id = $1 AND l.link_type = 'primary' AND l.status IN ('active', 'pending_student', 'pending_tutor')",
         [studentId]
       );
 
@@ -282,7 +282,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
 
     // Check if link already exists
     const linkExist = await pool.query(
-      "SELECT id, status FROM ge10_class_links WHERE tutor_id = $1 AND student_id = $2",
+      "SELECT id, status FROM mkw_class_links WHERE tutor_id = $1 AND student_id = $2",
       [parentId, studentId]
     );
     if (linkExist.rowCount && linkExist.rowCount > 0) {
@@ -291,7 +291,7 @@ router.post('/class-links/invite', authMiddleware, async (req: any, res) => {
 
     const linkId = crypto.randomUUID();
     await pool.query(
-      "INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, $4, $5)",
+      "INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, $4, $5)",
       [linkId, parentId, studentId, initialStatus, linkType]
     );
 
@@ -314,7 +314,7 @@ router.post('/class-links/invite-secondary', authMiddleware, async (req: any, re
   try {
     // 1. Verify sender is active primary parent
     const senderCheck = await pool.query(
-      'SELECT id, role FROM ge10_users WHERE id = $1 AND is_active = TRUE',
+      'SELECT id, role FROM mkw_users WHERE id = $1 AND is_active = TRUE',
       [senderProfileId]
     );
     if (senderCheck.rowCount === 0 || senderCheck.rows[0].role !== 'tutor') {
@@ -323,7 +323,7 @@ router.post('/class-links/invite-secondary', authMiddleware, async (req: any, re
 
     // 2. Find target user by email
     const targetCheck = await pool.query(
-      'SELECT id, account_id, name, email, avatar_url, role FROM ge10_users WHERE LOWER(email) = LOWER($1) AND is_active = TRUE ORDER BY created_at ASC',
+      'SELECT id, account_id, name, email, avatar_url, role FROM mkw_users WHERE LOWER(email) = LOWER($1) AND is_active = TRUE ORDER BY created_at ASC',
       [targetEmail.trim()]
     );
     if (targetCheck.rowCount === 0) {
@@ -340,7 +340,7 @@ router.post('/class-links/invite-secondary', authMiddleware, async (req: any, re
     if (!parentProfile) {
       const newParentId = 'prof-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9);
       await pool.query(
-        `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+        `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
          VALUES ($1, $2, $3, $4, $5, 'tutor', TRUE)`,
         [newParentId, targetAccountId, targetName, targetEmailVal, targetAvatar]
       );
@@ -351,7 +351,7 @@ router.post('/class-links/invite-secondary', authMiddleware, async (req: any, re
 
     // Check if class-level link already exists (student_id matches the secondaryParentId)
     const linkExist = await pool.query(
-      "SELECT id, status FROM ge10_class_links WHERE tutor_id = $1 AND student_id = $2 AND link_type = 'secondary'",
+      "SELECT id, status FROM mkw_class_links WHERE tutor_id = $1 AND student_id = $2 AND link_type = 'secondary'",
       [senderProfileId, secondaryParentId]
     );
     if (linkExist.rowCount && linkExist.rowCount > 0) {
@@ -360,7 +360,7 @@ router.post('/class-links/invite-secondary', authMiddleware, async (req: any, re
 
     const linkId = crypto.randomUUID();
     await pool.query(
-      "INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, 'pending_tutor', 'secondary')",
+      "INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, 'pending_tutor', 'secondary')",
       [linkId, senderProfileId, secondaryParentId]
     );
 
@@ -383,7 +383,7 @@ router.post('/class-links/invite-secondary-request', authMiddleware, async (req:
   try {
     // 1. Verify sender is active parent profile
     const senderCheck = await pool.query(
-      'SELECT id, role FROM ge10_users WHERE id = $1 AND is_active = TRUE',
+      'SELECT id, role FROM mkw_users WHERE id = $1 AND is_active = TRUE',
       [senderProfileId]
     );
     if (senderCheck.rowCount === 0 || (senderCheck.rows[0].role !== 'tutor' && senderCheck.rows[0].role !== 'secondary_tutor')) {
@@ -392,7 +392,7 @@ router.post('/class-links/invite-secondary-request', authMiddleware, async (req:
 
     // 2. Find target primary parent by email
     const targetCheck = await pool.query(
-      'SELECT id, account_id, name, email, avatar_url, role FROM ge10_users WHERE LOWER(email) = LOWER($1) AND is_active = TRUE ORDER BY created_at ASC',
+      'SELECT id, account_id, name, email, avatar_url, role FROM mkw_users WHERE LOWER(email) = LOWER($1) AND is_active = TRUE ORDER BY created_at ASC',
       [targetEmail.trim()]
     );
     if (targetCheck.rowCount === 0) {
@@ -409,7 +409,7 @@ router.post('/class-links/invite-secondary-request', authMiddleware, async (req:
     if (!parentProfile) {
       const newParentId = 'prof-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9);
       await pool.query(
-        `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+        `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
          VALUES ($1, $2, $3, $4, $5, 'tutor', TRUE)`,
         [newParentId, targetAccountId, targetName, targetEmailVal, targetAvatar]
       );
@@ -420,7 +420,7 @@ router.post('/class-links/invite-secondary-request', authMiddleware, async (req:
 
     // Check if class-level link already exists
     const linkExist = await pool.query(
-      "SELECT id, status FROM ge10_class_links WHERE tutor_id = $1 AND student_id = $2 AND link_type = 'secondary'",
+      "SELECT id, status FROM mkw_class_links WHERE tutor_id = $1 AND student_id = $2 AND link_type = 'secondary'",
       [primaryTutorId, senderProfileId]
     );
     if (linkExist.rowCount && linkExist.rowCount > 0) {
@@ -429,7 +429,7 @@ router.post('/class-links/invite-secondary-request', authMiddleware, async (req:
 
     const linkId = crypto.randomUUID();
     await pool.query(
-      "INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, 'pending_primary', 'secondary')",
+      "INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, 'pending_primary', 'secondary')",
       [linkId, primaryTutorId, senderProfileId]
     );
 
@@ -450,7 +450,7 @@ router.patch('/class-links/secondary-permissions', authMiddleware, async (req: a
   }
 
   try {
-    const linkRes = await pool.query('SELECT * FROM ge10_class_links WHERE id = $1', [linkId]);
+    const linkRes = await pool.query('SELECT * FROM mkw_class_links WHERE id = $1', [linkId]);
     if (linkRes.rowCount === 0) return res.status(404).json({ error: 'Link not found.' });
     const link = linkRes.rows[0];
 
@@ -460,10 +460,10 @@ router.patch('/class-links/secondary-permissions', authMiddleware, async (req: a
 
     // Verify sender is the primary active parent
     const primaryCheck = await pool.query(
-      "SELECT id FROM ge10_class_links WHERE tutor_id = $1 AND student_id = $2 AND link_type = 'primary' AND status = 'active'",
+      "SELECT id FROM mkw_class_links WHERE tutor_id = $1 AND student_id = $2 AND link_type = 'primary' AND status = 'active'",
       [senderProfileId, link.student_id]
     );
-    const senderCheck = await pool.query('SELECT role FROM ge10_users WHERE id = $1 AND is_active = TRUE', [senderProfileId]);
+    const senderCheck = await pool.query('SELECT role FROM mkw_users WHERE id = $1 AND is_active = TRUE', [senderProfileId]);
 
     if (primaryCheck.rowCount === 0 || senderCheck.rowCount === 0 || senderCheck.rows[0].role !== 'tutor') {
       return res.status(403).json({ error: 'Forbidden: Only the primary parent can configure permissions.' });
@@ -477,7 +477,7 @@ router.patch('/class-links/secondary-permissions', authMiddleware, async (req: a
     };
 
     await pool.query(
-      'UPDATE ge10_class_links SET secondary_permissions = $1, updated_at = NOW() WHERE id = $2',
+      'UPDATE mkw_class_links SET secondary_permissions = $1, updated_at = NOW() WHERE id = $2',
       [JSON.stringify(newPerms), linkId]
     );
     await logAuditEvent(senderProfileId, 'update_secondary_permissions', link.tutor_id, { studentId: link.student_id, permissions: newPerms });
@@ -493,10 +493,10 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
   const { profileId, linkId, accept } = req.body;
 
   try {
-    const check = await pool.query('SELECT id, role FROM ge10_users WHERE id = $1 AND is_active = TRUE', [profileId]);
+    const check = await pool.query('SELECT id, role FROM mkw_users WHERE id = $1 AND is_active = TRUE', [profileId]);
     if (check.rowCount === 0) return res.status(403).json({ error: 'Unauthorized' });
 
-    const linkCheck = await pool.query('SELECT * FROM ge10_class_links WHERE id = $1', [linkId]);
+    const linkCheck = await pool.query('SELECT * FROM mkw_class_links WHERE id = $1', [linkId]);
     if (linkCheck.rowCount === 0) return res.status(404).json({ error: 'Link not found' });
     const link = linkCheck.rows[0];
 
@@ -506,10 +506,10 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
         return res.status(403).json({ error: 'Unauthorized: Chỉ người nhận mới có thể chấp nhận kết nối.' });
       }
       if (!accept) {
-        await pool.query('DELETE FROM ge10_class_links WHERE id = $1', [linkId]);
+        await pool.query('DELETE FROM mkw_class_links WHERE id = $1', [linkId]);
         return res.json({ success: true, message: 'Đã từ chối kết nối Ban Lãnh Đạo Viện.' });
       }
-      await pool.query("UPDATE ge10_class_links SET status = 'active', updated_at = NOW() WHERE id = $1", [linkId]);
+      await pool.query("UPDATE mkw_class_links SET status = 'active', updated_at = NOW() WHERE id = $1", [linkId]);
       await logAuditEvent(profileId, 'respond_admin_connection', link.tutor_id, { accept: true });
       return res.json({ success: true, message: 'Đã kết nối Ban Lãnh Đạo Viện thành công!' });
     }
@@ -529,23 +529,23 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
     }
 
     if (!accept) {
-      await pool.query('DELETE FROM ge10_class_links WHERE id = $1', [linkId]);
+      await pool.query('DELETE FROM mkw_class_links WHERE id = $1', [linkId]);
       return res.json({ success: true, message: 'Invite rejected' });
     }
 
-    await pool.query("UPDATE ge10_class_links SET status = 'active', updated_at = NOW() WHERE id = $1", [linkId]);
+    await pool.query("UPDATE mkw_class_links SET status = 'active', updated_at = NOW() WHERE id = $1", [linkId]);
     if (link.link_type === 'primary') {
       await ensureDefaultClassRewards(link.tutor_id);
 
       // Clean up old active primary links for this student (class switch!)
       await pool.query(
-        "DELETE FROM ge10_class_links WHERE student_id = $1 AND link_type = 'primary' AND id <> $2",
+        "DELETE FROM mkw_class_links WHERE student_id = $1 AND link_type = 'primary' AND id <> $2",
         [link.student_id, linkId]
       );
 
       // Clean up old secondary teacher links for this student (will be auto-recreated for the new primary teacher)
       await pool.query(
-        "DELETE FROM ge10_class_links WHERE student_id = $1 AND link_type = 'secondary'",
+        "DELETE FROM mkw_class_links WHERE student_id = $1 AND link_type = 'secondary'",
         [link.student_id]
       );
 
@@ -555,17 +555,17 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
     
     // --- Auto-populating student-level links for secondary tutors ---
     if (link.link_type === 'secondary') {
-      const studentProfileRes = await pool.query('SELECT role FROM ge10_users WHERE id = $1', [link.student_id]);
+      const studentProfileRes = await pool.query('SELECT role FROM mkw_users WHERE id = $1', [link.student_id]);
       const targetRole = studentProfileRes.rows[0]?.role;
 
       if (targetRole === 'tutor' || targetRole === 'secondary_tutor') {
         // Class-level link accepted!
-        // 1. Upgrade secondary tutor role in ge10_users
-        await pool.query("UPDATE ge10_users SET role = 'secondary_tutor' WHERE id = $1 AND role = 'tutor'", [link.student_id]);
+        // 1. Upgrade secondary tutor role in mkw_users
+        await pool.query("UPDATE mkw_users SET role = 'secondary_tutor' WHERE id = $1 AND role = 'tutor'", [link.student_id]);
 
         // 2. Fetch all active students of primary parent (link.tutor_id)
         const studentsRes = await pool.query(
-          "SELECT student_id FROM ge10_class_links WHERE tutor_id = $1 AND link_type = 'primary' AND status = 'active'",
+          "SELECT student_id FROM mkw_class_links WHERE tutor_id = $1 AND link_type = 'primary' AND status = 'active'",
           [link.tutor_id]
         );
 
@@ -573,7 +573,7 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
         for (const row of studentsRes.rows) {
           const detailLinkId = crypto.randomUUID();
           await pool.query(
-            `INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type) 
+            `INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type) 
              VALUES ($1, $2, $3, 'active', 'secondary')
              ON CONFLICT (tutor_id, student_id) DO UPDATE SET status = 'active'`,
             [detailLinkId, link.student_id, row.student_id]
@@ -584,7 +584,7 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
       // Primary student joins the class!
       // Fetch all active class-level secondary tutors of this primary parent
       const secondaryParentsRes = await pool.query(
-        "SELECT student_id FROM ge10_class_links WHERE tutor_id = $1 AND link_type = 'secondary' AND status = 'active'",
+        "SELECT student_id FROM mkw_class_links WHERE tutor_id = $1 AND link_type = 'secondary' AND status = 'active'",
         [link.tutor_id]
       );
 
@@ -592,7 +592,7 @@ router.post('/class-links/respond', authMiddleware, async (req: any, res) => {
       for (const row of secondaryParentsRes.rows) {
         const detailLinkId = crypto.randomUUID();
         await pool.query(
-          `INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type) 
+          `INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type) 
            VALUES ($1, $2, $3, 'active', 'secondary')
            ON CONFLICT (tutor_id, student_id) DO UPDATE SET status = 'active'`,
           [detailLinkId, row.student_id, link.student_id]
@@ -613,10 +613,10 @@ router.post('/class-links/leave', authMiddleware, async (req: any, res) => {
   const { profileId, linkId } = req.body;
 
   try {
-    const check = await pool.query('SELECT id, role FROM ge10_users WHERE id = $1 AND is_active = TRUE', [profileId]);
+    const check = await pool.query('SELECT id, role FROM mkw_users WHERE id = $1 AND is_active = TRUE', [profileId]);
     if (check.rowCount === 0) return res.status(403).json({ error: 'Unauthorized' });
 
-    const linkCheck = await pool.query('SELECT * FROM ge10_class_links WHERE id = $1', [linkId]);
+    const linkCheck = await pool.query('SELECT * FROM mkw_class_links WHERE id = $1', [linkId]);
     if (linkCheck.rowCount === 0) return res.status(404).json({ error: 'Link not found' });
     const link = linkCheck.rows[0];
 
@@ -625,7 +625,7 @@ router.post('/class-links/leave', authMiddleware, async (req: any, res) => {
       if (link.tutor_id !== profileId) {
         return res.status(403).json({ error: 'Unauthorized' });
       }
-      await pool.query('DELETE FROM ge10_class_links WHERE id = $1', [linkId]);
+      await pool.query('DELETE FROM mkw_class_links WHERE id = $1', [linkId]);
       await logAuditEvent(profileId, 'cancel_vice_principal_request', null, { linkId });
       return res.json({ success: true, message: 'Đã hủy yêu cầu ứng tuyển Viện Phó.' });
     }
@@ -635,7 +635,7 @@ router.post('/class-links/leave', authMiddleware, async (req: any, res) => {
       if (link.tutor_id !== profileId && link.student_id !== profileId) {
         return res.status(403).json({ error: 'Unauthorized' });
       }
-      await pool.query('DELETE FROM ge10_class_links WHERE id = $1', [linkId]);
+      await pool.query('DELETE FROM mkw_class_links WHERE id = $1', [linkId]);
       await logAuditEvent(profileId, 'leave_admin_connection', link.tutor_id === profileId ? link.student_id : link.tutor_id, { linkId });
       return res.json({ success: true, message: 'Đã hủy kết nối Ban Lãnh Đạo Viện.' });
     }
@@ -645,13 +645,13 @@ router.post('/class-links/leave', authMiddleware, async (req: any, res) => {
       if (link.student_id !== profileId && link.tutor_id !== profileId) {
         return res.status(403).json({ error: 'Unauthorized' });
       }
-      await pool.query('DELETE FROM ge10_class_links WHERE student_id = $1', [link.student_id]);
+      await pool.query('DELETE FROM mkw_class_links WHERE student_id = $1', [link.student_id]);
 
       // Migrate pending claims back to school!
       await migratePendingClaims(link.student_id, null);
     } else {
       // Check if class-level secondary tutor link
-      const targetCheck = await pool.query('SELECT role FROM ge10_users WHERE id = $1', [link.student_id]);
+      const targetCheck = await pool.query('SELECT role FROM mkw_users WHERE id = $1', [link.student_id]);
       const targetRole = targetCheck.rows[0]?.role;
 
       if (targetRole === 'tutor' || targetRole === 'secondary_tutor') {
@@ -659,13 +659,13 @@ router.post('/class-links/leave', authMiddleware, async (req: any, res) => {
           return res.status(403).json({ error: 'Unauthorized' });
         }
         // Class-level co-management link deleted
-        await pool.query('DELETE FROM ge10_class_links WHERE id = $1', [linkId]);
+        await pool.query('DELETE FROM mkw_class_links WHERE id = $1', [linkId]);
         // Delete all student-level links for this secondary tutor (link.student_id) under this primary parent (link.tutor_id)'s class
         await pool.query(
-          `DELETE FROM ge10_class_links 
+          `DELETE FROM mkw_class_links 
            WHERE tutor_id = $1 AND link_type = 'secondary' 
              AND student_id IN (
-               SELECT student_id FROM ge10_class_links WHERE tutor_id = $2 AND link_type = 'primary'
+               SELECT student_id FROM mkw_class_links WHERE tutor_id = $2 AND link_type = 'primary'
              )`,
           [link.student_id, link.tutor_id]
         );
@@ -673,7 +673,7 @@ router.post('/class-links/leave', authMiddleware, async (req: any, res) => {
         if (link.student_id !== profileId && link.tutor_id !== profileId) {
           return res.status(403).json({ error: 'Unauthorized' });
         }
-        await pool.query('DELETE FROM ge10_class_links WHERE id = $1', [linkId]);
+        await pool.query('DELETE FROM mkw_class_links WHERE id = $1', [linkId]);
       }
     }
 
@@ -698,7 +698,7 @@ router.get('/class-links/skip-reviews/:studentId', authMiddleware, async (req: a
     }
 
     const result = await pool.query(
-      "SELECT * FROM ge10_skip_reviews WHERE student_id = $1 AND status = 'pending' ORDER BY created_at DESC",
+      "SELECT * FROM mkw_skip_reviews WHERE student_id = $1 AND status = 'pending' ORDER BY created_at DESC",
       [studentId]
     );
     res.json(result.rows);
@@ -719,7 +719,7 @@ router.post('/class-links/skip-reviews/resolve', authMiddleware, async (req: any
 
   try {
     // Fetch review to verify studentId
-    const reviewRes = await pool.query('SELECT student_id FROM ge10_skip_reviews WHERE id = $1', [reviewId]);
+    const reviewRes = await pool.query('SELECT student_id FROM mkw_skip_reviews WHERE id = $1', [reviewId]);
     if (reviewRes.rowCount === 0) {
       return res.status(404).json({ error: 'Skip review not found.' });
     }
@@ -732,7 +732,7 @@ router.post('/class-links/skip-reviews/resolve', authMiddleware, async (req: any
     }
 
     await pool.query(
-      "UPDATE ge10_skip_reviews SET status = 'resolved' WHERE id = $1",
+      "UPDATE mkw_skip_reviews SET status = 'resolved' WHERE id = $1",
       [reviewId]
     );
     res.json({ success: true, message: 'Skip review resolved successfully.' });
@@ -750,7 +750,7 @@ router.post('/class-links/apply-vice-principal', authMiddleware, async (req: any
   try {
     // 1. Verify ownership
     const check = await pool.query(
-      'SELECT role, is_active FROM ge10_users WHERE id = $1',
+      'SELECT role, is_active FROM mkw_users WHERE id = $1',
       [profileId]
     );
     if (check.rowCount === 0) {
@@ -763,7 +763,7 @@ router.post('/class-links/apply-vice-principal', authMiddleware, async (req: any
 
     // 2. Check if they already have a pho_vien profile
     const pvCheck = await pool.query(
-      "SELECT id, is_active FROM ge10_users WHERE account_id = $1 AND role = 'pho_vien'",
+      "SELECT id, is_active FROM mkw_users WHERE account_id = $1 AND role = 'pho_vien'",
       [accountId]
     );
     if (pvCheck.rowCount && pvCheck.rowCount > 0 && pvCheck.rows[0].is_active) {
@@ -772,7 +772,7 @@ router.post('/class-links/apply-vice-principal', authMiddleware, async (req: any
 
     // 3. Check if they already applied
     const appliedCheck = await pool.query(
-      "SELECT id FROM ge10_class_links WHERE tutor_id = $1 AND link_type = 'vice_principal'",
+      "SELECT id FROM mkw_class_links WHERE tutor_id = $1 AND link_type = 'vice_principal'",
       [profileId]
     );
     if (appliedCheck.rowCount && appliedCheck.rowCount > 0) {
@@ -782,7 +782,7 @@ router.post('/class-links/apply-vice-principal', authMiddleware, async (req: any
     // 4. Create the application
     const linkId = 'lnk-vp-' + Date.now();
     await pool.query(
-      `INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type)
+      `INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type)
        VALUES ($1, $2, NULL, 'pending', 'vice_principal')`,
       [linkId, profileId]
     );
@@ -806,7 +806,7 @@ router.post('/class-links/invite-admin-connection', authMiddleware, async (req: 
   try {
     // 1. Verify sender is active admin profile (truong_vien or pho_vien)
     const senderCheck = await pool.query(
-      "SELECT id, role FROM ge10_users WHERE id = $1 AND role IN ('truong_vien', 'pho_vien') AND is_active = TRUE",
+      "SELECT id, role FROM mkw_users WHERE id = $1 AND role IN ('truong_vien', 'pho_vien') AND is_active = TRUE",
       [senderProfileId]
     );
     if (senderCheck.rowCount === 0) {
@@ -815,7 +815,7 @@ router.post('/class-links/invite-admin-connection', authMiddleware, async (req: 
 
     // 2. Find target admin profile by email
     const targetCheck = await pool.query(
-      "SELECT id, role FROM ge10_users WHERE LOWER(email) = LOWER($1) AND role IN ('truong_vien', 'pho_vien') AND is_active = TRUE LIMIT 1",
+      "SELECT id, role FROM mkw_users WHERE LOWER(email) = LOWER($1) AND role IN ('truong_vien', 'pho_vien') AND is_active = TRUE LIMIT 1",
       [targetEmail.trim()]
     );
     if (targetCheck.rowCount === 0) {
@@ -829,7 +829,7 @@ router.post('/class-links/invite-admin-connection', authMiddleware, async (req: 
 
     // 3. Check if connection already exists
     const linkExist = await pool.query(
-      `SELECT id, status FROM ge10_class_links 
+      `SELECT id, status FROM mkw_class_links 
        WHERE link_type = 'admin_connection' 
          AND ((tutor_id = $1 AND student_id = $2) OR (tutor_id = $2 AND student_id = $1))`,
       [senderProfileId, targetProfileId]
@@ -841,7 +841,7 @@ router.post('/class-links/invite-admin-connection', authMiddleware, async (req: 
     // 4. Create request
     const linkId = 'lnk-adm-' + Date.now();
     await pool.query(
-      "INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, 'pending', 'admin_connection')",
+      "INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type) VALUES ($1, $2, $3, 'pending', 'admin_connection')",
       [linkId, senderProfileId, targetProfileId]
     );
 

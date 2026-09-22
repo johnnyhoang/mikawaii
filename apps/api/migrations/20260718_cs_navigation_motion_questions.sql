@@ -4,12 +4,12 @@
 BEGIN;
 
 -- 2. Seed Questions for cs_navigation_motion (grade_tier = 13)
-DELETE FROM ge10_custom_questions WHERE grade_tier = 13 AND subject = 'cs_navigation_motion';
+DELETE FROM mkw_custom_questions WHERE grade_tier = 13 AND subject = 'cs_navigation_motion';
 
 -- ======================================================================================
 -- BÀI GIẢNG 1: Bản đồ chi phí Costmap & Các lớp bản đồ trong ROS2 (cs_navmot_01) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_001', 'mcq', 'costmap-localization',
@@ -95,7 +95,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 2: Định vị thích nghi Monte Carlo (cs_navmot_02) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_011', 'mcq', 'costmap-localization',
@@ -181,7 +181,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 3: Mô hình động học xe: Mô hình xe đạp & Lái Ackermann (cs_navmot_03) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_021', 'mcq', 'kinematic-models',
@@ -267,7 +267,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 4: Bộ điều khiển bám đường hình học: Pure Pursuit (cs_navmot_04) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_031', 'mcq', 'path-tracking',
@@ -353,7 +353,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 5: Bộ điều khiển Stanley cho xe tự hành (cs_navmot_05) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_041', 'mcq', 'path-tracking',
@@ -439,7 +439,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 6: Bộ điều khiển dự báo mô hình (Model Predictive Control - MPC) (cs_navmot_06) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_051', 'mcq', 'path-tracking',
@@ -525,7 +525,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 7: Mô hình Odometry bánh xe & Tính toán sai số tích phân (cs_navmot_07) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_061', 'mcq', 'kinematic-models',
@@ -611,7 +611,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 8: Lập quỹ đạo trơn cho khớp Robot dựa trên đường cong Spline (cs_navmot_08) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_081', 'mcq', 'trajectory-recovery',
@@ -697,7 +697,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 9: Hành vi phục hồi trạng thái trong ROS2 Navigation (cs_navmot_09) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_navmot_q_091', 'mcq', 'trajectory-recovery',

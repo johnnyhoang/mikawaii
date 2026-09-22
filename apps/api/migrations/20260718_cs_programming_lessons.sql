@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_programming (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('programming-paradigms', 'cs_programming', 13, 'Mô hình & Phương pháp lập trình', 'Lập trình hướng đối tượng (OOP) nâng cao, quản lý con trỏ bộ nhớ và lập trình hàm (Functional Programming).', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('software-reliability', 'cs_programming', 13, 'Độ tin cậy & Xử lý lỗi', 'Lập trình đa luồng (Multithreading), bất đồng bộ (Concurrency), cơ chế đồng bộ hóa (Mutex/Locks) và hệ thống xử lý lỗi/logging.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_programming (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_prog_01', 
@@ -269,8 +269,8 @@ TDD đảo ngược quy trình truyền thống: Viết test trước, viết co
     'development-workflow'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_prog_01', 'programming-paradigms', 'lesson', 'Lập trình Hướng đối tượng nâng cao (OOP)', '{"lesson_id": "cs_prog_01"}'::jsonb, 10, 10, 20, 'cs_programming', 13),
   ('act-lesson-cs_prog_02', 'programming-paradigms', 'lesson', 'Con trỏ & Quản lý Bộ nhớ (Stack vs Heap)', '{"lesson_id": "cs_prog_02"}'::jsonb, 20, 10, 20, 'cs_programming', 13),

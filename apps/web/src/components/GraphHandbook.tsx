@@ -161,7 +161,7 @@ export function GraphHandbook({ problemText = '' }: GraphHandbookProps) {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-          'X-Profile-Id': localStorage.getItem('ge10_selected_profile_id') || ''
+          'X-Profile-Id': localStorage.getItem('mkw_selected_profile_id') || ''
         },
         body: JSON.stringify({ problemText: text })
       });

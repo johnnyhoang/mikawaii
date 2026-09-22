@@ -38,7 +38,7 @@ export const activeProfileMiddleware = async (req: any, res: any, next: any) => 
     const { pool } = await import('../db.js');
     const result = await pool.query(
       `SELECT id, account_id, role, is_active
-       FROM ge10_users
+       FROM mkw_users
        WHERE id = $1 AND account_id = $2 AND is_active = TRUE`,
       [profileId, accountId]
     );

@@ -1,6 +1,6 @@
 -- Resolve active profiles efficiently for every authenticated business request.
-CREATE INDEX IF NOT EXISTS idx_ge10_users_account_profile_active
-  ON public.ge10_users (account_id, id)
+CREATE INDEX IF NOT EXISTS idx_mkw_users_account_profile_active
+  ON public.mkw_users (account_id, id)
   WHERE is_active = TRUE;
 
 -- Never infer or migrate business ownership from account_id, even when an account

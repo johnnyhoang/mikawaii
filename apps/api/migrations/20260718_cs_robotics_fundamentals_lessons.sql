@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_robotics_fundamentals (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('robot-introduction', 'cs_robotics_fundamentals', 13, 'Tổng quan & Cấu trúc Robot', 'Lịch sử phát triển, không gian cấu hình C-Space, bậc tự do DOF, động cơ chấp hành và thiết kế truyền động.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('robot-kinematics', 'cs_robotics_fundamentals', 13, 'Động học Robot', 'Ma trận chuyển đổi thuần nhất SE(3), quy ước Denavit-Hartenberg, bài toán động học thuận và động học ngược.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_robotics_fundamentals (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_robfun_01', 
@@ -268,8 +268,8 @@ Robot công nghiệp sở hữu khối lượng sắt thép lớn, chuyển đ�
     'robot-control'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_robfun_01', 'robot-introduction', 'lesson', 'Giới thiệu tổng quan về Robotics & Phân loại Robot', '{"lesson_id": "cs_robfun_01"}'::jsonb, 10, 10, 20, 'cs_robotics_fundamentals', 13),
   ('act-lesson-cs_robfun_02', 'robot-introduction', 'lesson', 'Không gian cấu hình & Khớp động học (C-Space & Joints)', '{"lesson_id": "cs_robfun_02"}'::jsonb, 20, 10, 20, 'cs_robotics_fundamentals', 13),

@@ -1,8 +1,8 @@
 // Shim tương thích: store đã tách thành slices tại src/store/ — file này chỉ re-export
 // để các import cũ (`from '../hooks/useGameState'`) tiếp tục hoạt động.
 // Ngân hàng câu hỏi (INITIAL_QUESTIONS) và bài giảng (INITIAL_LESSONS) không còn hardcode
-// ở đây — cả hai đã được import một lần vào DB (ge10_custom_questions với user_id = NULL,
-// ge10_lessons) và luôn lấy qua state.questions/state.lessons sau khi fetch profile.
+// ở đây — cả hai đã được import một lần vào DB (mkw_custom_questions với user_id = NULL,
+// mkw_lessons) và luôn lấy qua state.questions/state.lessons sau khi fetch profile.
 export * from '../store';
 export * from '../store/types';
 export * from '../store/initialState';

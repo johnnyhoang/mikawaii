@@ -3,8 +3,8 @@
 
 BEGIN;
 
--- 1. Seed ge10_subject_exam_blueprints for cs_programming
-INSERT INTO ge10_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
+-- 1. Seed mkw_subject_exam_blueprints for cs_programming
+INSERT INTO mkw_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
 VALUES 
   (
     'cs_programming', 'Part I', 'Mô hình lập trình & Quản lý bộ nhớ', 
@@ -37,7 +37,7 @@ ON CONFLICT (id) DO UPDATE SET
   import_hint = EXCLUDED.import_hint;
 
 -- 2. Seed Boss Activities for 4 topics of cs_programming
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-boss-prog-paradigms', 'programming-paradigms', 'boss', 'Ma Vương Leak Bộ Nhớ Heap', '{"boss_id": "b-prog-paradigms", "boss_tag": "Leak", "energy": 100}'::jsonb, 100, 100, 150, 'cs_programming', 13),
   ('act-boss-prog-reliability', 'software-reliability', 'boss', 'Quái Thú Khóa Chết Deadlock', '{"boss_id": "b-prog-reliability", "boss_tag": "Lock", "energy": 100}'::jsonb, 100, 100, 150, 'cs_programming', 13),
@@ -55,7 +55,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 3. Seed Quiz Activities for 4 topics of cs_programming
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-quiz-prog-paradigms', 'programming-paradigms', 'quiz', 'Luyện tập OOP & Lập trình hàm', '{"mode": "grammar", "reward": "Ưu tiên mô hình hướng đối tượng và functional programming"}'::jsonb, 50, 10, 20, 'cs_programming', 13),
   ('act-quiz-prog-reliability', 'software-reliability', 'quiz', 'Luyện tập Đa luồng & Ngoại lệ', '{"mode": "vocabulary", "reward": "Ưu tiên giải quyết race condition và exception handling"}'::jsonb, 50, 10, 20, 'cs_programming', 13),
@@ -73,7 +73,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 4. Seed Textbook Mappings for cs_programming
-INSERT INTO ge10_textbook_mappings (category_key, subject, loai, bai, ham)
+INSERT INTO mkw_textbook_mappings (category_key, subject, loai, bai, ham)
 VALUES
   ('cs-prog-oop', 'cs_programming', 'Mô hình', 1, 'thach'),
   ('cs-prog-memory', 'cs_programming', 'Mô hình', 2, 'thach'),

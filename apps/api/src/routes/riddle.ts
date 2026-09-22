@@ -16,7 +16,7 @@ router.get('/riddle-history', async (req: any, res) => {
   try {
     const result = await pool.query(
       `SELECT question_id, used_at
-       FROM ge10_riddle_history
+       FROM mkw_riddle_history
        WHERE profile_id = $1 AND mode = $2 AND used_at >= NOW() - INTERVAL '30 days'
        ORDER BY used_at DESC`,
       [profileId, mode]
@@ -35,7 +35,7 @@ router.post('/riddle-history', async (req: any, res) => {
 
   try {
     await pool.query(
-      'INSERT INTO ge10_riddle_history (profile_id, mode, question_id) VALUES ($1, $2, $3)',
+      'INSERT INTO mkw_riddle_history (profile_id, mode, question_id) VALUES ($1, $2, $3)',
       [profileId, mode, questionId]
     );
     return res.status(201).json({ ok: true });

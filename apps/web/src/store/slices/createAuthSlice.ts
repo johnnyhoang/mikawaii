@@ -56,7 +56,7 @@ export const createAuthSlice: StateCreator<
       set(getProfileScopedResetState());
       const data = await authService.selectProfile(profileId);
       if (!data.player || !data.pet) {
-        // Hồ sơ player_profiles/pet_states lẽ ra luôn được tạo cùng lúc với ge10_users
+        // Hồ sơ player_profiles/pet_states lẽ ra luôn được tạo cùng lúc với mkw_users
         // (xem backend routes/profiles.ts). Thiếu ở đây nghĩa là dữ liệu server bị lỗi —
         // báo rõ thay vì âm thầm dựng nhân vật giả.
         throw new Error('Thiếu dữ liệu hồ sơ nhân vật (player/pet) trên máy chủ cho hồ sơ này.');
@@ -88,7 +88,7 @@ export const createAuthSlice: StateCreator<
         activeGradeTier: activeGradeTier,
         lastSyncTime: new Date().toISOString(),
       });
-      localStorage.setItem('ge10_selected_profile_id', profileId);
+      localStorage.setItem('mkw_selected_profile_id', profileId);
 
       // Fetch tất cả config & content song song thay vì tuần tự (giảm từ ~1200ms xuống ~400ms)
       const [mappings, content, handbookPages] = await Promise.all([
@@ -149,6 +149,7 @@ export const createAuthSlice: StateCreator<
   // selectProfile để tránh việc mỗi nơi gọi tự xoá một tập field khác nhau (xem TopHUD.tsx).
   deselectProfile: () => {
     set(getProfileScopedResetState());
+    localStorage.removeItem('mkw_selected_profile_id');
     localStorage.removeItem('ge10_selected_profile_id');
   },
 
@@ -230,7 +231,7 @@ export const createAuthSlice: StateCreator<
       await authService.syncUser();
       const data = await authService.fetchCurrentProfile();
       if (!data.player || !data.pet) {
-        // Hồ sơ player_profiles/pet_states lẽ ra luôn được tạo cùng lúc với ge10_users
+        // Hồ sơ player_profiles/pet_states lẽ ra luôn được tạo cùng lúc với mkw_users
         // (xem backend routes/profiles.ts). Thiếu ở đây nghĩa là dữ liệu server bị lỗi —
         // báo rõ thay vì âm thầm dựng nhân vật giả.
         throw new Error('Thiếu dữ liệu hồ sơ nhân vật (player/pet) trên máy chủ cho tài khoản này.');
@@ -352,6 +353,7 @@ export const createAuthSlice: StateCreator<
     try {
       // 1. Clear all credentials from localStorage & sessionStorage immediately & synchronously
       try {
+        localStorage.removeItem('mkw_selected_profile_id');
         localStorage.removeItem('ge10_selected_profile_id');
         localStorage.removeItem('cyber-app-screen');
 

@@ -4,12 +4,12 @@
 BEGIN;
 
 -- 2. Seed Questions for cs_robot_mechanics (grade_tier = 13)
-DELETE FROM ge10_custom_questions WHERE grade_tier = 13 AND subject = 'cs_robot_mechanics';
+DELETE FROM mkw_custom_questions WHERE grade_tier = 13 AND subject = 'cs_robot_mechanics';
 
 -- ======================================================================================
 -- BÀI GIẢNG 1: Động học vi phân & Ma trận Jacobian hình học (cs_robmec_01) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_001', 'mcq', 'mechanics-dynamics',
@@ -95,7 +95,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 2: Động lực học Robot: Công thức Euler-Lagrange (cs_robmec_02) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_011', 'mcq', 'mechanics-dynamics',
@@ -181,7 +181,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 3: Động lực học ngược & Thuật toán Newton-Euler (cs_robmec_03) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_021', 'mcq', 'mechanics-dynamics',
@@ -267,7 +267,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 4: Cơ học khớp mềm & Đàn hồi cơ khí (cs_robmec_04) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_031', 'mcq', 'contact-grippers',
@@ -353,7 +353,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 5: Cơ cấu kẹp & Cơ học ma sát khi tiếp xúc (cs_robmec_05) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_041', 'mcq', 'contact-grippers',
@@ -439,7 +439,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 6: Cơ học khớp ma sát: Coulomb & Viscous Friction (cs_robmec_06) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_051', 'mcq', 'contact-grippers',
@@ -525,7 +525,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 7: Mô hình cơ học Robot di động (cs_robmec_07) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_061', 'mcq', 'mobile-locomotion',
@@ -611,7 +611,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 8: Động lực học robot đi bằng chân & Thăng bằng ZMP (cs_robmec_08) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_081', 'mcq', 'mobile-locomotion',
@@ -697,7 +697,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 9: Mô phỏng vật lý Robot & Thuật toán tích phân số trị (cs_robmec_09) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_robmec_q_091', 'mcq', 'physics-simulation',

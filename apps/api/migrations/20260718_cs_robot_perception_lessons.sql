@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_robot_perception (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('camera-geometry', 'cs_robot_perception', 13, 'Hình học Camera & Ảnh 2D', 'Mô hình camera kim lỗ Pinhole, hiệu chuẩn Intrinsic/Extrinsic, lọc ảnh Gauss, phát hiện cạnh Canny, phối cảnh Homography.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('feature-descriptors', 'cs_robot_perception', 13, 'Trích xuất đặc trưng', 'Thuật toán trích xuất đặc trưng hình ảnh SIFT, ORB, đối sánh đặc trưng và ghép ảnh.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_robot_perception (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_robper_01', 
@@ -259,8 +259,8 @@ Giải thuật lọc nhiễu dựa trên khoảng cách của các điểm kề 
     'pointcloud-processing'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_robper_01', 'camera-geometry', 'lesson', 'Mô hình Camera kim lỗ & Hiệu chuẩn thông số hình học', '{"lesson_id": "cs_robper_01"}'::jsonb, 10, 10, 20, 'cs_robot_perception', 13),
   ('act-lesson-cs_robper_02', 'camera-geometry', 'lesson', 'Xử lý ảnh 2D cơ bản: Lọc Gaussian, Canny Edge & Contours', '{"lesson_id": "cs_robper_02"}'::jsonb, 20, 10, 20, 'cs_robot_perception', 13),

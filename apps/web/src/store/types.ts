@@ -58,7 +58,7 @@ export interface StoreState {
    *  duyệt quà của lớp mình không — thay cho việc FE tự suy đoán quyền theo role. */
   canManageClassRewards: boolean;
   challenges: Challenge[];
-  /** Mẫu nhiệm vụ từ DB (ge10_challenge_templates) — dùng để reset/khởi tạo lại challenges, thay INITIAL_CHALLENGES hardcode cũ. */
+  /** Mẫu nhiệm vụ từ DB (mkw_challenge_templates) — dùng để reset/khởi tạo lại challenges, thay INITIAL_CHALLENGES hardcode cũ. */
   challengeTemplates: Challenge[];
   logs: HistoryLog[];
   activeCombo: number;

@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_navigation_motion (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('costmap-localization', 'cs_navigation_motion', 13, 'Bản đồ chi phí & Định vị', 'Bản đồ chi phí Costmap (Inflation, Obstacle layers), định vị hạt thích nghi AMCL, Odometry bánh xe.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('kinematic-models', 'cs_navigation_motion', 13, 'Mô hình động học xe', 'Mô hình xe đạp Bicycle model, cơ cấu lái Ackermann steering, thuật toán Odometry tích phân bánh xe.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_navigation_motion (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_navmot_01', 
@@ -253,8 +253,8 @@ Khi LiDAR bắn một tia laser tới chướng ngại vật ở khoảng cách 
     'costmap-localization'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_navmot_01', 'costmap-localization', 'lesson', 'Bản đồ chi phí Costmap & Các lớp bản đồ trong ROS2', '{"lesson_id": "cs_navmot_01"}'::jsonb, 10, 10, 20, 'cs_navigation_motion', 13),
   ('act-lesson-cs_navmot_02', 'costmap-localization', 'lesson', 'Định vị thích nghi Monte Carlo (AMCL)', '{"lesson_id": "cs_navmot_02"}'::jsonb, 20, 10, 20, 'cs_navigation_motion', 13),

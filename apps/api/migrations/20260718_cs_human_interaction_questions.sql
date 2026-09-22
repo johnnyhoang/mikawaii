@@ -4,12 +4,12 @@
 BEGIN;
 
 -- 2. Seed Questions for cs_human_interaction (grade_tier = 13)
-DELETE FROM ge10_custom_questions WHERE grade_tier = 13 AND subject = 'cs_human_interaction';
+DELETE FROM mkw_custom_questions WHERE grade_tier = 13 AND subject = 'cs_human_interaction';
 
 -- ======================================================================================
 -- BÀI GIẢNG 1: Robot cộng tác (Cobots) & Tiêu chuẩn an toàn ISO/TS 15066 (cs_humint_01) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_001', 'mcq', 'cobot-safety',
@@ -95,7 +95,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 2: Hiện tượng Thung lũng kỳ lạ (Uncanny Valley) (cs_humint_02) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_011', 'mcq', 'uncanny-social',
@@ -181,7 +181,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 3: Giao diện Người - Robot vật lý: Nút dừng khẩn cấp E-Stop & Teach Pendant (cs_humint_03) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_021', 'mcq', 'cobot-safety',
@@ -267,7 +267,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 4: Ước lượng dáng người (Human Pose Estimation) trong điều khiển Robot (cs_humint_04) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_031', 'mcq', 'multimodal-interaction',
@@ -353,7 +353,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 5: Tương tác giọng nói tự nhiên trong môi trường công nghiệp (cs_humint_05) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_041', 'mcq', 'multimodal-interaction',
@@ -439,7 +439,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 6: Thiết lập vùng bảo vệ ảo (Safety Zones) bằng LiDAR an toàn (cs_humint_06) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_061', 'mcq', 'safe-zones',
@@ -525,7 +525,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 7: Giao tiếp phi ngôn ngữ bằng ánh mắt của Robot (cs_humint_07) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_071', 'mcq', 'uncanny-social',
@@ -611,7 +611,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 8: Điều khiển Robot rảnh tay bằng cử chỉ radar sóng milimet (mmWave) (cs_humint_08) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_081', 'mcq', 'multimodal-interaction',
@@ -697,7 +697,7 @@ VALUES
 -- ======================================================================================
 -- BÀI GIẢNG 9: Robot hỗ trợ xã hội (Socially Assistive Robots - SAR) (cs_humint_09) - 10 câu
 -- ======================================================================================
-INSERT INTO ge10_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
   (
     'cs_humint_q_091', 'mcq', 'uncanny-social',

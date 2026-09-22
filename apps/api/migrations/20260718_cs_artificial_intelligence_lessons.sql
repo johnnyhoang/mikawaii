@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_artificial_intelligence (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('search-heuristics', 'cs_artificial_intelligence', 13, 'Tìm kiếm & Heuristics', 'Các giải thuật tìm kiếm mù, tìm kiếm thông minh A*, và tìm kiếm đối kháng Minimax trong game.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('knowledge-logic', 'cs_artificial_intelligence', 13, 'Biểu diễn tri thức & Logic', 'Logic mệnh đề, logic vị từ bậc nhất, suy diễn tự động và kiến trúc của Hệ chuyên gia.', 2, 'phong', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_artificial_intelligence (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_ai_01', 
@@ -298,8 +298,8 @@ Thuật toán tính toán gradient của hàm mất mát đối với tất cả
     'neural-networks'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_ai_01', 'search-heuristics', 'lesson', 'Tìm kiếm mù và tìm kiếm heuristics (DFS, BFS, A*)', '{"lesson_id": "cs_ai_01"}'::jsonb, 10, 10, 20, 'cs_artificial_intelligence', 13),
   ('act-lesson-cs_ai_02', 'search-heuristics', 'lesson', 'Tìm kiếm đối kháng (Minimax & Cắt tỉa Alpha-Beta)', '{"lesson_id": "cs_ai_02"}'::jsonb, 20, 10, 20, 'cs_artificial_intelligence', 13),

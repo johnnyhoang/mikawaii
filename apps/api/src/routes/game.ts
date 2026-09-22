@@ -72,12 +72,12 @@ router.post('/game/session/start', async (req: any, res) => {
     // Load custom/system questions with student attempts count
     const qRes = await pool.query(
       `SELECT q.*, COALESCE(p.times_attempted, 0) as student_attempts
-       FROM ge10_custom_questions q
-       LEFT JOIN ge10_student_question_performance p 
+       FROM mkw_custom_questions q
+       LEFT JOIN mkw_student_question_performance p 
          ON q.id = p.question_id AND p.student_id = $1
        WHERE (q.user_id = $1 
           OR q.user_id IS NULL 
-          OR q.user_id IN (SELECT id FROM ge10_users WHERE role IN ('truong_vien', 'pho_vien')))
+          OR q.user_id IN (SELECT id FROM mkw_users WHERE role IN ('truong_vien', 'pho_vien')))
          AND q.subject = $2 AND q.grade_tier = $3`,
       [profileId, subject, gradeTier]
     );
@@ -158,7 +158,7 @@ router.post('/game/session/start', async (req: any, res) => {
       const targetCount = Number(lessonQuizCount) || 3;
       let targetLesson: any = null;
       if (lessonId) {
-        const lRes = await pool.query('SELECT * FROM ge10_lessons WHERE id = $1', [lessonId]);
+        const lRes = await pool.query('SELECT * FROM mkw_lessons WHERE id = $1', [lessonId]);
         if (lRes.rows.length > 0) targetLesson = lRes.rows[0];
       }
 
@@ -199,7 +199,7 @@ router.post('/game/session/start', async (req: any, res) => {
 
     // Save game session to DB
     await pool.query(
-      `INSERT INTO ge10_game_sessions 
+      `INSERT INTO mkw_game_sessions 
        (id, user_id, session_type, subject, grade_tier, difficulty_tier, questions_pool, status)
        VALUES ($1, $2, $3, $4, $5, NULL, $6, 'active')`,
       [sessionId, profileId, sessionType, subject, gradeTier, questionsPoolIds]
@@ -235,7 +235,7 @@ router.post('/game/session/end', async (req: any, res) => {
 
     // SELECT and LOCK the session row
     const sessionRes = await client.query(
-      `SELECT * FROM ge10_game_sessions WHERE id = $1 FOR UPDATE`,
+      `SELECT * FROM mkw_game_sessions WHERE id = $1 FOR UPDATE`,
       [sessionId]
     );
 
@@ -260,7 +260,7 @@ router.post('/game/session/end', async (req: any, res) => {
 
     // Fetch player profile info
     const profileRes = await client.query(
-      `SELECT level, xp, ruby, streak, badges FROM ge10_player_profiles WHERE user_id = $1`,
+      `SELECT level, xp, ruby, streak, badges FROM mkw_player_profiles WHERE user_id = $1`,
       [profileId]
     );
     if (profileRes.rows.length === 0) {
@@ -271,7 +271,7 @@ router.post('/game/session/end', async (req: any, res) => {
 
     // Fetch actual questions info in this session pool
     const qRes = await client.query(
-      `SELECT id, correct_answer, difficulty, category FROM ge10_custom_questions WHERE id = ANY($1)`,
+      `SELECT id, correct_answer, difficulty, category FROM mkw_custom_questions WHERE id = ANY($1)`,
       [session.questions_pool]
     );
     const questionsMap = new Map<string, any>();
@@ -383,7 +383,7 @@ router.post('/game/session/end', async (req: any, res) => {
     // Check daily Ruby earned so far
     const todayStr = getHoChiMinhDateString(new Date());
     const checkCapRes = await client.query(
-      `SELECT daily_ruby_earned, last_ruby_earned_date FROM ge10_player_profiles WHERE user_id = $1`,
+      `SELECT daily_ruby_earned, last_ruby_earned_date FROM mkw_player_profiles WHERE user_id = $1`,
       [profileId]
     );
     let dailyRubyEarned = 0;
@@ -405,7 +405,7 @@ router.post('/game/session/end', async (req: any, res) => {
     // Process Ledger transaction for Ruby
     const newRubyAmount = Math.max(0, player.ruby + totalRubyGained);
     await client.query(
-      `UPDATE ge10_player_profiles 
+      `UPDATE mkw_player_profiles 
        SET ruby = $1,
            daily_ruby_earned = $2,
            last_ruby_earned_date = $3,
@@ -438,7 +438,7 @@ router.post('/game/session/end', async (req: any, res) => {
 
     // Update level, xp, badges
     await client.query(
-      `UPDATE ge10_player_profiles 
+      `UPDATE mkw_player_profiles 
        SET level = $1, xp = $2, badges = $3, server_updated_at = NOW() 
        WHERE user_id = $4`,
       [newLevel, newXp, badges, profileId]
@@ -473,7 +473,7 @@ router.post('/game/session/end', async (req: any, res) => {
 
     // Save session summary
     await client.query(
-      `UPDATE ge10_game_sessions
+      `UPDATE mkw_game_sessions
        SET status = $1, end_time = NOW(), xp_gained = $2, ruby_gained = $3, answers_summary = $4
        WHERE id = $5`,
       [isDefeat ? 'defeat' : 'completed', totalXpGained, totalRubyGained, JSON.stringify(computedAnswers), sessionId]
@@ -487,7 +487,7 @@ router.post('/game/session/end', async (req: any, res) => {
       : `Đã hoàn thành ải [${session.session_type}] môn [${session.subject}]. Đúng ${correctCount}/${answers.length} câu.`;
     
     await client.query(
-      `INSERT INTO ge10_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed)
+      `INSERT INTO mkw_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
       [logId, profileId, Date.now(), 'exercise', logTitle, logDetail, totalRubyGained, totalXpGained]
     );
@@ -527,10 +527,10 @@ router.post('/exploration/clear', async (req: any, res) => {
 
     // Upsert exploration progress
     const upsertRes = await pool.query(
-      `INSERT INTO ge10_exploration_progress (user_id, page_id, clear_count, last_cleared_at)
+      `INSERT INTO mkw_exploration_progress (user_id, page_id, clear_count, last_cleared_at)
        VALUES ($1, $2, 1, NOW())
        ON CONFLICT (user_id, page_id) DO UPDATE SET
-         clear_count = ge10_exploration_progress.clear_count + 1,
+         clear_count = mkw_exploration_progress.clear_count + 1,
          last_cleared_at = NOW()
        RETURNING clear_count, last_cleared_at`,
       [profileId, pageId]
@@ -558,7 +558,7 @@ router.get('/game/match-pairs', async (req: any, res) => {
   try {
     const pairsRes = await pool.query(
       `SELECT left_text as word, right_text as mean 
-       FROM ge10_match_pairs 
+       FROM mkw_match_pairs 
        WHERE is_active = TRUE 
          AND (subject = $1 OR subject = 'general')
          AND grade_tier = $2

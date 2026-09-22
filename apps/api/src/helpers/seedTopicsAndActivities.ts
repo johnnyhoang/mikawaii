@@ -47,7 +47,7 @@ export async function seedTopicsAndActivities(pool: Pool) {
 
   for (const topic of topics) {
     await pool.query(
-      `INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+      `INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
        VALUES ($1, $2, 9, $3, $4, $5, $6, $7, $8, $9)
        ON CONFLICT (id) DO UPDATE SET
          name = EXCLUDED.name,
@@ -92,19 +92,19 @@ export async function seedTopicsAndActivities(pool: Pool) {
 
   for (const mapping of lessonTopicMappings) {
     await pool.query(
-      `UPDATE ge10_lessons SET topic_id = $1 WHERE topic = $2`,
+      `UPDATE mkw_lessons SET topic_id = $1 WHERE topic = $2`,
       [mapping.topicId, mapping.text]
     );
   }
 
   // 3. Seed Activities (Lessons)
-  const lessonsRes = await pool.query('SELECT id, topic_id, title, subject, grade_tier FROM ge10_lessons');
+  const lessonsRes = await pool.query('SELECT id, topic_id, title, subject, grade_tier FROM mkw_lessons');
   for (const lesson of lessonsRes.rows) {
     if (!lesson.topic_id) continue;
     const actId = `act-lesson-${lesson.id}`;
     const subject = lesson.subject;
     await pool.query(
-      `INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+      `INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
        VALUES ($1, $2, 'lesson', $3, $4::jsonb, $5, 10, 20, $6, $7)
        ON CONFLICT (id) DO UPDATE SET
          topic_id = EXCLUDED.topic_id,
@@ -150,10 +150,10 @@ export async function seedTopicsAndActivities(pool: Pool) {
   ];
 
   for (const boss of bosses) {
-    const topicRes = await pool.query('SELECT subject FROM ge10_topics WHERE id = $1', [boss.topic_id]);
+    const topicRes = await pool.query('SELECT subject FROM mkw_topics WHERE id = $1', [boss.topic_id]);
     const subject = topicRes.rows[0]?.subject || 'english';
     await pool.query(
-      `INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject)
+      `INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject)
        VALUES ($1, $2, 'boss', $3, $4::jsonb, 100, 100, 150, $5)
        ON CONFLICT (id) DO UPDATE SET
          title = EXCLUDED.title,
@@ -200,10 +200,10 @@ export async function seedTopicsAndActivities(pool: Pool) {
   ];
 
   for (const quiz of quizzes) {
-    const topicRes = await pool.query('SELECT subject FROM ge10_topics WHERE id = $1', [quiz.topic_id]);
+    const topicRes = await pool.query('SELECT subject FROM mkw_topics WHERE id = $1', [quiz.topic_id]);
     const subject = topicRes.rows[0]?.subject || 'english';
     await pool.query(
-      `INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject)
+      `INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject)
        VALUES ($1, $2, 'quiz', $3, $4::jsonb, 50, 10, 20, $5)
        ON CONFLICT (id) DO UPDATE SET
          title = EXCLUDED.title,
@@ -218,27 +218,27 @@ export async function seedTopicsAndActivities(pool: Pool) {
 
   console.log('=== Bắt đầu chuẩn hóa và sửa sai lệch môn học/chuyên đề tự động ===');
   
-  // 1. Đồng bộ ge10_lessons theo ge10_topics
+  // 1. Đồng bộ mkw_lessons theo mkw_topics
   await pool.query(`
-    UPDATE ge10_lessons l
+    UPDATE mkw_lessons l
     SET subject = t.subject, grade_tier = t.grade_tier
-    FROM ge10_topics t
+    FROM mkw_topics t
     WHERE l.topic_id = t.id AND (l.subject <> t.subject OR l.grade_tier <> t.grade_tier)
   `);
 
-  // 2. Đồng bộ ge10_custom_questions theo ge10_lessons
+  // 2. Đồng bộ mkw_custom_questions theo mkw_lessons
   await pool.query(`
-    UPDATE ge10_custom_questions q
+    UPDATE mkw_custom_questions q
     SET subject = l.subject, grade_tier = l.grade_tier, topic_id = l.topic_id
-    FROM ge10_lessons l
+    FROM mkw_lessons l
     WHERE q.lesson_id = l.id AND (q.subject <> l.subject OR q.grade_tier <> l.grade_tier OR q.topic_id <> l.topic_id)
   `);
 
-  // 3. Đồng bộ ge10_activities theo ge10_topics
+  // 3. Đồng bộ mkw_activities theo mkw_topics
   await pool.query(`
-    UPDATE ge10_activities a
+    UPDATE mkw_activities a
     SET subject = t.subject, grade_tier = t.grade_tier
-    FROM ge10_topics t
+    FROM mkw_topics t
     WHERE a.topic_id = t.id AND (a.subject <> t.subject OR a.grade_tier <> t.grade_tier)
   `);
 
@@ -383,7 +383,7 @@ async function seedTextbookMappings(pool: Pool) {
 
   for (const m of mappings) {
     await pool.query(
-      `INSERT INTO ge10_textbook_mappings (category_key, subject, loai, bai, ham)
+      `INSERT INTO mkw_textbook_mappings (category_key, subject, loai, bai, ham)
        VALUES ($1, $2, $3, $4, $5)
        ON CONFLICT (category_key) DO UPDATE SET
          subject = EXCLUDED.subject,

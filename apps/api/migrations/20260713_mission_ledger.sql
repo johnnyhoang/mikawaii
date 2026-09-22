@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ge10_mission_definitions (
+CREATE TABLE IF NOT EXISTS mkw_mission_definitions (
   mission_key VARCHAR(100) PRIMARY KEY,
   category VARCHAR(20) NOT NULL CHECK (category IN ('onboarding', 'daily', 'milestone')),
   title VARCHAR(255) NOT NULL,
@@ -16,10 +16,10 @@ CREATE TABLE IF NOT EXISTS ge10_mission_definitions (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXISTS ge10_profile_mission_assignments (
+CREATE TABLE IF NOT EXISTS mkw_profile_mission_assignments (
   id BIGSERIAL PRIMARY KEY,
-  profile_id VARCHAR(255) NOT NULL REFERENCES ge10_users(id) ON DELETE CASCADE,
-  mission_key VARCHAR(100) NOT NULL REFERENCES ge10_mission_definitions(mission_key),
+  profile_id VARCHAR(255) NOT NULL REFERENCES mkw_users(id) ON DELETE CASCADE,
+  mission_key VARCHAR(100) NOT NULL REFERENCES mkw_mission_definitions(mission_key),
   definition_version INTEGER NOT NULL,
   period_key VARCHAR(20) NOT NULL,
   target INTEGER NOT NULL CHECK (target > 0),
@@ -33,12 +33,12 @@ CREATE TABLE IF NOT EXISTS ge10_profile_mission_assignments (
 );
 
 CREATE INDEX IF NOT EXISTS idx_mission_assignments_profile_period
-  ON ge10_profile_mission_assignments(profile_id, period_key, status);
+  ON mkw_profile_mission_assignments(profile_id, period_key, status);
 
-CREATE TABLE IF NOT EXISTS ge10_learning_events (
+CREATE TABLE IF NOT EXISTS mkw_learning_events (
   event_id UUID PRIMARY KEY,
   idempotency_key VARCHAR(255) NOT NULL,
-  profile_id VARCHAR(255) NOT NULL REFERENCES ge10_users(id) ON DELETE CASCADE,
+  profile_id VARCHAR(255) NOT NULL REFERENCES mkw_users(id) ON DELETE CASCADE,
   event_type VARCHAR(80) NOT NULL,
   grade_tier INTEGER,
   subject_id VARCHAR(50),
@@ -51,19 +51,19 @@ CREATE TABLE IF NOT EXISTS ge10_learning_events (
 );
 
 CREATE INDEX IF NOT EXISTS idx_learning_events_profile_type_time
-  ON ge10_learning_events(profile_id, event_type, occurred_at DESC);
+  ON mkw_learning_events(profile_id, event_type, occurred_at DESC);
 
-CREATE TABLE IF NOT EXISTS ge10_mission_reward_ledger (
+CREATE TABLE IF NOT EXISTS mkw_mission_reward_ledger (
   id BIGSERIAL PRIMARY KEY,
-  assignment_id BIGINT NOT NULL REFERENCES ge10_profile_mission_assignments(id) ON DELETE CASCADE,
-  profile_id VARCHAR(255) NOT NULL REFERENCES ge10_users(id) ON DELETE CASCADE,
+  assignment_id BIGINT NOT NULL REFERENCES mkw_profile_mission_assignments(id) ON DELETE CASCADE,
+  profile_id VARCHAR(255) NOT NULL REFERENCES mkw_users(id) ON DELETE CASCADE,
   reward_type VARCHAR(30) NOT NULL CHECK (reward_type IN ('xp', 'ruby')),
   amount INTEGER NOT NULL CHECK (amount > 0),
   granted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   UNIQUE(assignment_id, reward_type)
 );
 
-INSERT INTO ge10_mission_definitions
+INSERT INTO mkw_mission_definitions
   (mission_key, category, title, description, event_type, condition_json, target, reward_json, subject_scope, feature_key, display_order)
 VALUES
   ('onboarding-teacher-link', 'onboarding', 'Gia nhập lớp học', 'Liên kết với một Chủ Nhiệm để không còn là Sĩ Tử mới.', 'teacher_link_activated', '{}', 1, '{"xp":50}', NULL, 'teacher-link', 10),
@@ -97,32 +97,32 @@ ON CONFLICT (mission_key) DO UPDATE SET
   display_order = EXCLUDED.display_order,
   updated_at = NOW();
 
-UPDATE ge10_mission_definitions
+UPDATE mkw_mission_definitions
 SET is_active = FALSE, updated_at = NOW()
 WHERE mission_key = 'onboarding-fog';
 
-UPDATE ge10_profile_mission_assignments
+UPDATE mkw_profile_mission_assignments
 SET status = 'expired', updated_at = NOW()
 WHERE mission_key = 'onboarding-fog' AND status = 'active';
 
 -- Khởi tạo cột mốc lifetime cho profile hiện có và reconcile bằng dữ liệu thật.
-INSERT INTO ge10_profile_mission_assignments
+INSERT INTO mkw_profile_mission_assignments
   (profile_id, mission_key, definition_version, period_key, target)
 SELECT u.id, d.mission_key, d.version, 'lifetime', d.target
-FROM ge10_users u
-CROSS JOIN ge10_mission_definitions d
+FROM mkw_users u
+CROSS JOIN mkw_mission_definitions d
 WHERE u.role = 'student' AND d.is_active = TRUE AND d.category IN ('onboarding', 'milestone')
 ON CONFLICT (profile_id, mission_key, period_key) DO NOTHING;
 
-UPDATE ge10_profile_mission_assignments a
+UPDATE mkw_profile_mission_assignments a
 SET current = a.target, status = 'completed', completed_at = COALESCE(a.completed_at, NOW()), updated_at = NOW()
 WHERE a.mission_key = 'onboarding-teacher-link'
-  AND EXISTS (SELECT 1 FROM ge10_class_links f WHERE f.student_id = a.profile_id AND f.status = 'active');
+  AND EXISTS (SELECT 1 FROM mkw_class_links f WHERE f.student_id = a.profile_id AND f.status = 'active');
 
-UPDATE ge10_profile_mission_assignments a
+UPDATE mkw_profile_mission_assignments a
 SET current = a.target, status = 'completed', completed_at = COALESCE(a.completed_at, p.completed_at), updated_at = NOW()
-FROM ge10_user_lessons_progress p
-JOIN ge10_lessons l ON l.id = p.lesson_id
+FROM mkw_user_lessons_progress p
+JOIN mkw_lessons l ON l.id = p.lesson_id
 WHERE p.user_id = a.profile_id AND p.completed = TRUE
   AND ((a.mission_key = 'onboarding-math-lesson' AND l.subject = 'math')
     OR (a.mission_key = 'onboarding-english-lesson' AND l.subject = 'english'));

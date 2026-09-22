@@ -25,7 +25,7 @@ const app = express();
 const PORT = process.env.PORT || 5003;
 
 // Danh sách domain frontend được phép gọi API, phân tách bằng dấu phẩy (CORS_ALLOWED_ORIGINS
-// trong .env, ví dụ "https://game10.vercel.app,http://localhost:5173"). Chưa cấu hình thì giữ
+// trong .env, ví dụ "https://mikawaii.vercel.app,http://localhost:5173"). Chưa cấu hình thì giữ
 // nguyên hành vi cũ (mở cho mọi origin) để không làm gãy deployment hiện tại — nên đặt biến
 // này trong production càng sớm càng tốt để thu hẹp phạm vi CORS.
 const allowedOrigins = (process.env.CORS_ALLOWED_ORIGINS || '')
@@ -39,7 +39,7 @@ app.use(cors({
 app.use(express.json());
 
 // Schema/migration application (schema.sql + backend/migrations/*.sql + seed data) sống ở
-// migrationRunner.ts, chạy thủ công qua `npm run migrate --workspace=gameengg10-backend` —
+// migrationRunner.ts, chạy thủ công qua `npm run migrate --workspace=api` —
 // KHÔNG được gọi từ request-serving process này. Chuỗi migration cũ (initDB()) từng chạy lại
 // mỗi lần server khởi động, kể cả mỗi cold start serverless trên Vercel, và là một phần
 // nguyên nhân gây cạn kiệt connection pool/deadlock (xem HANDOFF.md 2026-07-17).
@@ -90,7 +90,7 @@ app.use((err: any, req: any, res: any, next: any) => {
 
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log(`CyberEnglish API Server booting on port ${PORT}...`);
+    console.log(`Mikawaii Academy API Server booting on port ${PORT}...`);
   });
 }
 

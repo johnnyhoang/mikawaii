@@ -6,7 +6,7 @@ import { pool } from '../db.js';
 export const trackQuestionOpened = async (questionId: string) => {
   try {
     await pool.query(
-      `UPDATE ge10_custom_questions
+      `UPDATE mkw_custom_questions
        SET times_opened = COALESCE(times_opened, 0) + 1,
            last_opened_at = CURRENT_TIMESTAMP,
            updated_at = CURRENT_TIMESTAMP
@@ -16,10 +16,10 @@ export const trackQuestionOpened = async (questionId: string) => {
 
     // Also update the dedicated stats table
     await pool.query(
-      `INSERT INTO ge10_question_stats (question_id, times_opened, last_opened_at, updated_at)
+      `INSERT INTO mkw_question_stats (question_id, times_opened, last_opened_at, updated_at)
        VALUES ($1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
        ON CONFLICT (question_id) DO UPDATE SET
-         times_opened = ge10_question_stats.times_opened + 1,
+         times_opened = mkw_question_stats.times_opened + 1,
          last_opened_at = CURRENT_TIMESTAMP,
          updated_at = CURRENT_TIMESTAMP`,
       [questionId]
@@ -35,7 +35,7 @@ export const trackQuestionOpened = async (questionId: string) => {
 export const trackQuestionAnsweredCorrectly = async (questionId: string) => {
   try {
     await pool.query(
-      `UPDATE ge10_custom_questions
+      `UPDATE mkw_custom_questions
        SET times_answered_correctly = COALESCE(times_answered_correctly, 0) + 1,
            updated_at = CURRENT_TIMESTAMP
        WHERE id = $1`,
@@ -44,10 +44,10 @@ export const trackQuestionAnsweredCorrectly = async (questionId: string) => {
 
     // Also update the dedicated stats table
     await pool.query(
-      `INSERT INTO ge10_question_stats (question_id, times_answered_correctly, updated_at)
+      `INSERT INTO mkw_question_stats (question_id, times_answered_correctly, updated_at)
        VALUES ($1, 1, CURRENT_TIMESTAMP)
        ON CONFLICT (question_id) DO UPDATE SET
-         times_answered_correctly = ge10_question_stats.times_answered_correctly + 1,
+         times_answered_correctly = mkw_question_stats.times_answered_correctly + 1,
          updated_at = CURRENT_TIMESTAMP`,
       [questionId]
     );
@@ -62,7 +62,7 @@ export const trackQuestionAnsweredCorrectly = async (questionId: string) => {
 export const trackQuestionSkipped = async (questionId: string) => {
   try {
     await pool.query(
-      `UPDATE ge10_custom_questions
+      `UPDATE mkw_custom_questions
        SET times_skipped = COALESCE(times_skipped, 0) + 1,
            updated_at = CURRENT_TIMESTAMP
        WHERE id = $1`,
@@ -71,10 +71,10 @@ export const trackQuestionSkipped = async (questionId: string) => {
 
     // Also update the dedicated stats table
     await pool.query(
-      `INSERT INTO ge10_question_stats (question_id, times_skipped, updated_at)
+      `INSERT INTO mkw_question_stats (question_id, times_skipped, updated_at)
        VALUES ($1, 1, CURRENT_TIMESTAMP)
        ON CONFLICT (question_id) DO UPDATE SET
-         times_skipped = ge10_question_stats.times_skipped + 1,
+         times_skipped = mkw_question_stats.times_skipped + 1,
          updated_at = CURRENT_TIMESTAMP`,
       [questionId]
     );
@@ -94,20 +94,20 @@ export const trackStudentQuestionPerformance = async (
 ) => {
   try {
     const updateFields: string[] = [
-      'times_attempted = COALESCE(ge10_student_question_performance.times_attempted, 0) + 1',
+      'times_attempted = COALESCE(mkw_student_question_performance.times_attempted, 0) + 1',
       'updated_at = CURRENT_TIMESTAMP',
       'last_attempted_at = CURRENT_TIMESTAMP'
     ];
 
     if (isCorrect) {
-      updateFields.push('times_correct = COALESCE(ge10_student_question_performance.times_correct, 0) + 1');
+      updateFields.push('times_correct = COALESCE(mkw_student_question_performance.times_correct, 0) + 1');
     }
     if (wasSkipped) {
-      updateFields.push('times_skipped = COALESCE(ge10_student_question_performance.times_skipped, 0) + 1');
+      updateFields.push('times_skipped = COALESCE(mkw_student_question_performance.times_skipped, 0) + 1');
     }
 
     await pool.query(
-      `INSERT INTO ge10_student_question_performance (student_id, question_id, times_attempted, times_correct, times_skipped, last_attempted_at, updated_at)
+      `INSERT INTO mkw_student_question_performance (student_id, question_id, times_attempted, times_correct, times_skipped, last_attempted_at, updated_at)
        VALUES ($1, $2, 1, $3, $4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
        ON CONFLICT (student_id, question_id) DO UPDATE SET
          ${updateFields.join(', ')}`,
@@ -130,7 +130,7 @@ export const getQuestionStats = async (questionId: string) => {
          times_skipped,
          last_opened_at,
          updated_at
-       FROM ge10_custom_questions
+       FROM mkw_custom_questions
        WHERE id = $1`,
       [questionId]
     );
@@ -146,7 +146,7 @@ export const getQuestionStats = async (questionId: string) => {
  */
 export const getQuestionsByStats = async (subject?: string, sortBy: 'opened' | 'correct' | 'skipped' = 'opened', limit: number = 100) => {
   try {
-    let query = `SELECT * FROM ge10_custom_questions WHERE 1=1`;
+    let query = `SELECT * FROM mkw_custom_questions WHERE 1=1`;
     const params: any[] = [];
 
     if (subject) {
@@ -178,7 +178,7 @@ export const getStudentQuestionPerformance = async (studentId: string, questionI
   try {
     const result = await pool.query(
       `SELECT times_attempted, times_correct, times_skipped, last_attempted_at
-       FROM ge10_student_question_performance
+       FROM mkw_student_question_performance
        WHERE student_id = $1 AND question_id = $2`,
       [studentId, questionId]
     );
@@ -199,8 +199,8 @@ export const getStudentStruggledQuestions = async (studentId: string, limit: num
          q.id, q.prompt, q.subject, q.category, q.difficulty,
          p.times_attempted, p.times_correct, p.times_skipped,
          ROUND(CAST(p.times_correct AS FLOAT) / NULLIF(p.times_attempted, 0), 2) as accuracy
-       FROM ge10_student_question_performance p
-       JOIN ge10_custom_questions q ON p.question_id = q.id
+       FROM mkw_student_question_performance p
+       JOIN mkw_custom_questions q ON p.question_id = q.id
        WHERE p.student_id = $1 AND p.times_attempted > 0
        ORDER BY accuracy ASC, p.times_attempted DESC
        LIMIT $2`,

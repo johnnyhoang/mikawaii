@@ -123,7 +123,7 @@ export function enrichTextbookAttributes(
   const cleanKey = getCleanTopicKey(rawKey);
   const cleanCat = category ? getCleanTopicKey(category) : '';
 
-  // 1. Tra cứu động trong Zustand store (được tải trực tiếp từ ge10_textbook_mappings)
+  // 1. Tra cứu động trong Zustand store (được tải trực tiếp từ mkw_textbook_mappings)
   const textbookMappings = useGameState.getState().textbookMappings || [];
   const dbMapped = textbookMappings.find(m => m.categoryKey === cleanKey || (cleanCat && m.categoryKey === cleanCat));
   

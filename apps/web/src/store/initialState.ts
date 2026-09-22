@@ -11,7 +11,7 @@ export const PLAYER_ENERGY_MAX = 100;
 export const DEFAULT_RESET_HOURS: 2 | 3 | 5 = 3;
 export const FREE_UI_THEME: UiThemeId = 'current';
 
-// Placeholder trước khi gameSettings thật từ DB (ge10_game_settings) tải về — không phải
+// Placeholder trước khi gameSettings thật từ DB (mkw_game_settings) tải về — không phải
 // nguồn dữ liệu, chỉ tránh undefined trong lúc đang tải (xem createAuthSlice.ts).
 export const DEFAULT_GAME_SETTINGS: GameSettings = {
   bossCompletionBonusRuby: [100, 150, 200],

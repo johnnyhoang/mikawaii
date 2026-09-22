@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_robot_programming (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('robot-software-architecture', 'cs_robot_programming', 13, 'Kiến trúc & Phần mềm Robot', 'Hệ điều hành ROS 2 (Nodes, Topics, Actions), thiết kế Cây hành vi (Behavior Trees) và mô hình hóa URDF.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('robot-kinematics', 'cs_robot_programming', 13, 'Động học & Điều khiển cơ học', 'Động học thuận/nghịch (DH parameters), quản lý hệ tọa độ TF2 và thuật toán điều khiển PID động cơ.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_robot_programming (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_rob_01', 

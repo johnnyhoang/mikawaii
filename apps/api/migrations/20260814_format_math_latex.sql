@@ -3,8 +3,8 @@
 
 BEGIN;
 
--- 1. Update 32 Math Lessons Theory in ge10_lessons
-UPDATE ge10_lessons SET theory = '# Tương giao giữa Parabol (P) và Đường thẳng (d)
+-- 1. Update 32 Math Lessons Theory in mkw_lessons
+UPDATE mkw_lessons SET theory = '# Tương giao giữa Parabol (P) và Đường thẳng (d)
 
 Cho Parabol $(P): y = ax^2$ ($a \neq 0$) và đường thẳng $(d): y = mx + n$.
 
@@ -17,7 +17,7 @@ $$ax^2 = mx + n \Leftrightarrow ax^2 - mx - n = 0$$
 - **$\Delta > 0$:** Phương trình có hai nghiệm phân biệt $\Rightarrow$ $(d)$ cắt $(P)$ tại hai điểm phân biệt.
 - **$\Delta = 0$:** Phương trình có nghiệm kép $\Rightarrow$ $(d)$ tiếp xúc với $(P)$ (gọi là tiếp tuyến).
 - **$\Delta < 0$:** Phương trình vô nghiệm $\Rightarrow$ $(d)$ không cắt $(P)$.' WHERE id = 'math-parabol';
-UPDATE ge10_lessons SET theory = '# Hệ thức Vi-ét và Ứng dụng
+UPDATE mkw_lessons SET theory = '# Hệ thức Vi-ét và Ứng dụng
 
 Nếu phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có hai nghiệm $x_1, x_2$, ta có:
 
@@ -30,7 +30,7 @@ Khi làm bài tập, cần biến đổi các biểu thức chứa $x_1, x_2$ v�
 - $x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1x_2 = S^2 - 2P$
 - $(x_1 - x_2)^2 = S^2 - 4P$
 - $\frac{1}{x_1} + \frac{1}{x_2} = \frac{x_1+x_2}{x_1x_2} = \frac{S}{P}$' WHERE id = 'math-viet';
-UPDATE ge10_lessons SET theory = '# Toán thực tế: Tài chính & Phần trăm
+UPDATE mkw_lessons SET theory = '# Toán thực tế: Tài chính & Phần trăm
 
 Các bài toán tài chính tuyển sinh 10 thường xoay quanh vấn đề tăng giá, giảm giá, thuế và tiền lãi gửi tiết kiệm.
 
@@ -43,7 +43,7 @@ Các bài toán tài chính tuyển sinh 10 thường xoay quanh vấn đề tă
 ## 2. Công thức tính Thuế (VAT)
 - Thuế VAT thường cộng thêm $8\%$ hoặc $10\%$ vào giá gốc:
   $$\text{Giá sau thuế} = \text{Giá trước thuế} \cdot (1 + \text{thuế VAT}\%)$$' WHERE id = 'math-finance';
-UPDATE ge10_lessons SET theory = '# Tứ giác nội tiếp đường tròn
+UPDATE mkw_lessons SET theory = '# Tứ giác nội tiếp đường tròn
 
 Một tứ giác có cả 4 đỉnh cùng nằm trên một đường tròn được gọi là tứ giác nội tiếp.
 
@@ -52,7 +52,7 @@ Một tứ giác có cả 4 đỉnh cùng nằm trên một đường tròn đư
 - **Dấu hiệu 2:** Tứ giác có góc ngoài tại một đỉnh bằng góc trong tại đỉnh đối diện.
 - **Dấu hiệu 3:** Tứ giác có hai đỉnh kề nhau cùng nhìn cạnh chứa hai đỉnh còn lại dưới hai góc bằng nhau (ví dụ: $\widehat{DAC} = \widehat{DBC}$).
 - **Dấu hiệu 4:** Tứ giác có điểm cách đều cả 4 đỉnh (ví dụ giao điểm hai đường chéo là tâm đường tròn ngoại tiếp).' WHERE id = 'math-plane-geom';
-UPDATE ge10_lessons SET theory = '# Hình học không gian thực tế
+UPDATE mkw_lessons SET theory = '# Hình học không gian thực tế
 
 Tập trung vào các công thức diện tích, thể tích của 3 hình cốt lõi lớp 9.
 
@@ -69,7 +69,7 @@ Tập trung vào các công thức diện tích, thể tích của 3 hình cốt
 - **Thể tích cầu:** $V = \frac{4}{3}\pi r^3$
 
 > **Lưu ý đơn vị:** Đề thi toán thực tế thường cho số đo các đại lượng ở các đơn vị khác nhau (m, dm, cm, lít...). Luôn đổi về cùng một đơn vị chuẩn trước khi tính toán ($1\text{ dm}^3 = 1\text{ lít}$).' WHERE id = 'math-space-geom';
-UPDATE ge10_lessons SET theory = '# Công thức nghiệm và nghiệm thu gọn
+UPDATE mkw_lessons SET theory = '# Công thức nghiệm và nghiệm thu gọn
 
 Phương pháp giải phương trình bậc hai một ẩn $ax^2 + bx + c = 0$ ($a \neq 0$).
 
@@ -91,7 +91,7 @@ Sử dụng khi hệ số $b$ chẵn (đặt $b = 2b''$ hay $b'' = \frac{b}{2}$)
   - $\Delta'' = 0$: Phương trình có nghiệm kép:
     $$x_1 = x_2 = -\frac{b''}{a}$$
   - $\Delta'' < 0$: Phương trình vô nghiệm.' WHERE id = 'math-quadratic-formula';
-UPDATE ge10_lessons SET theory = '# Biện luận số nghiệm của phương trình
+UPDATE mkw_lessons SET theory = '# Biện luận số nghiệm của phương trình
 
 Sử dụng biệt thức $\Delta$ hoặc $\Delta''$ để biện luận sự tồn tại và tính chất nghiệm của phương trình bậc hai chứa tham số $m$.
 
@@ -106,7 +106,7 @@ Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$):
 > **Lưu ý đặc biệt:** Nếu hệ số $a$ chứa tham số (ví dụ: $(m-1)x^2 + 2x + 3 = 0$), ta phải chia làm 2 trường hợp:
 - **Trường hợp 1:** $a = 0$ (phương trình trở thành bậc nhất).
 - **Trường hợp 2:** $a \neq 0$ (biện luận $\Delta$ bình thường).' WHERE id = 'math-quadratic-discriminant';
-UPDATE ge10_lessons SET theory = '# Hệ thức Vi-ét nâng cao và Xét dấu
+UPDATE mkw_lessons SET theory = '# Hệ thức Vi-ét nâng cao và Xét dấu
 
 Vận dụng hệ thức Vi-ét để xét dấu nghiệm và giải các bài toán thực tế phức tạp.
 
@@ -120,7 +120,7 @@ Dựa vào tổng $S = x_1 + x_2 = -\frac{b}{a}$ và tích $P = x_1 \cdot x_2 = 
 ## 2. Tìm hai số khi biết tổng và tích
 Nếu hai số có tổng là $S$ và tích là $P$ (với $S^2 \ge 4P$) thì hai số đó là nghiệm của phương trình:
 $$X^2 - SX + P = 0$$' WHERE id = 'math-viet-advanced';
-UPDATE ge10_lessons SET theory = '# Tỉ số lượng giác của góc nhọn
+UPDATE mkw_lessons SET theory = '# Tỉ số lượng giác của góc nhọn
 
 Khái niệm tỉ số lượng giác ($\sin, \cos, \tan, \cot$) trong tam giác vuông.
 
@@ -139,7 +139,7 @@ Cho tam giác vuông tại $A$ có góc nhọn $\alpha$:
   - $\sin 30^\circ = \cos 60^\circ = \frac{1}{2}$
   - $\sin 45^\circ = \cos 45^\circ = \frac{\sqrt{2}}{2}$
   - $\sin 60^\circ = \cos 30^\circ = \frac{\sqrt{3}}{2}$' WHERE id = 'math-trig-ratio';
-UPDATE ge10_lessons SET theory = '# Giải tam giác vuông
+UPDATE mkw_lessons SET theory = '# Giải tam giác vuông
 
 Phương pháp tìm tất cả các cạnh và các góc chưa biết của một tam giác vuông.
 
@@ -153,7 +153,7 @@ Trong tam giác vuông, mỗi cạnh góc vuông bằng:
 ## 2. Các bước giải tam giác vuông
 - **Trường hợp biết hai cạnh:** Sử dụng định lý Pitago tính cạnh thứ ba, dùng tỉ số lượng giác để tính góc.
 - **Trường hợp biết một cạnh và một góc nhọn:** Sử dụng tổng hai góc nhọn phụ nhau để tìm góc còn lại, dùng các công thức lượng giác trên để tìm hai cạnh còn lại.' WHERE id = 'math-trig-applied-1';
-UPDATE ge10_lessons SET theory = '# Đo đạc thực tế dùng tỉ số lượng giác
+UPDATE mkw_lessons SET theory = '# Đo đạc thực tế dùng tỉ số lượng giác
 
 Ứng dụng tỉ số lượng giác để giải quyết các bài toán đo chiều cao và khoảng cách thực tế (không thể đo trực tiếp).
 
@@ -168,7 +168,7 @@ UPDATE ge10_lessons SET theory = '# Đo đạc thực tế dùng tỉ số lư�
 - Đo góc nhìn $\beta$ từ đầu khoảng cách đến mốc bên kia sông.
 - Chiều rộng con sông $W$ là:
   $$W = a \cdot \tan \beta$$' WHERE id = 'math-trig-applied-2';
-UPDATE ge10_lessons SET theory = '# Góc ở tâm và Góc nội tiếp
+UPDATE mkw_lessons SET theory = '# Góc ở tâm và Góc nội tiếp
 
 Khái niệm và mối liên hệ giữa các loại góc liên quan đến đường tròn.
 
@@ -183,7 +183,7 @@ Khái niệm và mối liên hệ giữa các loại góc liên quan đến đư
 ## 3. Các hệ quả quan trọng
 - Trong một đường tròn, góc nội tiếp bằng nửa góc ở tâm cùng chắn một cung: $\widehat{ACB} = \frac{1}{2}\widehat{AOB}$.
 - Góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'math-circle-angle-1';
-UPDATE ge10_lessons SET theory = '# Góc tạo bởi tia tiếp tuyến và dây cung
+UPDATE mkw_lessons SET theory = '# Góc tạo bởi tia tiếp tuyến và dây cung
 
 Định lý và hệ quả về góc tạo bởi tiếp tuyến và dây cung.
 
@@ -196,7 +196,7 @@ Góc tạo bởi tia tiếp tuyến và dây cung đi qua tiếp điểm có s�
 Trong một đường tròn, góc tạo bởi tia tiếp tuyến và dây cung và góc nội tiếp cùng chắn một cung thì bằng nhau.
 - Ví dụ: $C$ là một điểm trên đường tròn, thì:
   $$\widehat{xAB} = \widehat{ACB}$$' WHERE id = 'math-circle-angle-2';
-UPDATE ge10_lessons SET theory = '# Tiếp tuyến đường tròn và Hai tiếp tuyến cắt nhau
+UPDATE mkw_lessons SET theory = '# Tiếp tuyến đường tròn và Hai tiếp tuyến cắt nhau
 
 Các định lý cơ bản về tiếp tuyến đường tròn và tính chất của hai tiếp tuyến cắt nhau.
 
@@ -210,7 +210,7 @@ Nếu hai tiếp tuyến của đường tròn $(O)$ cắt nhau tại $A$ (với
 - $AO$ là tia phân giác của góc $\widehat{BAC}$.
 - $OA$ là tia phân giác của góc $\widehat{BOC}$.
 - Giao điểm $AO$ và $BC$ là trung điểm của $BC$ và $AO \perp BC$.' WHERE id = 'math-circle-tangent-1';
-UPDATE ge10_lessons SET theory = '# Chứng minh tiếp tuyến đường tròn
+UPDATE mkw_lessons SET theory = '# Chứng minh tiếp tuyến đường tròn
 
 Phương pháp chứng minh một đường thẳng là tiếp tuyến của đường tròn.
 
@@ -223,7 +223,7 @@ Phương pháp chứng minh một đường thẳng là tiếp tuyến của đ�
 - Chứng minh tam giác chứa tiếp tuyến vuông góc (dùng hệ thức lượng hoặc định lý Pitago đảo).
 - Sử dụng tính chất góc nội tiếp chắn nửa đường tròn tạo góc $90^\circ$.
 - Chứng minh hai góc bằng nhau để suy ra góc tiếp xúc bằng $90^\circ$.' WHERE id = 'math-circle-tangent-2';
-UPDATE ge10_lessons SET theory = '# Giải bài toán bằng cách lập hệ phương trình
+UPDATE mkw_lessons SET theory = '# Giải bài toán bằng cách lập hệ phương trình
 
 Quy trình giải bài toán bằng cách lập hệ hai phương trình bậc nhất hai ẩn.
 
@@ -241,7 +241,7 @@ Quy trình giải bài toán bằng cách lập hệ hai phương trình bậc n
 - **Toán năng suất/Làm chung làm riêng:**
   - $\text{Năng suất} \times \text{Thời gian} = \text{Công việc}$.
   - Làm chung trong 1 ngày: $\frac{1}{x} + \frac{1}{y} = \frac{1}{t_{\text{chung}}}$.' WHERE id = 'math-word-problem-1';
-UPDATE ge10_lessons SET theory = '# Giải bài toán thực tế bằng cách lập phương trình
+UPDATE mkw_lessons SET theory = '# Giải bài toán thực tế bằng cách lập phương trình
 
 Phương pháp lập phương trình bậc hai giải bài toán thực tế.
 
@@ -254,7 +254,7 @@ Phương pháp lập phương trình bậc hai giải bài toán thực tế.
 ## 2. Các dạng toán kinh tế và diện tích
 - **Toán tăng giảm phần trăm:** Giá trị sau khi đổi = $\text{Giá trị đầu} \cdot (1 \pm r\%)$.
 - **Toán diện tích/hình học:** Áp dụng công thức diện tích hình chữ nhật ($S = a \cdot b$), hình vuông để lập phương trình liên hệ chiều dài/chiều rộng.' WHERE id = 'math-word-problem-2';
-UPDATE ge10_lessons SET theory = '# Phương trình tích
+UPDATE mkw_lessons SET theory = '# Phương trình tích
 
 Phương pháp giải phương trình dạng tích $A(x) \cdot B(x) = 0$.
 
@@ -267,7 +267,7 @@ $$A(x) = 0 \quad \text{hoặc} \quad B(x) = 0$$
 - **Bước 2:** Phân tích đa thức ở vế trái thành nhân tử (dùng hằng đẳng thức, đặt nhân tử chung, hoặc nhóm hạng tử).
 - **Bước 3:** Cho từng nhân tử bằng $0$ và giải tìm nghiệm.
 - **Bước 4:** Kết luận tập nghiệm $S$.' WHERE id = 'math-eq-product';
-UPDATE ge10_lessons SET theory = '# Phương trình chứa ẩn ở mẫu
+UPDATE mkw_lessons SET theory = '# Phương trình chứa ẩn ở mẫu
 
 Quy trình giải phương trình chứa ẩn ở mẫu thức để tránh nghiệm ngoại lai.
 
@@ -281,7 +281,7 @@ Quy trình giải phương trình chứa ẩn ở mẫu thức để tránh nghi
 Giải phương trình: $\frac{x+2}{x-2} - \frac{1}{x} = 2$.
 - ĐKXĐ: $x \neq 0$ và $x \neq 2$.
 - MTC: $x(x-2)$.' WHERE id = 'math-eq-rational';
-UPDATE ge10_lessons SET theory = '# Hệ phương trình - Phương pháp thế và cộng đại số
+UPDATE mkw_lessons SET theory = '# Hệ phương trình - Phương pháp thế và cộng đại số
 
 Khái niệm và cách giải hệ hai phương trình bậc nhất hai ẩn.
 
@@ -294,7 +294,7 @@ Khái niệm và cách giải hệ hai phương trình bậc nhất hai ẩn.
 - Nhân hai vế của mỗi phương trình với số thích hợp sao cho hệ số của một ẩn nào đó bằng nhau hoặc đối nhau.
 - Cộng hoặc trừ từng vế hai phương trình để triệt tiêu một ẩn.
 - Giải phương trình một ẩn vừa thu được, rồi tìm ẩn còn lại.' WHERE id = 'math-system-eq-1';
-UPDATE ge10_lessons SET theory = '# Hệ phương trình chứa tham số m
+UPDATE mkw_lessons SET theory = '# Hệ phương trình chứa tham số m
 
 Biện luận số nghiệm của hệ hai phương trình bậc nhất hai ẩn chứa tham số $m$.
 
@@ -306,7 +306,7 @@ $$\begin{cases} ax + by = c \\ a''x + b''y = c'' \end{cases}$$
 - **Hệ vô số nghiệm:** $\frac{a}{a''} = \frac{b}{b''} = \frac{c}{c''}$.
 
 *(Lưu ý: Chỉ lập tỉ số khi các hệ số dưới mẫu khác 0. Nếu chứa tham số $m$ ở mẫu, cần xét các trường hợp $m$ làm mẫu bằng 0 riêng).*' WHERE id = 'math-system-eq-2';
-UPDATE ge10_lessons SET theory = '# Hệ thức lượng về cạnh và đường cao
+UPDATE mkw_lessons SET theory = '# Hệ thức lượng về cạnh và đường cao
 
 Các hệ thức cơ bản giữa cạnh và đường cao trong tam giác vuông.
 
@@ -317,7 +317,7 @@ Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$ chia cạnh huyền $BC
 - Hệ thức 2 (Đường cao và hình chiếu): $h^2 = b'' \cdot c''$
 - Hệ thức 3 (Đường cao và hai cạnh góc vuông): $a \cdot h = b \cdot c$
 - Hệ thức 4 (Đường cao nghịch đảo): $\frac{1}{h^2} = \frac{1}{b^2} + \frac{1}{c^2}$' WHERE id = 'math-right-triangle-ratio';
-UPDATE ge10_lessons SET theory = '# Các hệ thức lượng giác cơ bản
+UPDATE mkw_lessons SET theory = '# Các hệ thức lượng giác cơ bản
 
 Các công thức liên hệ giữa các tỉ số lượng giác của một góc nhọn $\alpha$.
 
@@ -333,7 +333,7 @@ Với mọi góc nhọn $\alpha$, ta luôn có:
 ## 2. Ứng dụng giải toán
 - Tính các tỉ số lượng giác còn lại của góc $\alpha$ khi biết một tỉ số lượng giác.
 - Chứng minh đẳng thức lượng giác, rút gọn biểu thức lượng giác đơn giản.' WHERE id = 'math-trig-relations';
-UPDATE ge10_lessons SET theory = '# Khái niệm đường tròn và sự xác định
+UPDATE mkw_lessons SET theory = '# Khái niệm đường tròn và sự xác định
 
 Định nghĩa đường tròn, các yếu tố liên quan và cách xác định một đường tròn.
 
@@ -346,7 +346,7 @@ UPDATE ge10_lessons SET theory = '# Khái niệm đường tròn và sự xác �
 ## 2. Cách xác định đường tròn
 - Một đường tròn được xác định khi biết tâm và bán kính, hoặc biết một đoạn thẳng là đường kính.
 - Qua ba điểm không thẳng hàng, ta vẽ được một và chỉ một đường tròn (tâm là giao điểm ba đường trung trực tam giác).' WHERE id = 'math-circle-concept';
-UPDATE ge10_lessons SET theory = '# Vị trí tương đối trong hình học đường tròn
+UPDATE mkw_lessons SET theory = '# Vị trí tương đối trong hình học đường tròn
 
 Xác định mối quan hệ giữa đường thẳng và đường tròn, và giữa hai đường tròn.
 
@@ -363,7 +363,7 @@ Gọi $d = OO''$ là khoảng cách giữa hai tâm:
 - **Tiếp xúc trong:** $d = R - r$ (có 1 điểm chung).
 - **Ngoài nhau:** $d > R + r$ (không có điểm chung).
 - **Đựng nhau:** $d < R - r$ (không có điểm chung).' WHERE id = 'math-circle-position';
-UPDATE ge10_lessons SET theory = '# Độ dài và Diện tích hình tròn, hình quạt
+UPDATE mkw_lessons SET theory = '# Độ dài và Diện tích hình tròn, hình quạt
 
 Các công thức tính chu vi, diện tích đường tròn và hình quạt tròn.
 
@@ -378,7 +378,7 @@ Các công thức tính chu vi, diện tích đường tròn và hình quạt tr
   $$S_{q} = \frac{\pi R^2 n}{360} = \frac{l \cdot R}{2}$$
 
 *(Lưu ý: Trong các bài thi tuyển sinh thực tế, ta thường dùng giá trị xấp xỉ $\pi \approx 3{,}14$).*' WHERE id = 'math-circle-length-area';
-UPDATE ge10_lessons SET theory = '# Tứ giác nội tiếp đường tròn
+UPDATE mkw_lessons SET theory = '# Tứ giác nội tiếp đường tròn
 
 Dấu hiệu nhận biết và ứng dụng của tứ giác nội tiếp trong các bài thi hình học tuyển sinh 10.
 
@@ -390,7 +390,7 @@ Tứ giác có bốn đỉnh nằm trên một đường tròn được gọi l�
 - **Dấu hiệu 2:** Tứ giác có góc ngoài tại một đỉnh bằng góc trong tại đỉnh đối diện.
 - **Dấu hiệu 3:** Tứ giác có hai đỉnh kề nhau cùng nhìn cạnh chứa hai đỉnh còn lại dưới một góc bằng nhau (ví dụ: $\widehat{ADB} = \widehat{ACB}$).
 - **Dấu hiệu 4:** Tứ giác có bốn đỉnh cách đều một điểm xác định.' WHERE id = 'math-circle-polygon';
-UPDATE ge10_lessons SET theory = '# Hình trụ - Bài toán thực tế
+UPDATE mkw_lessons SET theory = '# Hình trụ - Bài toán thực tế
 
 Phương pháp tính diện tích xung quanh, diện tích toàn phần và thể tích hình trụ trong thực tế.
 
@@ -404,7 +404,7 @@ Cho hình trụ có bán kính đáy $R$ và chiều cao $h$:
 - Đọc kỹ đề bài để phân biệt giữa bán kính $R$ và đường kính $d$ ($R = \frac{d}{2}$).
 - Xác định hình trụ có hở nắp hay không để tính diện tích toàn phần chính xác (ví dụ lon nước ngọt hở 1 nắp thì $S_{tp} = S_{xq} + \pi R^2$).
 - Đồng bộ đơn vị đo trước khi tính toán.' WHERE id = 'math-cylinder-detail';
-UPDATE ge10_lessons SET theory = '# Hình nón và Hình nón cụt
+UPDATE mkw_lessons SET theory = '# Hình nón và Hình nón cụt
 
 Công thức tính toán diện tích, thể tích hình nón và hình nón cụt bám sát đề thi tuyển sinh.
 
@@ -418,7 +418,7 @@ Cho hình nón có bán kính đáy $R$, chiều cao $h$, và đường sinh $l$
 ## 2. Hình nón cụt
 Cho hình nón cụt có hai bán kính đáy là $R_1, R_2$ ($R_1 > R_2$) và chiều cao $h$:
 - **Thể tích:** $V = \frac{1}{3}\pi h (R_1^2 + R_2^2 + R_1 R_2)$.' WHERE id = 'math-cone-detail';
-UPDATE ge10_lessons SET theory = '# Hình cầu và Bài toán kết hợp hình khối
+UPDATE mkw_lessons SET theory = '# Hình cầu và Bài toán kết hợp hình khối
 
 Phương pháp tính toán diện tích và thể tích hình cầu, cùng các bài toán liên kết nhiều hình khối.
 
@@ -430,7 +430,7 @@ Cho hình cầu có bán kính $R$:
 ## 2. Bài toán kết hợp hình khối thực tế
 - Thường gặp dạng: đồ chơi có một đầu là hình bán cầu (nửa hình cầu), thân là hình trụ hoặc hình nón.
 - **Phương pháp giải:** Chia nhỏ vật thể thành các khối hình học cơ bản, tính diện tích hoặc thể tích từng phần rồi cộng lại.' WHERE id = 'math-cone-sphere-combined';
-UPDATE ge10_lessons SET theory = '# Bài toán thực tế bậc hai
+UPDATE mkw_lessons SET theory = '# Bài toán thực tế bậc hai
 
 Cách lập phương trình bậc hai một ẩn từ các bài toán thực tế như kinh tế, hình học, chuyển động.
 
@@ -442,7 +442,7 @@ Cách lập phương trình bậc hai một ẩn từ các bài toán thực t�
 ## 2. Các dạng toán phổ biến
 - **Diện tích hình học:** Tăng/giảm chiều dài, rộng của vườn/sân.
 - **Toán kinh tế:** Tăng giá bán ảnh hưởng đến số lượng sản phẩm bán ra.' WHERE id = 'math-quadratic-applied';
-UPDATE ge10_lessons SET theory = '# Ứng dụng hệ thức lượng nâng cao
+UPDATE mkw_lessons SET theory = '# Ứng dụng hệ thức lượng nâng cao
 
 Các phương pháp kết hợp hệ thức lượng, định lý Pitago để giải các bài toán tính toán hình học phức tạp.
 
@@ -454,8 +454,8 @@ Các phương pháp kết hợp hệ thức lượng, định lý Pitago để g
 ## 2. Mẹo thi cử
 - Luôn tìm các tam giác đồng dạng nếu không trực tiếp dùng được hệ thức lượng trong một tam giác vuông duy nhất.' WHERE id = 'math-right-triangle-ratio-2';
 
--- 2. Update 497 Math Questions in ge10_custom_questions
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+-- 2. Update 497 Math Questions in mkw_custom_questions
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -463,33 +463,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -501,7 +501,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -509,7 +509,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -522,13 +522,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -539,7 +539,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -548,7 +548,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -561,7 +561,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -574,7 +574,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -582,11 +582,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -594,7 +594,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -604,10 +604,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -618,12 +618,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -632,21 +632,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -654,7 +654,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -662,7 +662,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -671,14 +671,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -689,7 +689,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -698,14 +698,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -717,12 +717,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -732,7 +732,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -746,7 +746,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -758,98 +758,98 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$
 Vậy nghiệm của hệ phương trình là $(3; 2)$.' WHERE id = 'gk-math-linearsys-1';
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -857,33 +857,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5-g6';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -895,7 +895,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -903,7 +903,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -916,13 +916,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -933,7 +933,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6-g6';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -942,7 +942,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -955,7 +955,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -968,7 +968,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -976,11 +976,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -988,7 +988,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -998,10 +998,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -1012,12 +1012,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -1026,21 +1026,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19-g6';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -1048,7 +1048,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21-g6';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -1056,7 +1056,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22-g6';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -1065,14 +1065,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -1083,7 +1083,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -1092,14 +1092,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -1111,12 +1111,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -1126,7 +1126,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -1140,7 +1140,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -1152,98 +1152,98 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g6';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g6';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3-g6';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g6';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g6';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g6';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g6';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g6';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$
 Vậy nghiệm của hệ phương trình là $(3; 2)$.' WHERE id = 'gk-math-linearsys-1-g6';
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -1251,33 +1251,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5-g7';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -1289,7 +1289,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -1297,7 +1297,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -1310,13 +1310,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -1327,7 +1327,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6-g7';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -1336,7 +1336,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -1349,7 +1349,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -1362,7 +1362,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -1370,11 +1370,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -1382,7 +1382,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -1392,10 +1392,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -1406,12 +1406,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -1420,21 +1420,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19-g7';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -1442,7 +1442,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21-g7';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -1450,7 +1450,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22-g7';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -1459,14 +1459,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -1477,7 +1477,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -1486,14 +1486,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -1505,12 +1505,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -1520,7 +1520,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -1534,7 +1534,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -1546,98 +1546,98 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g7';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g7';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3-g7';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g7';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g7';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g7';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g7';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g7';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$
 Vậy nghiệm của hệ phương trình là $(3; 2)$.' WHERE id = 'gk-math-linearsys-1-g7';
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -1645,33 +1645,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5-g8';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -1683,7 +1683,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -1691,7 +1691,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -1704,13 +1704,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -1721,7 +1721,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6-g8';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -1730,7 +1730,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -1743,7 +1743,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -1756,7 +1756,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -1764,11 +1764,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -1776,7 +1776,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -1786,10 +1786,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -1800,12 +1800,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -1814,21 +1814,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19-g8';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -1836,7 +1836,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21-g8';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -1844,7 +1844,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22-g8';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -1853,14 +1853,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -1871,7 +1871,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -1880,14 +1880,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -1899,12 +1899,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -1914,7 +1914,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -1928,7 +1928,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -1940,98 +1940,98 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g8';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g8';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3-g8';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g8';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g8';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g8';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g8';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g8';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$
 Vậy nghiệm của hệ phương trình là $(3; 2)$.' WHERE id = 'gk-math-linearsys-1-g8';
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -2039,33 +2039,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5-g10';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -2077,7 +2077,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -2085,7 +2085,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -2098,13 +2098,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -2115,7 +2115,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6-g10';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -2124,7 +2124,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -2137,7 +2137,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -2150,7 +2150,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -2158,11 +2158,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -2170,7 +2170,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -2180,10 +2180,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -2194,12 +2194,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -2208,21 +2208,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19-g10';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -2230,7 +2230,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21-g10';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -2238,7 +2238,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22-g10';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -2247,14 +2247,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -2265,7 +2265,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -2274,14 +2274,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -2293,12 +2293,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -2308,7 +2308,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -2322,7 +2322,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -2334,98 +2334,98 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g10';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g10';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3-g10';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g10';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g10';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g10';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g10';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g10';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$
 Vậy nghiệm của hệ phương trình là $(3; 2)$.' WHERE id = 'gk-math-linearsys-1-g10';
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -2433,33 +2433,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5-g11';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -2471,7 +2471,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -2479,7 +2479,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -2492,13 +2492,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -2509,7 +2509,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6-g11';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -2518,7 +2518,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -2531,7 +2531,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -2544,7 +2544,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -2552,11 +2552,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -2564,7 +2564,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -2574,10 +2574,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -2588,12 +2588,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -2602,21 +2602,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19-g11';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -2624,7 +2624,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21-g11';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -2632,7 +2632,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22-g11';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -2641,14 +2641,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -2659,7 +2659,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -2668,14 +2668,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -2687,12 +2687,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -2702,7 +2702,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -2716,7 +2716,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -2728,98 +2728,98 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g11';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g11';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3-g11';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g11';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g11';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g11';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g11';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g11';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$
 Vậy nghiệm của hệ phương trình là $(3; 2)$.' WHERE id = 'gk-math-linearsys-1-g11';
-UPDATE ge10_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
+UPDATE mkw_custom_questions SET prompt = 'Tìm tọa độ giao điểm của Parabol $(P): y = x^2$ và đường thẳng $(d): y = 2x + 3$.', options = '{"$(3; 9)$ và $(-1; 1)$","$(3; 9)$ và $(1; 1)$","$(-3; 9)$ và $(-1; 1)$","$(3; 6)$ và $(-1; 2)$"}', correct_answer = '{"$(3; 9)$ và $(-1; 1)$"}', explanation = 'Phương trình hoành độ giao điểm của $(P)$ và $(d)$ là:
 $$x^2 = 2x + 3 \Leftrightarrow x^2 - 2x - 3 = 0$$
 Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1 = -1$ và $x_2 = 3$.
 
@@ -2827,33 +2827,33 @@ Vì $a - b + c = 1 - (-2) + (-3) = 0$ nên phương trình có hai nghiệm $x_1
 - Với $x = 3 \Rightarrow y = 9 \Rightarrow B(3; 9)$.
 
 Vậy tọa độ hai giao điểm là $(3; 9)$ và $(-1; 1)$.' WHERE id = 'm-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = x_1^2 + x_2^2$.', options = '{"$A = 19$","$A = 22$","$A = 25$","$A = 16$"}', correct_answer = '{"$A = 19$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
 Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P = 5^2 - 2 \cdot 3 = 25 - 6 = 19$$' WHERE id = 'm-2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc balo có giá niêm yết là $300.000$ đồng. Nhân dịp khai giảng, cửa hàng thực hiện giảm giá hai đợt liên tiếp: đợt 1 giảm $10\%$ trên giá niêm yết, đợt 2 giảm tiếp $5\%$ trên giá đã giảm của đợt 1. Hỏi sau hai đợt giảm giá, chiếc balo có giá bao nhiêu?', options = '{"$256.500$ đồng","$255.000$ đồng","$270.000$ đồng","$245.000$ đồng"}', correct_answer = '{"$256.500$ đồng"}', explanation = '- Giá bán sau đợt giảm giá thứ nhất:
   $$300.000 \cdot (1 - 0{,}10) = 270.000\text{ (đồng)}$$
 - Giá bán sau đợt giảm giá thứ hai:
   $$270.000 \cdot (1 - 0{,}05) = 256.500\text{ (đồng)}$$' WHERE id = 'm-3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
+UPDATE mkw_custom_questions SET prompt = 'Một lon nước ngọt hình trụ có bán kính đáy $r = 3\text{ cm}$ và chiều cao $h = 12\text{ cm}$. Tính thể tích vỏ lon nước ngọt (lấy $\pi \approx 3{,}14$).', options = '{"$339{,}12\\text{ cm}^3$","$113{,}04\\text{ cm}^3$","$108{,}00\\text{ cm}^3$","$300{,}00\\text{ cm}^3$"}', correct_answer = '{"$339{,}12\\text{ cm}^3$"}', explanation = 'Thể tích hình trụ được tính theo công thức:
 $$V = \pi r^2 h$$
 Thay số vào công thức:
 $$V \approx 3{,}14 \cdot 3^2 \cdot 12 = 3{,}14 \cdot 9 \cdot 12 = 339{,}12\text{ (cm}^3\text{)}$$' WHERE id = 'm-4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
+UPDATE mkw_custom_questions SET prompt = 'Tìm giá trị của tham số $m$ để phương trình $x^2 - 2x + m - 1 = 0$ có hai nghiệm phân biệt.', options = '{"$m < 2$","$m > 2$","$m \\le 2$","$m < 1$"}', correct_answer = '{"$m < 2$"}', explanation = 'Phương trình có hai nghiệm phân biệt khi và chỉ khi $\Delta'' > 0$.
 Ta có:
 $$\Delta'' = (-1)^2 - 1 \cdot (m - 1) = 1 - m + 1 = 2 - m$$
 Để phương trình có hai nghiệm phân biệt:
 $$2 - m > 0 \Leftrightarrow m < 2$$' WHERE id = 'm-5-g12';
-UPDATE ge10_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
+UPDATE mkw_custom_questions SET prompt = 'Hai trường A và B có tổng cộng $560$ học sinh dự thi vào lớp 10. Sau khi có kết quả, có $500$ học sinh đỗ vào lớp 10. Biết tỷ lệ đỗ của trường A là $90\%$ và trường B là $85\%$. Hỏi trường A có bao nhiêu học sinh dự thi?', options = '{"$480$ học sinh","$320$ học sinh","$240$ học sinh","$80$ học sinh"}', correct_answer = '{"$480$ học sinh"}', explanation = 'Gọi $x, y$ lần lượt là số học sinh dự thi của trường A và B ($0 < x, y < 560; x, y \in \mathbb{N}^*$).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 560 \\ 0{,}90x + 0{,}85y = 500 \end{cases}$$
 Từ (1) suy ra $y = 560 - x$. Thế vào (2):
 $$0{,}90x + 0{,}85(560 - x) = 500 \Leftrightarrow 0{,}05x + 476 = 500 \Leftrightarrow 0{,}05x = 24 \Leftrightarrow x = 480$$
 Vậy trường A có $480$ học sinh dự thi.' WHERE id = 'm-6-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và điểm $A$ nằm ngoài đường tròn sao cho $OA = 2R$. Kẻ tiếp tuyến $AB$ với đường tròn ($B$ là tiếp điểm). Tính độ dài đoạn thẳng $AB$ theo $R$.', options = '{"$R\\sqrt{3}$","$R\\sqrt{2}$","$R$","$1{,}5R$"}', correct_answer = '{"$R\\sqrt{3}$"}', explanation = 'Vì $AB$ là tiếp tuyến của đường tròn $(O)$ tại tiếp điểm $B$ nên $OB \perp AB$, suy ra $\Delta OAB$ vuông tại $B$.
 Áp dụng định lý Pitago trong $\Delta OAB$ vuông tại $B$:
 $$OA^2 = OB^2 + AB^2 \Leftrightarrow (2R)^2 = R^2 + AB^2 \Leftrightarrow 4R^2 = R^2 + AB^2 \Leftrightarrow AB^2 = 3R^2 \Leftrightarrow AB = R\sqrt{3}$$' WHERE id = 'm-7-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2mx + m^2 - m + 1 = 0$ ($x$ là ẩn số, $m$ là tham số).
 
 **a)** Tìm điều kiện của $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$.
 
@@ -2865,7 +2865,7 @@ Từ $x_1^2 + x_2^2 - x_1x_2 = (x_1 + x_2)^2 - 3x_1x_2 = 5$, ta có:
 $$(2m)^2 - 3(m^2 - m + 1) = 5 \Leftrightarrow m^2 + 3m - 8 = 0$$
 Giải phương trình bậc hai theo $m$ thu được hai nghiệm: $m = \frac{-3 \pm \sqrt{41}}{2}$.
 Đối chiếu điều kiện $m > 1$, ta chọn $m = \frac{-3 + \sqrt{41}}{2}$.' WHERE id = 'hcmc-math-2026-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt độ $F$ (Fahrenheit) và nhiệt độ $C$ (Celsius) được cho bởi công thức hàm số bậc nhất: $F = a \cdot C + b$. Biết rằng nước đóng băng ở $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và sôi ở $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$.
 
 **a)** Xác định các hệ số $a$ và $b$.
 
@@ -2873,7 +2873,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một mối liên hệ giữa nhiệt
 Thế $C = 100, F = 212$ vào công thức ta có: $212 = 100a + 32 \Leftrightarrow 100a = 180 \Leftrightarrow a = 1{,}8$.
 
 **b)** Với $C = 37$, ta có $F = 1{,}8 \cdot 37 + 32 = 98{,}6^\circ\text{F}$.' WHERE id = 'hcmc-math-2026-q3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
+UPDATE mkw_custom_questions SET prompt = 'Để chuẩn bị cho giải chạy Marathon quốc tế tại TP.HCM vào cuối năm, một vận động viên lên kế hoạch tập luyện. Trong tuần đầu tiên, anh ấy chạy tổng cộng $40\text{ km}$. Kể từ tuần thứ hai, mục tiêu của anh ấy là tăng quãng đường chạy mỗi tuần thêm $5\%$ so với tuần ngay trước đó.
 
 **a)** Viết công thức tính tổng quãng đường anh ấy chạy được trong tuần thứ $n$ (với $n$ là số tuần tập luyện).
 
@@ -2886,13 +2886,13 @@ Thử các giá trị:
 - $n = 5 \Rightarrow (1{,}05)^4 \approx 1{,}2155 < 1{,}25$
 - $n = 6 \Rightarrow (1{,}05)^5 \approx 1{,}2763 > 1{,}25$
 Vậy vào tuần thứ $6$, tổng quãng đường chạy sẽ lần đầu tiên vượt mốc $50\text{ km}$.' WHERE id = 'hcmc-math-2026-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá một lô áo khoác. Lần thứ nhất cửa hàng giảm giá $10\%$ so với giá niêm yết. Do vẫn chưa bán hết, cửa hàng tiếp tục giảm giá thêm $5\%$ nữa trên giá đã giảm của lần thứ nhất. Lúc này, giá bán của một chiếc áo khoác là $427.500$ đồng. Hỏi giá niêm yết ban đầu của một chiếc áo khoác là bao nhiêu?', options = NULL, correct_answer = '{"500.000 đồng"}', explanation = 'Gọi $x$ là giá niêm yết ban đầu của một chiếc áo khoác ($x > 0$, đồng).
 - Giá sau đợt giảm thứ nhất: $x \cdot (1 - 0{,}10) = 0{,}9x$.
 - Giá sau đợt giảm thứ hai: $0{,}9x \cdot (1 - 0{,}05) = 0{,}855x$.
 
 Theo đề bài ta có phương trình:
 $$0{,}855x = 427.500 \Leftrightarrow x = \frac{427.500}{0{,}855} = 500.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q5-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc ly thủy tinh có dạng hình trụ chứa nước, đường kính đáy bên trong ly là $6\text{ cm}$, chiều cao mực nước hiện tại là $10\text{ cm}$. Người ta thả vào ly $4$ viên bi thủy tinh hình cầu giống hệt nhau chìm hoàn toàn trong nước thì thấy nước dâng lên vừa vặn đầy ly (không bị tràn ra ngoài). Biết chiều cao của ly là $12\text{ cm}$. Tính bán kính của mỗi viên bi (làm tròn kết quả đến chữ số thập phân thứ nhất; lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"R \\approx 1{,}5\\text{ cm}"}', explanation = 'Bán kính đáy ly: $r = \frac{6}{2} = 3\text{ cm}$.
 Chiều cao phần nước dâng thêm: $h_{\text{dâng}} = 12 - 10 = 2\text{ cm}$.
 
 Thể tích phần nước dâng lên (bằng tổng thể tích $4$ viên bi):
@@ -2903,7 +2903,7 @@ $$V_{\text{cầu}} = \frac{56{,}52}{4} = 14{,}13\text{ (cm}^3\text{)}$$
 
 Áp dụng công thức thể tích hình cầu $V = \frac{4}{3}\pi R^3$:
 $$\frac{4}{3} \cdot 3{,}14 \cdot R^3 = 14{,}13 \Leftrightarrow R^3 \approx 3{,}375 \Leftrightarrow R \approx 1{,}5\text{ (cm)}$$' WHERE id = 'hcmc-math-2026-q6-g12';
-UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bạn An đem theo một số tiền vào siêu thị để mua $10$ quyển tập cùng loại. Tuy nhiên, hôm nay siêu thị có chương trình khuyến mãi: "Mua từ quyển thứ $6$ trở đi sẽ được giảm $20\%$ trên giá niêm yết". Nhờ vậy, với số tiền đem theo ban đầu, An đã mua được tổng cộng $11$ quyển tập và còn dư lại $4.000$ đồng. Tính giá niêm yết của một quyển tập.', options = NULL, correct_answer = '{"20.000 đồng"}', explanation = 'Gọi $y$ là giá niêm yết của một quyển tập ($y > 0$, đồng).
 - Số tiền An đem theo ban đầu: $10y$.
 - Thực tế khi mua $11$ quyển tập gồm:
   + $5$ quyển đầu với giá niêm yết: $5y$.
@@ -2912,7 +2912,7 @@ UPDATE ge10_custom_questions SET prompt = 'Bạn An đem theo một số tiền 
 
 Vì An còn dư $4.000$ đồng nên ta có phương trình:
 $$10y - 9{,}8y = 4.000 \Leftrightarrow 0{,}2y = 4.000 \Leftrightarrow y = 20.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2026-q7-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn tâm $O$ đường kính $AB$. Lấy điểm $C$ thuộc đường tròn $(O)$ sao cho $AC < BC$ ($C$ không trùng $A$). Tiếp tuyến tại $A$ của đường tròn $(O)$ cắt đường thẳng $BC$ tại điểm $M$.
 
 **a)** Chứng minh: $\Delta ABC$ vuông tại $C$ và $MA^2 = MB \cdot MC$.
 
@@ -2925,7 +2925,7 @@ $$MA^2 = MB \cdot MC$$
 **b)** Áp dụng định lý Thales và tính chất trung điểm trên đường cao $CH$, ta suy ra $\widehat{MEA} = 90^\circ$, dẫn tới tứ giác $AHCE$ có $\widehat{AHC} = \widehat{AEC} = 90^\circ$ nên nội tiếp đường tròn đường kính $AC$.
 
 **c)** Khai thác tam giác đồng dạng $\Delta MBD \sim \Delta MHC$ suy ra $MB \cdot MC = MD \cdot MH = MA^2$. Dựa vào phương tích và góc tạo bởi tiếp tuyến - dây cung, suy ra $BC$ là tiếp tuyến của đường tròn ngoại tiếp $\Delta ACD$.' WHERE id = 'hcmc-math-2026-q8-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
+UPDATE mkw_custom_questions SET prompt = 'Cho Parabol $(P): y = \frac{1}{2}x^2$ và đường thẳng $(d): y = x + 4$.
 
 **a)** Vẽ $(P)$ và $(d)$ trên cùng một hệ trục tọa độ.
 
@@ -2938,7 +2938,7 @@ Giải phương trình bậc hai thu được hai nghiệm:
 - $x_2 = -2 \Rightarrow y_2 = 2 \Rightarrow B(-2; 2)$.
 
 Vậy tọa độ hai giao điểm là $(4; 8)$ và $(-2; 2)$.' WHERE id = 'hcmc-math-2025-q1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 5x + 3 = 0$ có hai nghiệm $x_1, x_2$.
 
 Không giải phương trình, hãy tính giá trị của biểu thức: $A = x_1^2 + x_2^2 - 3x_1x_2$.', options = NULL, correct_answer = '{"10"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$S = x_1 + x_2 = 5, \quad P = x_1 \cdot x_2 = 3$$
@@ -2946,11 +2946,11 @@ Biến đổi biểu thức $A$:
 $$A = x_1^2 + x_2^2 - 3x_1x_2 = (x_1 + x_2)^2 - 5x_1x_2 = S^2 - 5P$$
 Thay số:
 $$A = 5^2 - 5 \cdot 3 = 25 - 15 = 10$$' WHERE id = 'hcmc-math-2025-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng thời trang giảm giá $20\%$ cho tất cả các mặt hàng quần áo. Nếu khách hàng có thẻ thành viên thì được giảm thêm $5\%$ trên giá đã giảm. Bạn An mua một bộ quần áo có giá niêm yết ban đầu là $800.000$ đồng và bạn có thẻ thành viên. Hỏi bạn An phải trả bao nhiêu tiền?', options = NULL, correct_answer = '{"608.000 đồng"}', explanation = '- Giá bán sau khi giảm giá $20\%$:
   $$800.000 \cdot (1 - 0{,}20) = 640.000\text{ (đồng)}$$
 - Giá bán thực tế khi giảm thêm $5\%$ thẻ thành viên:
   $$640.000 \cdot (1 - 0{,}05) = 608.000\text{ (đồng)}$$' WHERE id = 'hcmc-math-2025-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô dạng hình trụ có bán kính đáy $r = 15\text{ cm}$ và chiều cao $h = 40\text{ cm}$. Người ta dùng cái xô này để múc nước đổ vào một bể chứa. Hỏi cần ít nhất bao nhiêu xô nước đầy để đổ đầy một bể chứa nước hình hộp chữ nhật có kích thước dài $1{,}2\text{ m}$, rộng $1\text{ m}$ và cao $0{,}6\text{ m}$? (Lấy $\pi \approx 3{,}14$).', options = NULL, correct_answer = '{"26 xô"}', explanation = 'Đổi đơn vị về $\text{dm}$:
 - Xô hình trụ: $r = 1{,}5\text{ dm}, h = 4\text{ dm}$.
   $$V_{\text{xô}} = \pi r^2 h \approx 3{,}14 \cdot (1{,}5)^2 \cdot 4 = 28{,}26\text{ (dm}^3\text{)} = 28{,}26\text{ (lít)}$$
 - Bể hình hộp chữ nhật: $a = 12\text{ dm}, b = 10\text{ dm}, c = 6\text{ dm}$.
@@ -2958,7 +2958,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một cái xô dạng hình trụ có
 - Số xô nước cần thiết:
   $$\frac{720}{28{,}26} \approx 25{,}48$$
 Vì số xô nước phải là số nguyên nên cần ít nhất $26$ xô nước đầy.' WHERE id = 'hcmc-math-2025-q6-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ có đường kính $AB$. Lấy điểm $C$ thuộc $(O)$ sao cho $AC < BC$. Tiếp tuyến tại $A$ của $(O)$ cắt đường thẳng $BC$ tại $D$.
 
 **a)** Chứng minh $\Delta ABC$ vuông và $AD^2 = DC \cdot DB$.
 
@@ -2968,10 +2968,10 @@ $$AD^2 = DC \cdot DB$$
 
 **b)** Vì $MH \perp BC$ tại $H$ và $MA \perp AB$ tại $A$ nên $\widehat{MHB} = \widehat{MAB} = 90^\circ$, suy ra tứ giác $AHOB$ nội tiếp.
 Chứng minh $\Delta MAO = \Delta MCO$ (c-g-c) $\Rightarrow \widehat{MCO} = \widehat{MAO} = 90^\circ \Rightarrow MC \perp OC$ tại $C$, nên $MC$ là tiếp tuyến của $(O)$.' WHERE id = 'hcmc-math-2025-q8-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 4x - 3 = 0$ có hai nghiệm $x_1, x_2$. Tính giá trị của biểu thức $A = \frac{x_1^2}{x_2} + \frac{x_2^2}{x_1}$.', options = '{"$-\\frac{100}{3}$","$\\frac{100}{3}$","$-33$","$\\frac{64}{3}$"}', correct_answer = '{"-\\frac{100}{3}"}', explanation = 'Theo định lý Vi-ét: $S = x_1 + x_2 = 4, P = x_1 \cdot x_2 = -3$.
 Biến đổi biểu thức $A$:
 $$A = \frac{x_1^3 + x_2^3}{x_1 x_2} = \frac{(x_1 + x_2)^3 - 3x_1x_2(x_1 + x_2)}{x_1 x_2} = \frac{4^3 - 3(-3)(4)}{-3} = \frac{64 + 36}{-3} = -\frac{100}{3}$$' WHERE id = 'm-14-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2mx + 2m - 3 = 0$ ($m$ là tham số).
 
 **a)** Chứng minh phương trình luôn có hai nghiệm phân biệt $x_1, x_2$ với mọi giá trị của $m$.
 
@@ -2982,12 +2982,12 @@ Vì $\Delta'' > 0$ với mọi $m$ nên phương trình luôn có hai nghiệm p
 Ta có: $x_1^2 + x_2^2 = S^2 - 2P = (2m)^2 - 2(2m - 3) = 4m^2 - 4m + 6$.
 Theo đề bài: $4m^2 - 4m + 6 = 10 \Leftrightarrow 4m^2 - 4m - 4 = 0 \Leftrightarrow m^2 - m - 1 = 0$.
 Giải phương trình bậc hai theo $m$ thu được: $m = \frac{1 \pm \sqrt{5}}{2}$.' WHERE id = 'm-15-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $3x^2 - 5x - 1 = 0$ có hai nghiệm $x_1, x_2$. Hãy lập phương trình bậc hai có hai nghiệm là $y_1 = x_1 + \frac{1}{x_2}$ và $y_2 = x_2 + \frac{1}{x_1}$.', options = NULL, correct_answer = '{"3y^2 + 10y - 4 = 0","y^2 + \\frac{10}{3}y - \\frac{4}{3} = 0"}', explanation = 'Theo Vi-ét: $S = x_1 + x_2 = \frac{5}{3}, P = x_1 \cdot x_2 = -\frac{1}{3}$.
 Tính tổng $S_y = y_1 + y_2$ và tích $P_y = y_1 \cdot y_2$:
 $$S_y = (x_1 + x_2) + \left(\frac{1}{x_1} + \frac{1}{x_2}\right) = S + \frac{S}{P} = \frac{5}{3} + \frac{\frac{5}{3}}{-\frac{1}{3}} = \frac{5}{3} - 5 = -\frac{10}{3}$$
 $$P_y = \left(x_1 + \frac{1}{x_2}\right)\left(x_2 + \frac{1}{x_1}\right) = x_1x_2 + 1 + 1 + \frac{1}{x_1x_2} = P + 2 + \frac{1}{P} = -\frac{1}{3} + 2 - 3 = -\frac{4}{3}$$
 Phương trình bậc hai cần tìm là $y^2 - S_y y + P_y = 0 \Leftrightarrow y^2 + \frac{10}{3}y - \frac{4}{3} = 0 \Leftrightarrow 3y^2 + 10y - 4 = 0$.' WHERE id = 'm-16-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình: $x^2 - 2(m-1)x + m^2 - 4 = 0$. Tìm các giá trị của tham số $m$ để phương trình có hai nghiệm phân biệt $x_1, x_2$ sao cho biểu thức sau đạt giá trị nhỏ nhất:
 $$B = x_1 x_2 - (x_1 + x_2)$$', options = NULL, correct_answer = '{"m = 1"}', explanation = 'Điều kiện phương trình có hai nghiệm phân biệt:
 $$\Delta'' = (m-1)^2 - (m^2 - 4) = m^2 - 2m + 1 - m^2 + 4 = 5 - 2m > 0 \Leftrightarrow m < \frac{5}{2}$$
 
@@ -2996,21 +2996,21 @@ $$S = x_1 + x_2 = 2(m - 1), \quad P = x_1 \cdot x_2 = m^2 - 4$$
 Biến đổi biểu thức $B$:
 $$B = P - S = m^2 - 4 - 2(m - 1) = m^2 - 2m - 2 = (m - 1)^2 - 3$$
 Vì $(m - 1)^2 \ge 0$ nên $B \ge -3$. Dấu "$=$" xảy ra khi $m = 1$ (thỏa mãn điều kiện $m < \frac{5}{2}$). Vậy $B$ đạt giá trị nhỏ nhất tại $m = 1$.' WHERE id = 'm-17-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
+UPDATE mkw_custom_questions SET prompt = 'Một người gửi tiết kiệm $100.000.000$ đồng vào ngân hàng với lãi suất $6\%/\text{năm}$ theo hình thức lãi kép kỳ hạn $1$ năm. Hỏi sau $2$ năm người đó nhận được cả vốn lẫn lãi là bao nhiêu tiền?', options = '{"$112.360.000$ đồng","$112.000.000$ đồng","$110.000.000$ đồng","$115.000.000$ đồng"}', correct_answer = '{"$112.360.000$ đồng"}', explanation = 'Áp dụng công thức lãi kép: $T = A \cdot (1 + r)^n$.
 Trong đó $A = 100.000.000$ đồng, $r = 6\% = 0{,}06$, $n = 2$ năm.
 Số tiền nhận được sau $2$ năm:
 $$T = 100.000.000 \cdot (1 + 0{,}06)^2 = 100.000.000 \cdot (1{,}06)^2 = 112.360.000\text{ (đồng)}$$' WHERE id = 'm-18-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một cửa hàng điện máy bán một chiếc tivi với giá niêm yết là $12.000.000$ đồng. Trong chương trình khuyến mãi, cửa hàng giảm giá $15\%$, đồng thời nếu thanh toán qua thẻ tín dụng sẽ được hoàn tiền thêm $500.000$ đồng. Hỏi khách hàng thanh toán qua thẻ tín dụng cần trả bao nhiêu tiền?', options = '{"$9.700.000$ đồng","$10.200.000$ đồng","$9.500.000$ đồng","$10.000.000$ đồng"}', correct_answer = '{"$9.700.000$ đồng"}', explanation = '- Giá tivi sau khi giảm giá $15\%$:
   $$12.000.000 \cdot (1 - 0{,}15) = 10.200.000\text{ (đồng)}$$
 - Số tiền thực tế phải trả sau khi được hoàn $500.000$ đồng:
   $$10.200.000 - 500.000 = 9.700.000\text{ (đồng)}$$' WHERE id = 'm-19-g12';
-UPDATE ge10_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
+UPDATE mkw_custom_questions SET prompt = 'Bác Ba mua hai loại hàng hóa A và B hết tổng cộng $800.000$ đồng (đã bao gồm thuế VAT). Biết thuế VAT đối với hàng loại A là $10\%$, đối với hàng loại B là $8\%$. Nếu không tính thuế VAT thì tổng số tiền hai loại hàng là $730.000$ đồng. Tính tiền hàng loại A chưa tính thuế VAT.', options = '{"$400.000$ đồng","$330.000$ đồng","$450.000$ đồng","$350.000$ đồng"}', correct_answer = '{"$400.000$ đồng"}', explanation = 'Gọi $x, y$ lần lượt là giá tiền chưa thuế của hàng loại A và loại B ($x, y > 0$, đồng).
 Ta có hệ phương trình:
 $$\begin{cases} x + y = 730.000 \\ 1{,}10x + 1{,}08y = 800.000 \end{cases}$$
 Từ (1) suy ra $y = 730.000 - x$. Thế vào (2):
 $$1{,}10x + 1{,}08(730.000 - x) = 800.000 \Leftrightarrow 0{,}02x + 788.400 = 800.000 \Leftrightarrow 0{,}02x = 11.600 \Leftrightarrow x = 580.000$$
 Sau khi giải hệ, ta được tiền hàng loại A chưa thuế là $400.000$ đồng.' WHERE id = 'm-20-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một mảnh đất hình chữ nhật có chu vi là $80\text{ m}$. Nếu tăng chiều rộng thêm $5\text{ m}$ và giảm chiều dài đi $3\text{ m}$ thì diện tích mảnh đất tăng thêm $65\text{ m}^2$. Tính diện tích ban đầu của mảnh đất.', options = '{"$375\\text{ m}^2$","$400\\text{ m}^2$","$350\\text{ m}^2$","$300\\text{ m}^2$"}', correct_answer = '{"$375\\text{ m}^2$"}', explanation = 'Nửa chu vi mảnh đất là $80 : 2 = 40\text{ (m)}$.
 Gọi chiều rộng ban đầu là $x\text{ (m)}$ ($0 < x < 20$). Chiều dài ban đầu là $40 - x\text{ (m)}$.
 Diện tích ban đầu: $S_1 = x(40 - x)\text{ (m}^2\text{)}$.
 Khi thay đổi, kích thước mới là: chiều rộng $x + 5$, chiều dài $37 - x$.
@@ -3018,7 +3018,7 @@ Diện tích mới: $S_2 = (x + 5)(37 - x)\text{ (m}^2\text{)}$.
 Theo đề bài: $(x + 5)(37 - x) - x(40 - x) = 65 \Leftrightarrow -x^2 + 32x + 185 - 40x + x^2 = 65 \Leftrightarrow -8x = -120 \Leftrightarrow x = 15$.
 Chiều rộng là $15\text{ m}$, chiều dài là $25\text{ m}$.
 Diện tích ban đầu: $S = 15 \cdot 25 = 375\text{ m}^2$.' WHERE id = 'm-21-g12';
-UPDATE ge10_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
+UPDATE mkw_custom_questions SET prompt = 'Hai vòi nước cùng chảy vào một bể không có nước thì sau $6$ giờ đầy bể. Nếu mở vòi thứ nhất chảy trong $2$ giờ rồi khóa lại và mở vòi thứ hai chảy tiếp trong $3$ giờ thì được $\frac{2}{5}$ bể. Hỏi nếu chảy một mình thì vòi thứ nhất mất bao lâu để đầy bể?', options = '{"$10$ giờ","$15$ giờ","$12$ giờ","$8$ giờ"}', correct_answer = '{"$10$ giờ"}', explanation = 'Gọi thời gian vòi 1 và vòi 2 chảy một mình đầy bể lần lượt là $x, y$ giờ ($x, y > 6$).
 Trong $1$ giờ:
 - Vòi 1 chảy được $\frac{1}{x}$ bể.
 - Vòi 2 chảy được $\frac{1}{y}$ bể.
@@ -3026,7 +3026,7 @@ Ta có hệ phương trình:
 $$\begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{6} \\ \frac{2}{x} + \frac{3}{y} = \frac{2}{5} \end{cases}$$
 Giải hệ thu được $\frac{1}{x} = \frac{1}{10} \Rightarrow x = 10$, $\frac{1}{y} = \frac{1}{15} \Rightarrow y = 15$.
 Vậy vòi 1 chảy một mình trong $10$ giờ thì đầy bể.' WHERE id = 'm-22-g12';
-UPDATE ge10_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Lực đàn hồi $F\text{ (N)}$ của một lò xo tỉ lệ thuận với độ dãn $\Delta l\text{ (cm)}$ của nó theo công thức bậc nhất $F = k \cdot \Delta l$. Người ta đo được khi treo vật nặng có trọng lượng $2\text{ N}$ thì lò xo dãn ra $1{,}5\text{ cm}$.
 
 **a)** Tìm hệ số đàn hồi $k$ của lò xo.
 
@@ -3035,14 +3035,14 @@ $$2 = k \cdot 1{,}5 \Leftrightarrow k = \frac{2}{1{,}5} = \frac{4}{3}\text{ (N/c
 
 **b)** Với $\Delta l = 4{,}5\text{ cm}$, lực đàn hồi cần thiết là:
 $$F = \frac{4}{3} \cdot 4{,}5 = 6\text{ (N)}$$' WHERE id = 'm-23-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc nón lá có đường kính đáy là $40\text{ cm}$ và độ dài đường sinh $l = 30\text{ cm}$. Tính diện tích lá cần dùng để phủ kín mặt ngoài của chiếc nón (lấy $\pi \approx 3{,}14$).', options = '{"$1884\\text{ cm}^2$","$3768\\text{ cm}^2$","$942\\text{ cm}^2$","$1200\\text{ cm}^2$"}', correct_answer = '{"$1884\\text{ cm}^2$"}', explanation = 'Bán kính đáy chiếc nón hình nón:
 $$r = \frac{d}{2} = \frac{40}{2} = 20\text{ (cm)}$$
 Diện tích xung quanh của hình nón:
 $$S_{xq} = \pi r l \approx 3{,}14 \cdot 20 \cdot 30 = 1884\text{ (cm}^2\text{)}$$' WHERE id = 'm-24-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn có dạng hình cầu với đường kính $22\text{ cm}$. Tính thể tích không khí bên trong quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = '{"$5572{,}45\\text{ cm}^3$","$11144{,}91\\text{ cm}^3$","$1519{,}76\\text{ cm}^3$","$6000{,}00\\text{ cm}^3$"}', correct_answer = '{"$5572{,}45\\text{ cm}^3$"}', explanation = 'Bán kính quả bóng hình cầu: $R = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 = \frac{4}{3} \cdot 3{,}14 \cdot 1331 \approx 5572{,}45\text{ (cm}^3\text{)}$$' WHERE id = 'm-25-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
+UPDATE mkw_custom_questions SET prompt = 'Một bể bơi hình chữ nhật có chiều dài $25\text{ m}$, chiều rộng $10\text{ m}$ và chiều sâu trung bình là $1{,}5\text{ m}$. Người ta dùng một máy bơm có công suất $15\text{ m}^3/\text{giờ}$ để bơm nước vào bể.
 
 **a)** Tính dung tích của bể bơi.
 
@@ -3053,7 +3053,7 @@ $$V = 25 \cdot 10 \cdot 1{,}5 = 375\text{ (m}^3\text{)}$$
 $$V_{\text{cần}} = 375 \cdot 0{,}80 = 300\text{ (m}^3\text{)}$$
 Thời gian máy bơm hoạt động:
 $$t = \frac{300}{15} = 20\text{ (giờ)}$$' WHERE id = 'm-26-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một chiếc lều cắm trại có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\text{ m}$ và chiều cao của mặt bên (trung đoạn) $d = 2{,}5\text{ m}$.
 
 **a)** Tính diện tích vải bạt cần dùng để dựng $4$ mặt bên của chiếc lều.
 
@@ -3062,14 +3062,14 @@ $$S_{xq} = 4 \cdot \left(\frac{1}{2} \cdot a \cdot d\right) = 4 \cdot \left(\fra
 
 **b)** Chi phí mua vải bạt:
 $$10 \cdot 120.000 = 1.200.000\text{ (đồng)}$$' WHERE id = 'm-27-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một cốc nước hình trụ có bán kính đáy $r = 4\text{ cm}$ chứa nước đến độ cao $8\text{ cm}$. Người ta thả vào cốc một khối kim loại đặc hình nón có bán kính đáy $r = 4\text{ cm}$ và chiều cao $h = 6\text{ cm}$ chìm hoàn toàn trong nước. Tính chiều cao mực nước trong cốc sau khi thả khối kim loại (biết nước không tràn ra ngoài).', options = NULL, correct_answer = '{"10\\text{ cm}"}', explanation = 'Thể tích khối kim loại hình nón:
 $$V_{\text{nón}} = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot 4^2 \cdot 6 = 32\pi\text{ (cm}^3\text{)}$$
 Diện tích đáy cốc hình trụ: $S_{\text{đáy}} = \pi r^2 = 16\pi\text{ (cm}^2\text{)}$.
 Chiều cao mực nước dâng thêm:
 $$\Delta h = \frac{V_{\text{nón}}}{S_{\text{đáy}}} = \frac{32\pi}{16\pi} = 2\text{ (cm)}$$
 Chiều cao mực nước sau khi thả khối kim loại:
 $$h_{\text{mới}} = 8 + 2 = 10\text{ (cm)}$$' WHERE id = 'm-28-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
+UPDATE mkw_custom_questions SET prompt = 'Một tháp chuông nhà thờ có phần mái che dạng hình nón với đường kính đáy $6\text{ m}$ và chiều cao $h = 4\text{ m}$. Người ta muốn sơn toàn bộ mặt ngoài của phần mái che này.
 
 **a)** Tính diện tích bề mặt mái che cần sơn (lấy $\pi \approx 3{,}14$).
 
@@ -3081,12 +3081,12 @@ $$S_{xq} = \pi r l \approx 3{,}14 \cdot 3 \cdot 5 = 47{,}1\text{ (m}^2\text{)}$$
 
 **b)** Tổng chi phí sơn mái che:
 $$47{,}1 \cdot 85.000 = 4.003.500\text{ (đồng)}$$' WHERE id = 'm-29-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn nước inox có phần thân hình trụ dài $2\text{ m}$, bán kính đáy $r = 0{,}5\text{ m}$ và hai đầu bịt kín bằng hai nửa mặt cầu có cùng bán kính $r = 0{,}5\text{ m}$. Tính dung tích tối đa của bồn nước (lấy $\pi \approx 3{,}14$, làm tròn đến chữ số thập phân thứ hai).', options = NULL, correct_answer = '{"2{,}09\\text{ m}^3"}', explanation = 'Hai đầu nửa mặt cầu ghép lại tạo thành một hình cầu có bán kính $r = 0{,}5\text{ m}$.
 - Thể tích thân trụ: $V_{\text{trụ}} = \pi r^2 h \approx 3{,}14 \cdot (0{,}5)^2 \cdot 2 = 1{,}57\text{ (m}^3\text{)}$.
 - Thể tích hai nửa cầu: $V_{\text{cầu}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot (0{,}5)^3 \approx 0{,}52\text{ (m}^3\text{)}$.
 - Dung tích tối đa của bồn nước:
 $$V = 1{,}57 + 0{,}52 = 2{,}09\text{ (m}^3\text{)}$$' WHERE id = 'm-30-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn size 5 có chu vi đường tròn lớn là $C = 68\text{ cm}$.
 
 **a)** Tính bán kính của quả bóng (lấy $\pi \approx 3{,}14$, làm tròn đến hai chữ số thập phân).
 
@@ -3096,7 +3096,7 @@ UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá tiêu chuẩn 
 $$S = 4\pi r^2 \approx 4 \cdot 3{,}14 \cdot (10{,}83)^2 \approx 1473{,}18\text{ (cm}^2\text{)}$$
 Tổng diện tích da bao gồm $12\%$ hao hụt:
 $$S_{\text{da}} = S \cdot (1 + 0{,}12) = 1473{,}18 \cdot 1{,}12 \approx 1650\text{ (cm}^2\text{)}$$' WHERE id = 'm-31-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
+UPDATE mkw_custom_questions SET prompt = 'Một bồn chứa dầu đặt nằm ngang gồm một phần thân có dạng hình trụ dài $5\text{ m}$ và hai đầu là hai nửa hình cầu bằng nhau có bán kính $r = 1\text{ m}$.
 
 **a)** Tính thể tích toàn bộ bồn chứa dầu này (lấy $\pi \approx 3{,}14$).
 
@@ -3110,7 +3110,7 @@ $$19{,}89 \cdot \frac{3}{4} = 14{,}9175\text{ (m}^3\text{)}$$
 Số chuyến xe xitéc cần thiết:
 $$\frac{14{,}9175}{8} \approx 1{,}86$$
 Vì số chuyến phải là số nguyên nên cần ít nhất $2$ chuyến xe.' WHERE id = 'm-32-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
+UPDATE mkw_custom_questions SET prompt = 'Một cây kem ốc quế gồm hai phần: Phần bánh hình nón có chiều cao $h = 12\text{ cm}$, bán kính $r = 3\text{ cm}$; phần kem bên trên là nửa hình cầu úp khít lên miệng hình nón.
 
 **a)** Tính thể tích toàn bộ cây kem (lấy $\pi \approx 3{,}14$).
 
@@ -3122,93 +3122,93 @@ $$V = 113{,}04 + 56{,}52 = 169{,}56\text{ (cm}^3\text{)}$$
 **b)** Thể tích kem của $50$ cây: $50 \cdot 169{,}56 = 8478\text{ (cm}^3\text{)}$.
 Chi phí nguyên vật liệu:
 $$\frac{8478}{100} \cdot 15.000 = 1.271.700\text{ (đồng)}$$' WHERE id = 'm-33-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số $y = ax^2$ có đồ thị đi qua điểm $A(2; -2)$. Hệ số $a$ nhận giá trị là bao nhiêu?', options = '{"$a = -1$","$a = -\\frac{1}{2}$","$a = -2$","$a = \\frac{1}{2}$"}', correct_answer = '{"$a = -\\frac{1}{2}$"}', explanation = 'Thay tọa độ điểm $A(2; -2)$ vào phương trình hàm số $y = ax^2$ ta được:
 $$-2 = a \cdot 2^2 \Leftrightarrow 4a = -2 \Leftrightarrow a = -\frac{1}{2}$$' WHERE id = 'hcm-math10-2024-q1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai: $x^2 - 2(m-1)x + m^2 - 3m = 0$. Tính biệt thức thu gọn $\Delta''$ của phương trình.', options = '{"$\\Delta' = m + 1$","$\\Delta' = m - 1$","$\\Delta' = 1 - m$","$\\Delta' = -m + 1$"}', correct_answer = '{"$\\Delta' = m + 1$"}', explanation = 'Ta có hệ số: $a = 1, b'' = -(m-1), c = m^2 - 3m$.
 Biệt thức thu gọn:
 $$\Delta'' = b''^2 - ac = [-(m-1)]^2 - 1 \cdot (m^2 - 3m) = (m^2 - 2m + 1) - (m^2 - 3m) = m + 1$$' WHERE id = 'hcm-math10-2024-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
+UPDATE mkw_custom_questions SET prompt = 'Gọi $x_1, x_2$ là hai nghiệm của phương trình $2x^2 - 5x + 2 = 0$. Giá trị của biểu thức $T = x_1 + x_2 + x_1 x_2$ là bao nhiêu?', options = '{"$T = \\frac{7}{2}$","$T = 3$","$T = \\frac{5}{2}$","$T = \\frac{9}{2}$"}', correct_answer = '{"$T = \\frac{7}{2}$"}', explanation = 'Theo hệ thức Vi-ét ta có:
 $$x_1 + x_2 = -\frac{b}{a} = \frac{5}{2}, \quad x_1 x_2 = \frac{c}{a} = \frac{2}{2} = 1$$
 Suy ra giá trị của biểu thức $T$ là:
 $$T = x_1 + x_2 + x_1 x_2 = \frac{5}{2} + 1 = \frac{7}{2}$$' WHERE id = 'hcm-math10-2024-q3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
+UPDATE mkw_custom_questions SET prompt = 'Một cái xô hình nón cụt có bán kính đáy nhỏ $r = 15\text{ cm}$, bán kính đáy lớn $R = 25\text{ cm}$, chiều cao $h = 30\text{ cm}$. Tính thể tích $V$ của cái xô (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 38.465\\text{ cm}^3$","$V \\approx 37.680\\text{ cm}^3$","$V \\approx 32.185\\text{ cm}^3$","$V \\approx 29.420\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37.680\\text{ cm}^3$"}', explanation = 'Công thức tính thể tích hình nón cụt:
 $$V = \frac{1}{3}\pi h (R^2 + r^2 + R \cdot r)$$
 Thay số:
 $$V \approx \frac{1}{3} \cdot 3{,}14 \cdot 30 \cdot (25^2 + 15^2 + 25 \cdot 15) = 31{,}4 \cdot (625 + 225 + 375) = 31{,}4 \cdot 1225 \approx 37.680\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2024-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Tìm nghiệm $(x; y)$ của hệ phương trình bậc nhất hai ẩn sau: $\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}$.', options = '{"$(2; 1)$","$(1; 2)$","$(2; -1)$","$(0; 3)$"}', correct_answer = '{"$(2; 1)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$3x = 6 \Leftrightarrow x = 2$$
 Thay $x = 2$ vào phương trình thứ hai:
 $$2 + y = 3 \Leftrightarrow y = 1$$
 Vậy nghiệm của hệ là $(2; 1)$.' WHERE id = 'hcm-math10-2023-q1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $x^2 - 4x + 3 = 0$. Tập nghiệm $S$ của phương trình là gì?', options = '{"$S = \\{1; 3\\}$","$S = \\{-1; -3\\}$","$S = \\{1; -3\\}$","$S = \\{-1; 3\\}$"}', correct_answer = '{"$S = \\{1; 3\\}$"}', explanation = 'Phương trình có các hệ số $a = 1, b = -4, c = 3$.
 Vì $a + b + c = 1 - 4 + 3 = 0$ nên phương trình có hai nghiệm phân biệt:
 $$x_1 = 1, \quad x_2 = \frac{c}{a} = 3$$
 Vậy tập nghiệm $S = \{1; 3\}$.' WHERE id = 'hcm-math10-2023-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
+UPDATE mkw_custom_questions SET prompt = 'Đồ thị hàm số $y = 2x - 3$ cắt trục tung $Oy$ tại điểm nào?', options = '{"$(0; -3)$","$\\left(\\frac{3}{2}; 0\\right)$","$(0; 3)$","$(-3; 0)$"}', correct_answer = '{"$(0; -3)$"}', explanation = 'Đồ thị cắt trục tung $Oy$ khi hoành độ $x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3$.
 Vậy tọa độ giao điểm là $(0; -3)$.' WHERE id = 'hcm-math10-2023-q3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
+UPDATE mkw_custom_questions SET prompt = 'Một hình trụ có bán kính đáy $r = 5\text{ cm}$ và chiều cao $h = 10\text{ cm}$. Tính diện tích xung quanh $S_{xq}$ của hình trụ (lấy $\pi \approx 3{,}14$).', options = '{"$S_{xq} \\approx 314\\text{ cm}^2$","$S_{xq} \\approx 157\\text{ cm}^2$","$S_{xq} \\approx 628\\text{ cm}^2$","$S_{xq} \\approx 78{,}5\\text{ cm}^2$"}', correct_answer = '{"$S_{xq} \\approx 314\\text{ cm}^2$"}', explanation = 'Diện tích xung quanh của hình trụ:
 $$S_{xq} = 2\pi r h \approx 2 \cdot 3{,}14 \cdot 5 \cdot 10 = 314\text{ (cm}^2\text{)}$$' WHERE id = 'hcm-math10-2023-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
+UPDATE mkw_custom_questions SET prompt = 'Căn thức $\sqrt{2x - 4}$ xác định khi và chỉ khi giá trị của $x$ thoả mãn điều kiện gì?', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x < 2$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai xác định khi biểu thức dưới dấu căn không âm:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'hcm-math10-2022-q1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
+UPDATE mkw_custom_questions SET prompt = 'Một quả bóng đá có dạng hình cầu với đường kính bằng $22\text{ cm}$. Tính thể tích $V$ của quả bóng đó (lấy $\pi \approx 3{,}14$, làm tròn đến hàng đơn vị).', options = '{"$V \\approx 5572\\text{ cm}^3$","$V \\approx 44580\\text{ cm}^3$","$V \\approx 1393\\text{ cm}^3$","$V \\approx 11144\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 5572\\text{ cm}^3$"}', explanation = 'Bán kính hình cầu: $R = \frac{d}{2} = \frac{22}{2} = 11\text{ (cm)}$.
 Thể tích hình cầu:
 $$V = \frac{4}{3}\pi R^3 \approx \frac{4}{3} \cdot 3{,}14 \cdot 11^3 \approx 5572\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math10-2022-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
+UPDATE mkw_custom_questions SET prompt = 'Cho đường tròn $(O; R)$ và một dây cung $AB = R\sqrt{3}$. Khoảng cách từ tâm $O$ đến dây cung $AB$ bằng bao nhiêu?', options = '{"$\\frac{R}{2}$","$\\frac{R\\sqrt{3}}{2}$","$\\frac{R}{4}$","$\\frac{R\\sqrt{2}}{2}$"}', correct_answer = '{"$\\frac{R}{2}$"}', explanation = 'Kẻ $OH \perp AB$ tại $H$ ($H$ là trung điểm của $AB$).
 Ta có: $AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}$.
 Áp dụng định lý Pitago trong $\Delta OHA$ vuông tại $H$:
 $$OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}$$' WHERE id = 'hcm-math10-2022-q3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Không giải phương trình, hãy cho biết tổng $S$ và tích $P$ của hai nghiệm phương trình bậc hai $3x^2 - 8x - 5 = 0$.', options = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$","$S = -\\frac{8}{3}, P = \\frac{5}{3}$","$S = \\frac{8}{3}, P = \\frac{5}{3}$","$S = -\\frac{8}{3}, P = -\\frac{5}{3}$"}', correct_answer = '{"$S = \\frac{8}{3}, P = -\\frac{5}{3}$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $ax^2 + bx + c = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-8}{3} = \frac{8}{3}$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = -\frac{5}{3}$$' WHERE id = 'hcm-math10-2022-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
+UPDATE mkw_custom_questions SET prompt = 'Hệ phương trình nào sau đây có nghiệm duy nhất là $(x; y) = (1; -1)$?', options = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$","$\\begin{cases} x - y = 0 \\\\ 2x + y = 3 \\end{cases}$","$\\begin{cases} x + y = 2 \\\\ x - y = 0 \\end{cases}$","$\\begin{cases} x + y = 0 \\\\ x - y = 0 \\end{cases}$"}', correct_answer = '{"$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$"}', explanation = 'Thay $(x = 1, y = -1)$ vào hệ phương trình đầu tiên:
 - $1 + (-1) = 0$ (đúng).
 - $2(1) - (-1) = 2 + 1 = 3$ (đúng).
 Vậy hệ phương trình có nghiệm là $(1; -1)$.' WHERE id = 'hcm-math10-2021-q1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
+UPDATE mkw_custom_questions SET prompt = 'Rút gọn biểu thức $A = \sqrt{(2 - \sqrt{5})^2} - \sqrt{5}$.', options = '{"$-2$","$2$","$2 - 2\\sqrt{5}$","$-2 - 2\\sqrt{5}$"}', correct_answer = '{"$-2$"}', explanation = 'Áp dụng hằng đẳng thức $\sqrt{A^2} = |A|$:
 $$A = |2 - \sqrt{5}| - \sqrt{5}$$
 Vì $2 < \sqrt{5}$ nên $2 - \sqrt{5} < 0 \Rightarrow |2 - \sqrt{5}| = \sqrt{5} - 2$.
 Vậy:
 $$A = (\sqrt{5} - 2) - \sqrt{5} = -2$$' WHERE id = 'hcm-math10-2021-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
+UPDATE mkw_custom_questions SET prompt = 'Hàm số bậc hai $y = -2x^2$ đồng biến và nghịch biến trong các khoảng nào?', options = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$","Đồng biến khi $x > 0$, nghịch biến khi $x < 0$","Đồng biến trên toàn tập xác định $\\mathbb{R}$","Nghịch biến trên toàn tập xác định $\\mathbb{R}$"}', correct_answer = '{"Đồng biến khi $x < 0$, nghịch biến khi $x > 0$"}', explanation = 'Hàm số bậc hai $y = ax^2$ có hệ số $a = -2 < 0$ nên đồng biến khi $x < 0$ và nghịch biến khi $x > 0$. Đồ thị là Parabol có bề lõm quay xuống dưới.' WHERE id = 'hcm-math10-2021-q3-g12';
+UPDATE mkw_custom_questions SET prompt = 'Một góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu độ?', options = '{"$90^\\circ$","$180^\\circ$","$60^\\circ$","$45^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và có số đo bằng $90^\circ$.' WHERE id = 'hcm-math10-2021-q4-g12';
+UPDATE mkw_custom_questions SET prompt = 'Tìm các giá trị của tham số $m$ để hệ phương trình $\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}$ có vô số nghiệm.', options = '{"$m = 1$","$m = -1$","$m = 0$","$m = \\pm 1$"}', correct_answer = '{"$m = 1$"}', explanation = 'Hệ phương trình có vô số nghiệm khi các hệ số tỉ lệ:
 $$\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1$$
 Nếu $m = -1$ thì $\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}$ (hệ vô nghiệm). Vậy $m = 1$.' WHERE id = 'hcm-math-l9-hk2-q1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
+UPDATE mkw_custom_questions SET prompt = 'Cho tứ giác $ABCD$ nội tiếp đường tròn. Biết $\widehat{A} = 70^\circ$. Tính số đo của góc $\widehat{C}$.', options = '{"$110^\\circ$","$70^\\circ$","$180^\\circ$","$90^\\circ$"}', correct_answer = '{"$110^\\circ$"}', explanation = 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng $180^\circ$. Do đó:
 $$\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ$$' WHERE id = 'hcm-math-l9-hk2-q2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
+UPDATE mkw_custom_questions SET prompt = 'Một hình nón có bán kính đáy $r = 3\text{ cm}$ và đường sinh $l = 5\text{ cm}$. Tính thể tích $V$ của hình nón (lấy $\pi \approx 3{,}14$).', options = '{"$V \\approx 37{,}68\\text{ cm}^3$","$V \\approx 113{,}04\\text{ cm}^3$","$V \\approx 47{,}10\\text{ cm}^3$","$V \\approx 15{,}07\\text{ cm}^3$"}', correct_answer = '{"$V \\approx 37{,}68\\text{ cm}^3$"}', explanation = 'Áp dụng định lý Pitago tìm chiều cao hình nón:
 $$h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{16} = 4\text{ (cm)}$$
 Thể tích hình nón:
 $$V = \frac{1}{3}\pi r^2 h \approx \frac{1}{3} \cdot 3{,}14 \cdot 3^2 \cdot 4 = 37{,}68\text{ (cm}^3\text{)}$$' WHERE id = 'hcm-math-l9-hk2-q3-g12';
-UPDATE ge10_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
+UPDATE mkw_custom_questions SET prompt = 'Tính giá trị của biểu thức $P = \frac{2}{\sqrt{3} - 1} - \sqrt{3}$.', options = '{"$1$","$-1$","$\\sqrt{3}$","$2$"}', correct_answer = '{"$1$"}', explanation = 'Trục căn thức ở mẫu:
 $$\frac{2}{\sqrt{3} - 1} = \frac{2(\sqrt{3} + 1)}{(\sqrt{3} - 1)(\sqrt{3} + 1)} = \frac{2(\sqrt{3} + 1)}{3 - 1} = \sqrt{3} + 1$$
 Vậy:
 $$P = (\sqrt{3} + 1) - \sqrt{3} = 1$$' WHERE id = 'hcm-math-l9-hk2-q4-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
+UPDATE mkw_custom_questions SET prompt = 'Cho hàm số bậc hai $y = ax^2$ ($a \neq 0$). Đồ thị của hàm số là một đường cong Parabol có đỉnh tại gốc tọa độ $O(0; 0)$. Khi $a > 0$, Parabol có bề lõm quay về hướng nào?', options = '{"Quay lên phía trên","Quay xuống phía dưới","Quay sang bên phải","Quay sang bên trái"}', correct_answer = '{"Quay lên phía trên"}', explanation = 'Khi $a > 0$, hàm số đạt giá trị nhỏ nhất tại $x = 0$ ($y = 0$) và luôn nhận giá trị dương với mọi $x \neq 0$. Do đó bề lõm của Parabol quay lên phía trên.' WHERE id = 'gk-math-quadratic-fn-1-g12';
+UPDATE mkw_custom_questions SET prompt = 'Điểm nào sau đây thuộc đồ thị hàm số $y = 2x^2$?', options = '{"$A(1; 2)$","$B(2; 4)$","$C(-1; -2)$","$D(0; 2)$"}', correct_answer = '{"$A(1; 2)$"}', explanation = 'Thay tọa độ điểm $A(1; 2)$ vào hàm số: $y = 2 \cdot 1^2 = 2$ (thỏa mãn). Vậy điểm $A(1; 2)$ thuộc đồ thị hàm số.' WHERE id = 'gk-math-quadratic-fn-2-g12';
+UPDATE mkw_custom_questions SET prompt = 'Phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$) có biệt thức $\Delta = b^2 - 4ac$. Phương trình có hai nghiệm phân biệt khi nào?', options = '{"$\\Delta > 0$","$\\Delta = 0$","$\\Delta < 0$","$\\Delta \\ge 0$"}', correct_answer = '{"$\\Delta > 0$"}', explanation = '- Khi $\Delta > 0$: phương trình có hai nghiệm phân biệt.
 - Khi $\Delta = 0$: phương trình có nghiệm kép.
 - Khi $\Delta < 0$: phương trình vô nghiệm trong tập số thực.' WHERE id = 'gk-math-quadratic-eq-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình bậc hai $ax^2 + bx + c = 0$ ($a \neq 0$). Nếu hệ số $a$ và $c$ trái dấu ($ac < 0$) thì khẳng định nào sau đây là đúng?', options = '{"Phương trình luôn có hai nghiệm phân biệt","Phương trình vô nghiệm","Phương trình có nghiệm kép","Phương trình có vô số nghiệm"}', correct_answer = '{"Phương trình luôn có hai nghiệm phân biệt"}', explanation = 'Ta có biệt thức $\Delta = b^2 - 4ac$. Vì $ac < 0$ nên $-4ac > 0$, suy ra $\Delta = b^2 - 4ac > 0$ với mọi hệ số $b$. Do đó phương trình luôn có hai nghiệm phân biệt (trái dấu).' WHERE id = 'gk-math-quadratic-eq-2-g12';
+UPDATE mkw_custom_questions SET prompt = 'Cho phương trình $x^2 - 7x + 10 = 0$ có hai nghiệm $x_1, x_2$. Theo định lý Vi-ét, tổng $S$ và tích $P$ của hai nghiệm là:', options = '{"$S = 7, P = 10$","$S = -7, P = 10$","$S = 7, P = -10$","$S = -7, P = -10$"}', correct_answer = '{"$S = 7, P = 10$"}', explanation = 'Theo định lý Vi-ét cho phương trình bậc hai $x^2 - 7x + 10 = 0$:
 $$S = x_1 + x_2 = -\frac{b}{a} = -\frac{-7}{1} = 7$$
 $$P = x_1 \cdot x_2 = \frac{c}{a} = \frac{10}{1} = 10$$' WHERE id = 'gk-math-vieta-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
+UPDATE mkw_custom_questions SET prompt = 'Cho mẫu số liệu thống kê sau: $3, 5, 7, 7, 8, 9, 10$. Số trung vị (Median) của mẫu số liệu này là:', options = '{"$7$","$5$","$8$","$7{,}5$"}', correct_answer = '{"$7$"}', explanation = 'Mẫu số liệu gồm $n = 7$ phần tử (số lẻ) đã được sắp xếp theo thứ tự tăng dần. Số trung vị là giá trị của phần tử ở vị trí chính giữa (thứ 4): $Me = 7$.' WHERE id = 'gk-math-statistics-1-g12';
+UPDATE mkw_custom_questions SET prompt = 'Gieo một con xúc xắc cân đối và đồng chất $6$ mặt. Xác suất để xuất hiện mặt có số chấm là số chẵn là bao nhiêu?', options = '{"$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{2}{3}$"}', correct_answer = '{"$\\frac{1}{2}$"}', explanation = 'Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\} \Rightarrow n(\Omega) = 6$.
 Biến cố $A$ xuất hiện mặt chẵn: $A = \{2, 4, 6\} \Rightarrow n(A) = 3$.
 Xác suất của biến cố $A$ là:
 $$P(A) = \frac{n(A)}{n(\Omega)} = \frac{3}{6} = \frac{1}{2}$$' WHERE id = 'gk-math-probability-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
+UPDATE mkw_custom_questions SET prompt = 'Một sản phẩm có giá gốc là $200.000$ đồng. Cửa hàng tăng giá $10\%$, sau đó lại giảm giá $10\%$ trên giá mới. Giá cuối cùng của sản phẩm là:', options = '{"$198.000$ đồng","$200.000$ đồng","$190.000$ đồng","$210.000$ đồng"}', correct_answer = '{"$198.000$ đồng"}', explanation = '- Giá sản phẩm sau khi tăng giá $10\%$:
   $$200.000 \cdot (1 + 0{,}10) = 220.000\text{ (đồng)}$$
 - Giá sản phẩm sau khi giảm giá $10\%$ trên giá mới:
   $$220.000 \cdot (1 - 0{,}10) = 198.000\text{ (đồng)}$$' WHERE id = 'gk-math-realworld-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
+UPDATE mkw_custom_questions SET prompt = 'Góc nội tiếp chắn nửa đường tròn có số đo bằng bao nhiêu?', options = '{"$90^\\circ$","$180^\\circ$","$45^\\circ$","$60^\\circ$"}', correct_answer = '{"$90^\\circ$"}', explanation = 'Theo định lý hình học, số đo của góc nội tiếp bằng nửa số đo của cung bị chắn. Nửa đường tròn có số đo là $180^\circ$, do đó góc nội tiếp chắn nửa đường tròn là góc vuông ($90^\circ$).' WHERE id = 'gk-math-circle-1-g12';
+UPDATE mkw_custom_questions SET prompt = 'Công thức tính thể tích hình trụ có bán kính đáy $r$ và chiều cao $h$ là:', options = '{"$V = \\pi r^2 h$","$V = \\frac{1}{3}\\pi r^2 h$","$V = 2\\pi r h$","$V = \\frac{4}{3}\\pi r^3$"}', correct_answer = '{"$V = \\pi r^2 h$"}', explanation = 'Thể tích của hình trụ bằng diện tích hình tròn đáy nhân với chiều cao:
 $$V = S_{\text{đáy}} \cdot h = \pi r^2 h$$' WHERE id = 'gk-math-solid-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
+UPDATE mkw_custom_questions SET prompt = 'Điều kiện xác định của biểu thức căn bậc hai $\sqrt{2x - 4}$ là:', options = '{"$x \\ge 2$","$x > 2$","$x \\le 2$","$x \\ge 4$"}', correct_answer = '{"$x \\ge 2$"}', explanation = 'Căn thức bậc hai $\sqrt{A}$ xác định khi và chỉ khi biểu thức dưới dấu căn không âm ($A \ge 0$).
 Ta có:
 $$2x - 4 \ge 0 \Leftrightarrow 2x \ge 4 \Leftrightarrow x \ge 2$$' WHERE id = 'gk-math-radicals-1-g12';
-UPDATE ge10_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
+UPDATE mkw_custom_questions SET prompt = 'Nghiệm của hệ phương trình bậc nhất hai ẩn $\begin{cases} x + y = 5 \\ x - y = 1 \end{cases}$ là:', options = '{"$(3; 2)$","$(2; 3)$","$(4; 1)$","$(1; 4)$"}', correct_answer = '{"$(3; 2)$"}', explanation = 'Cộng từng vế của hai phương trình:
 $$(x + y) + (x - y) = 5 + 1 \Leftrightarrow 2x = 6 \Leftrightarrow x = 3$$
 Thế $x = 3$ vào phương trình thứ nhất:
 $$3 + y = 5 \Leftrightarrow y = 2$$

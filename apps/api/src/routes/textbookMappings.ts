@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/admin/textbook-mappings', authMiddleware, activeProfileMiddleware, async (req: any, res) => {
   try {
     const result = await pool.query(
-      `SELECT category_key, subject, loai, bai, ham FROM ge10_textbook_mappings ORDER BY subject, loai, bai`
+      `SELECT category_key, subject, loai, bai, ham FROM mkw_textbook_mappings ORDER BY subject, loai, bai`
     );
     res.json({ success: true, textbookMappings: result.rows });
   } catch (error: any) {
@@ -21,7 +21,7 @@ router.get('/admin/textbook-mappings', authMiddleware, activeProfileMiddleware, 
 router.get('/curriculum/textbooks', authMiddleware, activeProfileMiddleware, async (req: any, res) => {
   const { subject, gradeTier } = req.query;
   try {
-    let query = 'SELECT * FROM ge10_curriculum_textbooks';
+    let query = 'SELECT * FROM mkw_curriculum_textbooks';
     const params: any[] = [];
     const conditions: string[] = [];
 
@@ -83,7 +83,7 @@ router.post(
       }
 
       await pool.query(
-        `INSERT INTO ge10_textbook_mappings (category_key, subject, loai, bai, ham)
+        `INSERT INTO mkw_textbook_mappings (category_key, subject, loai, bai, ham)
          VALUES ($1, $2, $3, $4, $5)`,
         [categoryKey.trim(), subject.trim(), loai.trim(), Number(bai), ham.trim()]
       );
@@ -114,7 +114,7 @@ router.put(
       }
 
       const result = await pool.query(
-        `UPDATE ge10_textbook_mappings
+        `UPDATE mkw_textbook_mappings
          SET subject = $1, loai = $2, bai = $3, ham = $4
          WHERE category_key = $5`,
         [subject.trim(), loai.trim(), Number(bai), ham.trim(), key]
@@ -142,7 +142,7 @@ router.delete(
     try {
       const { key } = req.params;
       const result = await pool.query(
-        `DELETE FROM ge10_textbook_mappings WHERE category_key = $1`,
+        `DELETE FROM mkw_textbook_mappings WHERE category_key = $1`,
         [key]
       );
 

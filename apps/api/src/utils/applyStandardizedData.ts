@@ -41,7 +41,7 @@ export function applyAllStandardizedData(): void {
     '',
     'BEGIN;',
     '',
-    '-- 1. Update 32 Math Lessons Theory in ge10_lessons'
+    '-- 1. Update 32 Math Lessons Theory in mkw_lessons'
   ];
 
   const lessonsMatch = lessonsContent.matchAll(/id:\s*'(math-[a-z0-9-]+)'[\s\S]*?theory:\s*`([\s\S]*?)`/g);
@@ -49,11 +49,11 @@ export function applyAllStandardizedData(): void {
     const id = m[1];
     const theory = m[2];
     const escapedTheory = "'" + theory.replace(/'/g, "''") + "'";
-    sqlLines.push(`UPDATE ge10_lessons SET theory = ${escapedTheory} WHERE id = '${id}';`);
+    sqlLines.push(`UPDATE mkw_lessons SET theory = ${escapedTheory} WHERE id = '${id}';`);
   }
 
   sqlLines.push('');
-  sqlLines.push('-- 2. Update 497 Math Questions in ge10_custom_questions');
+  sqlLines.push('-- 2. Update 497 Math Questions in mkw_custom_questions');
 
   questions.forEach((q: any) => {
     if (q.subject === 'math') {
@@ -69,7 +69,7 @@ export function applyAllStandardizedData(): void {
       const expSql = escapeSql(q.explanation);
 
       sqlLines.push(
-        `UPDATE ge10_custom_questions SET prompt = ${promptSql}, options = ${optionsSql}, correct_answer = ${answerSql}, explanation = ${expSql} WHERE id = '${q.id}';`
+        `UPDATE mkw_custom_questions SET prompt = ${promptSql}, options = ${optionsSql}, correct_answer = ${answerSql}, explanation = ${expSql} WHERE id = '${q.id}';`
       );
     }
   });

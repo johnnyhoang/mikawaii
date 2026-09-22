@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_robot_intelligence (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('slam-localization', 'cs_robot_intelligence', 13, 'SLAM & Định vị', 'Thuật toán đồng thời vẽ bản đồ và định vị SLAM, bộ lọc Kalman, định vị trong nhà UWB.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('path-planning', 'cs_robot_intelligence', 13, 'Lập kế hoạch đường đi', 'Giải thuật tìm đường toàn cục A*, RRT và tránh vật cản động cục bộ DWA/TEB.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_robot_intelligence (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_robint_01', 
@@ -268,8 +268,8 @@ $$F_{\text{total}} = F_{\text{att}} + F_{\text{rep}}$$
     'decision-behavior'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_robint_01', 'slam-localization', 'lesson', 'Bản đồ & Định vị SLAM (Simultaneous Localization and Mapping)', '{"lesson_id": "cs_robint_01"}'::jsonb, 10, 10, 20, 'cs_robot_intelligence', 13),
   ('act-lesson-cs_robint_02', 'path-planning', 'lesson', 'Lập kế hoạch đường đi toàn cục: A* vs RRT', '{"lesson_id": "cs_robint_02"}'::jsonb, 10, 10, 20, 'cs_robot_intelligence', 13),

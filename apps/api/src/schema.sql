@@ -1,5 +1,5 @@
 -- Users Table (linked with Supabase Auth)
-CREATE TABLE IF NOT EXISTS ge10_users (
+CREATE TABLE IF NOT EXISTS mkw_users (
     id VARCHAR(255) PRIMARY KEY, -- Profile ID (generated uuid)
     account_id VARCHAR(255) NOT NULL, -- Google/Supabase User ID
     name VARCHAR(255) NOT NULL,
@@ -10,21 +10,21 @@ CREATE TABLE IF NOT EXISTS ge10_users (
 );
 
 -- Safe migration check for existing tables
-ALTER TABLE ge10_users ADD COLUMN IF NOT EXISTS role VARCHAR(50) DEFAULT 'student';
-ALTER TABLE ge10_users ADD COLUMN IF NOT EXISTS account_id VARCHAR(255);
-UPDATE ge10_users SET account_id = id WHERE account_id IS NULL;
-ALTER TABLE ge10_users ALTER COLUMN account_id SET NOT NULL;
-ALTER TABLE ge10_users DROP CONSTRAINT IF EXISTS ge10_users_email_key;
-ALTER TABLE ge10_users DROP COLUMN IF EXISTS family_id;
+ALTER TABLE mkw_users ADD COLUMN IF NOT EXISTS role VARCHAR(50) DEFAULT 'student';
+ALTER TABLE mkw_users ADD COLUMN IF NOT EXISTS account_id VARCHAR(255);
+UPDATE mkw_users SET account_id = id WHERE account_id IS NULL;
+ALTER TABLE mkw_users ALTER COLUMN account_id SET NOT NULL;
+ALTER TABLE mkw_users DROP CONSTRAINT IF EXISTS mkw_users_email_key;
+ALTER TABLE mkw_users DROP COLUMN IF EXISTS family_id;
 -- Profile deactivation support (soft delete): is_active = false thay vì DELETE
-ALTER TABLE ge10_users ADD COLUMN IF NOT EXISTS is_active BOOLEAN NOT NULL DEFAULT TRUE;
+ALTER TABLE mkw_users ADD COLUMN IF NOT EXISTS is_active BOOLEAN NOT NULL DEFAULT TRUE;
 
 
 -- Class Links Table (Multi-Profile & Secondary Tutors/Teachers)
-CREATE TABLE IF NOT EXISTS ge10_class_links (
+CREATE TABLE IF NOT EXISTS mkw_class_links (
     id VARCHAR(255) PRIMARY KEY,
-    tutor_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
-    student_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    tutor_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
+    student_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     status VARCHAR(50) DEFAULT 'pending', -- 'pending_student', 'pending_tutor', 'active'
     link_type VARCHAR(20) DEFAULT 'primary', -- 'primary', 'secondary'
     secondary_permissions JSONB DEFAULT '{"can_approve_rewards": false, "can_create_missions": false, "read_only": true}'::jsonb,
@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS ge10_class_links (
 );
 
 -- Player Profiles Table
-CREATE TABLE IF NOT EXISTS ge10_player_profiles (
-    user_id VARCHAR(255) PRIMARY KEY REFERENCES ge10_users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_player_profiles (
+    user_id VARCHAR(255) PRIMARY KEY REFERENCES mkw_users(id) ON DELETE CASCADE,
     level INTEGER DEFAULT 1,
     xp INTEGER DEFAULT 0,
     ruby INTEGER NOT NULL DEFAULT 200,
@@ -57,30 +57,30 @@ CREATE TABLE IF NOT EXISTS ge10_player_profiles (
 );
 
 -- App không quản lý tiền nữa (CORE_SPECS §3.2) — Ví VND bị bãi bỏ hoàn toàn.
-ALTER TABLE ge10_player_profiles DROP COLUMN IF EXISTS wallet_vnd;
+ALTER TABLE mkw_player_profiles DROP COLUMN IF EXISTS wallet_vnd;
 
 -- Migration for active subject and grade tier
-ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS active_subject VARCHAR(50) NOT NULL DEFAULT 'english';
-ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS active_grade_tier INTEGER NOT NULL DEFAULT 9;
+ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS active_subject VARCHAR(50) NOT NULL DEFAULT 'english';
+ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS active_grade_tier INTEGER NOT NULL DEFAULT 9;
 
 -- Năng Lượng v2 (SUB_SPEC_ENERGY.md) — maxEnergy/resetHours là cấu hình RIÊNG từng con,
--- không còn dùng ge10_game_settings global nữa (mỗi con một mức do chủ nhiệm chỉnh ở Phòng Tài Vụ).
-ALTER TABLE ge10_player_profiles ALTER COLUMN energy SET DEFAULT 100;
-ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS max_energy INTEGER NOT NULL DEFAULT 100;
-ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS reset_hours INTEGER NOT NULL DEFAULT 3;
-ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS energy_depleted_at BIGINT;
+-- không còn dùng mkw_game_settings global nữa (mỗi con một mức do chủ nhiệm chỉnh ở Phòng Tài Vụ).
+ALTER TABLE mkw_player_profiles ALTER COLUMN energy SET DEFAULT 100;
+ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS max_energy INTEGER NOT NULL DEFAULT 100;
+ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS reset_hours INTEGER NOT NULL DEFAULT 3;
+ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS energy_depleted_at BIGINT;
 -- Chặn tràn: hồ sơ cũ (thời maxEnergy=1000) có thể đang có energy > 100 mới, hạ về đúng trần mới.
-UPDATE ge10_player_profiles SET energy = max_energy WHERE energy > max_energy;
+UPDATE mkw_player_profiles SET energy = max_energy WHERE energy > max_energy;
 -- max_energy cũ là setting global — bỏ hẳn, không còn ai đọc key này nữa.
-DELETE FROM ge10_game_settings WHERE setting_key = 'max_energy';
+DELETE FROM mkw_game_settings WHERE setting_key = 'max_energy';
 
 -- Luật Bất Thoái (CORE_SPECS §7.4.4): Đẳng Cấp Môn Phái cao nhất từng đạt theo từng môn,
 -- key = SubjectId, value = order (0-5 trong SECT_MASTERY_RANKS) — không bao giờ tự hạ.
-ALTER TABLE ge10_player_profiles ADD COLUMN IF NOT EXISTS max_achieved_mastery_rank JSONB DEFAULT '{}'::jsonb;
+ALTER TABLE mkw_player_profiles ADD COLUMN IF NOT EXISTS max_achieved_mastery_rank JSONB DEFAULT '{}'::jsonb;
 
 -- Pet States Table
-CREATE TABLE IF NOT EXISTS ge10_pet_states (
-    user_id VARCHAR(255) PRIMARY KEY REFERENCES ge10_users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_pet_states (
+    user_id VARCHAR(255) PRIMARY KEY REFERENCES mkw_users(id) ON DELETE CASCADE,
     name VARCHAR(255) DEFAULT 'Heo Con',
     stage VARCHAR(50) DEFAULT 'egg',
     level INTEGER DEFAULT 1,
@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS ge10_pet_states (
 );
 
 -- Category rolling stats Table
-CREATE TABLE IF NOT EXISTS ge10_category_stats (
+CREATE TABLE IF NOT EXISTS mkw_category_stats (
     id SERIAL PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     category VARCHAR(255) NOT NULL,
     total_answered INTEGER DEFAULT 0,
     total_correct INTEGER DEFAULT 0,
@@ -102,9 +102,9 @@ CREATE TABLE IF NOT EXISTS ge10_category_stats (
 );
 
 -- History Logs Table
-CREATE TABLE IF NOT EXISTS ge10_history_logs (
+CREATE TABLE IF NOT EXISTS mkw_history_logs (
     id VARCHAR(255) PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     timestamp BIGINT NOT NULL,
     activity_type VARCHAR(100) NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -118,13 +118,13 @@ CREATE TABLE IF NOT EXISTS ge10_history_logs (
 -- Phục vụ `WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 200` (chạy gần như mỗi lần load/sync
 -- profile, xem GET /profile/:id và POST /profile/:id/sync trong routes/profiles.ts) — FK không tự
 -- tạo index trên cột tham chiếu nên nếu thiếu sẽ full scan khi bảng lớn dần.
-CREATE INDEX IF NOT EXISTS idx_history_logs_user_timestamp ON ge10_history_logs(user_id, timestamp DESC);
+CREATE INDEX IF NOT EXISTS idx_history_logs_user_timestamp ON mkw_history_logs(user_id, timestamp DESC);
 
 -- Danh Mục Quà Khuyến Học CHUNG toàn viện (CORE_SPECS §3.2) — MỘT danh sách duy nhất cho
 -- toàn viện, Viện Trưởng/Viện Phó quản lý qua /api/admin/school-rewards. Giáo viên có
--- danh mục riêng (ge10_class_rewards, clone từ đây khi hồ sơ giáo viên được tạo); học sinh mồ côi
+-- danh mục riêng (mkw_class_rewards, clone từ đây khi hồ sơ giáo viên được tạo); học sinh mồ côi
 -- (không có giáo viên) đọc thẳng bảng này. Không có user_id vì đây không phải bản sao theo từng người.
-CREATE TABLE IF NOT EXISTS ge10_school_reward_templates (
+CREATE TABLE IF NOT EXISTS mkw_school_reward_templates (
     id VARCHAR(255) PRIMARY KEY,
     title VARCHAR(500) NOT NULL,
     cost_ruby INTEGER NOT NULL,
@@ -134,10 +134,10 @@ CREATE TABLE IF NOT EXISTS ge10_school_reward_templates (
 );
 
 -- Một lượt đổi quà cụ thể — trừ Ruby ngay, chờ Viện Trưởng xác nhận "Đã Trao" ngoài đời (CORE_SPECS §3.2).
-CREATE TABLE IF NOT EXISTS ge10_reward_redemptions (
+CREATE TABLE IF NOT EXISTS mkw_reward_redemptions (
     id VARCHAR(255) PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
-    reward_id VARCHAR(255) REFERENCES ge10_school_reward_templates(id) ON DELETE SET NULL,
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
+    reward_id VARCHAR(255) REFERENCES mkw_school_reward_templates(id) ON DELETE SET NULL,
     reward_title VARCHAR(255) NOT NULL,
     cost_ruby INTEGER NOT NULL,
     cost_coins INTEGER, -- legacy compatibility
@@ -146,38 +146,38 @@ CREATE TABLE IF NOT EXISTS ge10_reward_redemptions (
     delivered_at BIGINT
 );
 
-CREATE INDEX IF NOT EXISTS idx_reward_redemptions_user ON ge10_reward_redemptions(user_id);
+CREATE INDEX IF NOT EXISTS idx_reward_redemptions_user ON mkw_reward_redemptions(user_id);
 
 -- Active Challenges Table (JSONB format for flexibility)
-CREATE TABLE IF NOT EXISTS ge10_user_challenges (
-    user_id VARCHAR(255) PRIMARY KEY REFERENCES ge10_users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_user_challenges (
+    user_id VARCHAR(255) PRIMARY KEY REFERENCES mkw_users(id) ON DELETE CASCADE,
     challenges_json JSONB NOT NULL
 );
 
 -- Daily Missions Table
-CREATE TABLE IF NOT EXISTS ge10_daily_missions (
-    user_id VARCHAR(255) PRIMARY KEY REFERENCES ge10_users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_daily_missions (
+    user_id VARCHAR(255) PRIMARY KEY REFERENCES mkw_users(id) ON DELETE CASCADE,
     mission_json JSONB
 );
 
 -- Global Game Settings Table
-CREATE TABLE IF NOT EXISTS ge10_game_settings (
+CREATE TABLE IF NOT EXISTS mkw_game_settings (
     setting_key VARCHAR(100) PRIMARY KEY,
     setting_json JSONB NOT NULL
 );
 
 -- Bonus Ruby khi hoàn thành Khoa Thi — Boss không thưởng tiền.
-INSERT INTO ge10_game_settings (setting_key, setting_json)
+INSERT INTO mkw_game_settings (setting_key, setting_json)
 SELECT
     'boss_completion_bonus_ruby',
     COALESCE(
-      (SELECT setting_json FROM ge10_game_settings WHERE setting_key = 'boss_completion_bonus_np'),
+      (SELECT setting_json FROM mkw_game_settings WHERE setting_key = 'boss_completion_bonus_np'),
       '{"easy": 100, "medium": 150, "hard": 200}'::jsonb
     )
 ON CONFLICT (setting_key) DO NOTHING;
-DELETE FROM ge10_game_settings WHERE setting_key = 'boss_bounties_vnd';
+DELETE FROM mkw_game_settings WHERE setting_key = 'boss_bounties_vnd';
 
-INSERT INTO ge10_game_settings (setting_key, setting_json)
+INSERT INTO mkw_game_settings (setting_key, setting_json)
 VALUES (
     'challenge_energy_costs',
     '{"1": 10, "2": 10, "3": 15, "4": 10}'::jsonb
@@ -185,9 +185,9 @@ VALUES (
 ON CONFLICT (setting_key) DO NOTHING;
 
 -- Custom / Ingested Questions Table
-CREATE TABLE IF NOT EXISTS ge10_custom_questions (
+CREATE TABLE IF NOT EXISTS mkw_custom_questions (
     id VARCHAR(255) PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     type VARCHAR(50) NOT NULL,
     category VARCHAR(255) NOT NULL,
     prompt TEXT NOT NULL,
@@ -204,8 +204,8 @@ CREATE TABLE IF NOT EXISTS ge10_custom_questions (
 );
 
 -- Question Statistics Tracking Table — tracks how many times each question is used
-CREATE TABLE IF NOT EXISTS ge10_question_stats (
-    question_id VARCHAR(255) PRIMARY KEY REFERENCES ge10_custom_questions(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_question_stats (
+    question_id VARCHAR(255) PRIMARY KEY REFERENCES mkw_custom_questions(id) ON DELETE CASCADE,
     times_opened INTEGER DEFAULT 0,
     times_answered_correctly INTEGER DEFAULT 0,
     times_skipped INTEGER DEFAULT 0,
@@ -214,17 +214,17 @@ CREATE TABLE IF NOT EXISTS ge10_question_stats (
 );
 
 -- Add tracking columns to custom_questions table for denormalization (faster reads)
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS times_opened INTEGER DEFAULT 0;
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS times_answered_correctly INTEGER DEFAULT 0;
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS times_skipped INTEGER DEFAULT 0;
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS last_opened_at TIMESTAMP WITH TIME ZONE;
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS times_opened INTEGER DEFAULT 0;
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS times_answered_correctly INTEGER DEFAULT 0;
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS times_skipped INTEGER DEFAULT 0;
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS last_opened_at TIMESTAMP WITH TIME ZONE;
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
 
 -- Per-Student Question Performance Table — tracks individual student performance on each question
-CREATE TABLE IF NOT EXISTS ge10_student_question_performance (
+CREATE TABLE IF NOT EXISTS mkw_student_question_performance (
     id SERIAL PRIMARY KEY,
-    student_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
-    question_id VARCHAR(255) REFERENCES ge10_custom_questions(id) ON DELETE CASCADE,
+    student_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
+    question_id VARCHAR(255) REFERENCES mkw_custom_questions(id) ON DELETE CASCADE,
     times_attempted INTEGER DEFAULT 0,
     times_correct INTEGER DEFAULT 0,
     times_skipped INTEGER DEFAULT 0,
@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS ge10_student_question_performance (
 );
 
 -- Lessons Table
-CREATE TABLE IF NOT EXISTS ge10_lessons (
+CREATE TABLE IF NOT EXISTS mkw_lessons (
     id VARCHAR(255) PRIMARY KEY,
     subject VARCHAR(50) NOT NULL,
     grade_tier INTEGER NOT NULL DEFAULT 9,
@@ -251,33 +251,33 @@ CREATE TABLE IF NOT EXISTS ge10_lessons (
 );
 
 -- User Lesson Progress Table
-CREATE TABLE IF NOT EXISTS ge10_user_lessons_progress (
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
-    lesson_id VARCHAR(255) REFERENCES ge10_lessons(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_user_lessons_progress (
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
+    lesson_id VARCHAR(255) REFERENCES mkw_lessons(id) ON DELETE CASCADE,
     completed BOOLEAN DEFAULT TRUE,
     completed_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id, lesson_id)
 );
 
 -- Add lesson_id to custom questions table
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS lesson_id VARCHAR(255) REFERENCES ge10_lessons(id) ON DELETE SET NULL;
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS lesson_id VARCHAR(255) REFERENCES mkw_lessons(id) ON DELETE SET NULL;
 
 -- Exploration Progress Table (Fog of War tracking)
-CREATE TABLE IF NOT EXISTS ge10_exploration_progress (
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_exploration_progress (
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     area_id VARCHAR(255) NOT NULL,
     clear_count INTEGER DEFAULT 0,
     PRIMARY KEY (user_id, area_id)
 );
 
 -- Ruby ledger transaction: row lock prevents overspending and race conditions.
-CREATE OR REPLACE FUNCTION ge10_process_ruby_transaction(p_user_id VARCHAR, p_amount INTEGER)
+CREATE OR REPLACE FUNCTION mkw_process_ruby_transaction(p_user_id VARCHAR, p_amount INTEGER)
 RETURNS BOOLEAN AS $$
 DECLARE
     current_ruby INTEGER;
 BEGIN
     SELECT ruby INTO current_ruby
-    FROM ge10_player_profiles 
+    FROM mkw_player_profiles 
     WHERE user_id = p_user_id 
     FOR UPDATE;
 
@@ -289,7 +289,7 @@ BEGIN
         RETURN FALSE;
     END IF;
 
-    UPDATE ge10_player_profiles
+    UPDATE mkw_player_profiles
     SET ruby = ruby + p_amount, server_updated_at = NOW()
     WHERE user_id = p_user_id;
 
@@ -297,21 +297,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TABLE IF NOT EXISTS ge10_riddle_history (
+CREATE TABLE IF NOT EXISTS mkw_riddle_history (
   id BIGSERIAL PRIMARY KEY,
-  profile_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+  profile_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
   mode VARCHAR(50) NOT NULL CHECK (mode IN ('ruby-riddle', 'encounter-sprint')),
   question_id VARCHAR(255) NOT NULL,
   used_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_riddle_history_profile_mode_used
-  ON ge10_riddle_history(profile_id, mode, used_at DESC);
+  ON mkw_riddle_history(profile_id, mode, used_at DESC);
 
 -- Admin & Tutor Audit Logs (Sprint 3)
-CREATE TABLE IF NOT EXISTS ge10_audit_logs (
+CREATE TABLE IF NOT EXISTS mkw_audit_logs (
     id VARCHAR(255) PRIMARY KEY,
-    actor_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE SET NULL,
+    actor_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE SET NULL,
     actor_name VARCHAR(255) NOT NULL,
     actor_role VARCHAR(50) NOT NULL,
     action VARCHAR(100) NOT NULL,
@@ -322,9 +322,9 @@ CREATE TABLE IF NOT EXISTS ge10_audit_logs (
 );
 
 -- Student Skip Reviews Queue (Sprint 4)
-CREATE TABLE IF NOT EXISTS ge10_skip_reviews (
+CREATE TABLE IF NOT EXISTS mkw_skip_reviews (
     id VARCHAR(255) PRIMARY KEY,
-    student_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    student_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     student_name VARCHAR(255) NOT NULL,
     question_id VARCHAR(255),
     question_prompt TEXT NOT NULL,
@@ -334,9 +334,9 @@ CREATE TABLE IF NOT EXISTS ge10_skip_reviews (
 );
 
 -- Game Sessions Table (Task 7.2)
-CREATE TABLE IF NOT EXISTS ge10_game_sessions (
+CREATE TABLE IF NOT EXISTS mkw_game_sessions (
     id VARCHAR(255) PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     session_type VARCHAR(50) NOT NULL,
     subject VARCHAR(50) NOT NULL,
     grade_tier INTEGER NOT NULL DEFAULT 9,
@@ -355,8 +355,8 @@ CREATE TABLE IF NOT EXISTS ge10_game_sessions (
 -- ==================== GRADE SUPPORT (Generic for Grades 8, 9, 10, 11, 12) ====================
 
 -- Generic Grade Lesson Progress Tracking
-CREATE TABLE IF NOT EXISTS ge10_grade_lesson_progress (
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_grade_lesson_progress (
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     grade_tier INTEGER NOT NULL,
     subject VARCHAR(50) NOT NULL,
     lesson_id VARCHAR(255) NOT NULL,
@@ -366,9 +366,9 @@ CREATE TABLE IF NOT EXISTS ge10_grade_lesson_progress (
 );
 
 -- Generic Grade Quiz Results & Statistics
-CREATE TABLE IF NOT EXISTS ge10_grade_quiz_results (
+CREATE TABLE IF NOT EXISTS mkw_grade_quiz_results (
     id SERIAL PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     grade_tier INTEGER NOT NULL,
     subject VARCHAR(50) NOT NULL,
     lesson_id VARCHAR(255) NOT NULL,
@@ -379,17 +379,17 @@ CREATE TABLE IF NOT EXISTS ge10_grade_quiz_results (
 );
 
 -- Indexes for Grade performance (optimized for multi-grade queries)
-CREATE INDEX IF NOT EXISTS idx_grade_lesson_progress_user ON ge10_grade_lesson_progress(user_id);
-CREATE INDEX IF NOT EXISTS idx_grade_lesson_progress_grade ON ge10_grade_lesson_progress(grade_tier);
-CREATE INDEX IF NOT EXISTS idx_grade_lesson_progress_composite ON ge10_grade_lesson_progress(user_id, grade_tier);
-CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_user ON ge10_grade_quiz_results(user_id);
-CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_grade ON ge10_grade_quiz_results(grade_tier);
-CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_lesson ON ge10_grade_quiz_results(lesson_id);
-CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_composite ON ge10_grade_quiz_results(user_id, grade_tier);
-CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_completed ON ge10_grade_quiz_results(completed_at);
+CREATE INDEX IF NOT EXISTS idx_grade_lesson_progress_user ON mkw_grade_lesson_progress(user_id);
+CREATE INDEX IF NOT EXISTS idx_grade_lesson_progress_grade ON mkw_grade_lesson_progress(grade_tier);
+CREATE INDEX IF NOT EXISTS idx_grade_lesson_progress_composite ON mkw_grade_lesson_progress(user_id, grade_tier);
+CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_user ON mkw_grade_quiz_results(user_id);
+CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_grade ON mkw_grade_quiz_results(grade_tier);
+CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_lesson ON mkw_grade_quiz_results(lesson_id);
+CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_composite ON mkw_grade_quiz_results(user_id, grade_tier);
+CREATE INDEX IF NOT EXISTS idx_grade_quiz_results_completed ON mkw_grade_quiz_results(completed_at);
 
 -- Phase 2: Topics table
-CREATE TABLE IF NOT EXISTS ge10_topics (
+CREATE TABLE IF NOT EXISTS mkw_topics (
     id VARCHAR(100) PRIMARY KEY,
     subject VARCHAR(50) NOT NULL,
     grade_tier INTEGER NOT NULL DEFAULT 9,
@@ -402,13 +402,13 @@ CREATE TABLE IF NOT EXISTS ge10_topics (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Link lessons to topics (column added to ge10_lessons)
-ALTER TABLE ge10_lessons ADD COLUMN IF NOT EXISTS topic_id VARCHAR(100) REFERENCES ge10_topics(id) ON DELETE SET NULL;
+-- Link lessons to topics (column added to mkw_lessons)
+ALTER TABLE mkw_lessons ADD COLUMN IF NOT EXISTS topic_id VARCHAR(100) REFERENCES mkw_topics(id) ON DELETE SET NULL;
 
 -- Phase 3: Activities table
-CREATE TABLE IF NOT EXISTS ge10_activities (
+CREATE TABLE IF NOT EXISTS mkw_activities (
     id VARCHAR(255) PRIMARY KEY,
-    topic_id VARCHAR(100) REFERENCES ge10_topics(id) ON DELETE CASCADE,
+    topic_id VARCHAR(100) REFERENCES mkw_topics(id) ON DELETE CASCADE,
     subject VARCHAR(50) NOT NULL DEFAULT 'english',
     grade_tier INTEGER NOT NULL DEFAULT 9,
     activity_type VARCHAR(50) NOT NULL, -- 'lesson', 'boss', 'quiz', 'riddle'
@@ -422,19 +422,19 @@ CREATE TABLE IF NOT EXISTS ge10_activities (
 );
 
 -- User Activity Progress
-CREATE TABLE IF NOT EXISTS ge10_user_activity_progress (
-    user_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
-    activity_id VARCHAR(255) REFERENCES ge10_activities(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS mkw_user_activity_progress (
+    user_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
+    activity_id VARCHAR(255) REFERENCES mkw_activities(id) ON DELETE CASCADE,
     status VARCHAR(20) DEFAULT 'available', -- 'locked', 'available', 'completed'
     completed_at TIMESTAMP WITH TIME ZONE,
     PRIMARY KEY (user_id, activity_id)
 );
 
 -- Tutor Quests (Assigned Learning Tasks)
-CREATE TABLE IF NOT EXISTS ge10_tutor_quests (
+CREATE TABLE IF NOT EXISTS mkw_tutor_quests (
     id VARCHAR(255) PRIMARY KEY,
-    tutor_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
-    student_id VARCHAR(255) REFERENCES ge10_users(id) ON DELETE CASCADE,
+    tutor_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
+    student_id VARCHAR(255) REFERENCES mkw_users(id) ON DELETE CASCADE,
     title VARCHAR(500) NOT NULL,
     description TEXT,
     reward_ruby INTEGER NOT NULL DEFAULT 0,
@@ -444,6 +444,6 @@ CREATE TABLE IF NOT EXISTS ge10_tutor_quests (
     claimed_at TIMESTAMP WITH TIME ZONE
 );
 
-CREATE INDEX IF NOT EXISTS idx_tutor_quests_student ON ge10_tutor_quests(student_id);
-CREATE INDEX IF NOT EXISTS idx_tutor_quests_tutor ON ge10_tutor_quests(tutor_id);
+CREATE INDEX IF NOT EXISTS idx_tutor_quests_student ON mkw_tutor_quests(student_id);
+CREATE INDEX IF NOT EXISTS idx_tutor_quests_tutor ON mkw_tutor_quests(tutor_id);
 

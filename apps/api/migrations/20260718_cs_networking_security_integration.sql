@@ -3,8 +3,8 @@
 
 BEGIN;
 
--- 1. Seed ge10_subject_exam_blueprints for cs_networking_security
-INSERT INTO ge10_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
+-- 1. Seed mkw_subject_exam_blueprints for cs_networking_security
+INSERT INTO mkw_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
 VALUES 
   (
     'cs_networking_security', 'Part I', 'Kiến trúc mạng phân tầng & Tầng ứng dụng', 
@@ -37,7 +37,7 @@ ON CONFLICT (id) DO UPDATE SET
   import_hint = EXCLUDED.import_hint;
 
 -- 2. Seed Boss Activities for 4 topics of cs_networking_security
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-boss-net-architecture', 'network-architecture', 'boss', 'Ma Vương Giải Mã OSI', '{"boss_id": "b-net-architecture", "boss_tag": "OSI", "energy": 100}'::jsonb, 100, 100, 150, 'cs_networking_security', 13),
   ('act-boss-net-transmission', 'data-transmission', 'boss', 'Ác Thần Nghẽn Mạng Congestion', '{"boss_id": "b-net-transmission", "boss_tag": "TCP", "energy": 100}'::jsonb, 100, 100, 150, 'cs_networking_security', 13),
@@ -55,7 +55,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 3. Seed Quiz Activities for 4 topics of cs_networking_security
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-quiz-net-architecture', 'network-architecture', 'quiz', 'Luyện tập Phân tầng & HTTP', '{"mode": "grammar", "reward": "Ưu tiên mô hình phân tầng OSI/TCP-IP và các giao thức tầng ứng dụng"}'::jsonb, 50, 10, 20, 'cs_networking_security', 13),
   ('act-quiz-net-transmission', 'data-transmission', 'quiz', 'Luyện tập Giao vận & Định tuyến', '{"mode": "vocabulary", "reward": "Ưu tiên bắt tay TCP, kiểm soát tắc nghẽn và tính toán chia mạng con CIDR"}'::jsonb, 50, 10, 20, 'cs_networking_security', 13),
@@ -73,7 +73,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 4. Seed Textbook Mappings for cs_networking_security
-INSERT INTO ge10_textbook_mappings (category_key, subject, loai, bai, ham)
+INSERT INTO mkw_textbook_mappings (category_key, subject, loai, bai, ham)
 VALUES
   ('cs-net-osi', 'cs_networking_security', 'Phân tầng', 1, 'thach'),
   ('cs-net-http', 'cs_networking_security', 'Phân tầng', 2, 'thach'),

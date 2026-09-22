@@ -17,7 +17,7 @@ router.get('/content/lessons', async (req, res) => {
   if (!context) return res.status(400).json({ error: 'gradeTier and subject are required.' });
   const result = await pool.query(
     `SELECT id, subject, grade_tier AS "gradeTier", topic, title, theory, category
-     FROM ge10_lessons WHERE grade_tier = $1 AND subject = $2 ORDER BY id`,
+     FROM mkw_lessons WHERE grade_tier = $1 AND subject = $2 ORDER BY id`,
     [context.gradeTier, context.subjectId]
   );
   return res.json({ success: true, learningContext: context, lessons: result.rows });
@@ -31,10 +31,10 @@ router.get('/content/questions', async (req: any, res) => {
     `SELECT id, type, category, topic_id AS "topicId", prompt, options,
             correct_answer AS "correctAnswer", explanation, difficulty, source,
             subject, grade_tier AS "gradeTier", image_url AS "imageUrl", metadata
-     FROM ge10_custom_questions
+     FROM mkw_custom_questions
      WHERE grade_tier = $1 AND subject = $2
        AND (user_id = $3 OR user_id IS NULL OR user_id IN
-         (SELECT id FROM ge10_users WHERE role IN ('truong_vien', 'pho_vien')))
+         (SELECT id FROM mkw_users WHERE role IN ('truong_vien', 'pho_vien')))
      ORDER BY id`,
     [context.gradeTier, context.subjectId, userId]
   );
@@ -46,13 +46,13 @@ router.get('/learning-progress', async (req: any, res) => {
   if (!context) return res.status(400).json({ error: 'gradeTier and subject are required.' });
   const [progress, results] = await Promise.all([
     pool.query(
-      `SELECT lesson_id, completed, completed_at FROM ge10_grade_lesson_progress
+      `SELECT lesson_id, completed, completed_at FROM mkw_grade_lesson_progress
        WHERE user_id = $1 AND grade_tier = $2 AND subject = $3
        ORDER BY completed_at DESC NULLS LAST`,
       [req.profile.id, context.gradeTier, context.subjectId]
     ),
     pool.query(
-      `SELECT lesson_id, score, total, accuracy, completed_at FROM ge10_grade_quiz_results
+      `SELECT lesson_id, score, total, accuracy, completed_at FROM mkw_grade_quiz_results
        WHERE user_id = $1 AND grade_tier = $2 AND subject = $3
        ORDER BY completed_at DESC LIMIT 50`,
       [req.profile.id, context.gradeTier, context.subjectId]
@@ -68,10 +68,10 @@ router.get('/quizzes/random', async (req: any, res) => {
   const result = await pool.query(
     `SELECT id, type, category, topic_id AS "topicId", prompt, options, difficulty, source,
             subject, grade_tier AS "gradeTier", image_url AS "imageUrl"
-     FROM ge10_custom_questions
+     FROM mkw_custom_questions
      WHERE grade_tier = $1 AND subject = $2
        AND (user_id = $3 OR user_id IS NULL OR user_id IN
-         (SELECT id FROM ge10_users WHERE role IN ('truong_vien', 'pho_vien')))
+         (SELECT id FROM mkw_users WHERE role IN ('truong_vien', 'pho_vien')))
      ORDER BY random() LIMIT $4`,
     [context.gradeTier, context.subjectId, req.profile.id, requestedCount]
   );
@@ -86,7 +86,7 @@ router.post('/quizzes/submit', async (req: any, res) => {
   }
   const ids = answers.map((answer: any) => answer.questionId).filter(Boolean);
   const questionResult = await pool.query(
-    `SELECT id, correct_answer, explanation FROM ge10_custom_questions
+    `SELECT id, correct_answer, explanation FROM mkw_custom_questions
      WHERE grade_tier = $1 AND subject = $2 AND id = ANY($3::varchar[])`,
     [context.gradeTier, context.subjectId, ids]
   );
@@ -104,18 +104,18 @@ router.post('/quizzes/submit', async (req: any, res) => {
   try {
     await client.query('BEGIN');
     await client.query(
-      `INSERT INTO ge10_grade_quiz_results
+      `INSERT INTO mkw_grade_quiz_results
        (user_id, grade_tier, subject, lesson_id, score, total, accuracy)
        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [req.profile.id, context.gradeTier, context.subjectId, lessonId, correctCount, answers.length, accuracy]
     );
     await client.query(
-      `INSERT INTO ge10_grade_lesson_progress
+      `INSERT INTO mkw_grade_lesson_progress
        (user_id, grade_tier, subject, lesson_id, completed, completed_at)
        VALUES ($1, $2, $3, $4, $5, CASE WHEN $5 THEN NOW() END)
        ON CONFLICT (user_id, grade_tier, subject, lesson_id) DO UPDATE SET
-         completed = ge10_grade_lesson_progress.completed OR EXCLUDED.completed,
-         completed_at = CASE WHEN EXCLUDED.completed THEN NOW() ELSE ge10_grade_lesson_progress.completed_at END`,
+         completed = mkw_grade_lesson_progress.completed OR EXCLUDED.completed,
+         completed_at = CASE WHEN EXCLUDED.completed THEN NOW() ELSE mkw_grade_lesson_progress.completed_at END`,
       [req.profile.id, context.gradeTier, context.subjectId, lessonId, accuracy >= 70]
     );
     await client.query('COMMIT');
@@ -137,7 +137,7 @@ router.get('/content/all', async (req: any, res) => {
     const [lessonsRes, questionsRes] = await Promise.all([
       pool.query(
         `SELECT id, subject, grade_tier AS "gradeTier", topic, title, theory, category
-         FROM ge10_lessons WHERE grade_tier = $1 AND subject = $2 ORDER BY id`,
+         FROM mkw_lessons WHERE grade_tier = $1 AND subject = $2 ORDER BY id`,
         [context.gradeTier, context.subjectId]
       ),
       pool.query(
@@ -145,10 +145,10 @@ router.get('/content/all', async (req: any, res) => {
                 correct_answer AS "correctAnswer", explanation, difficulty, source,
                 subject, grade_tier AS "gradeTier", image_url AS "imageUrl", metadata,
                 lesson_id AS "lessonId"
-         FROM ge10_custom_questions
+         FROM mkw_custom_questions
          WHERE grade_tier = $1 AND subject = $2
            AND (user_id = $3 OR user_id IS NULL OR user_id IN
-             (SELECT id FROM ge10_users WHERE role IN ('truong_vien', 'pho_vien')))
+             (SELECT id FROM mkw_users WHERE role IN ('truong_vien', 'pho_vien')))
          ORDER BY id`,
         [context.gradeTier, context.subjectId, userId]
       )
@@ -169,7 +169,7 @@ router.get('/content/all', async (req: any, res) => {
 router.get('/handbook-pages', async (req: any, res) => {
   try {
     const result = await pool.query(
-      `SELECT id, category, title, content, audience, bullets FROM ge10_handbook_pages ORDER BY id`
+      `SELECT id, category, title, content, audience, bullets FROM mkw_handbook_pages ORDER BY id`
     );
     return res.json({ success: true, handbookPages: result.rows });
   } catch (error) {
@@ -182,7 +182,7 @@ router.get('/english-island/items', async (req: any, res) => {
   try {
     const result = await pool.query(
       `SELECT id, district_id AS "districtId", type, prompt, options, correct_answer AS "correctAnswer", accepted_answers AS "acceptedAnswers", explanation, speech_text AS "speechText"
-       FROM ge10_english_island_items ORDER BY id`
+       FROM mkw_english_island_items ORDER BY id`
     );
     return res.json({ success: true, items: result.rows });
   } catch (error) {
@@ -197,7 +197,7 @@ router.get('/exam-blueprints', async (req: any, res) => {
   try {
     const result = await pool.query(
       `SELECT id, subject, part, title, focus, common_question_forms AS "commonQuestionForms", answer_modes AS "answerModes", import_hint AS "importHint"
-       FROM ge10_subject_exam_blueprints WHERE subject = $1 ORDER BY id`,
+       FROM mkw_subject_exam_blueprints WHERE subject = $1 ORDER BY id`,
       [subject]
     );
     return res.json({ success: true, subject, blueprints: result.rows });

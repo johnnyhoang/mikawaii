@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_software_engineering (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('software-processes', 'cs_software_engineering', 13, 'Quy trình & Mô hình Phát triển', 'Các mô hình phát triển phần mềm truyền thống Waterfall, mô hình lặp xoắn ốc Spiral và hệ phương pháp Agile/Scrum.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('software-requirements', 'cs_software_engineering', 13, 'Phân tích Yêu cầu & UML', 'Thu thập yêu cầu chức năng/phi chức năng, sơ đồ Use Cases, Class Diagram, Sequence Diagram biểu diễn hệ thống.', 2, 'phong', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_software_engineering (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_se_01', 
@@ -287,8 +287,8 @@ Docker đóng gói ứng dụng cùng toàn bộ môi trường chạy (dependen
     'quality-testing'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_se_01', 'software-processes', 'lesson', 'Các mô hình quy trình phần mềm (Waterfall, V-Model, Spiral)', '{"lesson_id": "cs_se_01"}'::jsonb, 10, 10, 20, 'cs_software_engineering', 13),
   ('act-lesson-cs_se_02', 'software-processes', 'lesson', 'Tuyên ngôn Agile & Quy trình Scrum', '{"lesson_id": "cs_se_02"}'::jsonb, 20, 10, 20, 'cs_software_engineering', 13),

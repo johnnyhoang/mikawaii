@@ -1,5 +1,5 @@
--- Migration: Create ge10_textbook_mappings table
-CREATE TABLE IF NOT EXISTS ge10_textbook_mappings (
+-- Migration: Create mkw_textbook_mappings table
+CREATE TABLE IF NOT EXISTS mkw_textbook_mappings (
     category_key VARCHAR(100) PRIMARY KEY,
     subject VARCHAR(50) NOT NULL,
     loai VARCHAR(100) NOT NULL,

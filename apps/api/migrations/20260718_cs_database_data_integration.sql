@@ -3,8 +3,8 @@
 
 BEGIN;
 
--- 1. Seed ge10_subject_exam_blueprints for cs_database_data
-INSERT INTO ge10_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
+-- 1. Seed mkw_subject_exam_blueprints for cs_database_data
+INSERT INTO mkw_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
 VALUES 
   (
     'cs_database_data', 'Part I', 'Trắc nghiệm Kiến thức & Thiết kế CSDL', 
@@ -37,7 +37,7 @@ ON CONFLICT (id) DO UPDATE SET
   import_hint = EXCLUDED.import_hint;
 
 -- 2. Seed Boss Activities for 4 topics of cs_database_data
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-boss-db-design', 'db-design', 'boss', 'Chúa Tể Dị Thường Dữ Liệu', '{"boss_id": "b-db-design", "boss_tag": "3NF", "energy": 100}'::jsonb, 100, 100, 150, 'cs_database_data', 13),
   ('act-boss-db-query-opt', 'db-query-opt', 'boss', 'Cổ Long Table Scan', '{"boss_id": "b-db-query-opt", "boss_tag": "Index", "energy": 100}'::jsonb, 100, 100, 150, 'cs_database_data', 13),
@@ -55,7 +55,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 3. Seed Quiz Activities for 4 topics of cs_database_data
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-quiz-db-design', 'db-design', 'quiz', 'Hầm ngục Chuẩn hóa & Thiết kế', '{"mode": "grammar", "reward": "Ưu tiên thiết kế CSDL và bảo mật RLS"}'::jsonb, 50, 10, 20, 'cs_database_data', 13),
   ('act-quiz-db-query-opt', 'db-query-opt', 'quiz', 'Đỉnh cao Đánh chỉ mục & Tìm kiếm', '{"mode": "vocabulary", "reward": "Ưu tiên Indexing, EXPLAIN và Full-Text Search"}'::jsonb, 50, 10, 20, 'cs_database_data', 13),
@@ -73,7 +73,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 4. Seed Textbook Mappings for cs_database_data
-INSERT INTO ge10_textbook_mappings (category_key, subject, loai, bai, ham)
+INSERT INTO mkw_textbook_mappings (category_key, subject, loai, bai, ham)
 VALUES
   ('cs-db-design-normalization', 'cs_database_data', 'Thiết kế', 1, 'thach'),
   ('cs-db-indexing-explain', 'cs_database_data', 'Tối ưu hóa', 2, 'hoa'),

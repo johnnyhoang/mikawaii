@@ -4,49 +4,49 @@
 BEGIN;
 
 -- 1. Auto-link questions to their corresponding lessons by lesson_id if not already done
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_01'
 WHERE id BETWEEN 'cs_robint_q_001' AND 'cs_robint_q_010';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_02'
 WHERE id BETWEEN 'cs_robint_q_011' AND 'cs_robint_q_020';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_03'
 WHERE id BETWEEN 'cs_robint_q_021' AND 'cs_robint_q_030';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_04'
 WHERE id BETWEEN 'cs_robint_q_031' AND 'cs_robint_q_040';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_05'
 WHERE id BETWEEN 'cs_robint_q_041' AND 'cs_robint_q_050';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_06'
 WHERE id BETWEEN 'cs_robint_q_051' AND 'cs_robint_q_060';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_07'
 WHERE id BETWEEN 'cs_robint_q_061' AND 'cs_robint_q_070';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_08'
 WHERE id BETWEEN 'cs_robint_q_081' AND 'cs_robint_q_090';
 
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET lesson_id = 'cs_robint_09'
 WHERE id BETWEEN 'cs_robint_q_091' AND 'cs_robint_q_100';
 
 -- 2. Verify all questions of cs_robot_intelligence are correctly associated with grade_tier=13 and subject='cs_robot_intelligence'
-UPDATE ge10_custom_questions
+UPDATE mkw_custom_questions
 SET grade_tier = 13, subject = 'cs_robot_intelligence'
 WHERE id LIKE 'cs_robint_q_%';
 
 -- 3. Create active challenges / activities configs for this subject
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-boss-cs_robint_01', 'slam-localization', 'boss', 'Thử thách Boss: Ma trận EKF SLAM 🪨', '{"boss_id": "boss_robint_slam", "hp": 380, "time_limit": 760}'::jsonb, 100, 55, 110, 'cs_robot_intelligence', 13),
   ('act-boss-cs_robint_02', 'path-planning', 'boss', 'Thử thách Boss: Cây thần RRT* 🔥', '{"boss_id": "boss_robint_plan", "hp": 420, "time_limit": 840}'::jsonb, 100, 60, 120, 'cs_robot_intelligence', 13),

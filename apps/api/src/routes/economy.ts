@@ -17,7 +17,7 @@ router.post('/economy/transaction', async (req: any, res) => {
 
     // Update ruby in player profile
     const result = await pool.query(
-      `UPDATE ge10_player_profiles SET ruby = GREATEST(0, ruby + $1) WHERE user_id = $2 RETURNING ruby`,
+      `UPDATE mkw_player_profiles SET ruby = GREATEST(0, ruby + $1) WHERE user_id = $2 RETURNING ruby`,
       [amount, profileId]
     );
     const newRuby = result.rows[0]?.ruby ?? 0;

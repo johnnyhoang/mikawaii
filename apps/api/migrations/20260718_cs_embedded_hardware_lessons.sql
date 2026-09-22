@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_embedded_hardware (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('mcu-peripherals', 'cs_embedded_hardware', 13, 'Vi điều khiển & Ngoại vi', 'Kiến trúc MCU STM32/ESP32, ngắt ISR, DMA, ADC/DAC, bộ đếm xung encoder, xung PWM.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('serial-bus', 'cs_embedded_hardware', 13, 'Bus giao tiếp nối tiếp', 'Các chuẩn giao tiếp nối tiếp UART, I2C, SPI và mạng điều khiển công nghiệp CAN bus.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_embedded_hardware (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_embhar_01', 
@@ -246,8 +246,8 @@ $$y[n] = \frac{1}{N} \sum_{i=0}^{N-1} x[n - i]$$
     'mcu-peripherals'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_embhar_01', 'mcu-peripherals', 'lesson', 'Kiến trúc Vi điều khiển (MCU) STM32 & ESP32', '{"lesson_id": "cs_embhar_01"}'::jsonb, 10, 10, 20, 'cs_embedded_hardware', 13),
   ('act-lesson-cs_embhar_02', 'serial-bus', 'lesson', 'Chuẩn giao tiếp UART, SPI & I2C', '{"lesson_id": "cs_embhar_02"}'::jsonb, 10, 10, 20, 'cs_embedded_hardware', 13),

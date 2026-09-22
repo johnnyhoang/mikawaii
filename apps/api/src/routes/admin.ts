@@ -24,8 +24,8 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
       const usersRes = await pool.query(`
         SELECT u.id, u.name, u.email, u.avatar_url, u.role,
                p.level, p.xp, p.ruby, p.streak, p.energy, p.max_energy, p.reset_hours
-        FROM ge10_users u
-        LEFT JOIN ge10_player_profiles p ON u.id = p.user_id
+        FROM mkw_users u
+        LEFT JOIN mkw_player_profiles p ON u.id = p.user_id
         WHERE u.is_active = TRUE
         ORDER BY u.role, u.name
       `);
@@ -34,9 +34,9 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
         SELECT l.id, l.tutor_id, l.student_id, l.link_type, l.status,
                u_parent.name as tutor_name, u_parent.role as tutor_role,
                u_student.name as student_name, u_student.role as student_role
-        FROM ge10_class_links l
-        JOIN ge10_users u_parent ON l.tutor_id = u_parent.id
-        JOIN ge10_users u_student ON l.student_id = u_student.id
+        FROM mkw_class_links l
+        JOIN mkw_users u_parent ON l.tutor_id = u_parent.id
+        JOIN mkw_users u_student ON l.student_id = u_student.id
         WHERE l.status = 'active'
       `);
 
@@ -46,9 +46,9 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
       const studentsRes = await pool.query(`
         SELECT DISTINCT u.id, u.name, u.email, u.avatar_url, u.role,
                p.level, p.xp, p.ruby, p.streak, p.energy, p.max_energy, p.reset_hours
-        FROM ge10_users u
-        JOIN ge10_class_links l ON u.id = l.student_id
-        LEFT JOIN ge10_player_profiles p ON u.id = p.user_id
+        FROM mkw_users u
+        JOIN mkw_class_links l ON u.id = l.student_id
+        LEFT JOIN mkw_player_profiles p ON u.id = p.user_id
         WHERE l.tutor_id = $1 AND l.status = 'active' AND u.is_active = TRUE
       `, [callerProfileId]);
 
@@ -58,7 +58,7 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
       // Thêm chính profile của giáo viên gọi API
       const callerProfileRes = await pool.query(`
         SELECT u.id, u.name, u.email, u.avatar_url, u.role
-        FROM ge10_users u
+        FROM mkw_users u
         WHERE u.id = $1
       `, [callerProfileId]);
       if ((callerProfileRes.rowCount ?? 0) > 0) {
@@ -71,8 +71,8 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
         // Lấy thêm các giáo viên phụ/co-teachers quản lý chung các học sinh này
         const coTeachersRes = await pool.query(`
           SELECT DISTINCT u.id, u.name, u.email, u.avatar_url, u.role
-          FROM ge10_users u
-          JOIN ge10_class_links l ON u.id = l.tutor_id
+          FROM mkw_users u
+          JOIN mkw_class_links l ON u.id = l.tutor_id
           WHERE l.student_id = ANY($1) AND l.status = 'active' AND u.id != $2 AND u.is_active = TRUE
         `, [studentIds, callerProfileId]);
 
@@ -81,7 +81,7 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
         // Lấy thêm Ban Lãnh Đạo Viện (Viện Trưởng/Viện Phó) để giáo viên liên hệ
         const adminsRes = await pool.query(`
           SELECT u.id, u.name, u.email, u.avatar_url, u.role
-          FROM ge10_users u
+          FROM mkw_users u
           WHERE u.role IN ('truong_vien', 'pho_vien') AND u.is_active = TRUE
         `);
         relatedUsers.push(...adminsRes.rows);
@@ -91,9 +91,9 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
           SELECT l.id, l.tutor_id, l.student_id, l.link_type, l.status,
                  u_parent.name as tutor_name, u_parent.role as tutor_role,
                  u_student.name as student_name, u_student.role as student_role
-          FROM ge10_class_links l
-          JOIN ge10_users u_parent ON l.tutor_id = u_parent.id
-          JOIN ge10_users u_student ON l.student_id = u_student.id
+          FROM mkw_class_links l
+          JOIN mkw_users u_parent ON l.tutor_id = u_parent.id
+          JOIN mkw_users u_student ON l.student_id = u_student.id
           WHERE l.student_id = ANY($1) AND l.status = 'active'
         `, [studentIds]);
 
@@ -102,7 +102,7 @@ router.get('/admin/users', authMiddleware, async (req: any, res) => {
         // Nếu lớp trống, vẫn trả về Ban Lãnh Đạo Viện để giáo viên liên hệ
         const adminsRes = await pool.query(`
           SELECT u.id, u.name, u.email, u.avatar_url, u.role
-          FROM ge10_users u
+          FROM mkw_users u
           WHERE u.role IN ('truong_vien', 'pho_vien') AND u.is_active = TRUE
         `);
         relatedUsers.push(...adminsRes.rows);
@@ -131,7 +131,7 @@ router.get('/admin/users-all', authMiddleware, async (req: any, res) => {
 
     // Trả về tất cả profiles kể cả inactive — RoleManager sẽ group theo account_id
     const usersRes = await pool.query(
-      'SELECT id, account_id, name, email, avatar_url, role, is_active, created_at FROM ge10_users ORDER BY account_id, created_at'
+      'SELECT id, account_id, name, email, avatar_url, role, is_active, created_at FROM mkw_users ORDER BY account_id, created_at'
     );
     res.json({ users: usersRes.rows });
   } catch (error: any) {
@@ -155,7 +155,7 @@ router.post('/admin/update-user-role', authMiddleware, async (req: any, res) => 
 
     // Lấy thông tin cơ bản từ một profile bất kỳ của tài khoản targetAccountId để lấy email, avatar_url, name
     const infoRes = await pool.query(
-      'SELECT name, email, avatar_url FROM ge10_users WHERE account_id = $1 LIMIT 1',
+      'SELECT name, email, avatar_url FROM mkw_users WHERE account_id = $1 LIMIT 1',
       [targetAccountId]
     );
     if (infoRes.rows.length === 0) {
@@ -165,7 +165,7 @@ router.post('/admin/update-user-role', authMiddleware, async (req: any, res) => 
 
     // Tìm profile hiện tại của roleKey cho tài khoản đó
     const profileCheck = await pool.query(
-      'SELECT id, is_active FROM ge10_users WHERE account_id = $1 AND role = $2',
+      'SELECT id, is_active FROM mkw_users WHERE account_id = $1 AND role = $2',
       [targetAccountId, roleKey]
     );
 
@@ -173,7 +173,7 @@ router.post('/admin/update-user-role', authMiddleware, async (req: any, res) => 
       if (profileCheck.rows.length > 0) {
         // Đã có profile -> Kích hoạt lại
         const existing = profileCheck.rows[0];
-        await pool.query('UPDATE ge10_users SET is_active = TRUE WHERE id = $1', [existing.id]);
+        await pool.query('UPDATE mkw_users SET is_active = TRUE WHERE id = $1', [existing.id]);
       } else {
         // Chưa có profile -> Tạo profile mới
         const newProfileId = `u-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -189,20 +189,20 @@ router.post('/admin/update-user-role', authMiddleware, async (req: any, res) => 
         const finalName = roleSuffix ? `${cleanName} (${roleSuffix})` : cleanName;
 
         await pool.query(
-          `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+          `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
            VALUES ($1, $2, $3, $4, $5, $6, TRUE)`,
           [newProfileId, targetAccountId, finalName, baseInfo.email, baseInfo.avatar_url, roleKey]
         );
 
         // Khởi tạo các bảng phụ thuộc cho profile mới
-        await pool.query(`INSERT INTO ge10_player_profiles (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [newProfileId]);
-        await pool.query(`INSERT INTO ge10_pet_states (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [newProfileId]);
+        await pool.query(`INSERT INTO mkw_player_profiles (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [newProfileId]);
+        await pool.query(`INSERT INTO mkw_pet_states (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [newProfileId]);
       }
     } else {
       // Vô hiệu hóa
       if (profileCheck.rows.length > 0) {
         const existing = profileCheck.rows[0];
-        await pool.query('UPDATE ge10_users SET is_active = FALSE WHERE id = $1', [existing.id]);
+        await pool.query('UPDATE mkw_users SET is_active = FALSE WHERE id = $1', [existing.id]);
       }
     }
 
@@ -223,8 +223,8 @@ router.get('/admin/vice-principal-applications', authMiddleware, async (req: any
     const appsRes = await pool.query(`
       SELECT l.id, l.status, l.created_at, 
              u.id as teacher_id, u.name as teacher_name, u.email as teacher_email, u.avatar_url as teacher_avatar, u.account_id as teacher_account_id
-      FROM ge10_class_links l
-      JOIN ge10_users u ON l.tutor_id = u.id
+      FROM mkw_class_links l
+      JOIN mkw_users u ON l.tutor_id = u.id
       WHERE l.link_type = 'vice_principal' AND l.status = 'pending'
       ORDER BY l.created_at DESC
     `);
@@ -249,7 +249,7 @@ router.post('/admin/respond-vice-principal', authMiddleware, async (req: any, re
 
     // 1. Lấy thông tin đơn ứng tuyển
     const appCheck = await pool.query(
-      "SELECT * FROM ge10_class_links WHERE id = $1 AND link_type = 'vice_principal' AND status = 'pending'",
+      "SELECT * FROM mkw_class_links WHERE id = $1 AND link_type = 'vice_principal' AND status = 'pending'",
       [applicationId]
     );
     if (appCheck.rowCount === 0) {
@@ -260,7 +260,7 @@ router.post('/admin/respond-vice-principal', authMiddleware, async (req: any, re
 
     // 2. Lấy thông tin tài khoản giáo viên
     const teacherRes = await pool.query(
-      "SELECT account_id, name, email, avatar_url FROM ge10_users WHERE id = $1",
+      "SELECT account_id, name, email, avatar_url FROM mkw_users WHERE id = $1",
       [teacherProfileId]
     );
     if (teacherRes.rows.length === 0) {
@@ -272,7 +272,7 @@ router.post('/admin/respond-vice-principal', authMiddleware, async (req: any, re
     if (accept) {
       // 3. Kích hoạt hoặc Tạo mới profile pho_vien (Viện Phó) cho tài khoản này
       const profileCheck = await pool.query(
-        "SELECT id FROM ge10_users WHERE account_id = $1 AND role = 'pho_vien'",
+        "SELECT id FROM mkw_users WHERE account_id = $1 AND role = 'pho_vien'",
         [targetAccountId]
       );
 
@@ -280,7 +280,7 @@ router.post('/admin/respond-vice-principal', authMiddleware, async (req: any, re
       if (profileCheck.rows.length > 0) {
         // Đã từng có profile -> Kích hoạt lại
         targetProfileId = profileCheck.rows[0].id;
-        await pool.query("UPDATE ge10_users SET is_active = TRUE WHERE id = $1", [targetProfileId]);
+        await pool.query("UPDATE mkw_users SET is_active = TRUE WHERE id = $1", [targetProfileId]);
       } else {
         // Chưa có profile -> Tạo mới profile Viện Phó
         targetProfileId = `u-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -288,23 +288,23 @@ router.post('/admin/respond-vice-principal', authMiddleware, async (req: any, re
         const finalName = `${cleanName} (Viện Phó)`;
 
         await pool.query(
-          `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+          `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
            VALUES ($1, $2, $3, $4, $5, 'pho_vien', TRUE)`,
           [targetProfileId, targetAccountId, finalName, teacherInfo.email, teacherInfo.avatar_url]
         );
 
         // Khởi tạo player_profile & pet_state
-        await pool.query(`INSERT INTO ge10_player_profiles (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [targetProfileId]);
-        await pool.query(`INSERT INTO ge10_pet_states (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [targetProfileId]);
+        await pool.query(`INSERT INTO mkw_player_profiles (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [targetProfileId]);
+        await pool.query(`INSERT INTO mkw_pet_states (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [targetProfileId]);
       }
 
       // Cập nhật trạng thái đơn ứng tuyển sang active
-      await pool.query("UPDATE ge10_class_links SET status = 'active' WHERE id = $1", [applicationId]);
+      await pool.query("UPDATE mkw_class_links SET status = 'active' WHERE id = $1", [applicationId]);
 
       // Tự động kết nối đồng hành Ban Lãnh Đạo Viện
       const adminConnId = `lnk-adm-${Date.now()}`;
       await pool.query(
-        `INSERT INTO ge10_class_links (id, tutor_id, student_id, status, link_type)
+        `INSERT INTO mkw_class_links (id, tutor_id, student_id, status, link_type)
          VALUES ($1, $2, $3, 'active', 'admin_connection')
          ON CONFLICT (tutor_id, student_id) DO UPDATE SET status = 'active'`,
         [adminConnId, req.profile.id, targetProfileId]
@@ -313,7 +313,7 @@ router.post('/admin/respond-vice-principal', authMiddleware, async (req: any, re
       await logAuditEvent(teacherProfileId, 'approve_vice_principal_request', null, { applicationId });
     } else {
       // Từ chối: Xóa đơn ứng tuyển
-      await pool.query("DELETE FROM ge10_class_links WHERE id = $1", [applicationId]);
+      await pool.query("DELETE FROM mkw_class_links WHERE id = $1", [applicationId]);
       await logAuditEvent(teacherProfileId, 'reject_vice_principal_request', null, { applicationId });
     }
 
@@ -331,7 +331,7 @@ router.get('/admin/audit-logs', authMiddleware, async (req: any, res) => {
       return res.status(403).json({ error: 'Forbidden: Ban Lãnh Đạo Viện mới có quyền truy cập nhật ký.' });
     }
 
-    const logsRes = await pool.query('SELECT * FROM ge10_audit_logs ORDER BY created_at DESC LIMIT 200');
+    const logsRes = await pool.query('SELECT * FROM mkw_audit_logs ORDER BY created_at DESC LIMIT 200');
     res.json(logsRes.rows);
   } catch (error) {
     console.error('Error fetching audit logs:', error);
@@ -354,7 +354,7 @@ router.post('/admin/deliver-reward', authMiddleware, async (req: any, res) => {
     }
 
     const redemptionRes = await pool.query(
-      'SELECT reward_title FROM ge10_reward_redemptions WHERE id = $1 AND user_id = $2 AND status = \'pending\'',
+      'SELECT reward_title FROM mkw_reward_redemptions WHERE id = $1 AND user_id = $2 AND status = \'pending\'',
       [redemptionId, studentUserId]
     );
     if (redemptionRes.rowCount === 0) {
@@ -368,13 +368,13 @@ router.post('/admin/deliver-reward', authMiddleware, async (req: any, res) => {
 
       const deliveredAt = Date.now();
       await client.query(
-        "UPDATE ge10_reward_redemptions SET status = 'delivered', delivered_at = $1 WHERE id = $2 AND user_id = $3",
+        "UPDATE mkw_reward_redemptions SET status = 'delivered', delivered_at = $1 WHERE id = $2 AND user_id = $3",
         [deliveredAt, redemptionId, studentUserId]
       );
 
       const logId = `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
       await client.query(
-        `INSERT INTO ge10_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed)
+        `INSERT INTO mkw_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
         [
           logId,
@@ -417,7 +417,7 @@ router.post('/admin/cancel-redemption', authMiddleware, async (req: any, res) =>
     }
 
     const redemptionRes = await pool.query(
-      'SELECT reward_id, reward_title, cost_ruby FROM ge10_reward_redemptions WHERE id = $1 AND user_id = $2 AND status = \'pending\'',
+      'SELECT reward_id, reward_title, cost_ruby FROM mkw_reward_redemptions WHERE id = $1 AND user_id = $2 AND status = \'pending\'',
       [redemptionId, studentUserId]
     );
     if (redemptionRes.rowCount === 0) {
@@ -429,25 +429,25 @@ router.post('/admin/cancel-redemption', authMiddleware, async (req: any, res) =>
     try {
       await client.query('BEGIN');
 
-      await client.query('DELETE FROM ge10_reward_redemptions WHERE id = $1 AND user_id = $2', [redemptionId, studentUserId]);
+      await client.query('DELETE FROM mkw_reward_redemptions WHERE id = $1 AND user_id = $2', [redemptionId, studentUserId]);
 
       // Hoàn Ruby — được phép âm/dương tùy tình huống, không kẹp đáy (CORE_SPECS §3.1).
       await client.query(
-        'UPDATE ge10_player_profiles SET ruby = ruby + $1 WHERE user_id = $2',
+        'UPDATE mkw_player_profiles SET ruby = ruby + $1 WHERE user_id = $2',
         [cost_ruby, studentUserId]
       );
 
       if (reward_id) {
         // Không giới hạn (is_unlimited) thì không có tồn kho để hoàn lại.
         await client.query(
-          'UPDATE ge10_school_reward_templates SET remaining_quantity = remaining_quantity + 1 WHERE id = $1 AND is_unlimited = FALSE',
+          'UPDATE mkw_school_reward_templates SET remaining_quantity = remaining_quantity + 1 WHERE id = $1 AND is_unlimited = FALSE',
           [reward_id]
         );
       }
 
       const logId = `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
       await client.query(
-        `INSERT INTO ge10_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed)
+        `INSERT INTO mkw_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
         [
           logId,
@@ -489,7 +489,7 @@ router.post('/admin/refill-energy', authMiddleware, async (req: any, res: any) =
       return res.status(403).json({ error: 'Forbidden: You do not have permission to configure energy for this student.' });
     }
 
-    const currentRes = await pool.query('SELECT energy, max_energy FROM ge10_player_profiles WHERE user_id = $1', [studentUserId]);
+    const currentRes = await pool.query('SELECT energy, max_energy FROM mkw_player_profiles WHERE user_id = $1', [studentUserId]);
     if (currentRes.rowCount === 0) {
       return res.status(404).json({ error: 'Student profile not found.' });
     }
@@ -506,14 +506,14 @@ router.post('/admin/refill-energy', authMiddleware, async (req: any, res: any) =
     }
 
     await pool.query(
-      'UPDATE ge10_player_profiles SET energy = $2, energy_depleted_at = CASE WHEN $2 > 0 THEN NULL ELSE energy_depleted_at END, server_updated_at = NOW() WHERE user_id = $1',
+      'UPDATE mkw_player_profiles SET energy = $2, energy_depleted_at = CASE WHEN $2 > 0 THEN NULL ELSE energy_depleted_at END, server_updated_at = NOW() WHERE user_id = $1',
       [studentUserId, targetEnergy]
     );
 
     // Log the energy refill log
     const logId = `log-refill-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     await pool.query(
-      `INSERT INTO ge10_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed, wallet_changed)
+      `INSERT INTO mkw_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed, wallet_changed)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
       [
         logId,
@@ -556,7 +556,7 @@ router.post('/admin/set-energy-config', authMiddleware, async (req: any, res: an
     const allowedResetHours = [2, 3, 5];
     const normalizedResetHours = allowedResetHours.includes(Number(resetHours)) ? Number(resetHours) : 3;
 
-    const currentRes = await pool.query('SELECT energy FROM ge10_player_profiles WHERE user_id = $1', [studentUserId]);
+    const currentRes = await pool.query('SELECT energy FROM mkw_player_profiles WHERE user_id = $1', [studentUserId]);
     if (currentRes.rowCount === 0) {
       return res.status(404).json({ error: 'Student profile not found.' });
     }
@@ -565,7 +565,7 @@ router.post('/admin/set-energy-config', authMiddleware, async (req: any, res: an
     const clampedEnergy = Math.min(currentRes.rows[0].energy, clampedMax);
 
     await pool.query(
-      'UPDATE ge10_player_profiles SET max_energy = $2, reset_hours = $3, energy = $4, server_updated_at = NOW() WHERE user_id = $1',
+      'UPDATE mkw_player_profiles SET max_energy = $2, reset_hours = $3, energy = $4, server_updated_at = NOW() WHERE user_id = $1',
       [studentUserId, clampedMax, normalizedResetHours, clampedEnergy]
     );
 
@@ -664,18 +664,18 @@ router.get('/admin/student-profile', authMiddleware, async (req: any, res) => {
       return res.status(403).json({ error: 'Forbidden: You do not have permission to view this student profile.' });
     }
 
-    const userRes = await pool.query('SELECT id, name, email, avatar_url, role FROM ge10_users WHERE id = $1', [studentUserId]);
+    const userRes = await pool.query('SELECT id, name, email, avatar_url, role FROM mkw_users WHERE id = $1', [studentUserId]);
     if (userRes.rowCount === 0) {
       return res.status(404).json({ error: 'Student not found.' });
     }
     const userRow = userRes.rows[0];
 
-    const playerRes = await pool.query('SELECT * FROM ge10_player_profiles WHERE user_id = $1', [studentUserId]);
-    const petRes = await pool.query('SELECT * FROM ge10_pet_states WHERE user_id = $1', [studentUserId]);
-    const statsRes = await pool.query('SELECT * FROM ge10_category_stats WHERE user_id = $1', [studentUserId]);
-    const logsRes = await pool.query('SELECT * FROM ge10_history_logs WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 100', [studentUserId]);
-    const rewardsRes = await pool.query('SELECT * FROM ge10_school_reward_templates ORDER BY created_at DESC');
-    const redemptionsRes = await pool.query('SELECT * FROM ge10_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [studentUserId]);
+    const playerRes = await pool.query('SELECT * FROM mkw_player_profiles WHERE user_id = $1', [studentUserId]);
+    const petRes = await pool.query('SELECT * FROM mkw_pet_states WHERE user_id = $1', [studentUserId]);
+    const statsRes = await pool.query('SELECT * FROM mkw_category_stats WHERE user_id = $1', [studentUserId]);
+    const logsRes = await pool.query('SELECT * FROM mkw_history_logs WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 100', [studentUserId]);
+    const rewardsRes = await pool.query('SELECT * FROM mkw_school_reward_templates ORDER BY created_at DESC');
+    const redemptionsRes = await pool.query('SELECT * FROM mkw_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [studentUserId]);
 
     const categoryStats: any = {};
     statsRes.rows.forEach((row: any) => {
@@ -759,13 +759,13 @@ router.get('/admin/lessons', authMiddleware, async (req: any, res) => {
   if (![6, 7, 8, 9, 10, 11, 12].includes(gradeTier)) return res.status(400).json({ error: 'gradeTier is required.' });
   try {
     const check = await pool.query(
-      "SELECT id FROM ge10_users WHERE id = $1 AND is_active = TRUE AND role IN ('tutor', 'secondary_tutor', 'truong_vien', 'pho_vien')",
+      "SELECT id FROM mkw_users WHERE id = $1 AND is_active = TRUE AND role IN ('tutor', 'secondary_tutor', 'truong_vien', 'pho_vien')",
       [accountId]
     );
     if (check.rowCount === 0) {
       return res.status(403).json({ error: 'Forbidden: Bạn không có quyền truy cập.' });
     }
-    const lessonsRes = await pool.query('SELECT * FROM ge10_lessons WHERE grade_tier = $1 ORDER BY created_at DESC', [gradeTier]);
+    const lessonsRes = await pool.query('SELECT * FROM mkw_lessons WHERE grade_tier = $1 ORDER BY created_at DESC', [gradeTier]);
     res.json(lessonsRes.rows);
   } catch (error: any) {
     console.error('Error fetching lessons:', error);
@@ -800,7 +800,7 @@ router.post('/admin/lessons', authMiddleware, async (req: any, res) => {
     const scopeCode = buildScopeCode(subject, Number(gradeTier), loai, parsedBai);
 
     await pool.query(
-      `INSERT INTO ge10_lessons (id, subject, grade_tier, category, topic, title, theory, is_standard, loai, bai, ham_nguyen_to, topic_id, scope_code, chapter_name, lesson_name)
+      `INSERT INTO mkw_lessons (id, subject, grade_tier, category, topic, title, theory, is_standard, loai, bai, ham_nguyen_to, topic_id, scope_code, chapter_name, lesson_name)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`,
       [
         lessonId,
@@ -849,7 +849,7 @@ router.put('/admin/lessons/:lessonId', authMiddleware, async (req: any, res) => 
     const scopeCode = buildScopeCode(subject, Number(gradeTier), loai, parsedBai);
 
     const updateRes = await pool.query(
-      `UPDATE ge10_lessons 
+      `UPDATE mkw_lessons 
        SET subject = $1, grade_tier = $2, category = $3, topic = $4, title = $5, theory = $6, is_standard = $7, loai = $8, bai = $9, ham_nguyen_to = $10, topic_id = $11, scope_code = $12, chapter_name = $13, lesson_name = $14
        WHERE id = $15`,
       [
@@ -894,7 +894,7 @@ router.delete('/admin/lessons/:lessonId', authMiddleware, async (req: any, res) 
     }
     const actorProfileId = accountId;
 
-    const deleteRes = await pool.query('DELETE FROM ge10_lessons WHERE id = $1', [lessonId]);
+    const deleteRes = await pool.query('DELETE FROM mkw_lessons WHERE id = $1', [lessonId]);
     if (deleteRes.rowCount === 0) {
       return res.status(404).json({ error: 'Bài giảng không tồn tại.' });
     }
@@ -908,7 +908,7 @@ router.delete('/admin/lessons/:lessonId', authMiddleware, async (req: any, res) 
 });
 
 // ─────────────────────────────────────────────
-// Danh Mục Quà Khuyến Học CHUNG của trường (ge10_school_reward_templates) — CRUD chỉ dành
+// Danh Mục Quà Khuyến Học CHUNG của trường (mkw_school_reward_templates) — CRUD chỉ dành
 // cho Viện Trưởng/Viện Phó. Đây là nguồn duy nhất (không còn hardcode trong code):
 // giáo viên mới clone từ đây khi tạo hồ sơ; học sinh mồ côi đọc thẳng bảng này.
 // ─────────────────────────────────────────────
@@ -925,7 +925,7 @@ async function requireAcademyAdmin(req: any, res: any): Promise<boolean> {
 router.get('/admin/school-rewards', async (req: any, res) => {
   if (!(await requireAcademyAdmin(req, res))) return;
   try {
-    const result = await pool.query('SELECT * FROM ge10_school_reward_templates ORDER BY created_at DESC');
+    const result = await pool.query('SELECT * FROM mkw_school_reward_templates ORDER BY created_at DESC');
     res.json({ rewards: result.rows });
   } catch (error: any) {
     console.error('Error fetching school reward templates:', error.message);
@@ -946,7 +946,7 @@ router.post('/admin/school-rewards', async (req: any, res) => {
   try {
     const id = `sch-rew-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
     await pool.query(
-      `INSERT INTO ge10_school_reward_templates (id, title, cost_ruby, quantity, remaining_quantity, is_unlimited, created_at)
+      `INSERT INTO mkw_school_reward_templates (id, title, cost_ruby, quantity, remaining_quantity, is_unlimited, created_at)
        VALUES ($1, $2, $3, $4, $4, $5, $6)`,
       [id, title.trim(), costRuby, quantity, isUnlimited, Date.now()]
     );
@@ -967,7 +967,7 @@ router.put('/admin/school-rewards/:id', async (req: any, res) => {
   const isUnlimited = typeof req.body.isUnlimited === 'boolean' ? req.body.isUnlimited : null;
   try {
     const result = await pool.query(
-      `UPDATE ge10_school_reward_templates
+      `UPDATE mkw_school_reward_templates
        SET title = COALESCE($1, title),
            cost_ruby = COALESCE($2, cost_ruby),
            quantity = COALESCE($3, quantity),
@@ -991,7 +991,7 @@ router.delete('/admin/school-rewards/:id', async (req: any, res) => {
   if (!(await requireAcademyAdmin(req, res))) return;
   const { id } = req.params;
   try {
-    const result = await pool.query('DELETE FROM ge10_school_reward_templates WHERE id = $1', [id]);
+    const result = await pool.query('DELETE FROM mkw_school_reward_templates WHERE id = $1', [id]);
     if (result.rowCount === 0) return res.status(404).json({ error: 'Reward template not found.' });
     await logAuditEvent(req.profile.id, 'delete_school_reward', id, {});
     res.json({ success: true });

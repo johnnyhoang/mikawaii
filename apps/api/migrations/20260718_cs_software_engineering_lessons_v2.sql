@@ -7,7 +7,7 @@ BEGIN;
 -- ==========================================
 -- BÃ€I 1: Waterfall, V-Model, Spiral
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_01', 'cs_software_engineering', 13,
   'Quy trÃ¬nh & MÃ´ hÃ¬nh PhÃ¡t triá»ƒn',
@@ -23,7 +23,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 2: Agile & Scrum
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_02', 'cs_software_engineering', 13,
   'Quy trÃ¬nh & MÃ´ hÃ¬nh PhÃ¡t triá»ƒn',
@@ -39,7 +39,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 3: YÃªu cáº§u & UML Use Case / Class
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_03', 'cs_software_engineering', 13,
   'PhÃ¢n tÃ­ch YÃªu cáº§u & UML',
@@ -55,7 +55,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 4: Kiáº¿n trÃºc Monolith vs Microservices & MVC
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_04', 'cs_software_engineering', 13,
   'Kiáº¿n trÃºc & Máº«u thiáº¿t káº¿ (Design Patterns)',
@@ -71,7 +71,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 5: Design Patterns GoF
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_05', 'cs_software_engineering', 13,
   'Kiáº¿n trÃºc & Máº«u thiáº¿t káº¿ (Design Patterns)',
@@ -87,7 +87,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 6: NguyÃªn lÃ½ SOLID
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_06', 'cs_software_engineering', 13,
   'Kiá»ƒm thá»­, SOLID & CI/CD',
@@ -103,7 +103,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 7: Kiá»ƒm thá»­ pháº§n má»m
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_07', 'cs_software_engineering', 13,
   'Kiá»ƒm thá»­, SOLID & CI/CD',
@@ -119,7 +119,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 8: CI/CD & DevOps
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_08', 'cs_software_engineering', 13,
   'Kiá»ƒm thá»­, SOLID & CI/CD',
@@ -135,7 +135,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 9: Sequence Diagram & Thiáº¿t káº¿ API
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_09', 'cs_software_engineering', 13,
   'PhÃ¢n tÃ­ch YÃªu cáº§u & UML',
@@ -151,7 +151,7 @@ ON CONFLICT (id) DO UPDATE SET theory = EXCLUDED.theory, examples = EXCLUDED.exa
 -- ==========================================
 -- BÃ€I 10: Code Review, Refactoring & Tech Debt
 -- ==========================================
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES (
   'cs_se_10', 'cs_software_engineering', 13,
   'Kiá»ƒm thá»­, SOLID & CI/CD',

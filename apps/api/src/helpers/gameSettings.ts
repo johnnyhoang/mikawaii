@@ -28,7 +28,7 @@ export const loadAllGameSettings = async (): Promise<GameSettings> => {
     return cachedSettings;
   }
 
-  const res = await pool.query('SELECT setting_key, setting_json FROM ge10_game_settings');
+  const res = await pool.query('SELECT setting_key, setting_json FROM mkw_game_settings');
   const settingsMap: Record<string, any> = {};
   res.rows.forEach(row => {
     settingsMap[row.setting_key] = row.setting_json;
@@ -92,7 +92,7 @@ export const loadChallengeTemplates = async (): Promise<any[]> => {
     return cachedChallengeTemplates;
   }
 
-  const res = await pool.query('SELECT * FROM ge10_challenge_templates ORDER BY sort_order');
+  const res = await pool.query('SELECT * FROM mkw_challenge_templates ORDER BY sort_order');
   cachedChallengeTemplates = res.rows.map(row => ({
     id: row.id,
     type: row.type,
@@ -113,7 +113,7 @@ export const loadChallengeTemplates = async (): Promise<any[]> => {
 export const ensureInitialChallenges = async (profileId: string) => {
   const templates = await loadChallengeTemplates();
   await pool.query(
-    `INSERT INTO ge10_user_challenges (user_id, challenges_json)
+    `INSERT INTO mkw_user_challenges (user_id, challenges_json)
      VALUES ($1, $2)
      ON CONFLICT (user_id) DO NOTHING`,
     [profileId, JSON.stringify(templates)]
@@ -122,7 +122,7 @@ export const ensureInitialChallenges = async (profileId: string) => {
 
 export const saveThemeUnlockCost = async (themeUnlockCost: number) => {
   await pool.query(
-    `INSERT INTO ge10_game_settings (setting_key, setting_json)
+    `INSERT INTO mkw_game_settings (setting_key, setting_json)
      VALUES ('theme_unlock_cost', $1::jsonb)
      ON CONFLICT (setting_key) DO UPDATE SET setting_json = EXCLUDED.setting_json`,
     [JSON.stringify({ value: themeUnlockCost })]
@@ -132,7 +132,7 @@ export const saveThemeUnlockCost = async (themeUnlockCost: number) => {
 
 export const saveBaseXP = async (baseXP: number) => {
   await pool.query(
-    `INSERT INTO ge10_game_settings (setting_key, setting_json)
+    `INSERT INTO mkw_game_settings (setting_key, setting_json)
      VALUES ('base_xp', $1::jsonb)
      ON CONFLICT (setting_key) DO UPDATE SET setting_json = EXCLUDED.setting_json`,
     [JSON.stringify({ value: baseXP })]
@@ -142,7 +142,7 @@ export const saveBaseXP = async (baseXP: number) => {
 
 export const saveBaseRuby = async (baseRuby: number) => {
   await pool.query(
-    `INSERT INTO ge10_game_settings (setting_key, setting_json)
+    `INSERT INTO mkw_game_settings (setting_key, setting_json)
      VALUES ('base_ruby', $1::jsonb)
      ON CONFLICT (setting_key) DO UPDATE SET setting_json = EXCLUDED.setting_json`,
     [JSON.stringify({ value: baseRuby })]
@@ -152,7 +152,7 @@ export const saveBaseRuby = async (baseRuby: number) => {
 
 export const saveBossCompletionBonusRuby = async (bossCompletionBonusRuby: [number, number, number]) => {
   await pool.query(
-    `INSERT INTO ge10_game_settings (setting_key, setting_json)
+    `INSERT INTO mkw_game_settings (setting_key, setting_json)
      VALUES ('boss_completion_bonus_ruby', $1::jsonb)
      ON CONFLICT (setting_key) DO UPDATE SET setting_json = EXCLUDED.setting_json`,
     [JSON.stringify({ easy: bossCompletionBonusRuby[0], medium: bossCompletionBonusRuby[1], hard: bossCompletionBonusRuby[2] })]
@@ -162,7 +162,7 @@ export const saveBossCompletionBonusRuby = async (bossCompletionBonusRuby: [numb
 
 export const saveChallengeEnergyCosts = async (challengeEnergyCosts: [number, number, number, number]) => {
   await pool.query(
-    `INSERT INTO ge10_game_settings (setting_key, setting_json)
+    `INSERT INTO mkw_game_settings (setting_key, setting_json)
      VALUES ('challenge_energy_costs', $1::jsonb)
      ON CONFLICT (setting_key) DO UPDATE SET setting_json = EXCLUDED.setting_json`,
     [JSON.stringify({ 1: challengeEnergyCosts[0], 2: challengeEnergyCosts[1], 3: challengeEnergyCosts[2], 4: challengeEnergyCosts[3] })]

@@ -185,7 +185,7 @@ export const QuestionFormModal: React.FC<QuestionFormModalProps> = ({
         const token = session.data.session?.access_token;
         if (!token) return;
         const res = await fetch(`${backendUrl}/api/curriculum/textbooks?subject=${editSubject}&gradeTier=${editGradeTier}`, {
-          headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('ge10_selected_profile_id') || '' }
+          headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('mkw_selected_profile_id') || '' }
         });
         if (res.ok) {
           const data = await res.json();

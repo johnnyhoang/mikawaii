@@ -7,7 +7,7 @@ WITH content AS (
     examples jsonb, practice_points jsonb, difficulty integer, is_standard boolean
   )
 )
-INSERT INTO ge10_lessons (id,subject,grade_tier,topic,title,theory,category,examples,practice_points,difficulty,is_standard)
+INSERT INTO mkw_lessons (id,subject,grade_tier,topic,title,theory,category,examples,practice_points,difficulty,is_standard)
 SELECT id,subject,grade_tier,topic,title,theory,category,examples,practice_points,difficulty,is_standard FROM content
 ON CONFLICT (id) DO UPDATE SET subject=EXCLUDED.subject,grade_tier=EXCLUDED.grade_tier,topic=EXCLUDED.topic,
   title=EXCLUDED.title,theory=EXCLUDED.theory,category=EXCLUDED.category,examples=EXCLUDED.examples,
@@ -19,7 +19,7 @@ WITH content AS (
     explanation text,difficulty integer,source text,subject text,grade_tier integer,image_url text,metadata jsonb,is_confused boolean
   )
 )
-INSERT INTO ge10_custom_questions (id,user_id,type,category,topic_id,prompt,options,correct_answer,explanation,difficulty,source,subject,grade_tier,image_url,metadata,is_confused)
+INSERT INTO mkw_custom_questions (id,user_id,type,category,topic_id,prompt,options,correct_answer,explanation,difficulty,source,subject,grade_tier,image_url,metadata,is_confused)
 SELECT id,NULL,type,category,topic_id,prompt,
   CASE WHEN options IS NULL THEN NULL ELSE ARRAY(SELECT jsonb_array_elements_text(options)) END,
   ARRAY(SELECT jsonb_array_elements_text(correct_answer)),explanation,difficulty,source,subject,grade_tier,image_url,metadata,is_confused
@@ -29,7 +29,7 @@ ON CONFLICT (id) DO UPDATE SET type=EXCLUDED.type,category=EXCLUDED.category,top
   source=EXCLUDED.source,subject=EXCLUDED.subject,grade_tier=EXCLUDED.grade_tier,image_url=EXCLUDED.image_url,metadata=EXCLUDED.metadata,is_confused=EXCLUDED.is_confused;
 
 -- Seed Info 9 Questions
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a1', 'mcq', 'máy tính', 'inf-digital-world', 'Thành phần nào sau đây đóng vai trò là ''não bộ'' của máy tính, thực hiện các lệnh và xử lý dữ liệu?', ARRAY['RAM', 'CPU (Bộ xử lý trung tâm)', 'Ổ cứng SSD', 'Card đồ họa (GPU)']::varchar[], ARRAY['CPU (Bộ xử lý trung tâm)']::varchar[], 'CPU (Central Processing Unit) là bộ xử lý trung tâm, chịu trách nhiệm điều khiển các hoạt động và xử lý dữ liệu của máy tính.', 2, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["phan-cung", "cpu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -45,7 +45,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a2', 'mcq', 'máy tính', 'inf-digital-world', 'Thông số ''Hz'' (Hertz) hoặc ''GHz'' khi nói về CPU của máy tính dùng để đo đại lượng nào?', ARRAY['Dung lượng lưu trữ của bộ nhớ', 'Tốc độ truyền dữ liệu mạng', 'Tốc độ xử lý (chu kỳ xung nhịp) của CPU', 'Điện năng tiêu thụ của máy tính']::varchar[], ARRAY['Tốc độ xử lý (chu kỳ xung nhịp) của CPU']::varchar[], 'Tần số xung nhịp đo bằng Hz, MHz hoặc GHz thể hiện số chu kỳ xử lý mà CPU có thể thực hiện trong một giây.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["cpu", "thong-so"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -61,7 +61,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a3', 'mcq', 'thế giới số', 'inf-digital-world', 'Thiết bị nào sau đây thuộc nhóm thiết bị thông minh (IoT) có khả năng kết nối mạng và tự động hóa?', ARRAY['Bóng đèn LED thông thường', 'Đồng hồ thông minh (Smartwatch)', 'Ổ cắm điện cơ', 'Máy tính bỏ túi Casiofx-580']::varchar[], ARRAY['Đồng hồ thông minh (Smartwatch)']::varchar[], 'Đồng hồ thông minh có bộ vi xử lý, hệ điều hành, có khả năng kết nối mạng và tương tác với các thiết bị khác, thuộc nhóm thiết bị thông minh.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["thiet-bi-thong-minh", "iot"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -77,7 +77,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a4', 'mcq', 'máy tính', 'inf-digital-world', 'Bộ nhớ RAM có đặc điểm nào sau đây?', ARRAY['Lưu trữ dữ liệu vĩnh viễn kể cả khi mất điện', 'Là bộ nhớ ngoài của máy tính', 'Dữ liệu bị xóa sạch khi tắt nguồn điện máy tính', 'Tốc độ truy xuất dữ liệu chậm hơn ổ cứng']::varchar[], ARRAY['Dữ liệu bị xóa sạch khi tắt nguồn điện máy tính']::varchar[], 'RAM (Random Access Memory) là bộ nhớ truy cập ngẫu nhiên có tính chất khả biến (volatile), dữ liệu sẽ mất đi khi ngắt nguồn điện.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["ram", "bo-nho"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -93,7 +93,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a5', 'mcq', 'máy tính', 'inf-digital-world', 'Trong kiến trúc máy tính, bộ nhớ đệm nằm bên trong hoặc rất gần CPU để tăng tốc độ truy xuất dữ liệu được gọi là gì?', ARRAY['Bộ nhớ Cache', 'Bộ nhớ ROM', 'Ổ cứng SSD', 'Bộ nhớ Flash']::varchar[], ARRAY['Bộ nhớ Cache']::varchar[], 'Bộ nhớ đệm (Cache memory) có tốc độ siêu nhanh, tích hợp gần CPU để lưu các dữ liệu thường xuyên sử dụng, giảm thời gian chờ đợi cho bộ xử lý.', 5, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["cache", "bo-nho"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -109,7 +109,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a6', 'mcq', 'thế giới số', 'inf-digital-world', 'Yếu tố nào sau đây quyết định một hệ thống máy móc được coi là hệ thống tự động hóa thông minh?', ARRAY['Có kích thước lớn và vỏ bằng kim loại', 'Sử dụng nhiều điện năng', 'Có khả năng cảm nhận môi trường và tự đưa ra quyết định dựa trên dữ liệu', 'Phải có màn hình cảm ứng']::varchar[], ARRAY['Có khả năng cảm nhận môi trường và tự đưa ra quyết định dựa trên dữ liệu']::varchar[], 'Hệ thống thông minh kết hợp cảm biến để thu thập dữ liệu và thuật toán xử lý để tự động đưa ra quyết định tối ưu.', 5, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tu-dong-hoa", "thong-minh"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -125,7 +125,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a7', 'mcq', 'tìm kiếm thông tin', 'inf-data-manage', 'Để tìm kiếm chính xác một cụm từ trên Internet (ví dụ: Tin học lớp 9 thành phố Hồ Chí Minh), ta nên đặt cụm từ đó trong ký hiệu nào?', ARRAY['Dấu ngoặc đơn ( )', 'Dấu ngoặc kép " "', 'Dấu ngoặc nhọn { }', 'Dấu ngoặc vuông [ ]']::varchar[], ARRAY['Dấu ngoặc kép " "']::varchar[], 'Khi đặt cụm từ trong cặp dấu ngoặc kép " ", công cụ tìm kiếm sẽ lọc ra các kết quả chứa chính xác cụm từ đó theo đúng thứ tự ký tự.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tim-kiem", "internet"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -141,7 +141,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a8', 'mcq', 'đám mây', 'inf-data-manage', 'Dịch vụ nào sau đây KHÔNG phải là dịch vụ lưu trữ đám mây?', ARRAY['Google Drive', 'Microsoft OneDrive', 'Dropbox', 'WinRAR']::varchar[], ARRAY['WinRAR']::varchar[], 'WinRAR là phần mềm dùng để nén và giải nén tệp tin cục bộ trên máy tính, không phải dịch vụ lưu trữ trực tuyến (đám mây).', 2, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dam-may", "luu-tru"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -157,7 +157,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a9', 'mcq', 'đám mây', 'inf-data-manage', 'Ưu điểm lớn nhất của việc chia sẻ tệp tin qua dịch vụ đám mây so với gửi qua USB truyền thống là gì?', ARRAY['Không cần kết nối Internet khi nhận tệp', 'Nhiều người có thể cùng truy cập và chỉnh sửa tệp đồng thời từ bất cứ đâu', 'Tốc độ tải dữ liệu luôn nhanh hơn tốc độ đọc của USB', 'Tệp tin luôn an toàn tuyệt đối 100% không lo rò rỉ']::varchar[], ARRAY['Nhiều người có thể cùng truy cập và chỉnh sửa tệp đồng thời từ bất cứ đâu']::varchar[], 'Điện toán đám mây hỗ trợ tính năng cộng tác theo thời gian thực (real-time collaboration), giúp nhiều người cùng làm việc trên một tệp dữ liệu từ xa.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dam-may", "chia-se"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -173,7 +173,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a10', 'mcq', 'tìm kiếm thông tin', 'inf-data-manage', 'Khi tìm kiếm thông tin trên Internet, toán tử ''site:'' đi kèm tên miền có tác dụng gì?', ARRAY['Chỉ tìm kiếm các kết quả nằm trong trang web được chỉ định', 'Tìm kiếm các hình ảnh liên quan đến trang web đó', 'Loại trừ trang web đó ra khỏi danh sách kết quả tìm kiếm', 'Tải toàn bộ nội dung trang web về máy tính']::varchar[], ARRAY['Chỉ tìm kiếm các kết quả nằm trong trang web được chỉ định']::varchar[], 'Toán tử ''site:ten_mien'' giới hạn phạm vi tìm kiếm của các công cụ tìm kiếm chỉ bên trong trang web hoặc tên miền đó.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tim-kiem", "toan-tu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -189,7 +189,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a11', 'mcq', 'tìm kiếm thông tin', 'inf-data-manage', 'Nếu bạn muốn tìm kiếm tài liệu về ''lập trình Python'' nhưng định dạng tệp tải về bắt buộc phải là tệp PDF, từ khóa nào sau đây là chính xác?', ARRAY['lập trình python pdf', 'lập trình python filetype:pdf', 'lập trình python site:pdf', 'lập trình python doc:pdf']::varchar[], ARRAY['lập trình python filetype:pdf']::varchar[], 'Toán tử ''filetype:'' dùng để lọc kết quả tìm kiếm theo định dạng tệp mong muốn (pdf, docx, xlsx, pptx...).', 5, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tim-kiem", "filetype"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -205,7 +205,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a12', 'mcq', 'bản quyền', 'inf-ethics-law', 'Hành vi nào sau đây vi phạm quyền tác giả đối với một tác phẩm phần mềm máy tính?', ARRAY['Mua bản quyền phần mềm để cài đặt sử dụng cá nhân', 'Tự viết một phần mềm mới dựa trên ý tưởng của riêng mình', 'Bẻ khóa (Crack) phần mềm trả phí rồi chia sẻ miễn phí lên mạng xã hội', 'Giới thiệu phần mềm hay cho bạn bè cùng biết']::varchar[], ARRAY['Bẻ khóa (Crack) phần mềm trả phí rồi chia sẻ miễn phí lên mạng xã hội']::varchar[], 'Bẻ khóa phần mềm thương mại là hành vi thay đổi cấu trúc mã nguồn trái phép, vi phạm Luật Sở hữu trí tuệ và quyền tác giả.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["ban-quyen", "dao-duc"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -221,7 +221,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a13', 'mcq', 'thông tin cá nhân', 'inf-ethics-law', 'Để bảo vệ thông tin cá nhân khi tham gia môi trường mạng xã hội, hành động nào sau đây KHÔNG được khuyến khích?', ARRAY['Cài đặt mật khẩu mạnh kết hợp xác thực 2 lớp (2FA)', 'Công khai số điện thoại, căn cước công dân và địa chỉ nhà lên trang cá nhân', 'Kiểm tra kỹ quyền truy cập trước khi đồng ý cài đặt ứng dụng lạ', 'Chỉ kết bạn với những người mình quen biết trong đời thực']::varchar[], ARRAY['Công khai số điện thoại, căn cước công dân và địa chỉ nhà lên trang cá nhân']::varchar[], 'Công khai các thông tin định danh cá nhân nhạy cảm sẽ tạo điều kiện cho kẻ xấu thực hiện hành vi lừa đảo, giả mạo danh tính.', 2, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["bao-mat", "thong-tin-ca-nhan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -237,7 +237,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a14', 'mcq', 'bản quyền', 'inf-ethics-law', 'Thuật ngữ ''Phần mềm mã nguồn mở'' (Open Source Software) có ý nghĩa cốt lõi là gì?', ARRAY['Người dùng được tải về miễn phí nhưng không được xem mã gốc', 'Người dùng được quyền xem, sửa đổi và chia sẻ mã nguồn của phần mềm', 'Phần mềm chạy trực tiếp trên trình duyệt không cần cài đặt', 'Phần mềm chỉ dành cho các chuyên gia công nghệ sử dụng']::varchar[], ARRAY['Người dùng được quyền xem, sửa đổi và chia sẻ mã nguồn của phần mềm']::varchar[], 'Phần mềm mã nguồn mở cho phép cộng đồng tiếp cận mã nguồn để nghiên cứu, cải tiến và phát triển theo các điều khoản giấy phép đi kèm.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["ma-nguon-mo", "ban-quyen"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -253,7 +253,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a15', 'mcq', 'đạo đức', 'inf-ethics-law', 'Khi trích dẫn thông tin hoặc hình ảnh từ internet vào bài báo cáo học tập, học sinh cần làm gì để đảm bảo tính văn hóa và luật pháp số?', ARRAY['Tự nhận đó là nội dung do mình tự sáng tạo ra', 'Ghi rõ nguồn tham khảo, tên tác giả và liên kết gốc (nếu có)', 'Chỉnh sửa làm mờ logo của tác giả gốc để tránh bị phát hiện', 'Chỉ trích dẫn các tài liệu nước ngoài vì không ai kiểm tra']::varchar[], ARRAY['Ghi rõ nguồn tham khảo, tên tác giả và liên kết gốc (nếu có)']::varchar[], 'Trích dẫn nguồn là biểu hiện của việc tôn trọng quyền tác giả và tính trung thực trong học thuật khoa học.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["trich-dan", "dao-duc"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -269,7 +269,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a16', 'mcq', 'bảng tính', 'inf-digital-tools', 'Trong bảng tính Excel, tại ô A1 chứa giá trị 85. Công thức `=IF(A1>=80, "Giỏi", "Khá")` sẽ trả về kết quả nào?', ARRAY['Giỏi', 'Khá', '85', 'Báo lỗi #VALUE!']::varchar[], ARRAY['Giỏi']::varchar[], 'Biểu thức điều kiện A1>=80 (85>=80) là Đúng (True), do đó hàm IF trả về tham số thứ hai là chuỗi ''Giỏi''.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["excel", "ham-if"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -285,7 +285,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a17', 'mcq', 'bảng tính', 'inf-digital-tools', 'Hàm `SUMIF` trong chương trình bảng tính được sử dụng để làm gì?', ARRAY['Tính tổng tất cả các ô trong một vùng chọn', 'Đếm số lượng ô có chứa dữ liệu số', 'Tính tổng các ô thỏa mãn một điều kiện cụ thể nào đó', 'Tìm giá trị lớn nhất trong vùng dữ liệu']::varchar[], ARRAY['Tính tổng các ô thỏa mãn một điều kiện cụ thể nào đó']::varchar[], 'Hàm SUMIF là sự kết hợp của SUM và IF, dùng để tính tổng các giá trị trong một phạm vi đáp ứng tiêu chuẩn điều kiện được đưa ra.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["excel", "ham-sumif"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -301,7 +301,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a18', 'mcq', 'bảng tính', 'inf-digital-tools', 'Cho vùng dữ liệu B2:B6 chứa các chuỗi: "Táo", "Ổi", "Táo", "Mận", "Táo". Công thức `=COUNTIF(B2:B6, "Táo")` sẽ cho ra giá trị là bao nhiêu?', ARRAY['2', '3', '4', '5']::varchar[], ARRAY['3']::varchar[], 'Hàm COUNTIF đếm số lần xuất hiện của chuỗi ''Táo'' trong vùng từ B2 đến B6. Chuỗi này xuất hiện đúng 3 lần.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["excel", "ham-countif"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -317,7 +317,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a19', 'mcq', 'trình chiếu', 'inf-digital-tools', 'Khi thiết kế một bài bài trình chiếu, nguyên tắc nào sau đây giúp bài thuyết trình trực quan và chuyên nghiệp hơn?', ARRAY['Đặt càng nhiều chữ trên một slide càng tốt', 'Sử dụng ít nhất 10 màu sắc khác nhau trên một slide để tạo sự sặc sỡ', 'Sử dụng từ khóa ngắn gọn kết hợp sơ đồ, hình ảnh minh họa chất lượng cao', 'Sử dụng nhiều hiệu ứng chuyển động phức tạp cho mọi đối tượng chữ']::varchar[], ARRAY['Sử dụng từ khóa ngắn gọn kết hợp sơ đồ, hình ảnh minh họa chất lượng cao']::varchar[], 'Bài trình chiếu cần ngắn gọn, cô đọng nội dung chính và tận dụng hình ảnh, biểu đồ trực quan để người nghe dễ tiếp thu.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["trinh-chieu", "thiet-ke"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -333,7 +333,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a20', 'mcq', 'video', 'inf-digital-tools', 'Phần mềm nào sau đây thường được sử dụng để cắt, ghép và biên tập các đoạn video ngắn trên máy tính hoặc điện thoại?', ARRAY['Microsoft Word', 'CapCut', 'MySQL', 'Notepad']::varchar[], ARRAY['CapCut']::varchar[], 'CapCut là một ứng dụng/phần mềm phổ biến hiện nay chuyên dùng để cắt ghép, chỉnh sửa và tạo kỹ xảo cho video.', 2, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["video", "bien-tap"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -349,7 +349,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a21', 'mcq', 'lập trình', 'inf-algorithm', 'Trong sơ đồ khối của thuật toán, hình thoi dùng để biểu diễn cho thao tác nào?', ARRAY['Bắt đầu hoặc Kết thúc', 'Nhập hoặc Xuất dữ liệu', 'Phép xử lý, tính toán', 'Biểu thức điều kiện (Xét điều kiện rẽ nhánh)']::varchar[], ARRAY['Biểu thức điều kiện (Xét điều kiện rẽ nhánh)']::varchar[], 'Trong sơ đồ khối, hình chữ nhật dùng cho xử lý, hình van/oval dùng cho bắt đầu/kết thúc, hình bình hành dùng cho nhập/xuất, và hình thoi biểu diễn điều kiện rẽ nhánh.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["so-do-khoi", "thuat-toan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -365,7 +365,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a22', 'mcq', 'lập trình', 'inf-algorithm', 'Đoạn mã nguồn Python sau đây hiển thị kết quả gì ra màn hình?
 ```python
 x = 10
@@ -388,7 +388,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a23', 'mcq', 'lập trình', 'inf-algorithm', 'Trong Python, cấu trúc vòng lặp nào được sử dụng khi biết trước số lần lặp cụ thể?', ARRAY['while', 'if-else', 'for', 'switch-case']::varchar[], ARRAY['for']::varchar[], 'Vòng lặp `for` (thường kết hợp với hàm `range()`) được dùng để lặp với số lần biết trước trong Python.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["python", "vong-lap"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -404,7 +404,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a24', 'mcq', 'lập trình', 'inf-algorithm', 'Đoạn mã lệnh Python sau đây tính toán tổng các số và in ra màn hình giá trị bao nhiêu?
 ```python
 s = 0
@@ -426,7 +426,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a25', 'mcq', 'lập trình', 'inf-algorithm', 'Từ khóa nào trong Python được sử dụng để định nghĩa một hàm (khối lệnh có thể tái sử dụng)?', ARRAY['function', 'def', 'define', 'proc']::varchar[], ARRAY['def']::varchar[], 'Trong Python, từ khóa `def` (viết tắt của define) dùng để khai báo mở đầu một hàm tự định nghĩa.', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["python", "ham"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -442,7 +442,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a26', 'mcq', 'hướng nghiệp', 'inf-career', 'Nghề nghiệp nào sau đây chuyên chịu trách nhiệm thiết kế, xây dựng và bảo trì các phần mềm, ứng dụng máy tính?', ARRAY['Chuyên viên quản trị mạng', 'Kỹ sư phần mềm / Lập trình viên', 'Chuyên gia phân tích dữ liệu', 'Kỹ thuật viên sửa chữa phần cứng']::varchar[], ARRAY['Kỹ sư phần mềm / Lập trình viên']::varchar[], 'Kỹ sư phần mềm hoặc Lập trình viên sử dụng ngôn ngữ lập trình để phát triển ứng dụng, hệ thống phần mềm đáp ứng nhu cầu thực tế.', 2, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "lap-trinh-vien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -458,7 +458,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a27', 'mcq', 'hướng nghiệp', 'inf-career', 'Sự phát triển mạnh mẽ của công nghệ Trí tuệ nhân tạo (AI) yêu cầu người lao động trong tương lai cần tập trung phát triển nhóm kỹ năng nào nhất?', ARRAY['Nhập dữ liệu thủ công tốc độ nhanh', 'Ghi nhớ máy móc các thông số kỹ thuật', 'Tư duy phản biện, giải quyết vấn đề sáng tạo và năng lực số', 'Chép tay mã nguồn phần mềm ra giấy']::varchar[], ARRAY['Tư duy phản biện, giải quyết vấn đề sáng tạo và năng lực số']::varchar[], 'Khi các công việc lặp đi lặp lại được tự động hóa bằng AI, con người cần phát triển tư duy bậc cao như phản biện, sáng tạo và làm chủ công nghệ số.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["ai", "ky-nang-tuong-lai"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -474,7 +474,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a28', 'mcq', 'máy tính', 'inf-digital-world', 'Khi chọn mua ổ cứng máy tính, thông số nào thể hiện không gian lưu trữ dữ liệu tối đa của ổ cứng đó?', ARRAY['Tốc độ bus (MHz)', 'Dung lượng (GB, TB)', 'Kích thước hình học (inch)', 'Điện áp hoạt động (Volt)']::varchar[], ARRAY['Dung lượng (GB, TB)']::varchar[], 'Dung lượng bộ nhớ đo bằng Gigabyte (GB) hoặc Terabyte (TB) xác định khả năng chứa nhiều hay ít tệp tin dữ liệu của ổ cứng.', 2, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["o-cung", "dung-luong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -490,7 +490,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a29', 'mcq', 'thế giới số', 'inf-digital-world', 'Trong nông nghiệp thông minh công nghệ cao, thiết bị nào thường thu thập chỉ số độ ẩm và nhiệt độ đất một cách tự động?', ARRAY['Thiết bị định tuyến Router', 'Cảm biến (Sensor)', 'Đầu đọc mã vạch', 'Máy chiếu chuyên dụng']::varchar[], ARRAY['Cảm biến (Sensor)']::varchar[], 'Cảm biến có chức năng chuyển đổi các đại lượng vật lý bên ngoài môi trường (nhiệt độ, ánh sáng, độ ẩm) thành tín hiệu số để máy tính xử lý.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["cam-bien", "iot"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -506,7 +506,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a30', 'mcq', 'bảng tính', 'inf-digital-tools', 'Tại ô C3 của Excel chứa công thức `=SUMIF(A1:A5, ">10", B1:B5)`. Tham số `B1:B5` đại diện cho điều gì?', ARRAY['Vùng chứa điều kiện lọc dữ liệu', 'Vùng chứa các giá trị thực tế sẽ tính tổng', 'Vùng đếm số lượng ô trống', 'Vùng hiển thị thông tin lỗi kết quả']::varchar[], ARRAY['Vùng chứa các giá trị thực tế sẽ tính tổng']::varchar[], 'Tham số thứ 3 của hàm SUMIF (sum_range) chỉ định vùng chứa các ô số thực tế sẽ cộng lại với nhau nếu ô tương ứng ở vùng 1 thỏa mãn điều kiện.', 5, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["excel", "ham-sumif"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -522,7 +522,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a31', 'mcq', 'lập trình', 'inf-algorithm', 'Xem đoạn mã Python sau:
 ```python
 n = 5
@@ -545,7 +545,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a32', 'mcq', 'lập trình', 'inf-algorithm', 'Trong Python, tham số nào của hàm `print()` được dùng để quy định ký tự kết thúc thay vì xuống dòng mặc định?', ARRAY['sep', 'end', 'terminate', 'newline']::varchar[], ARRAY['end']::varchar[], 'Tham số `end` trong hàm print() cho phép thay đổi ký tự kết thúc mặc định (xuống dòng ''\n'') thành ký tự tự chọn khác.', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["python", "print"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -561,7 +561,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a33', 'mcq', 'bảng tính', 'inf-digital-tools', 'Trong bảng tính Excel, ký tự nào được dùng trước tên cột và tên dòng để tạo địa chỉ ô tuyệt đối (không bị thay đổi khi sao chép công thức)?', ARRAY['&', '%', '$', '#']::varchar[], ARRAY['$']::varchar[], 'Ký tự đô la $ dùng để cố định hàng hoặc cột trong địa chỉ ô tuyệt đối (ví dụ: $A$1) khi sao chép công thức.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["excel", "dia-chi-o"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -577,7 +577,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a34', 'mcq', 'máy tính', 'inf-digital-world', 'Phần mềm nào sau đây thuộc nhóm phần mềm hệ thống (System Software) quản trị thiết bị phần cứng?', ARRAY['Hệ điều hành Windows 11', 'Trình duyệt Google Chrome', 'Phần mềm gõ tiếng Việt Unikey', 'Trình soạn thảo Microsoft Word']::varchar[], ARRAY['Hệ điều hành Windows 11']::varchar[], 'Hệ điều hành là phần mềm hệ thống đóng vai trò cầu nối, quản lý phần cứng và cung cấp môi trường chạy cho phần mềm ứng dụng.', 2, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["phan-mem", "he-dieu-hanh"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -593,7 +593,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a35', 'mcq', 'hướng nghiệp', 'inf-career', 'Công việc chính của một chuyên gia An ninh mạng (Cybersecurity Specialist) là gì?', ARRAY['Lắp đặt dây cáp mạng mạng Internet trong nhà dân', 'Thiết kế đồ họa giao diện cho trang web', 'Bảo vệ hệ thống mạng, dữ liệu khỏi các cuộc tấn công của hacker', 'Bán linh kiện phần cứng máy tính']::varchar[], ARRAY['Bảo vệ hệ thống mạng, dữ liệu khỏi các cuộc tấn công của hacker']::varchar[], 'Chuyên gia an ninh mạng chịu trách nhiệm phát hiện lỗ hổng và bảo vệ tài sản số của cơ quan doanh nghiệp trước các vụ tấn công mạng trái phép.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "an-ninh-mang"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -609,7 +609,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a36', 'multiple_choice', 'lập trình', 'inf-algorithm', 'Trong ngôn ngữ lập trình Python, những tên biến nào sau đây là HỢP LỆ? (Chọn các phương án đúng)', ARRAY['_myvar', 'my_var123', '123myvar', 'my-var', 'class']::varchar[], ARRAY['_myvar', 'my_var123']::varchar[], 'Tên biến hợp lệ trong Python chỉ chứa chữ cái, chữ số và dấu gạch dưới _, bắt đầu bằng chữ cái hoặc dấu gạch dưới, không dùng dấu gạch ngang -, không bắt đầu bằng số và không trùng từ khóa hệ thống như class.', 5, 'Khảo sát chuyên môn Tin học 9 TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "multi-part", "tags": ["python", "bien-so"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -625,7 +625,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a37', 'multiple_choice', 'đám mây', 'inf-data-manage', 'Các phương pháp nào giúp bảo mật dữ liệu lưu trữ trên đám mây hiệu quả? (Chọn các phương án đúng)', ARRAY['Bật tính năng xác thực đa yếu tố (MFA / 2FA) cho tài khoản', 'Mã hóa dữ liệu trước khi tải lên lưu trữ', 'Sử dụng chung một mật khẩu dễ nhớ cho tất cả các nền tảng đám mây', 'Phân quyền truy cập tệp tin một cách chính xác (chỉ xem hoặc có chỉnh sửa)']::varchar[], ARRAY['Bật tính năng xác thực đa yếu tố (MFA / 2FA) cho tài khoản', 'Mã hóa dữ liệu trước khi tải lên lưu trữ', 'Phân quyền truy cập tệp tin một cách chính xác (chỉ xem hoặc có chỉnh sửa)']::varchar[], 'Bật xác thực đa yếu tố, mã hóa tệp tin và phân quyền truy cập là các biện pháp an ninh mạng cơ bản để bảo mật đám mây. Dùng chung một mật khẩu yếu rất nguy hiểm.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "multi-part", "tags": ["bao-mat", "dam-may"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -641,7 +641,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a38', 'multiple_choice', 'máy tính', 'inf-digital-world', 'Những thiết bị nào sau đây thuộc nhóm thiết bị vào (Input Devices) của hệ thống máy tính?', ARRAY['Bàn phím (Keyboard)', 'Chuột máy tính (Mouse)', 'Màn hình (Monitor)', 'Máy quét (Scanner)', 'Loa (Speakers)']::varchar[], ARRAY['Bàn phím (Keyboard)', 'Chuột máy tính (Mouse)', 'Máy quét (Scanner)']::varchar[], 'Bàn phím, chuột và máy quét nhập thông tin vào máy tính. Màn hình và loa là thiết bị xuất dữ liệu ra ngoài.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "multi-part", "tags": ["thiet-bi-vao", "phan-cung"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -657,7 +657,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a39', 'multiple_choice', 'bảng tính', 'inf-digital-tools', 'Các kiểu biểu đồ nào sau đây thường dùng để trực quan hóa dữ liệu trong phần mềm Excel? (Chọn các phương án đúng)', ARRAY['Biểu đồ cột (Column Chart)', 'Biểu đồ đường (Line Chart)', 'Biểu đồ hình quạt tròn (Pie Chart)', 'Biểu đồ sơ đồ khối thuật toán (Flowchart Chart)']::varchar[], ARRAY['Biểu đồ cột (Column Chart)', 'Biểu đồ đường (Line Chart)', 'Biểu đồ hình quạt tròn (Pie Chart)']::varchar[], 'Biểu đồ cột, đường, và hình quạt là các dạng biểu đồ tích hợp mặc định trong Excel dùng biểu diễn số liệu. Sơ đồ khối là sơ đồ tư duy giải quyết vấn đề, không thuộc đồ thị số liệu.', 3, 'Khảo sát chuyên môn Tin học 9 TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "multi-part", "tags": ["excel", "bieu-do"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -673,7 +673,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a40', 'text_input', 'lập trình', 'inf-algorithm', 'Trong Scratch, khối lệnh lặp vô hạn lần (không bao giờ dừng lại tự động) có tên tiếng Anh là gì?', NULL, ARRAY['forever', 'Forever']::varchar[], 'Khối lệnh lặp vô tận trong Scratch có tên là ''forever''.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["scratch", "vong-lap"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -689,7 +689,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a41', 'text_input', 'bảng tính', 'inf-digital-tools', 'Trong bảng tính Excel, tên hàm tiếng Anh dùng để tính giá trị trung bình cộng của một danh sách các số là gì?', NULL, ARRAY['AVERAGE', 'average']::varchar[], 'Hàm AVERAGE trong Excel tính số trung bình cộng của các đối số truyền vào.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "ham-trung-binh"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -705,7 +705,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a42', 'text_input', 'bản quyền', 'inf-ethics-law', 'Hành động sao chép hoặc phân phối phần mềm có bản quyền một cách bất hợp pháp được gọi chung là gì trong tiếng Việt? 
 -> Vi phạm ..............................', NULL, ARRAY['bản quyền', 'quyền tác giả', 'vi phạm bản quyền']::varchar[], 'Sao chép phần mềm không có sự đồng ý của tác giả là hành vi vi phạm bản quyền phần mềm.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["ban-quyen"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
@@ -722,7 +722,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a43', 'text_input', 'máy tính', 'inf-digital-world', 'Đơn vị đo chu kỳ xung nhịp (tốc độ xử lý) của các bộ vi xử lý máy tính hiện đại ngày nay có ký hiệu viết tắt là gì?', NULL, ARRAY['GHz', 'ghz', 'Gigahertz']::varchar[], 'CPU hiện nay thường có tốc độ đo bằng GHz (Gigahertz), ví dụ 3.5 GHz nghĩa là 3.5 tỷ chu kỳ xử lý mỗi giây.', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["cpu", "thong-so"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -738,7 +738,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a44', 'wordform', 'lập trình', 'inf-algorithm', 'Thư viện lập trình vẽ hình học cơ bản trong ngôn ngữ Python bắt đầu bằng chữ TUR-......?', NULL, ARRAY['tle']::varchar[], 'Thư viện turtle trong Python cung cấp các công cụ vẽ đồ họa đơn giản mô phỏng một chú rùa di chuyển.', 4, 'Khảo sát chuyên môn Tin học 9 TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "turtle"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -754,7 +754,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a45', 'wordform', 'bảng tính', 'inf-digital-tools', 'Mỗi trang bảng tính đơn lẻ chứa lưới các hàng và cột trong một file Excel được gọi bằng tiếng Anh là SPREAD-......?', NULL, ARRAY['sheet']::varchar[], 'Mỗi sheet (hoặc spreadsheet) là một trang làm việc độc lập chứa lưới dữ liệu của file bảng tính.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "sheet"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -770,7 +770,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a46', 'rewrite', 'lập trình', 'inf-algorithm', 'Sửa lại câu lệnh gán biến sau trong Python cho đúng cú pháp: ''Ta muốn gán giá trị 10 cho biến x, lệnh viết là: 10 = x'' 
 -> Sửa lại: Lệnh gán biến đúng là .............................................', NULL, ARRAY['x = 10', 'biến x bằng 10']::varchar[], 'Trong lập trình Python, biến nhận giá trị luôn đứng bên trái dấu bằng, giá trị cần gán đứng bên phải (ví dụ: x = 10).', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "cú-pháp"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
@@ -787,7 +787,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a47', 'rewrite', 'bản quyền', 'inf-ethics-law', 'Sửa lại nhận định sau cho đúng luật bản quyền phần mềm: ''Nếu mua một phần mềm có phí, ta có quyền phân phối sao chép miễn phí cho mọi người sử dụng.'' 
 -> Sửa lại: Ta chỉ có quyền .............................................', NULL, ARRAY['sử dụng phần mềm đó cho cá nhân', 'dùng cho cá nhân và không được sao chép trái phép', 'cài đặt và sử dụng cá nhân theo điều khoản mua']::varchar[], 'Mua bản quyền phần mềm có phí chỉ cấp quyền sử dụng phần mềm trên thiết bị cá nhân, không bao gồm quyền nhân bản và phân phối lại.', 5, 'Khảo sát chuyên môn Tin học 9 TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["ban-quyen"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
@@ -804,7 +804,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a48', 'short-answer', 'lập trình', 'inf-algorithm', 'Cho đoạn mã Python sau. Vòng lặp for sẽ chạy và in ra chữ ''Hi'' bao nhiêu lần? (Điền đáp số dạng chữ số)
 ```python
 for i in range(2, 7):
@@ -824,7 +824,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a49', 'short-answer', 'bảng tính', 'inf-digital-tools', 'Trong Excel, ô A1=75. Công thức `=IF(A1>=80, "A", IF(A1>=70, "B", "C"))` sẽ trả về ký tự nào? (Điền một ký tự)', NULL, ARRAY['B', 'b']::varchar[], 'Đầu tiên xét A1>=80 (75>=80) là False. Chuyển sang nhánh false chạy tiếp IF(A1>=70, "B", "C"). Xét 75>=70 là True, nên kết quả trả về là ''B''.', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "ham-if"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -840,7 +840,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a50', 'proof', 'lập trình', 'inf-algorithm', 'Trình bày lập luận giải thuật tìm kiếm nhị phân (Binary Search). Giải thích tại sao dãy số bắt buộc phải được sắp xếp trước khi áp dụng giải thuật này.', NULL, ARRAY['Lập luận tìm kiếm nhị phân: 1. Nguyên lý: So sánh giá trị tìm kiếm với phần tử giữa của dãy. 2. Nếu bằng: dừng và trả về vị trí. 3. Nếu giá trị cần tìm nhỏ hơn phần tử giữa: thu hẹp không gian tìm kiếm về nửa bên trái. 4. Nếu lớn hơn: thu hẹp về nửa bên phải. 5. Giải thích: Dãy số phải được sắp xếp để quy luật chia đôi dãy luôn chính xác, giúp loại bỏ một nửa số lượng phần tử ở mỗi bước so sánh, tăng tốc độ tìm kiếm xuống độ phức tạp O(log N).']::varchar[], 'Tìm kiếm nhị phân chia đôi không gian tìm kiếm dựa vào tính chất sắp xếp tăng/giảm dần của dãy số để loại bỏ 50% số lượng phần tử ở mỗi bước lặp.', 7, 'Ngân hàng đề thi học kỳ Tin học 9 - TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "proof", "solutionStyle": "rubric", "solutionSteps": ["Xác định điều kiện đầu vào của giải thuật tìm kiếm nhị phân.", "Mô tả quy trình so sánh giá trị cần tìm với giá trị ở vị trí giữa dãy.", "Lập luận hướng thu hẹp không gian tìm kiếm về nửa bên trái hoặc bên phải.", "Giải thích lý do thuật toán bị lỗi nếu dãy số chưa được sắp xếp trước đó.", "Phân tích hiệu quả độ phức tạp thuật toán O(log N)."]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -856,7 +856,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a51', 'multi-part', 'lập trình', 'inf-algorithm', 'Cho thuật toán tìm giá trị lớn nhất trong một mảng số nguyên bằng Python:
 ```python
 numbers = [12, 45, 7, 89, 32]
@@ -882,7 +882,7 @@ ON CONFLICT (id) DO UPDATE SET
   metadata = EXCLUDED.metadata;
 
 -- Seed Tech 9 Questions
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a1', 'mcq', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Nhóm nghề nghiệp nào sau đây chiếm tỷ trọng lớn trong kỷ nguyên Cách mạng công nghiệp 4.0 và gắn liền với việc thiết kế, vận hành hệ thống tự động?', ARRAY['Nhóm nghề thủ công mỹ nghệ', 'Nhóm nghề Kỹ thuật và Công nghệ', 'Nhóm nghề nông nghiệp truyền thống', 'Nhóm nghề khai khoáng thô']::varchar[], ARRAY['Nhóm nghề Kỹ thuật và Công nghệ']::varchar[], 'Trong kỷ nguyên số, nhóm nghề Kỹ thuật và Công nghệ đóng vai trò nòng cốt, thúc đẩy sự phát triển của tự động hóa, trí tuệ nhân tạo và các hệ thống sản xuất thông minh.', 2, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "ky-thuat"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -898,7 +898,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a2', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Trong sơ đồ nguyên lý của mạng điện trong nhà, cầu chì thường được lắp đặt ở vị trí nào để bảo vệ mạch điện?', ARRAY['Trên dây trung tính, trước công tắc', 'Trên dây pha, trước công tắc và tải tiêu thụ', 'Mắc song song với tải tiêu thụ', 'Sau thiết bị điện đồ dùng']::varchar[], ARRAY['Trên dây pha, trước công tắc và tải tiêu thụ']::varchar[], 'Cầu chì phải được mắc nối tiếp trên dây pha (dây nóng) và đứng trước các thiết bị khác để khi xảy ra sự cố ngắn mạch hoặc quá tải, cầu chì sẽ nóng chảy và ngắt dòng điện kịp thời.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "cau-chi"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -914,7 +914,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a3', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Để đo điện năng tiêu thụ của một hộ gia đình tại TP.HCM trong một tháng, cơ quan điện lực sử dụng loại đồng hồ đo điện nào?', ARRAY['Ampe kế', 'Vôn kế', 'Công tơ điện (Kwh kế)', 'Ohm kế']::varchar[], ARRAY['Công tơ điện (Kwh kế)']::varchar[], 'Công tơ điện là thiết bị đo lường chuyên dụng để xác định lượng điện năng tiêu thụ (tính bằng Kilowatt giờ - kWh) của một mạch điện hoặc hộ gia đình.', 2, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "cong-to-dien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -930,7 +930,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a4', 'mcq', 'nông nghiệp', 'tech-circuit-install', 'Trong kỹ thuật gieo trồng cây ăn quả, phương pháp nhân giống vô tính nào giúp giữ nguyên được đặc tính tốt của cây mẹ và cho quả nhanh thu hoạch nhất?', ARRAY['Gieo hạt truyền thống', 'Chiết cành hoặc Ghép cành', 'Tưới nước nhỏ giọt', 'Bón phân hữu cơ bề mặt']::varchar[], ARRAY['Chiết cành hoặc Ghép cành']::varchar[], 'Chiết và ghép cành là các phương pháp nhân giống vô tính tiên tiến, giúp cây con thừa hưởng hoàn toàn bộ gen tốt từ cây mẹ, rút ngắn thời gian sinh trưởng so với gieo từ hạt.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["nong-nghiep", "nhan-giong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -946,7 +946,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a5', 'mcq', 'lập trình', 'tech-circuit-install', 'Khi ứng dụng mô hình STEM vào môn Công nghệ 9 để thiết kế ngôi nhà thông minh, thiết bị lập trình vi điều khiển nào sau đây thường được sử dụng phổ biến nhất?', ARRAY['Bo mạch Arduino hoặc Micro:bit', 'Ổ cứng HDD máy tính', 'Bộ nhớ RAM', 'Bộ nguồn máy tính ATX']::varchar[], ARRAY['Bo mạch Arduino hoặc Micro:bit']::varchar[], 'Arduino và Micro:bit là các bo mạch vi điều khiển mã nguồn mở, hỗ trợ học sinh lập trình kết nối cảm biến để tự động hóa các mô hình công nghệ (như bật tắt đèn, tưới nước tự động).', 4, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["stem", "vi-dieu-khien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -962,7 +962,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a6', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Khi tiến hành nối dây dẫn điện, việc quấn băng dính cách điện ngoài cùng của mối nối nhằm mục đích cốt lõi nào?', ARRAY['Tăng tính thẩm mỹ cho bảng điện', 'Đảm bảo an toàn điện, chống rò rỉ điện và chập mạch', 'Giúp mối nối dẫn điện tốt hơn', 'Tăng trọng lượng của dây dẫn']::varchar[], ARRAY['Đảm bảo an toàn điện, chống rò rỉ điện và chập mạch']::varchar[], 'Băng dính cách điện giúp cách ly phần lõi đồng/nhôm trần của mối nối với môi trường xung quanh, ngăn ngừa tai nạn điện giật và hiện tượng đoản mạch.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "an-toan-dien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -978,7 +978,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a7', 'mcq', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Người làm việc trong ngành nghề nào sau đây đòi hỏi phải có kiến thức chuyên sâu về bản vẽ kỹ thuật, quy chuẩn an toàn điện lưới và kỹ năng lắp đặt hệ thống cơ điện công trình?', ARRAY['Kỹ sư cơ khí chế tạo', 'Kỹ sư điện / Kỹ thuật viên điện dân dụng', 'Chuyên viên thiết kế thời trang', 'Chuyên gia làm vườn nghệ thuật']::varchar[], ARRAY['Kỹ sư điện / Kỹ thuật viên điện dân dụng']::varchar[], 'Ngành điện - điện tử đòi hỏi năng lực đọc bản vẽ sơ đồ mạch điện, am hiểu quy chuẩn an toàn để thi công hệ thống điện năng an toàn, hiệu quả.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "nghanh-dien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -994,7 +994,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a8', 'mcq', 'nông nghiệp', 'tech-circuit-install', 'Hệ thống tư ứng dụng công nghệ số và cảm biến để tự động tưới nước khi đất bị khô trong nông nghiệp đô thị tại TP.HCM được gọi là gì?', ARRAY['Hệ thống tưới ngập nước định kỳ', 'Hệ thống tưới thông minh (Smart Irrigation System)', 'Hệ thống canh tác nương rẫy', 'Hệ thống phun sương thủ công bằng tay']::varchar[], ARRAY['Hệ thống tưới thông minh (Smart Irrigation System)']::varchar[], 'Hệ thống tưới thông minh sử dụng cảm biến độ ẩm đất để phân tích dữ liệu, tự động kích hoạt máy bơm nước khi cần thiết, giúp tiết kiệm tài nguyên và tối ưu năng suất.', 4, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["nong-nghiep-cong-nghe-cao", "iot"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1010,7 +1010,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a9', 'mcq', 'đạo đức', 'tech-career-choice', 'Khi tham gia các hoạt động thực hành xưởng công nghệ hoặc vườn trường, hành vi nào sau đây vi phạm nghiêm trọng quy định an toàn lao động?', ARRAY['Đeo kính bảo hộ và găng tay đúng quy định', 'Đùa nghịch, dùng dụng cụ đục, kìm, dao kéo trêu chọc bạn học', 'Tuân thủ tuyệt đối sự hướng dẫn của giáo viên bộ môn', 'Kiểm tra kỹ tình trạng thiết bị trước khi cắm điện nguồn']::varchar[], ARRAY['Đùa nghịch, dùng dụng cụ đục, kìm, dao kéo trêu chọc bạn học']::varchar[], 'Đùa nghịch bằng dụng cụ sắc nhọn hoặc thiết bị điện trong giờ thực hành rất dễ dẫn đến chấn thương nghiêm trọng, vi phạm nội quy an toàn lao động.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["an-toan-lao-dong", "dao-duc"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1026,7 +1026,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a10', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Sơ đồ nào sau đây biểu thị rõ ràng vị trí sắp đặt lắp đặt thực tế của các thiết bị điện, bảng điện và đường đi của dây dẫn trong một căn phòng?', ARRAY['Sơ đồ nguyên lý', 'Sơ đồ lắp đặt', 'Sơ đồ khối chức năng', 'Sơ đồ tư duy kiến trúc']::varchar[], ARRAY['Sơ đồ lắp đặt']::varchar[], 'Sơ đồ lắp đặt (sơ đồ vị trí) thể hiện rõ ràng vị trí lắp đặt thực tế và cách đi dây của hệ thống điện, dùng để trực tiếp thi công.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "so-do-dien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1042,7 +1042,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a11', 'mcq', 'chế biến thực phẩm', 'tech-circuit-install', 'Trong mô-đun Chế biến thực phẩm, nguyên tắc cốt lõi nào đảm bảo ngăn ngừa ngộ độc thức ăn và vi khuẩn xâm nhập khi bảo quản thực phẩm?', ARRAY['Để thực phẩm chín chung với thực phẩm sống', 'Giữ thực phẩm ở nhiệt độ phòng trong nhiều ngày liên tục', 'Đảm bảo quy trình ăn chín uống sôi, phân loại hộp kín bảo quản lạnh', 'Chỉ cần rửa qua nước muối không cần che đậy']::varchar[], ARRAY['Đảm bảo quy trình ăn chín uống sôi, phân loại hộp kín bảo quản lạnh']::varchar[], 'Phân loại thực phẩm sống/chín riêng biệt và lưu trữ ở nhiệt độ lạnh thích hợp giúp ức chế sự phát triển của vi sinh vật gây hại.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["che-bien-thuc-pham", "an-toan-thuc-pham"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1058,7 +1058,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a12', 'mcq', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Thị trường lao động tại TP.HCM hiện nay đang có xu hướng tuyển dụng cao đối với ngành ''Cơ điện tử''. Ngành này là sự kết hợp giao thoa của những lĩnh vực nào?', ARRAY['Xây dựng, Mỹ thuật và Du lịch', 'Cơ khí, Điện - Điện tử và Máy tính/Công nghệ thông tin', 'Nông nghiệp, Sinh học và Hóa chất', 'Kinh tế thương mại và Văn học số']::varchar[], ARRAY['Cơ khí, Điện - Điện tử và Máy tính/Công nghệ thông tin']::varchar[], 'Cơ điện tử (Mechatronics) là ngành kỹ thuật liên ngành cao, tích hợp cơ khí chính xác, hệ thống điện tử điều khiển và tư duy lập trình máy tính để tạo ra các robot, hệ thống tự động.', 4, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "co-dien-tu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1074,7 +1074,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a13', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Thiết bị điện nào tự động ngắt mạch điện khi phát hiện dòng điện rò rỉ xuống đất hoặc có người bị điện giật, giúp bảo vệ an toàn tính mạng?', ARRAY['Cầu chì (Fuse)', 'Aptomat chống giật (RCCB/ELCB)', 'Công tắc hai cực', 'Ổ cắm điện đơn']::varchar[], ARRAY['Aptomat chống giật (RCCB/ELCB)']::varchar[], 'Aptomat chống rò/chống giật có khả năng so sánh dòng điện đi và về, lập tức ngắt mạch chỉ trong mili giây khi phát hiện sự chênh lệch dòng (do rò điện hoặc người chạm vào dây nóng).', 4, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["an-toan-dien", "aptomat"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1090,7 +1090,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a14', 'mcq', 'lập trình', 'tech-circuit-install', 'Trong bài toán thiết kế hệ thống chiếu sáng tự động thông minh cho nhà ở, điều kiện logic nào sau đây là phù hợp nhất để bật đèn?', ARRAY['Nếu ánh sáng môi trường xung quanh cao hơn ngưỡng quy định', 'Nếu cảm biến phát hiện có người ĐỒNG THỜI cường độ ánh sáng tự nhiên thấp (trời tối)', 'Nếu nhiệt độ phòng tăng cao', 'Nếu thời gian trong ngày là buổi trưa']::varchar[], ARRAY['Nếu cảm biến phát hiện có người ĐỒNG THỜI cường độ ánh sáng tự nhiên thấp (trời tối)']::varchar[], 'Để tiết kiệm năng lượng tối ưu, hệ thống đèn thông minh chỉ nên bật khi có sự xuất hiện của con người kết hợp với điều kiện ánh sáng môi trường không đủ.', 4, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["thiet-ke-he-thong", "logic"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1106,7 +1106,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a15', 'mcq', 'nông nghiệp', 'tech-circuit-install', 'Khi bón phân cho cây ăn quả, tại sao người ta thường bón theo hình chiếu của tán cây xuống mặt đất?', ARRAY['Vì rễ cây chỉ tập trung ở sát gốc cây', 'Vì hệ thống rễ ăn sâu và rộng hút chất dinh dưỡng tập trung nhiều nhất ở vùng rìa hình chiếu tán cây', 'Để tránh làm bẩn lá cây khi bón phân', 'Vì quy định bón phân bắt buộc phải làm như vậy']::varchar[], ARRAY['Vì hệ thống rễ ăn sâu và rộng hút chất dinh dưỡng tập trung nhiều nhất ở vùng rìa hình chiếu tán cây']::varchar[], 'Đầu rễ non (rễ hút dinh dưỡng) của cây ăn quả thường phân bố rộng tương ứng với độ rộng của tán cây bên trên, bón phân ở vùng này giúp cây hấp thụ tối đa.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["nong-nghiep", "ky-thuat-bon-phan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1122,7 +1122,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a16', 'mcq', 'bản quyền', 'tech-career-jobs', 'Khi một học sinh tự tay thiết kế bản vẽ mạch điện thông minh trên phần mềm máy tính trong cuộc thi sáng tạo khoa học kỹ thuật, sản phẩm của học sinh đó được bảo hộ bởi luật nào?', ARRAY['Luật Thương mại', 'Luật Sở hữu trí tuệ (Quyền tác giả đối với tác phẩm khoa học)', 'Luật Hình sự quốc tế', 'Luật Giáo dục căn bản']::varchar[], ARRAY['Luật Sở hữu trí tuệ (Quyền tác giả đối với tác phẩm khoa học)']::varchar[], 'Bản vẽ kỹ thuật, thiết kế giải pháp công nghệ là đối tượng được bảo hộ quyền tác giả và quyền sở hữu công nghiệp thuộc Luật Sở hữu trí tuệ.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["ban-quyen", "phap-luat-cong-nghe"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1138,7 +1138,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a17', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Thiết bị điện nào dùng để đóng, ngắt dòng điện độc lập của các đồ dùng điện hoặc một nhánh mạch điện bằng tay?', ARRAY['Công tơ điện', 'Công tắc điện', 'Cầu chì', 'Chuông điện']::varchar[], ARRAY['Công tắc điện']::varchar[], 'Công tắc điện đóng vai trò điều khiển cơ học bằng tay việc đóng/ngắt dòng điện đi vào tải tiêu thụ điện.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "thiet-bi-dien"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1154,7 +1154,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a18', 'mcq', 'máy tính', 'tech-career-jobs', 'Thuật ngữ ''Hệ thống SCADA'' hoặc ''Hệ thống điều khiển giám sát dữ liệu'' trong các nhà máy xí nghiệp sản xuất hiện đại tại TP.HCM thuộc phạm vi ứng dụng nào?', ARRAY['Công nghệ thông tin văn phòng', 'Tự động hóa công nghiệp', 'Thủ công nghệ nghệ thuật', 'Nông nghiệp thô sơ']::varchar[], ARRAY['Tự động hóa công nghiệp']::varchar[], 'SCADA là hệ thống điều khiển giám sát và thu thập dữ liệu phục vụ quản lý, vận hành tự động dây chuyền sản xuất công nghiệp quy mô lớn.', 5, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tu-dong-hoa", "scada"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1170,7 +1170,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a19', 'mcq', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Để trở thành một nhà thiết kế vi mạch (Chip bán dẫn) - ngành nghề trọng điểm đang được TP.HCM đầu tư phát triển, học sinh cần học tốt nhất các môn học cốt lõi nào?', ARRAY['Ngữ văn, Lịch sử, Địa lý', 'Toán học, Vật lý, Tin học/Công nghệ', 'Sinh học, Hóa học, Giáo dục công dân', 'Mỹ thuật, Âm nhạc, Tiếng Anh']::varchar[], ARRAY['Toán học, Vật lý, Tin học/Công nghệ']::varchar[], 'Thiết kế vi mạch bán dẫn đòi hỏi nền tảng tư duy toán học, kiến thức vật lý chất bán dẫn - điện tử và năng lực lập trình máy tính (Tin học/Công nghệ).', 4, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "vi-mach"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1186,7 +1186,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a20', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Dụng cụ cầm tay nào chuyên dùng để gọt vỏ cách điện của dây dẫn điện một cách nhanh chóng mà không làm khía cắt vào lõi đồng bên trong?', ARRAY['Kìm tuốt dây', 'Búa đóng đinh', 'Tua vít ba cạnh', 'Cưa sắt cầm tay']::varchar[], ARRAY['Kìm tuốt dây']::varchar[], 'Kìm tuốt dây điện được thiết kế với các cỡ lưỡi dao phù hợp với đường kính dây dẫn, giúp tách vỏ cách điện an toàn mà không làm tổn hại lõi kim loại dẫn điện.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dung-cu", "dien-dan-dung"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1202,7 +1202,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a21', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Khi thiết kế mạch điện bảng điện gồm: 1 cầu chì bảo vệ cho 1 ổ cắm và 1 công tắc điều khiển 1 bóng đèn. Thiết bị nào sẽ luôn luôn có điện kể cả khi công tắc ở trạng thái ngắt?', ARRAY['Bóng đèn', 'Ổ cắm điện', 'Cả bóng đèn và ổ cắm', 'Không thiết bị nào có điện']::varchar[], ARRAY['Ổ cắm điện']::varchar[], 'Ổ cắm điện được mắc song song với mạch nhánh của đèn và công tắc. Cầu chì bảo vệ chung phía trước, do đó khi công tắc ngắt (đèn tắt), ổ cắm vẫn duy trì nguồn điện liên tục.', 4, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["mach-dien", "thiet-ke"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1218,7 +1218,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a22', 'mcq', 'nông nghiệp', 'tech-circuit-install', 'Loại đất nào sau đây thích hợp nhất để phát triển các loại cây ăn quả lâu năm nhờ khả năng giữ nước và giàu chất dinh dưỡng hữu cơ?', ARRAY['Đất cát hạt thô', 'Đất sét nặng ngập úng', 'Đất thịt, đất phù sa hoặc đất đỏ ba gian thoát nước tốt', 'Đất đá sỏi cằn cỗi']::varchar[], ARRAY['Đất thịt, đất phù sa hoặc đất đỏ ba gian thoát nước tốt']::varchar[], 'Cây ăn quả cần tầng đất dày, giàu mùn dinh dưỡng và có kết cấu thoáng, thoát nước tốt để bộ rễ phát triển sâu rộng không bị thối rễ.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["nong-nghiep", "tho-nhuong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1234,7 +1234,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a23', 'mcq', 'lập trình', 'tech-circuit-install', 'Trong sơ đồ thuật toán điều khiển của rô-bốt hút bụi thông minh tự động quay đầu khi gặp chướng ngại vật, khối hình học nào xác định thao tác kiểm tra xem ''Có vật cản hay không''?', ARRAY['Khối hình chữ nhật', 'Khối hình thoi', 'Khối hình tròn', 'Khối hình bình hành']::varchar[], ARRAY['Khối hình thoi']::varchar[], 'Khối hình thoi trong sơ đồ thuật toán luôn thực hiện chức năng kiểm tra điều kiện logic (Đúng/Sai) để đưa ra quyết định rẽ nhánh hành vi cho hệ thống tự động.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["thuat-toan", "so-do-khoi"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1250,7 +1250,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a24', 'mcq', 'thông tin cá nhân', 'tech-career-choice', 'Để quản lý an toàn dữ liệu vận hành hệ thống điện mặt trời áp mái thông minh của gia đình lưu trữ trực tuyến đám mây, biện pháp nào bảo mật nhất?', ARRAY['Chia sẻ tài khoản quản trị cho tất cả mọi người cùng dùng', 'Sử dụng mật khẩu mặc định của nhà sản xuất cung cấp ban đầu', 'Đặt mật khẩu phức tạp gồm chữ hoa, chữ thường, số, ký tự đặc biệt và bật xác thực 2 lớp', 'Không cần đặt mật khẩu bảo vệ']::varchar[], ARRAY['Đặt mật khẩu phức tạp gồm chữ hoa, chữ thường, số, ký tự đặc biệt và bật xác thực 2 lớp']::varchar[], 'Mật khẩu mạnh kết hợp xác thực đa yếu tố giúp tối đa hóa khả năng bảo vệ tài khoản điều khiển thiết bị công nghệ số khỏi sự xâm nhập trái phép của tin tặc.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["bao-mat", "iot"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1266,7 +1266,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a25', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Công thức tính điện năng tiêu thụ (A) của đồ dùng điện trong nhà dựa trên công suất (P) và thời gian hoạt động (t) là công thức nào?', ARRAY['A = P . t', 'A = P / t', 'A = U . I', 'A = P + t']::varchar[], ARRAY['A = P . t']::varchar[], 'Điện năng tiêu thụ bằng tích của công suất thiết bị nhân với thời gian thiết bị hoạt động thực tế: A = P . t.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "cong-thuc"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1282,7 +1282,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a26', 'mcq', 'định hướng nghề nghiệp', 'tech-career-choice', 'Yếu tố nào sau đây đóng vai trò quan trọng nhất khi cá nhân đưa ra quyết định lựa chọn một ngành nghề kỹ thuật công nghệ phù hợp cho tương lai?', ARRAY['Chỉ dựa hoàn toàn vào ý kiến trào lưu trên mạng xã hội', 'Sự kết hợp giữa năng lực, sở thích cá nhân và nhu cầu thực tế của thị trường lao động', 'Chọn nghề nhàn hạ nhất không cần lao động chân tay hay trí óc', 'Chọn ngẫu nhiên không cần tính toán']::varchar[], ARRAY['Sự kết hợp giữa năng lực, sở thích cá nhân và nhu cầu thực tế của thị trường lao động']::varchar[], 'Chọn nghề bền vững cần dựa trên mô hình định hướng: Đam mê (sở thích), Năng lực sở trường và Cơ hội nghề nghiệp thực tế của xã hội.', 2, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "tu-van"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1298,7 +1298,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a27', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Khi kiểm tra một mạch điện xem có nguồn điện chạy qua hay không một cách an toàn, người thợ điện sử dụng dụng cụ kiểm tra chuyên dụng nào?', ARRAY['Thước cuộn thép', 'Kìm cắt chân linh kiện', 'Bút thử điện thông thường', 'Băng dính đen cách điện']::varchar[], ARRAY['Bút thử điện thông thường']::varchar[], 'Bút thử điện có điện trở bảo vệ bên trong, cho phép người dùng kiểm tra nhanh sự hiện diện của điện áp cao trên dây dẫn mà vẫn đảm bảo an toàn.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dung-cu-dien", "an-toan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1314,7 +1314,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a28', 'mcq', 'máy tính', 'tech-career-jobs', 'Hệ thống lưu trữ điện dự phòng quy mô lớn sử dụng pin năng lượng sạch để cấp điện liên tục cho các trung tâm dữ liệu khi mất điện lưới được viết tắt là gì?', ARRAY['BESS (Hệ thống lưu trữ năng lượng bằng pin)', 'CPU', 'RAM', 'HDMI']::varchar[], ARRAY['BESS (Hệ thống lưu trữ năng lượng bằng pin)']::varchar[], 'BESS (Battery Energy Storage System) là giải pháp công nghệ hiện đại lưu trữ năng lượng điện tái tạo, đảm bảo tính liên tục cho các hệ thống hạ tầng số và công nghệ cao.', 5, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["nang-luong", "he-thong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1330,7 +1330,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a29', 'mcq', 'lắp đặt mạng điện', 'tech-circuit-install', 'Mạng điện sinh hoạt dân dụng tại Việt Nam hiện nay có thông số điện áp định mức tiêu chuẩn là bao nhiêu?', ARRAY['110 V', '220 V', '380 V', '24 V']::varchar[], ARRAY['220 V']::varchar[], 'Điện áp xoay chiều một pha định mức dùng cho mạng điện sinh hoạt gia đình tại Việt Nam là 220V với tần số tiêu chuẩn là 50Hz.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-dan-dung", "thong-so"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1346,7 +1346,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a30', 'mcq', 'lập trình', 'tech-circuit-install', 'Đoạn chương trình Python điều khiển độ sáng của đèn LED thông minh theo phần trăm (%) công suất phát như sau:
 ```python
 power = 40
@@ -1373,7 +1373,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a31', 'mcq', 'chế biến thực phẩm', 'tech-circuit-install', 'Phương pháp chế biến thực phẩm nào sử dụng nhiệt độ cao của hơi nước làm chín thực phẩm, giúp giữ lại tối đa chất dinh dưỡng tự nhiên?', ARRAY['Rán (chiên) ngập dầu', 'Hấp (thổi đồ)', 'Nướng trực tiếp trên than hồng', 'Muối chua lên men']::varchar[], ARRAY['Hấp (thổi đồ)']::varchar[], 'Phương pháp hấp chín bằng hơi nước tránh cho thực phẩm tiếp xúc trực tiếp với nước hay chất béo nhiệt độ quá cao, bảo toàn lượng vitamin và khoáng chất tốt nhất.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["che-bien-thuc-pham", "phuong-phap"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1389,7 +1389,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-mcq-a32', 'mcq', 'định hướng nghề nghiệp', 'tech-career-choice', 'Để đánh giá độ phù hợp của một người với nghề ''Kỹ sư năng lượng tái tạo'' (Điện mặt trời, điện gió), tiêu chí nào dưới đây thuộc về ''Năng lực'' chuyên môn nghề nghiệp?', ARRAY['Sở thích xem phim tài liệu về môi trường', 'Khả năng phân tích mạch điện, tính toán công suất hệ thống nguồn và kỹ năng thiết kế kỹ thuật', 'Mong muốn kiếm được mức lương cao nhanh chóng', 'Sở thích đi du lịch dã ngoại']::varchar[], ARRAY['Khả năng phân tích mạch điện, tính toán công suất hệ thống nguồn và kỹ năng thiết kế kỹ thuật']::varchar[], 'Khả năng tính toán toán học, phân tích mạch cơ điện và vận dụng phần mềm chuyên ngành thiết kế là biểu hiện cốt lõi của năng lực chuyên môn nghề nghiệp kỹ thuật.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "tieu-chi"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1405,7 +1405,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a33', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Trong thiết kế sơ đồ điện, hãy viết tên viết tắt của thiết bị đóng cắt mạch điện tự động bảo vệ quá tải thay thế cho cầu chì truyền thống.', NULL, ARRAY['Aptomat', 'aptomat', 'CB', 'cb']::varchar[], 'Aptomat (hay CB - Circuit Breaker) là thiết bị đóng cắt tự động có chức năng bảo vệ mạch điện khi xảy ra sự cố quá tải hoặc ngắn mạch một cách chính xác, tiện lợi.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-dan-dung", "thiet-bi"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1421,7 +1421,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a34', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Hãy điền tên đơn vị đo của điện năng tiêu thụ hiển thị trực tiếp trên mặt của Công tơ điện gia đình.', NULL, ARRAY['kWh', 'kwh', 'Kilowatt giờ', 'kilowatt gio']::varchar[], 'Điện năng tiêu thụ của các thiết bị điện dân dụng được đo lường bằng đơn vị Kilowatt giờ (kWh), dân gian thường gọi là ''ký điện'' hoặc ''số điện''.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-dan-dung", "don-vi"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1437,7 +1437,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a35', 'short-answer', 'máy tính', 'tech-career-jobs', 'Cụm từ viết tắt tiếng Anh ''IoT'' dùng để chỉ mạng lưới các thiết bị phần cứng được nhúng cảm biến, phần mềm để kết nối, trao đổi dữ liệu qua internet có tên tiếng Việt là Vạn vật _______________.', NULL, ARRAY['kết nối', 'ket noi', 'Vạn vật kết nối']::varchar[], 'IoT (Internet of Things) dịch sang tiếng Việt nghĩa là Vạn vật kết nối, là nền tảng cốt lõi của công nghệ tự động hóa và nhà thông minh hiện nay.', 2, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["khai-niem", "iot"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1453,7 +1453,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a36', 'short-answer', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Điền cụm từ: Hoạt động giúp học sinh nhận biết được năng lực, sở thích cá nhân, tìm hiểu yêu cầu của các ngành nghề xã hội để lựa chọn hướng đi học tập, công việc phù hợp sau khi tốt nghiệp THCS được gọi là hướng __________.', NULL, ARRAY['nghiệp', 'nghiep', 'Hướng nghiệp', 'huong nghiep']::varchar[], 'Công tác giáo dục hướng nghiệp lớp 9 giúp học sinh phân luồng hiệu quả, chọn đúng trường nghề (Trung cấp, Cao đẳng nghề) hoặc tiếp tục học THPT theo năng lực.', 2, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["huong-nghiep", "khai-niem"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1469,7 +1469,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a37', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Một bóng đèn huỳnh quang có ghi thông số 220V - 40W. Khi hoạt động bình thường liên tục trong đúng 10 giờ, bóng đèn này tiêu thụ lượng điện năng là bao nhiêu Wh?', NULL, ARRAY['400', '400Wh']::varchar[], 'Điện năng tiêu thụ A = P . t = 40W . 10h = 400Wh (tương đương 0.4 kWh).', 4, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-dan-dung", "bai-tap-tinh-toan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1485,7 +1485,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a38', 'short-answer', 'nông nghiệp', 'tech-circuit-install', 'Điền cụm từ: Phương pháp nhân giống cây ăn quả bằng cách cắt lấy một đoạn cành, chồi non của cây mẹ cắm trực tiếp vào chất nền/đất ẩm để đoạn cành đó tự ra rễ phát triển thành cây con hoàn chỉnh được gọi là phương pháp ____________ cành.', NULL, ARRAY['giâm', 'giam', 'giâm cành']::varchar[], 'Giâm cành là phương pháp nhân giống vô tính đơn giản, nhanh chóng và được ứng dụng rộng rãi cho nhiều loại cây trồng nông nghiệp.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["nong-nghiep", "nhan-giong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1501,7 +1501,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a39', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Vật liệu nào (như đồng, nhôm) cho phép dòng điện chạy qua một cách dễ dàng và được làm lõi của dây dẫn điện được gọi là vật liệu dẫn _____________.', NULL, ARRAY['điện', 'dien']::varchar[], 'Vật liệu dẫn điện có điện trở suất nhỏ, giúp truyền tải năng lượng điện từ nguồn đến phụ tải tiêu thụ với hao hụt thấp nhất.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["vat-lieu-dien", "co-ban"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1517,7 +1517,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a40', 'short-answer', 'lập trình', 'tech-circuit-install', 'Học sinh xây dựng code Python đọc giá trị từ cảm biến mưa: Nếu rain == True thì phát tín hiệu đóng mái che tự động, ngược lại thì mở. Khối cấu trúc lập trình này được gọi là cấu trúc rẽ ____________.', NULL, ARRAY['nhánh', 'nhanh', 'rẽ nhánh']::varchar[], 'Cấu trúc rẽ nhánh (if-else) điều khiển máy tính chọn một trong các hướng thực hiện câu lệnh tùy thuộc vào điều kiện kiểm tra là Đúng hay Sai.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "cau-truc-lap-trinh"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1533,7 +1533,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a41', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Trong quy trình vẽ sơ đồ lắp đặt mạch điện, bước đầu tiên và quan trọng nhất trước khi vẽ đường dây dẫn điện là xác định vị trí của các thiết bị trên ____________ điện.', NULL, ARRAY['bảng', 'bang', 'bảng điện']::varchar[], 'Bố trí vị trí bảng điện và các thiết bị (cầu chì, công tắc, ổ cắm) trên bảng điện một cách khoa học giúp đường dây đi hợp lý, an toàn và dễ thao tác thực tế.', 4, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-dan-dung", "quy-trinh"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1549,7 +1549,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a42', 'short-answer', 'chế biến thực phẩm', 'tech-circuit-install', 'Phương pháp bảo quản thực phẩm bằng cách sấy khô, làm bay hơi bớt lượng nước bên trong nhằm mục đích làm chậm sự phát triển của vi sinh vật thuộc nhóm phương pháp làm ____________ thực phẩm.', NULL, ARRAY['khô', 'kho', 'sấy khô', 'say kho']::varchar[], 'Làm khô/sấy khô giảm hoạt độ của nước bên trong thực phẩm, ngăn chặn vi khuẩn và nấm mốc sinh sôi, kéo dài thời gian lưu trữ.', 2, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["che-bien-thuc-pham", "bao-quan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1565,7 +1565,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a43', 'short-answer', 'đạo đức', 'tech-career-choice', 'Việc vứt bỏ bừa bãi các rác thải công nghệ nguy hại như pin hỏng, bo mạch điện tử cũ trực tiếp ra môi trường đất, nước vi phạm nghiêm trọng Luật Bảo vệ ____________.', NULL, ARRAY['môi trường', 'moi truong']::varchar[], 'Rác thải điện tử chứa nhiều kim loại nặng độc hại (chì, thủy ngân). Quy trình xử lý bắt buộc phải thu gom phân loại theo đúng quy định pháp luật môi trường.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dao-duc-moi-truong", "phap-luat"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1581,7 +1581,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a44', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Trong sơ đồ nguyên lý mạch điện đèn cầu thang (mạch đèn điều khiển từ hai nơi độc lập), người thợ điện bắt buộc phải sử dụng loại công tắc mấy cực?', NULL, ARRAY['3', 'ba', '3 cực', 'ba cực']::varchar[], 'Mạch đèn hai nơi (mạch đèn cầu thang) sử dụng hai công tắc ba cực (công tắc chuyển mạch) phối hợp nối dây với nhau để đóng ngắt đèn độc lập ở hai đầu.', 5, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-dan-dung", "mach-dien-phuc-tap"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1597,7 +1597,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a45', 'short-answer', 'lập trình', 'tech-circuit-install', 'Để lập trình đo độ ẩm đất liên tục cho mô hình vườn rau thông minh, học sinh sử dụng lệnh lặp vô hạn trong Python là câu lệnh cấu trúc while ____________: (điền từ khóa logic tiếng Anh phù hợp).', NULL, ARRAY['True', 'true']::varchar[], 'Vòng lặp while True: tạo ra một chu trình lặp vô hạn, giúp chương trình của hệ thống vi điều khiển IoT chạy liên tục để giám sát thông số cảm biến theo thời gian thực.', 5, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "vong-lap-vo-han"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1613,7 +1613,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a46', 'short-answer', 'nông nghiệp', 'tech-circuit-install', 'Bệnh hại cây trồng do các tác nhân vi sinh vật siêu nhỏ, không có cấu trúc tế bào, bắt buộc ký sinh nội bào gây ra được gọi là bệnh do ______________.', NULL, ARRAY['vi-rút', 'virus', 'vi rut']::varchar[], 'Virus là tác nhân gây ra nhiều bệnh hiểm nghèo trên cây ăn quả, thường lan truyền qua các vectơ trung gian như rầy, rệp hoặc dụng cụ cắt tỉa cành.', 4, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["nong-nghiep", "benh-cay-trong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1629,7 +1629,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a47', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Để bảo vệ các đường dây dẫn điện đi ngầm trong tường nhà khỏi bị ẩm ướt hoặc lực tác động cơ học làm đứt gãy, người ta lồng dây dẫn bên trong các ống loại vật liệu nào?', NULL, ARRAY['nhựa', 'ống nhựa', 'nhựa cách điện', 'pvc']::varchar[], 'Ống nhựa cách điện PVC luồn dây có khả năng chịu lực chống cháy, bảo vệ hệ thống dây điện âm tường an toàn tuyệt đối.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-dan-dung", "luon-day"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1646,7 +1646,7 @@ ON CONFLICT (id) DO UPDATE SET
   metadata = EXCLUDED.metadata;
 
 -- Seed KHTN 9 Questions
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a1', 'mcq', 'vật lí', 'sci-phy-optics', 'Khi ánh sáng truyền từ môi trường nước sang môi trường không khí với góc tới lớn hơn góc giới hạn phản xạ toàn phần, hiện tượng nào sau đây sẽ xảy ra?', ARRAY['Tia sáng bị khúc xạ mạnh hơn', 'Tia sáng truyền thẳng không bị đổi hướng', 'Toàn bộ tia sáng bị phản xạ trở lại môi trường nước', 'Ánh sáng bị phân ly thành các màu cầu vồng']::varchar[], ARRAY['Toàn bộ tia sáng bị phản xạ trở lại môi trường nước']::varchar[], 'Khi ánh sáng đi từ môi trường chiết quang hơn sang môi trường chiết quang kém và có góc tới lớn hơn góc giới hạn ($i > i_{gh}$), toàn bộ ánh sáng sẽ bị phản xạ ngược trở lại môi trường cũ, đây là hiện tượng phản xạ toàn phần.', 3, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["quang-hoc", "phan-xa-toan-phan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1662,7 +1662,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a2', 'mcq', 'hóa học', 'sci-chem-organic', 'Dãy các hợp chất nào sau đây đều thuộc loại hợp chất hữu cơ hydrocarbon?', ARRAY['$CH_4, C_2H_4, C_2H_2$', '$CH_3Cl, C_2H_5OH, CH_3COOH$', '$CO_2, CaCO_3, NaHCO_3$', '$C_6H_{12}O_6, C_{12}H_{22}O_{11}, C_2H_4$']::varchar[], ARRAY['$CH_4, C_2H_4, C_2H_2$']::varchar[], 'Hydrocarbon là những hợp chất hữu cơ mà trong phân tử chỉ chứa hai nguyên tố là carbon (C) và hydrogen (H). Các dãy còn lại đều có chứa nguyên tố khác hoặc là hợp chất vô cơ.', 2, 'Đề thi học kỳ KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["hoa-huu-co", "hydrocarbon"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1678,7 +1678,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a3', 'mcq', 'sinh học', 'sci-bio-genetics-mendelian', 'Theo quy luật phân ly của Mendel, khi cho lai hai cây đậu hà lan thuần chủng hạt vàng (trội) và hạt xanh (lặn) với nhau, tỷ lệ kiểu hình ở đời con F2 sẽ là bao nhiêu?', ARRAY['100% hạt vàng', '3 hạt vàng : 1 hạt xanh', '1 hạt vàng : 1 hạt xanh', '9 hạt vàng : 7 hạt xanh']::varchar[], ARRAY['3 hạt vàng : 1 hạt xanh']::varchar[], 'Đời F1 thu được 100% dị hợp (Aa - hạt vàng). Khi F1 tự thụ phấn ($Aa \times Aa$), đời F2 cho ra tỷ lệ kiểu gen là $1AA : 2Aa : 1aa$, tương ứng tỷ lệ kiểu hình trội/lặn là 3 vàng : 1 xanh.', 3, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["di-truyen", "mendel"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1694,7 +1694,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a4', 'mcq', 'vật lí', 'sci-phy-optics', 'Một thấu kính hội tụ có tiêu cự $f = 12\text{ cm}$. Đặt một vật sáng phẳng nhỏ vuông góc với trục chính và cách thấu kính một khoảng $d = 24\text{ cm}$. Tính chất của ảnh thu được qua thấu kính là gì?', ARRAY['Ảnh ảo, cùng chiều và lớn hơn vật', 'Ảnh thật, ngược chiều và nhỏ hơn vật', 'Ảnh thật, ngược chiều và bằng vật', 'Ảnh ảo, ngược chiều và bằng vật']::varchar[], ARRAY['Ảnh thật, ngược chiều và bằng vật']::varchar[], 'Khi vật đặt tại vị trí cách thấu kính hội tụ một khoảng $d = 2f$ ($24 = 2 \times 12$), thấu kính sẽ cho ảnh thật, ngược chiều, cách thấu kính đúng một khoảng $d'' = 2f = 24\text{ cm}$ và có độ lớn bằng vật.', 4, 'Đề thi học kỳ KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["thau-kinh", "hinh-hoc-quang"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1710,7 +1710,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a5', 'mcq', 'hóa học', 'sci-chem-metal', 'Trường hợp nào sau đây xảy ra hiện tượng ăn mòn điện hóa học gây hư hại kim loại nghiêm trọng trong thực tế?', ARRAY['Để một chiếc đinh sắt nguyên chất trong bình chứa khí oxygen khô', 'Nhúng thanh kẽm vào dung dịch acid $HCl$', 'Cột dây đồng vào đường ống dẫn nước bằng thép (sắt) rồi để ngoài không khí ẩm', 'Đốt cháy dây magnesi ($Mg$) trong không khí']::varchar[], ARRAY['Cột dây đồng vào đường ống dẫn nước bằng thép (sắt) rồi để ngoài không khí ẩm']::varchar[], 'Khi sắt kết xúc trực tiếp với đồng trong môi trường chất điện ly (không khí ẩm), sẽ hình thành một pin điện hóa. Sắt có tính khử mạnh hơn đồng nên đóng vai trò là cực âm (anode) và bị ăn mòn điện hóa rất nhanh.', 4, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["an-mon-kim-loai", "dien-hoa"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1726,7 +1726,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a6', 'mcq', 'sinh học', 'sci-bio-dna-gene', 'Thành phần cấu tạo cốt lõi của một phân tử DNA (Axit Đêôxiribônuclêit) bao gồm các loại nucleotide nào sau đây?', ARRAY['A, U, G, X', 'A, T, G, X', 'A, T, U, X', 'U, G, X, Axit amin']::varchar[], ARRAY['A, T, G, X']::varchar[], 'DNA được cấu tạo từ 4 loại đơn phân nucleotide là Adenine (A), Thymine (T), Guanine (G), và Cytosine (X). Nucleotide loại Uracil (U) chỉ xuất hiện trong cấu trúc của RNA.', 2, 'Đề thi học kỳ KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sinh-hoc-phan-tu", "dna"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1742,7 +1742,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a7', 'mcq', 'vật lí', 'sci-phy-electricity', 'Một điện trở $R = 20\ \Omega$ được mắc vào hiệu điện thế không đổi $U = 10\text{V}$. Công suất điện tiêu thụ trên điện trở này là bao nhiêu?', ARRAY['200 W', '2 W', '5 W', '0.5 W']::varchar[], ARRAY['5 W']::varchar[], 'Công suất điện được tính bằng công thức: $P = \frac{U^2}{R}$. Thay số vào ta có: $P = \frac{10^2}{20} = \frac{100}{20} = 5\text{ W}$.', 3, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-hoc", "cong-suat"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1758,7 +1758,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a8', 'mcq', 'hóa học', 'sci-chem-organic', 'Để phân biệt hai dung dịch mất nhãn gồm Rượu etylic ($C_2H_5OH$) và Axit axetic ($CH_3COOH$), ta có thể dùng thuốc thử đơn giản nào dưới đây?', ARRAY['Dung dịch NaCl', 'Quỳ tím hoặc dung dịch muối $Na_2CO_3$', 'Nước lọc', 'Khí hydrogen']::varchar[], ARRAY['Quỳ tím hoặc dung dịch muối $Na_2CO_3$']::varchar[], 'Axit axetic ($CH_3COOH$) có tính acid làm quỳ tím hóa đỏ và tác dụng với muối carbonate giải phóng khí $CO_2$ (sủi bọt khí). Rượu etylic không có các phản ứng này.', 2, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["nhan-biet", "hoa-huu-co"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1774,7 +1774,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a9', 'mcq', 'sinh học', 'sci-bio-ecosystem', 'Nhân tố sinh thái nào sau đây thuộc nhóm nhân tố sinh thái vô sinh ảnh hưởng trực tiếp đến đời sống thực vật?', ARRAY['Sự cạnh tranh nguồn thức ăn của chim ăn hạt', 'Ánh sáng, nhiệt độ và độ ẩm không khí', 'Các loài vi khuẩn phân hủy trong đất', 'Hoạt động chặt phá rừng của con người']::varchar[], ARRAY['Ánh sáng, nhiệt độ và độ ẩm không khí']::varchar[], 'Nhân tố vô sinh bao gồm tất cả các đặc tính vật lý và hóa học của môi trường xung quanh sinh vật (như khí hậu, đất, nước, ánh sáng...). Các phương án còn lại là nhân tố hữu sinh và con người.', 2, 'Đề thi học kỳ KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sinh-thai", "moi-truong"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1790,7 +1790,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-mcq-a10', 'mcq', 'vật lí', 'sci-phy-electromagnet', 'Hiện tượng cảm ứng điện từ xuất hiện dòng điện cảm ứng trong một cuộn dây dẫn kín khi nào?', ARRAY['Đặt một nam thanh nam châm đứng yên bên cạnh cuộn dây', 'Số đường sức từ xuyên qua tiết diện S của cuộn dây biến thiên (tăng hoặc giảm)', 'Cho dòng điện một chiều chạy qua cuộn dây', 'Đốt nóng cuộn dây dẫn bằng ngọn lửa']::varchar[], ARRAY['Số đường sức từ xuyên qua tiết diện S của cuộn dây biến thiên (tăng hoặc giảm)']::varchar[], 'Điều kiện để xuất hiện dòng điện cảm ứng trong cuộn dây dẫn kín là số đường sức từ xuyên qua tiết diện S của cuộn dây đó phải biến thiên theo thời gian.', 3, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["dien-tu-hoc", "cam-ung-dien-tu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1806,7 +1806,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-sa-a11', 'short-answer', 'vật lí', 'sci-phy-optics', 'Một tia sáng truyền từ không khí vào thủy tinh có chiết suất $n = 1.5$. Nếu góc khúc xạ trong thủy tinh đo được là $r = 30^\circ$, hãy tính giá trị của $\sin(i)$ (trong đó $i$ là góc tới).', NULL, ARRAY['0.75', '3/4']::varchar[], 'Áp dụng định luật khúc xạ ánh sáng: $n_1 \cdot \sin(i) = n_2 \cdot \sin(r)$. Với môi trường 1 là không khí ($n_1 = 1$), môi trường 2 là thủy tinh ($n_2 = 1.5$). Ta có: $1 \cdot \sin(i) = 1.5 \cdot \sin(30^\circ) = 1.5 \cdot 0.5 = 0.75$.', 4, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["quang-hoc", "khuc-xa"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1822,7 +1822,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-sa-a12', 'short-answer', 'hóa học', 'sci-chem-organic', 'Hãy viết tên quốc tế viết tắt của polyme có tên thông thường là nhựa PE, được tạo thành từ phản ứng trùng hợp khí ethylene.', NULL, ARRAY['Polyethylene', 'polyethylene', 'PE', 'pe']::varchar[], 'Nhựa PE có tên đầy đủ là Polyethylene, được điều chế bằng cách trùng hợp các phân tử khí etilen ($C_2H_4$) dưới điều kiện nhiệt độ, áp suất và xúc tác thích hợp.', 2, 'Đề thi học kỳ KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["polymer", "hoa-huu-co"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1838,7 +1838,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-sa-a13', 'short-answer', 'sinh học', 'sci-bio-dna-gene', 'Tên gọi của cấu trúc gồm một chuỗi các nucleotide liên kết với nhau, đóng vai trò là đơn vị lưu trữ và truyền đạt thông tin di truyền của sinh vật, nằm trên nhiễm sắc thể là gì?', NULL, ARRAY['Gen', 'gen', 'Gene', 'gene']::varchar[], 'Gen là một đoạn của phân tử DNA mang thông tin mã hóa cho một chuỗi polypeptide hoặc một phân tử RNA, là đơn vị cơ sở của di truyền.', 2, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["di-truyen", "co-ban"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1854,7 +1854,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-sa-a14', 'short-answer', 'hóa học', 'sci-chem-organic', 'Khi đốt cháy hoàn toàn 1 mol khí metan ($CH_4$) trong khí oxygen dư, phản ứng sinh ra khí carbon dioxide và nước. Hãy tính số mol khí $CO_2$ thu được sau phản ứng.', NULL, ARRAY['1', '1 mol']::varchar[], 'Phương trình hóa học: $CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O$. Dựa vào tỉ lệ phương trình, 1 mol $CH_4$ phản ứng cháy hoàn toàn sẽ tạo ra đúng 1 mol $CO_2$.', 3, 'Đề thi học kỳ KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["tinh-toan-hoa-hoc", "hydrocarbon"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1870,7 +1870,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-khtn9-sa-a15', 'short-answer', 'vật lí', 'sci-phy-electromagnet', 'Một máy biến thế có số vòng dây cuộn sơ cấp là 4400 vòng, cuộn thứ cấp là 220 vòng. Khi đặt vào hai đầu cuộn sơ cấp một hiệu điện thế xoay chiều $U_1 = 220\text{V}$, hiệu điện thế ở hai đầu cuộn thứ cấp $U_2$ bằng bao nhiêu V?', NULL, ARRAY['11', '11V', '11 V']::varchar[], 'Áp dụng công thức máy biến thế: $\frac{U_1}{U_2} = \frac{N_1}{N_2} \Rightarrow \frac{220}{U_2} = \frac{4400}{220} = 20 \Rightarrow U_2 = \frac{220}{20} = 11\text{V}$.', 4, 'Sở GD&ĐT TP.HCM', 'science', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["may-bien-the", "dien-tu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1887,7 +1887,7 @@ ON CONFLICT (id) DO UPDATE SET
   metadata = EXCLUDED.metadata;
 
 -- Seed Extra Tech/Info Questions
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a48', 'short-answer', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Các cơ sở giáo dục tổ chức các chương trình đào tạo nghề ngắn hạn hoặc dài hạn, cấp bằng Sơ cấp, Trung cấp, Cao đẳng nghề cho học sinh sau THCS được gọi chung là các trường ______________.', NULL, ARRAY['nghề', 'trường nghề', 'trung cấp nghề', 'cao đẳng nghề']::varchar[], 'Hệ thống các trường nghề đáp ứng nhu cầu học song hành (vừa học văn hóa bổ túc vừa học nghề nghiệp kỹ thuật), chuẩn bị nguồn nhân lực thực hành cho xã hội.', 2, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["huong-nghiep", "giao-duc"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1903,7 +1903,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a49', 'short-answer', 'lắp đặt mạng điện', 'tech-circuit-install', 'Mạch điện có hiện tượng dây pha (dây nóng) chạm trực tiếp vào dây trung tính (dây nguội) mà không qua bất kỳ tải tiêu thụ nào, làm dòng điện tăng vọt cực đại gây cháy nổ gọi là hiện tượng ngắn mạch hoặc chập ______________.', NULL, ARRAY['mạch', 'chap mach', 'ngắn mạch']::varchar[], 'Ngắn mạch (chập mạch) sinh ra nhiệt lượng cực lớn tức thì, nếu hệ thống bảo vệ (cầu chì, aptomat) không ngắt kịp thời sẽ dẫn đến hỏa hoạn nghiêm trọng.', 3, 'Đề thi học kỳ Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["an-toan-dien", "su-co"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1919,7 +1919,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-tech9-sa-a50', 'short-answer', 'định hướng nghề nghiệp', 'tech-career-jobs', 'Điền từ thích hợp: Trong nền kinh tế số, năng lực thích ứng nhanh và biết sử dụng linh hoạt các công cụ phần mềm máy tính, thiết bị số phục vụ công việc chuyên môn được gọi là năng lực ____________.', NULL, ARRAY['số', 'nang luc so', 'tin học', 'tin hoc']::varchar[], 'Năng lực số (Digital Literacy) là một trong những tiêu chuẩn bắt buộc cốt lõi đối với mọi nguồn nhân lực chất lượng cao trong thị trường lao động tương lai.', 3, 'Sở GD&ĐT TP.HCM', 'technology', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["huong-nghiep", "nang-luc-so"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1935,7 +1935,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a31', 'mcq', 'lập trình', 'inf-algorithm', 'Xem đoạn mã Python sau:
 ```python
 n = 5
@@ -1958,7 +1958,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-mcq-a32', 'mcq', 'hướng nghiệp', 'inf-career', 'Lĩnh vực nghề nghiệp Tin học nào chuyên nghiên cứu các giải pháp ngăn chặn các cuộc tấn công mạng và bảo mật dữ liệu cho doanh nghiệp?', ARRAY['Thiết kế đồ họa số', 'An toàn thông tin / Bảo mật mạng', 'Quản trị cơ sở dữ liệu', 'Lập trình web di động']::varchar[], ARRAY['An toàn thông tin / Bảo mật mạng']::varchar[], 'Chuyên gia an toàn thông tin tập trung bảo vệ hệ thống thông tin, mạng máy tính khỏi các mối đe dọa truy cập bất hợp pháp và phá hoại dữ liệu.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["huong-nghiep", "an-ninh-mang"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1974,7 +1974,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a33', 'short-answer', 'bảng tính', 'inf-digital-tools', 'Trong Microsoft Excel, hàm nào dùng để đếm số lượng ô thỏa mãn một điều kiện cho trước?', NULL, ARRAY['COUNTIF', 'countif']::varchar[], 'Hàm COUNTIF dùng để đếm số ô trong một vùng dữ liệu thỏa mãn điều kiện nhất định.', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "ham-so"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -1990,7 +1990,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a34', 'short-answer', 'máy tính', 'inf-digital-world', 'Hãy viết tên viết tắt (gồm 3 chữ cái đại diện) của thiết bị lưu trữ bán dẫn có tốc độ đọc ghi dữ liệu vượt trội hơn hẳn so với ổ cứng cơ học HDD truyền thống.', NULL, ARRAY['SSD', 'ssd']::varchar[], 'SSD (Solid State Drive) là ổ cứng thể rắn sử dụng chip nhớ flash, mang lại tốc độ truy xuất dữ liệu cực nhanh so với ổ đĩa HDD.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["o-cung", "ssd"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2006,7 +2006,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a35', 'short-answer', 'đám mây', 'inf-data-manage', 'Điền cụm từ chính xác: Việc lưu trữ dữ liệu, chạy phần mềm dựa trên nền tảng internet thông qua hệ thống máy chủ của các nhà cung cấp dịch vụ được gọi chung là công nghệ điện toán ______________.', NULL, ARRAY['đám mây', 'dam may']::varchar[], 'Điện toán đám mây (Cloud Computing) cho phép người dùng khai thác tài nguyên công nghệ qua internet mà không cần tự đầu tư phần cứng phức tạp.', 2, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dien-toan-dam-may", "khai-niem"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2022,7 +2022,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a36', 'short-answer', 'bản quyền', 'inf-ethics-law', 'Quyền hợp pháp của tác giả đối với sản phẩm trí tuệ do họ sáng tạo ra được gọi là gì?', NULL, ARRAY['Quyền tác giả', 'quyền tác giả', 'Bản quyền', 'bản quyền']::varchar[], 'Quyền tác giả (hay bản quyền) bảo vệ các tác phẩm gốc văn học, nghệ thuật, phần mềm tin học khỏi việc sao chép trái phép.', 2, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["phap-luat", "ban-quyen"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2038,7 +2038,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a37', 'short-answer', 'bảng tính', 'inf-digital-tools', 'Trong Excel, nếu viết công thức `=IF(5>8, "Đúng", "Sai")`, màn hình hiển thị kết quả là chuỗi chữ nào?', NULL, ARRAY['Sai', 'sai']::varchar[], 'Vì biểu thức điều kiện 5>8 mang giá trị False (Sai), nên hàm IF sẽ trả về giá trị ứng với trường hợp điều kiện sai, tức là chữ ''Sai''.', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "ham-if"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2054,7 +2054,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a38', 'short-answer', 'lập trình', 'inf-algorithm', 'Trong ngôn ngữ Python, kết quả trả về của phép toán `15 // 4` (phép chia lấy phần nguyên) là bao nhiêu?', NULL, ARRAY['3']::varchar[], 'Phép toán `//` chia lấy phần nguyên. 15 chia cho 4 được 3 dư 3, do đó phần nguyên kết quả là 3.', 4, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "toan-tu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2070,7 +2070,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a39', 'short-answer', 'lập trình', 'inf-algorithm', 'Trong ngôn ngữ Python, phép toán nào dùng để lấy số dư của phép chia (phép chia modulo)? Điền ký tự đại diện cho toán tử đó.', NULL, ARRAY['%']::varchar[], 'Ký tự `%` là toán tử chia lấy phần dư trong lập trình Python (ví dụ: `7 % 3` bằng 1).', 3, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "phep-du"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2086,7 +2086,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a40', 'short-answer', 'lập trình', 'inf-algorithm', 'Đoạn code Python sau có lỗi ở dòng nào?
 ```python
 1: x = 5
@@ -2108,7 +2108,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a41', 'short-answer', 'máy tính', 'inf-digital-world', 'Thành phần phần cứng máy tính viết tắt là ''ALU'' chịu trách nhiệm tính toán số học và thực hiện các phép toán nào?', NULL, ARRAY['logic', 'Logic', 'phép toán logic']::varchar[], 'ALU (Arithmetic Logic Unit) là đơn vị chịu trách nhiệm thực hiện toàn bộ các phép toán số học (+, -, *, /) và các phép toán logic (AND, OR, NOT, so sánh) của bộ vi xử lý.', 5, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["cpu", "alu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2124,7 +2124,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a42', 'short-answer', 'tìm kiếm thông tin', 'inf-data-manage', 'Điền toán tử phù hợp: Để loại trừ các trang web chứa một từ khóa nhất định khỏi kết quả tìm kiếm Google, ta đặt dấu _________ sát trước từ khóa cần loại bỏ.', NULL, ARRAY['trừ', '-', 'dấu trừ']::varchar[], 'Toán tử dấu trừ `-` đặt liền trước từ khóa giúp loại trừ các bài viết chứa từ khóa đó khỏi trang kết quả (ví dụ: `apple -iphone`).', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["tim-kiem", "toan-tu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2140,7 +2140,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a43', 'short-answer', 'đạo đức', 'inf-ethics-law', 'Hành vi sử dụng công nghệ số để cố ý làm nhục, đe dọa hoặc quấy rối người khác lặp đi lặp lại được gọi là hành vi bắt nạt qua ______________.', NULL, ARRAY['mạng', 'không gian mạng', 'internet']::varchar[], 'Bắt nạt qua mạng (Cyberbullying) là một vấn nạn vi phạm quy tắc đạo đức nghiêm trọng trong môi trường số.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["dao-duc-so", "an-toan"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2156,7 +2156,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a44', 'short-answer', 'bảng tính', 'inf-digital-tools', 'Trong Excel, nếu ô A1=10, A2=5, A3=20. Công thức `=SUMIF(A1:A3, "<15")` trả về kết quả bằng bao nhiêu?', NULL, ARRAY['15']::varchar[], 'Các ô thỏa mãn điều kiện nhỏ hơn 15 gồm có A1 (10) và A2 (5). Hàm SUMIF thực hiện cộng tổng: 10 + 5 = 15.', 4, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "ham-sumif"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2172,7 +2172,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a45', 'short-answer', 'lập trình', 'inf-algorithm', 'Trong Python, kết quả xuất ra màn hình của lệnh `print(type(3.14))` là gì?', NULL, ARRAY['<class ''float''>', 'float']::varchar[], 'Hàm type() trả về kiểu dữ liệu của đối tượng. 3.14 là số thực nên thuộc lớp dữ liệu số thực kiểu ''float''.', 5, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "kieu-du-lieu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2188,7 +2188,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a46', 'short-answer', 'lập trình', 'inf-algorithm', 'Đoạn mã sau hiển thị số mấy lên màn hình?
 ```python
 a = 2
@@ -2210,7 +2210,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a47', 'short-answer', 'lập trình', 'inf-algorithm', 'Cho biết số vòng lặp thực hiện trong đoạn mã Python sau:
 ```python
 for i in range(5):
@@ -2230,7 +2230,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a48', 'short-answer', 'lập trình', 'inf-algorithm', 'Hãy viết tên hàm trong Python dùng để yêu cầu người dùng nhập thông tin đầu vào từ bàn phím.', NULL, ARRAY['input()', 'input']::varchar[], 'Hàm `input()` tạm dừng chương trình và chờ đợi người dùng nhập một chuỗi ký tự từ bàn phím.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["python", "nhap-lieu"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2246,7 +2246,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a49', 'short-answer', 'bảng tính', 'inf-digital-tools', 'Ký tự nào bắt buộc phải gõ đầu tiên khi bạn muốn nhập một công thức hoặc hàm toán học tính toán vào ô dữ liệu Excel?', NULL, ARRAY['=']::varchar[], 'Dấu bằng `=` thông báo cho phần mềm bảng tính biết nội dung phía sau là công thức tính toán chứ không phải chuỗi văn bản thông thường.', 2, 'Đề thi học kỳ Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["excel", "cu-phap"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2262,7 +2262,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-info9-sa-a50', 'short-answer', 'hướng nghiệp', 'inf-career', 'Điền từ thích hợp: Ngành khoa học máy tính chuyên nghiên cứu cách xây dựng thuật toán giúp máy tính có khả năng suy nghĩ, học tập và mô phỏng trí tuệ con người được gọi tắt là công nghệ ______.', NULL, ARRAY['AI', 'ai', 'Trí tuệ nhân tạo', 'tri tue nhan tao']::varchar[], 'Trí tuệ nhân tạo (AI - Artificial Intelligence) đang thay đổi cấu trúc thị trường lao động và mở ra nhiều cơ hội định hướng nghề nghiệp Tin học.', 3, 'Sở GD&ĐT TP.HCM', 'informatics', 9, '{"isStandard": true, "answerMode": "short-answer", "tags": ["huong-nghiep", "ai"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2280,7 +2280,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 
 -- Seed Science grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
   ('sci-9-1', 'science', 9, 'nat-physics', 'Khúc xạ ánh sáng và Định luật khúc xạ ánh sáng', '# I. Hiện tượng khúc xạ ánh sáng
 - **Định nghĩa:** Là hiện tượng tia sáng truyền từ môi trường trong suốt này sang môi trường trong suốt khác bị gãy khúc tại mặt phân cách giữa hai môi trường.
@@ -2546,7 +2546,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 
 -- Seed History and Geography grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
   ('his-9-1', 'history_geography', 9, 'history', 'Thế giới từ năm 1918 đến năm 1945', '# I. Tình hình thế giới sau Chiến tranh thế giới thứ nhất
 - **Cách mạng tháng Mười Nga (1917):** Thắng lợi mở ra thời kỳ mới trong lịch sử nhân loại, thiết lập nhà nước XHCN đầu tiên trên thế giới.
@@ -2658,7 +2658,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 
 -- Seed Civics grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
   ('gdcd-9-1', 'civics', 9, 'ethics', 'Sống có lý tưởng và Có chí tự lập', '# I. Sống có lý tưởng
 - **Khái niệm:** Sống có lý tưởng là xác định được mục đích sống cao đẹp, đúng đắn, luôn phấn đấu để đạt được mục đích đó nhằm mang lại lợi ích cho bản thân, gia đình, nhà trường và xã hội.
@@ -2735,7 +2735,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 
 -- Seed Technology grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
   ('tec-9-1', 'technology', 9, 'electrical_engineering', 'An toàn lao động trong lắp đặt mạng điện trong nhà', '# I. Các tai nạn điện thường gặp và nguyên nhân
 - **Tiếp xúc trực tiếp với vật mang điện:** Chạm tay vào dây dẫn trần, thiết bị rò rỉ điện ra vỏ kim loại do hỏng lớp cách điện.
@@ -2825,7 +2825,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 
 -- Seed Informatics grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
   ('ict-9-1', 'informatics', 9, 'networks_and_internet', 'Từ máy tính đơn lẻ đến mạng máy tính và Internet', '# I. Mạng máy tính là gì?
 - **Khái niệm:** Mạng máy tính là tập hợp các máy tính và thiết bị được kết nối với nhau theo một phương thức nào đó để truyền tải thông tin và chia sẻ dữ liệu, thiết bị.
@@ -2911,7 +2911,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 
 -- Seed Art grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
   ('art-9-1', 'art', 9, 'music_theory', 'Lý thuyết âm nhạc: Giọng song song, Giọng cùng tên và Quãng dịch', '# I. Giọng song song (Relative Keys)
 - **Khái niệm:** Là một cặp giọng (gồm một giọng Trưởng và một giọng Thứ) có chung hóa biểu (cùng số lượng dấu thăng hoặc dấu giáng ở đầu khuông nhạc) nhưng khác nhau về âm chủ (chủ âm).
@@ -2977,7 +2977,7 @@ ON CONFLICT (id) DO UPDATE SET
   is_standard = EXCLUDED.is_standard;
 
 -- Seed Batch 1 Questions (Technology, Informatics, Arts)
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-1', 'mcq', 'An toàn điện - Thiết bị bảo vệ', 'tech-circuit-install', 'Thiết bị nào dưới đây có chức năng tự động ngắt mạch điện khi xảy ra sự cố ngắn mạch hoặc quá tải?', ARRAY['A. Công tắc điện', 'B. Cầu dao', 'C. Aptomat (ngắt mạch tự động)', 'D. Ổ cắm điện']::varchar[], ARRAY['C. Aptomat (ngắt mạch tự động)']::varchar[], 'Aptomat (CB - Circuit Breaker) là thiết bị đóng cắt tự động, tự động ngắt mạch khi có sự cố quá tải hoặc ngắn mạch để bảo vệ mạch điện và thiết bị.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Lắp đặt mạng điện trong nhà', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -2993,7 +2993,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-2', 'mcq', 'An toàn điện - Cầu chì', 'tech-circuit-install', 'Bộ phận chủ yếu của cầu chì để bảo vệ mạch điện là gì?', ARRAY['A. Vỏ cầu chì', 'B. Dây chì (sợi dây có nhiệt độ nóng chảy thấp)', 'C. Các cực nối điện', 'D. Cần đóng cắt']::varchar[], ARRAY['B. Dây chì (sợi dây có nhiệt độ nóng chảy thấp)']::varchar[], 'Dây chì là bộ phận cốt lõi của cầu chì. Khi dòng điện quá tải, dây chì nóng chảy và ngắt mạch, bảo vệ các thiết bị điện phía sau.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3009,7 +3009,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-3', 'mcq', 'An toàn điện - Cầu chì', 'tech-circuit-install', 'Nguyên lý hoạt động cơ bản của cầu chì dựa trên hiện tượng nào?', ARRAY['A. Dây chì nóng chảy khi cường độ dòng điện vượt quá ngưỡng cho phép', 'B. Dây chì tự ngắt khi điện áp nguồn thay đổi', 'C. Dây chì tự động ngắt khi công suất điện giảm', 'D. Dây chì làm tăng điện trở của mạch điện']::varchar[], ARRAY['A. Dây chì nóng chảy khi cường độ dòng điện vượt quá ngưỡng cho phép']::varchar[], 'Cầu chì hoạt động dựa trên nguyên lý nhiệt: khi dòng điện vượt quá định mức, nhiệt lượng sinh ra làm nóng chảy dây chì, ngắt mạch điện.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3025,7 +3025,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-4', 'mcq', 'An toàn điện - Thiết bị đóng cắt', 'tech-circuit-install', 'Trên cầu dao ghi 250V – 10A, con số 10A có ý nghĩa gì?', ARRAY['A. Điện áp định mức của cầu dao là 10V', 'B. Cường độ dòng điện định mức của cầu dao là 10A', 'C. Công suất tối đa của cầu dao là 10W', 'D. Cầu dao chịu được dòng điện tối đa 250A']::varchar[], ARRAY['B. Cường độ dòng điện định mức của cầu dao là 10A']::varchar[], 'Ký hiệu trên thiết bị điện: số đứng trước V là điện áp định mức, số đứng trước A là cường độ dòng điện định mức mà thiết bị hoạt động an toàn.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Bài 12', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3041,7 +3041,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-5', 'mcq', 'An toàn điện - Aptomat', 'tech-circuit-install', 'Cần đóng cắt của Aptomat có chức năng gì?', ARRAY['A. Bảo vệ chống quá tải tự động', 'B. Thực hiện chức năng đóng, cắt nguồn điện bằng tay', 'C. Đo điện áp nguồn', 'D. Kết nối dây điện']::varchar[], ARRAY['B. Thực hiện chức năng đóng, cắt nguồn điện bằng tay']::varchar[], 'Cần đóng cắt (công tắc gạt) là bộ phận cơ khí cho phép người dùng thao tác đóng/ngắt mạch điện bằng tay, ngoài chức năng tự động của Aptomat.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3057,7 +3057,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-6', 'mcq', 'Mạch điện - Lắp đặt', 'tech-circuit-install', 'Quy trình lắp đặt mạch điện bảng điện chuẩn bao gồm các bước nào?', ARRAY['A. Vạch dấu → Khoan lỗ → Lắp thiết bị → Nối dây → Kiểm tra', 'B. Khoan lỗ → Vạch dấu → Nối dây → Lắp thiết bị → Kiểm tra', 'C. Vạch dấu → Nối dây → Khoan lỗ → Lắp thiết bị → Kiểm tra', 'D. Lắp thiết bị → Vạch dấu → Khoan lỗ → Nối dây → Kiểm tra']::varchar[], ARRAY['A. Vạch dấu → Khoan lỗ → Lắp thiết bị → Nối dây → Kiểm tra']::varchar[], 'Quy trình kỹ thuật chuẩn: Vạch dấu → Khoan lỗ → Lắp thiết bị → Nối dây → Kiểm tra. Bước vạch dấu trước giúp đảm bảo các thiết bị được đặt đúng vị trí trước khi gia công.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Thực hành lắp bảng điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3073,7 +3073,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-7', 'mcq', 'An toàn điện', 'tech-circuit-install', 'Tại sao phải kiểm tra an toàn điện định kỳ cho mạng điện trong nhà?', ARRAY['A. Để mạng điện có tính thẩm mỹ cao', 'B. Để tiết kiệm dây dẫn điện', 'C. Để phát hiện và phòng ngừa các sự cố, đảm bảo an toàn cho người và tài sản', 'D. Để tăng công suất tiêu thụ điện']::varchar[], ARRAY['C. Để phát hiện và phòng ngừa các sự cố, đảm bảo an toàn cho người và tài sản']::varchar[], 'Kiểm tra định kỳ giúp phát hiện sớm các hư hỏng (cách điện bị mòn, mối nối lỏng, quá tải...) trước khi xảy ra sự cố nguy hiểm.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Bài 12 Kiểm tra an toàn mạng điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3089,7 +3089,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-8', 'mcq', 'An toàn điện - Dụng cụ đo điện', 'tech-circuit-install', 'Dụng cụ nào sau đây thường được dùng để đo điện áp của nguồn điện?', ARRAY['A. Ampe kìm', 'B. Bút thử điện', 'C. Đồng hồ vạn năng', 'D. Kìm tuốt dây']::varchar[], ARRAY['C. Đồng hồ vạn năng']::varchar[], 'Đồng hồ vạn năng (VOM) là thiết bị đa năng dùng để đo điện áp (V), cường độ dòng điện (A) và điện trở (Ω). Bút thử điện chỉ kiểm tra có điện hay không.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3105,7 +3105,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-9', 'mcq', 'An toàn điện', 'tech-circuit-install', 'Khi sửa chữa mạng điện trong nhà, hành động nào là KHÔNG được phép thực hiện?', ARRAY['A. Cắt điện trước khi tiến hành sửa chữa', 'B. Sử dụng các dụng cụ bảo vệ cách điện', 'C. Tự ý tháo bỏ dây nối đất của thiết bị điện', 'D. Kiểm tra cách điện của các thiết bị điện trước khi vận hành']::varchar[], ARRAY['C. Tự ý tháo bỏ dây nối đất của thiết bị điện']::varchar[], 'Dây nối đất (tiếp địa) có vai trò bảo vệ người dùng khi vỏ thiết bị bị rò điện. Tháo bỏ dây nối đất sẽ mất tác dụng bảo vệ, gây nguy hiểm tính mạng.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, An toàn điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3121,7 +3121,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-10', 'mcq', 'An toàn điện - Lắp đặt mạch điện', 'tech-circuit-install', 'Trong mạch điện, cầu chì hoặc aptomat nên được lắp ở vị trí nào?', ARRAY['A. Trên dây trung tính', 'B. Trên dây pha, trước các thiết bị cần bảo vệ', 'C. Mắc song song với phụ tải', 'D. Sau công tắc điện']::varchar[], ARRAY['B. Trên dây pha, trước các thiết bị cần bảo vệ']::varchar[], 'Thiết bị bảo vệ phải lắp trên dây pha (dây nóng), trước phụ tải. Khi ngắt, dòng điện bị cắt hoàn toàn trên dây pha, đảm bảo an toàn.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3137,7 +3137,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-11', 'mcq', 'Bản vẽ kỹ thuật - Hình chiếu', 'tech-circuit-install', 'Hình chiếu bằng có vị trí như thế nào so với hình chiếu đứng trên bản vẽ kỹ thuật?', ARRAY['A. Bên phải hình chiếu đứng', 'B. Bên trái hình chiếu đứng', 'C. Nằm dưới hình chiếu đứng', 'D. Nằm trên hình chiếu đứng']::varchar[], ARRAY['C. Nằm dưới hình chiếu đứng']::varchar[], 'Trong hệ thống 3 hình chiếu chuẩn: Hình chiếu đứng (mặt chính) ở giữa, hình chiếu bằng (mặt bằng) ở dưới, hình chiếu cạnh (mặt cạnh) ở bên phải.', 3, 'scribd.com - Trắc nghiệm Công nghệ, Bản vẽ kỹ thuật (theo chương trình THCS)', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3153,7 +3153,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-12', 'mcq', 'Bản vẽ kỹ thuật - Ký hiệu', 'tech-circuit-install', 'Nét gạch chấm mảnh trên bản vẽ kỹ thuật dùng để vẽ gì?', ARRAY['A. Đường bao khuất', 'B. Đường tâm, trục đối xứng', 'C. Đường gióng và đường kích thước', 'D. Đường bao thấy']::varchar[], ARRAY['B. Đường tâm, trục đối xứng']::varchar[], 'Quy ước nét vẽ trong bản vẽ kỹ thuật: Nét liền đậm = đường bao thấy; Nét đứt = đường bao khuất; Nét gạch chấm mảnh = đường tâm, trục đối xứng.', 3, 'scribd.com - Trắc nghiệm Bản vẽ kỹ thuật THCS', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3169,7 +3169,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-13', 'mcq', 'Bản vẽ kỹ thuật - Bản vẽ chi tiết', 'tech-circuit-install', 'Bản vẽ chi tiết gồm những nội dung nào?', ARRAY['A. Hình biểu diễn và kích thước', 'B. Yêu cầu kỹ thuật và khung tên', 'C. Hình biểu diễn, kích thước, yêu cầu kỹ thuật và khung tên', 'D. Chỉ cần hình biểu diễn và yêu cầu kỹ thuật']::varchar[], ARRAY['C. Hình biểu diễn, kích thước, yêu cầu kỹ thuật và khung tên']::varchar[], 'Bản vẽ chi tiết đầy đủ bao gồm 4 nội dung: Hình biểu diễn (các hình chiếu), Kích thước (số đo), Yêu cầu kỹ thuật (chất lượng bề mặt, vật liệu...) và Khung tên (tên chi tiết, tỉ lệ, người vẽ...).', 3, 'scribd.com - Trắc nghiệm Bản vẽ kỹ thuật', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3185,7 +3185,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-14', 'mcq', 'Bản vẽ kỹ thuật - Phương pháp chiếu', 'tech-circuit-install', 'Phương pháp chiếu góc thứ nhất có các hình chiếu đặt như thế nào?', ARRAY['A. Hình chiếu bằng ở dưới, hình chiếu cạnh ở bên phải', 'B. Hình chiếu bằng ở trên, hình chiếu cạnh ở bên phải', 'C. Hình chiếu bằng ở dưới, hình chiếu cạnh ở bên trái', 'D. Hình chiếu bằng ở trên, hình chiếu cạnh ở bên trái']::varchar[], ARRAY['A. Hình chiếu bằng ở dưới, hình chiếu cạnh ở bên phải']::varchar[], 'Phương pháp chiếu góc thứ nhất (dùng ở châu Âu và Việt Nam): Hình chiếu bằng đặt dưới hình chiếu đứng, hình chiếu cạnh đặt bên phải hình chiếu đứng.', 3, 'scribd.com - Trắc nghiệm Bản vẽ kỹ thuật THCS', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3201,7 +3201,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-15', 'mcq', 'Cơ khí - Vật liệu', 'tech-circuit-install', 'Vật liệu nào sau đây được phân loại là vật liệu kim loại trong cơ khí?', ARRAY['A. Chất dẻo (nhựa)', 'B. Thép và Gang', 'C. Cao su', 'D. Vật liệu compozit']::varchar[], ARRAY['B. Thép và Gang']::varchar[], 'Vật liệu kim loại trong cơ khí gồm kim loại đen (Gang, Thép) và kim loại màu (Đồng, Nhôm...). Chất dẻo, cao su, compozit là vật liệu phi kim loại.', 3, 'studocu.vn - Trắc nghiệm Cơ khí, Vật liệu cơ khí', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3217,7 +3217,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-16', 'mcq', 'Cơ khí - Vật liệu', 'tech-circuit-install', 'Tính chất nào sau đây là tính chất cơ học của vật liệu?', ARRAY['A. Tính dẫn điện', 'B. Độ bền, độ cứng, độ dẻo', 'C. Tính chịu axit', 'D. Nhiệt độ nóng chảy']::varchar[], ARRAY['B. Độ bền, độ cứng, độ dẻo']::varchar[], 'Tính chất cơ học gồm: Độ bền (khả năng chịu lực), Độ cứng (khả năng chống biến dạng bề mặt), Độ dẻo (khả năng biến dạng mà không bị phá hủy). Dẫn điện là tính chất vật lý, chịu axit là tính chất hóa học.', 3, 'studocu.vn - Trắc nghiệm Vật liệu cơ khí', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3233,7 +3233,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-17', 'mcq', 'Cơ khí - Vật liệu', 'tech-circuit-install', 'Thế nào là biến dạng dẻo của vật liệu?', ARRAY['A. Vật liệu trở lại hình dạng ban đầu sau khi bỏ lực tác dụng', 'B. Vật liệu không bị biến dạng', 'C. Vật liệu giữ nguyên hình dạng mới sau khi bỏ lực tác dụng', 'D. Vật liệu bị nứt vỡ ngay lập tức']::varchar[], ARRAY['C. Vật liệu giữ nguyên hình dạng mới sau khi bỏ lực tác dụng']::varchar[], 'Biến dạng dẻo: vật liệu thay đổi hình dạng vĩnh viễn (không phục hồi) sau khi lực tác dụng được loại bỏ. Ngược lại, biến dạng đàn hồi: vật liệu phục hồi hình dạng ban đầu.', 3, 'studocu.vn - Trắc nghiệm Vật liệu cơ khí', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3249,7 +3249,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-18', 'mcq', 'Cơ khí - Vật liệu', 'tech-circuit-install', 'Để đo độ cứng của vật liệu có độ cứng thấp (như nhôm, đồng), người ta thường dùng đơn vị đo nào?', ARRAY['A. Brinen (HB)', 'B. Rocven (HRC)', 'C. Vicker (HV)', 'D. Cả A và C']::varchar[], ARRAY['A. Brinen (HB)']::varchar[], 'Thang độ cứng Brinen (HB) dùng cho vật liệu mềm đến trung bình (nhôm, đồng, thép ủ). Thang Rockwell C (HRC) dùng cho vật liệu cứng (thép đã tôi). Vicker (HV) dùng được cho cả hai nhưng thường dùng cho vật liệu mỏng hoặc lớp phủ.', 3, 'studocu.vn - Trắc nghiệm Cơ khí, Vật liệu', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3265,7 +3265,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-19', 'mcq', 'Bản vẽ kỹ thuật - Khung tên', 'tech-circuit-install', 'Trong bản vẽ kỹ thuật, khung tên thường được đặt ở đâu?', ARRAY['A. Góc trên bên trái', 'B. Góc dưới bên phải', 'C. Chính giữa bản vẽ', 'D. Góc trên bên phải']::varchar[], ARRAY['B. Góc dưới bên phải']::varchar[], 'Theo tiêu chuẩn TCVN (và ISO), khung tên được đặt ở góc dưới bên phải của bản vẽ. Khung tên chứa thông tin về tên sản phẩm, tỉ lệ, vật liệu, người vẽ, ngày vẽ...', 3, 'scribd.com - Trắc nghiệm Bản vẽ kỹ thuật THCS', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3281,7 +3281,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-20', 'mcq', 'Mạch điện - Sơ đồ nguyên lý', 'tech-circuit-install', 'Ký hiệu nào biểu thị đèn điện trên sơ đồ nguyên lý mạch điện?', ARRAY['A. Một vòng tròn có chữ X bên trong', 'B. Một đường thẳng gạch ngang', 'C. Một hình vuông', 'D. Một mũi tên']::varchar[], ARRAY['A. Một vòng tròn có chữ X bên trong']::varchar[], 'Trên sơ đồ nguyên lý, đèn điện được ký hiệu bằng vòng tròn có chữ X (hoặc dấu cộng) bên trong. Mỗi thiết bị điện có ký hiệu quy ước riêng theo TCVN.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Ký hiệu điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3297,7 +3297,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-21', 'mcq', 'Mạch điện - Cơ bản', 'tech-circuit-install', 'Mạch điện một công tắc điều khiển một đèn hoạt động theo nguyên tắc nào?', ARRAY['A. Khi công tắc mở, đèn sáng', 'B. Khi công tắc đóng, mạch kín, đèn sáng', 'C. Đèn sáng liên tục không phụ thuộc công tắc', 'D. Cần hai công tắc mới bật được đèn']::varchar[], ARRAY['B. Khi công tắc đóng, mạch kín, đèn sáng']::varchar[], 'Nguyên tắc mạch điện: Công tắc mắc nối tiếp với đèn. Khi công tắc đóng (ON), mạch kín, dòng điện chạy qua đèn làm đèn sáng. Khi công tắc mở (OFF), mạch hở, không có dòng điện.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Mạch điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3313,7 +3313,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-22', 'mcq', 'Mạch điện - Sơ đồ', 'tech-circuit-install', 'Sơ đồ lắp đặt mạch điện khác sơ đồ nguyên lý ở điểm nào?', ARRAY['A. Sơ đồ lắp đặt thể hiện vị trí thực tế của các thiết bị trong không gian', 'B. Sơ đồ lắp đặt chỉ dùng ký hiệu trừu tượng', 'C. Sơ đồ nguyên lý cho thấy vị trí thực của dây dẫn', 'D. Hai loại sơ đồ này hoàn toàn giống nhau']::varchar[], ARRAY['A. Sơ đồ lắp đặt thể hiện vị trí thực tế của các thiết bị trong không gian']::varchar[], 'Sơ đồ nguyên lý: thể hiện nguyên lý hoạt động bằng ký hiệu quy ước, không quan tâm vị trí. Sơ đồ lắp đặt: thể hiện vị trí thực tế của thiết bị và dây dẫn trong không gian để thi công.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3329,7 +3329,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-23', 'mcq', 'An toàn điện - Dây dẫn', 'tech-circuit-install', 'Dây dẫn điện trong mạng điện gia đình thường có màu gì để phân biệt?', ARRAY['A. Dây pha: xanh lá, dây trung tính: đỏ, dây đất: vàng', 'B. Dây pha: đỏ hoặc nâu, dây trung tính: xanh lam, dây đất: vàng-xanh', 'C. Tất cả các dây đều màu đen', 'D. Không có quy định màu sắc']::varchar[], ARRAY['B. Dây pha: đỏ hoặc nâu, dây trung tính: xanh lam, dây đất: vàng-xanh']::varchar[], 'Theo tiêu chuẩn IEC và TCVN: Dây pha (L): đỏ, nâu hoặc đen; Dây trung tính (N): xanh lam (blue); Dây bảo vệ/nối đất (PE): vàng-xanh lá. Phân biệt màu giúp an toàn khi thi công và sửa chữa.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, An toàn điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3345,7 +3345,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-24', 'mcq', 'Mạch điện - Cơ bản', 'tech-circuit-install', 'Công tắc điện trong mạch điện gia đình được mắc như thế nào so với đèn?', ARRAY['A. Song song với đèn', 'B. Nối tiếp với đèn', 'C. Không kết nối trực tiếp với đèn', 'D. Song song với nguồn điện']::varchar[], ARRAY['B. Nối tiếp với đèn']::varchar[], 'Công tắc được mắc nối tiếp với đèn trên dây pha. Điều này đảm bảo khi công tắc mở, toàn bộ mạch (kể cả đèn) bị ngắt điện hoàn toàn, an toàn cho người sửa chữa.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3361,7 +3361,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-25', 'mcq', 'Mạch điện - Ứng dụng', 'tech-circuit-install', 'Khi nào cần sử dụng mạch điện hai công tắc hai cực điều khiển một đèn (mạch đảo chiều)?', ARRAY['A. Khi muốn tăng độ sáng của đèn', 'B. Khi muốn điều khiển đèn từ hai vị trí khác nhau (ví dụ: đầu và cuối hành lang)', 'C. Khi mạch điện bị ngắn mạch', 'D. Khi tiết kiệm điện năng']::varchar[], ARRAY['B. Khi muốn điều khiển đèn từ hai vị trí khác nhau (ví dụ: đầu và cuối hành lang)']::varchar[], 'Mạch hai công tắc ba cực (công tắc đảo chiều) cho phép điều khiển một đèn từ hai điểm khác nhau, thường dùng ở cầu thang, hành lang dài để bật/tắt đèn ở cả hai đầu.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Thực hành mạch điện', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3377,7 +3377,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-26', 'mcq', 'An toàn điện - Vật liệu', 'tech-circuit-install', 'Vật liệu cách điện (còn gọi là điện môi) có đặc điểm gì?', ARRAY['A. Dẫn điện tốt ở nhiệt độ thường', 'B. Không dẫn điện hoặc dẫn điện rất kém', 'C. Dẫn điện tốt hơn kim loại', 'D. Chỉ dẫn điện một chiều']::varchar[], ARRAY['B. Không dẫn điện hoặc dẫn điện rất kém']::varchar[], 'Vật liệu cách điện (nhựa, cao su, gốm, thủy tinh...) có điện trở suất rất cao, không cho dòng điện đi qua ở điều kiện bình thường. Chúng được dùng để bọc dây điện, làm vỏ thiết bị điện để bảo vệ an toàn.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3393,7 +3393,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-27', 'mcq', 'Bản vẽ kỹ thuật - Tỉ lệ', 'tech-circuit-install', 'Trong bản vẽ kỹ thuật, tỉ lệ 1:2 có nghĩa là gì?', ARRAY['A. Hình vẽ lớn gấp 2 lần vật thật', 'B. Hình vẽ bằng vật thật', 'C. Hình vẽ nhỏ hơn vật thật 2 lần', 'D. Vật thật lớn hơn hình vẽ 2 lần nhưng chỉ vẽ một phần']::varchar[], ARRAY['C. Hình vẽ nhỏ hơn vật thật 2 lần']::varchar[], 'Tỉ lệ trong bản vẽ kỹ thuật: 1:1 = thu nhỏ/phóng to 1 lần (bằng thật), 2:1 = phóng to 2 lần, 1:2 = thu nhỏ 2 lần (hình vẽ nhỏ hơn thật 2 lần). Dùng tỉ lệ thu nhỏ để vẽ các vật lớn vào khổ giấy nhỏ hơn.', 3, 'scribd.com - Trắc nghiệm Bản vẽ kỹ thuật', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3409,7 +3409,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-28', 'mcq', 'Mạch điện - Cơ bản', 'tech-circuit-install', 'Ổ cắm điện trong mạch điện gia đình được mắc như thế nào với nguồn điện?', ARRAY['A. Nối tiếp với nhau và với nguồn', 'B. Song song với nhau và với nguồn điện', 'C. Chỉ dùng một ổ cắm duy nhất', 'D. Mắc qua biến áp']::varchar[], ARRAY['B. Song song với nhau và với nguồn điện']::varchar[], 'Tất cả ổ cắm điện trong nhà đều mắc song song với nhau và với nguồn điện 220V. Điều này đảm bảo mỗi thiết bị cắm vào đều nhận đủ điện áp 220V và hoạt động độc lập.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9, Mạch điện gia đình', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3425,7 +3425,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-29', 'mcq', 'Cơ khí - Gia công', 'tech-circuit-install', 'Phương pháp gia công cơ khí nào sử dụng lưỡi dao cắt để tạo ra phoi (chip)?', ARRAY['A. Đúc', 'B. Hàn', 'C. Cắt gọt (tiện, phay, bào)', 'D. Rèn']::varchar[], ARRAY['C. Cắt gọt (tiện, phay, bào)']::varchar[], 'Cắt gọt (tiện, phay, bào, mài...) là phương pháp gia công bằng cách dùng dao cắt để bóc tách lớp vật liệu thừa (tạo ra phoi) để tạo hình chi tiết. Đúc và rèn không tạo ra phoi.', 3, 'studocu.vn - Trắc nghiệm Cơ khí THCS', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3441,7 +3441,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-30', 'mcq', 'Bản vẽ kỹ thuật - Khổ giấy', 'tech-circuit-install', 'Khổ giấy A4 trong bản vẽ kỹ thuật có kích thước là bao nhiêu?', ARRAY['A. 841 × 1189 mm', 'B. 594 × 841 mm', 'C. 420 × 594 mm', 'D. 210 × 297 mm']::varchar[], ARRAY['D. 210 × 297 mm']::varchar[], 'Khổ giấy theo tiêu chuẩn ISO: A0 = 841×1189mm; A1 = 594×841mm; A2 = 420×594mm; A3 = 297×420mm; A4 = 210×297mm. Mỗi khổ A(n) bằng 1/2 khổ A(n-1).', 3, 'scribd.com - Trắc nghiệm Bản vẽ kỹ thuật', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3457,7 +3457,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-tech-31', 'mcq', 'Mạch điện - Lý thuyết', 'tech-circuit-install', 'Điện trở của vật dẫn điện phụ thuộc vào yếu tố nào?', ARRAY['A. Chỉ phụ thuộc vào vật liệu làm dây', 'B. Phụ thuộc vào vật liệu, chiều dài và tiết diện dây dẫn', 'C. Chỉ phụ thuộc vào chiều dài dây', 'D. Không phụ thuộc vào chiều dài dây']::varchar[], ARRAY['B. Phụ thuộc vào vật liệu, chiều dài và tiết diện dây dẫn']::varchar[], 'Điện trở R = ρ × L/S, trong đó ρ là điện trở suất (phụ thuộc vật liệu), L là chiều dài, S là tiết diện. Dây càng dài, điện trở càng lớn; tiết diện càng lớn, điện trở càng nhỏ.', 3, 'vietjack.com - Trắc nghiệm Công nghệ 9', 'technology', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["tech-circuit-install", "technology"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3473,7 +3473,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-32', 'mcq', 'Mạng máy tính - Khái niệm', 'inf-digital-world', 'Mạng máy tính là gì?', ARRAY['A. Tập hợp các máy tính nối với nhau bằng các thiết bị và phương tiện truyền thông', 'B. Mạng xã hội Zalo', 'C. Tập hợp các máy tính không kết nối với nhau', 'D. Chỉ là mạng Internet toàn cầu']::varchar[], ARRAY['A. Tập hợp các máy tính nối với nhau bằng các thiết bị và phương tiện truyền thông']::varchar[], 'Mạng máy tính là tập hợp các máy tính và thiết bị (máy in, switch, router...) được kết nối với nhau qua môi trường truyền dẫn (dây cáp hoặc không dây) theo một giao thức nhất định để chia sẻ tài nguyên và trao đổi thông tin.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Mạng máy tính', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3489,7 +3489,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-33', 'mcq', 'Mạng máy tính - Giao thức', 'inf-data-manage', 'Bộ giao thức được sử dụng phổ biến nhất trên Internet hiện nay là gì?', ARRAY['A. Ethernet', 'B. TCP/IP', 'C. OSI', 'D. IEEE 802.11']::varchar[], ARRAY['B. TCP/IP']::varchar[], 'TCP/IP (Transmission Control Protocol/Internet Protocol) là bộ giao thức nền tảng của Internet. TCP đảm bảo truyền dữ liệu tin cậy, IP đảm bảo định địa chỉ và định tuyến gói tin.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Giao thức mạng', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3505,7 +3505,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-34', 'mcq', 'Mạng máy tính - Phân loại', 'inf-digital-world', 'Thuật ngữ ''LAN'' là viết tắt của cụm từ nào?', ARRAY['A. Local Area Network', 'B. Wide Area Network', 'C. Metropolitan Area Network', 'D. Global Area Network']::varchar[], ARRAY['A. Local Area Network']::varchar[], 'LAN (Local Area Network - Mạng cục bộ) là mạng máy tính kết nối các thiết bị trong phạm vi giới hạn như văn phòng, tòa nhà, trường học. Tốc độ cao, chi phí thấp.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3521,7 +3521,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-35', 'mcq', 'Mạng máy tính - Phân loại', 'inf-digital-world', 'Mạng diện rộng kết nối các máy tính ở quy mô quốc gia hoặc toàn cầu được gọi là gì?', ARRAY['A. LAN', 'B. MAN', 'C. WAN', 'D. PAN']::varchar[], ARRAY['C. WAN']::varchar[], 'WAN (Wide Area Network - Mạng diện rộng) kết nối các mạng LAN hoặc MAN ở quy mô lớn (quốc gia, lục địa, toàn cầu). Internet là mạng WAN lớn nhất thế giới.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3537,7 +3537,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-36', 'mcq', 'Mạng máy tính - Phân loại', 'inf-digital-world', 'Mạng máy tính trong phạm vi một thành phố được gọi là gì?', ARRAY['A. LAN', 'B. WAN', 'C. MAN', 'D. GAN']::varchar[], ARRAY['C. MAN']::varchar[], 'MAN (Metropolitan Area Network - Mạng đô thị) kết nối các mạng LAN trong phạm vi một thành phố. Quy mô lớn hơn LAN nhưng nhỏ hơn WAN.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3553,7 +3553,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-37', 'mcq', 'Mạng máy tính - Thiết bị', 'inf-digital-world', 'Thiết bị nào dưới đây hoạt động bằng cách phát tín hiệu dữ liệu đến tất cả các cổng, dễ gây xung đột?', ARRAY['A. Router', 'B. Switch', 'C. Hub', 'D. Máy chủ']::varchar[], ARRAY['C. Hub']::varchar[], 'Hub (bộ tập trung) là thiết bị mạng cũ, hoạt động theo nguyên tắc broadcast: nhận dữ liệu từ một cổng và phát đến tất cả các cổng còn lại, gây ra nhiều xung đột (collision) và kém hiệu quả.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Thiết bị mạng', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3569,7 +3569,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-38', 'mcq', 'Mạng máy tính - Thiết bị', 'inf-digital-world', 'Thiết bị nào có chức năng định tuyến dữ liệu giữa các mạng khác nhau?', ARRAY['A. Hub', 'B. Switch', 'C. Router', 'D. Modem']::varchar[], ARRAY['C. Router']::varchar[], 'Router (bộ định tuyến) kết nối các mạng khác nhau (LAN với WAN, LAN này với LAN khác) và chọn đường đi tối ưu cho gói tin. Router là thiết bị cốt lõi giúp các máy tính trong nhà kết nối Internet.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3585,7 +3585,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-39', 'mcq', 'Mạng máy tính - Thiết bị', 'inf-digital-world', 'Thiết bị kết nối mạng LAN và truyền dữ liệu thông minh hơn Hub (chỉ gửi đến đúng thiết bị đích) là gì?', ARRAY['A. Router', 'B. Switch', 'C. Hub', 'D. Access Point']::varchar[], ARRAY['B. Switch']::varchar[], 'Switch (bộ chuyển mạch) học địa chỉ MAC của các thiết bị kết nối và chỉ chuyển tiếp dữ liệu đến đúng cổng đích, tránh xung đột và tăng hiệu quả so với Hub.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3601,7 +3601,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-40', 'mcq', 'Mạng máy tính - Mô hình', 'inf-digital-world', 'Trong mô hình mạng Client-Server, vai trò của máy chủ (Server) là gì?', ARRAY['A. Chỉ dùng để lưu trữ dữ liệu cá nhân', 'B. Quản lý và cung cấp tài nguyên cho các máy khách trên mạng', 'C. Chỉ có nhiệm vụ gửi yêu cầu tài nguyên', 'D. Không có vai trò gì đặc biệt']::varchar[], ARRAY['B. Quản lý và cung cấp tài nguyên cho các máy khách trên mạng']::varchar[], 'Trong mô hình Client-Server: Máy chủ (Server) là máy có cấu hình mạnh, chạy liên tục, quản lý và cung cấp tài nguyên (file, in ấn, web, email...). Máy khách (Client) gửi yêu cầu và nhận tài nguyên từ server.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-digital-world", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3617,7 +3617,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-41', 'mcq', 'Internet - Dịch vụ', 'inf-data-manage', 'Chức năng của dịch vụ DNS (Domain Name System) là gì?', ARRAY['A. Cấp địa chỉ IP động cho các máy trạm', 'B. Phân giải tên miền thành địa chỉ IP', 'C. Truyền tệp dữ liệu giữa các máy tính', 'D. Gửi thư điện tử']::varchar[], ARRAY['B. Phân giải tên miền thành địa chỉ IP']::varchar[], 'DNS là hệ thống phân giải tên miền: chuyển đổi tên miền dễ nhớ (ví dụ: google.com) thành địa chỉ IP số (ví dụ: 142.250.x.x) để máy tính có thể liên lạc với nhau.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Dịch vụ Internet', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3633,7 +3633,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-42', 'mcq', 'Internet - Giao thức', 'inf-data-manage', 'Giao thức nào được dùng để truy cập và truyền tải các trang web?', ARRAY['A. SMTP', 'B. FTP', 'C. HTTP', 'D. POP3']::varchar[], ARRAY['C. HTTP']::varchar[], 'HTTP (HyperText Transfer Protocol) là giao thức nền tảng của World Wide Web, dùng để truyền tải các trang web (HTML, CSS, JS, hình ảnh...) giữa trình duyệt và máy chủ web. HTTPS là phiên bản bảo mật của HTTP.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3649,7 +3649,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-43', 'mcq', 'Internet - WWW', 'inf-data-manage', 'WWW là viết tắt của cụm từ nào?', ARRAY['A. World Win Web', 'B. World Wide Web', 'C. Windows Wide Web', 'D. World Wired Web']::varchar[], ARRAY['B. World Wide Web']::varchar[], 'WWW (World Wide Web - Mạng toàn cầu) là hệ thống thông tin trên Internet, cho phép người dùng truy cập các tài liệu siêu văn bản (hypertext) thông qua trình duyệt web. WWW do Tim Berners-Lee phát minh năm 1989.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Internet', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3665,7 +3665,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-44', 'mcq', 'Internet - Khái niệm', 'inf-data-manage', 'Internet là gì?', ARRAY['A. Mạng kết nối các máy tính ở quy mô một nước', 'B. Mạng kết nối hàng triệu máy tính ở quy mô một tỉnh', 'C. Mạng kết nối hàng triệu máy tính ở quy mô toàn cầu dựa trên TCP/IP', 'D. Mạng chỉ dành cho các cơ quan chính phủ']::varchar[], ARRAY['C. Mạng kết nối hàng triệu máy tính ở quy mô toàn cầu dựa trên TCP/IP']::varchar[], 'Internet là mạng máy tính toàn cầu kết nối hàng tỷ thiết bị trên khắp thế giới thông qua bộ giao thức TCP/IP. Internet cung cấp nhiều dịch vụ: WWW, Email, FTP, VoIP, mạng xã hội...', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3681,7 +3681,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-45', 'mcq', 'Internet - Dịch vụ Email', 'inf-data-manage', 'Thư điện tử (Email) là gì?', ARRAY['A. Dịch vụ gửi thư qua đường bưu điện', 'B. Dịch vụ chuyển thư dưới dạng số trên mạng máy tính qua các hộp thư điện tử', 'C. Dịch vụ gọi điện trực tuyến', 'D. Phần mềm soạn thảo văn bản']::varchar[], ARRAY['B. Dịch vụ chuyển thư dưới dạng số trên mạng máy tính qua các hộp thư điện tử']::varchar[], 'Email (Electronic Mail - Thư điện tử) là dịch vụ truyền thông tin dạng số qua mạng máy tính. Ưu điểm: nhanh, rẻ, có thể gửi kèm tệp tin, gửi cho nhiều người cùng lúc.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Email', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3697,7 +3697,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-46', 'mcq', 'Bảo mật thông tin', 'inf-ethics-law', 'Để phòng tránh virus và mã độc, việc làm nào sau đây là ĐÚNG?', ARRAY['A. Mở tất cả các tệp đính kèm trong email từ người lạ', 'B. Tải và cài đặt phần mềm bẻ khóa từ các nguồn không rõ', 'C. Cập nhật hệ điều hành và phần mềm diệt virus thường xuyên', 'D. Sử dụng một mật khẩu duy nhất cho mọi tài khoản']::varchar[], ARRAY['C. Cập nhật hệ điều hành và phần mềm diệt virus thường xuyên']::varchar[], 'Cập nhật hệ điều hành và phần mềm diệt virus giúp vá các lỗ hổng bảo mật mới nhất. Các hành động A, B, D đều là những hành vi rủi ro cao về bảo mật.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Bảo mật thông tin', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3713,7 +3713,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-47', 'mcq', 'Bảo mật thông tin - Phishing', 'inf-ethics-law', 'Phishing là gì?', ARRAY['A. Một loại phần mềm diệt virus', 'B. Kỹ thuật lừa đảo qua email hoặc tin nhắn giả mạo nhằm đánh cắp thông tin cá nhân', 'C. Một giao thức bảo mật mạng', 'D. Phương pháp mã hóa dữ liệu']::varchar[], ARRAY['B. Kỹ thuật lừa đảo qua email hoặc tin nhắn giả mạo nhằm đánh cắp thông tin cá nhân']::varchar[], 'Phishing (tấn công giả mạo) là kỹ thuật tội phạm mạng: kẻ tấn công giả mạo tổ chức uy tín (ngân hàng, mạng xã hội...) qua email/tin nhắn để lừa nạn nhân cung cấp thông tin nhạy cảm (mật khẩu, số thẻ ngân hàng...).', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Bảo mật', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3729,7 +3729,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-48', 'mcq', 'Bảo mật thông tin - Tường lửa', 'inf-ethics-law', 'Tường lửa (Firewall) có chức năng chính là gì?', ARRAY['A. Tăng tốc độ truy cập Internet', 'B. Lọc và kiểm soát lưu lượng mạng ra/vào để ngăn chặn truy cập trái phép', 'C. Cài đặt các phần mềm ứng dụng tự động', 'D. Sao lưu dữ liệu trên máy tính']::varchar[], ARRAY['B. Lọc và kiểm soát lưu lượng mạng ra/vào để ngăn chặn truy cập trái phép']::varchar[], 'Tường lửa (Firewall) là hệ thống bảo mật lọc lưu lượng mạng theo các quy tắc đã định sẵn, ngăn chặn truy cập trái phép từ bên ngoài vào và kiểm soát kết nối từ bên trong ra ngoài.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Bảo mật', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3745,7 +3745,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-49', 'mcq', 'Bảo mật thông tin - Mã độc', 'inf-ethics-law', 'Ransomware là loại mã độc có đặc điểm gì?', ARRAY['A. Chỉ gây khó chịu bằng cách hiện quảng cáo', 'B. Theo dõi thao tác bàn phím của người dùng', 'C. Mã hóa dữ liệu trên máy tính và đòi tiền chuộc để giải mã', 'D. Tự động tắt máy tính của người dùng']::varchar[], ARRAY['C. Mã hóa dữ liệu trên máy tính và đòi tiền chuộc để giải mã']::varchar[], 'Ransomware (phần mềm tống tiền) là loại mã độc nguy hiểm: sau khi xâm nhập, nó mã hóa toàn bộ dữ liệu của nạn nhân và đòi tiền chuộc (thường bằng tiền mã hóa) để cung cấp khóa giải mã.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Bảo mật', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3761,7 +3761,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-50', 'mcq', 'Bảo mật thông tin - Mật khẩu', 'inf-ethics-law', 'Đâu là đặc điểm của một mật khẩu được coi là mạnh?', ARRAY['A. Chỉ gồm các chữ cái viết thường để dễ nhớ', 'B. Gồm 8 ký tự là ngày tháng năm sinh', 'C. Ít nhất 12 ký tự, kết hợp chữ hoa, chữ thường, số và ký tự đặc biệt', 'D. Chỉ cần chữ cái và số, không cần ký tự đặc biệt']::varchar[], ARRAY['C. Ít nhất 12 ký tự, kết hợp chữ hoa, chữ thường, số và ký tự đặc biệt']::varchar[], 'Mật khẩu mạnh cần: độ dài tối thiểu 12 ký tự, kết hợp đa dạng (chữ hoa + chữ thường + số + ký tự đặc biệt như @#$%), không dùng thông tin cá nhân dễ đoán. Mật khẩu phức tạp khó bị tấn công brute-force.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3777,7 +3777,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-51', 'mcq', 'Lập trình Python - Cơ bản', 'inf-algorithm', 'Trong Python, để in dữ liệu ra màn hình, ta sử dụng hàm nào?', ARRAY['A. input()', 'B. print()', 'C. output()', 'D. show()']::varchar[], ARRAY['B. print()']::varchar[], 'Hàm print() trong Python dùng để xuất dữ liệu ra màn hình (stdout). Ví dụ: print(''Xin chào!'') sẽ in ra ''Xin chào!''. Hàm input() dùng để nhận dữ liệu từ bàn phím.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Lập trình Python', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3793,7 +3793,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-52', 'mcq', 'Lập trình Python - Cú pháp', 'inf-algorithm', 'Ký hiệu nào dùng để xác định các khối lệnh (vòng lặp, điều kiện) trong Python?', ARRAY['A. Dấu ngoặc nhọn { }', 'B. Dấu ngoặc vuông [ ]', 'C. Thụt lề (Indentation)', 'D. Dấu chấm phẩy ;']::varchar[], ARRAY['C. Thụt lề (Indentation)']::varchar[], 'Python sử dụng thụt lề (indentation) thay vì dấu ngoặc nhọn để xác định khối lệnh. Đây là đặc điểm quan trọng và bắt buộc của Python. Thường dùng 4 khoảng trắng hoặc 1 tab cho mỗi cấp thụt lề.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Python', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3809,7 +3809,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-53', 'mcq', 'Lập trình Python - Toán tử', 'inf-algorithm', 'Phép toán nào trong Python dùng để chia lấy phần dư?', ARRAY['A. //', 'B. /', 'C. %', 'D. mod']::varchar[], ARRAY['C. %']::varchar[], 'Trong Python: % là phép chia lấy phần dư (modulo). Ví dụ: 10 % 3 = 1. Phép // là chia lấy phần nguyên: 10 // 3 = 3. Phép / là chia thông thường: 10 / 3 = 3.333...', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Python', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3825,7 +3825,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-54', 'mcq', 'Lập trình Python - Vòng lặp', 'inf-algorithm', 'Kết quả của đoạn lệnh Python ''for i in range(5): print(i)'' là gì?', ARRAY['A. In ra các số 1, 2, 3, 4, 5', 'B. In ra các số 0, 1, 2, 3, 4', 'C. In ra các số 0, 1, 2, 3, 4, 5', 'D. Báo lỗi']::varchar[], ARRAY['B. In ra các số 0, 1, 2, 3, 4']::varchar[], 'Hàm range(5) trong Python tạo ra dãy số từ 0 đến 4 (không bao gồm 5). Do đó vòng lặp sẽ in ra: 0, 1, 2, 3, 4. Muốn in 1 đến 5 phải dùng range(1, 6).', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Python', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3841,7 +3841,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-55', 'mcq', 'Lập trình Scratch - Cơ bản', 'inf-algorithm', 'Trong Scratch, nhóm lệnh nào chứa các khối lệnh dùng để di chuyển nhân vật?', ARRAY['A. Looks (Hiển thị)', 'B. Sound (Âm thanh)', 'C. Motion (Chuyển động)', 'D. Events (Sự kiện)']::varchar[], ARRAY['C. Motion (Chuyển động)']::varchar[], 'Trong Scratch, nhóm lệnh Motion chứa các khối để điều khiển chuyển động của nhân vật: di chuyển, xoay, đặt vị trí, hướng di chuyển... Looks điều chỉnh hình dạng, Sound phát âm thanh, Events xử lý sự kiện.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Scratch', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3857,7 +3857,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-56', 'mcq', 'Lập trình Scratch - Sự kiện', 'inf-algorithm', 'Trong Scratch, để chương trình bắt đầu chạy khi nhấn vào cờ xanh, ta dùng khối lệnh nào?', ARRAY['A. When this sprite clicked', 'B. When green flag clicked', 'C. When space key pressed', 'D. Start program']::varchar[], ARRAY['B. When green flag clicked']::varchar[], 'Khối ''When green flag clicked'' (thuộc nhóm Events) là điểm bắt đầu phổ biến nhất trong Scratch. Khi người dùng nhấp vào biểu tượng cờ xanh trên sân khấu, chương trình sẽ bắt đầu thực thi.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Scratch', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3873,7 +3873,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-57', 'mcq', 'Lập trình Scratch - Vòng lặp', 'inf-algorithm', 'Trong Scratch, để nhân vật lặp lại một hành động với số lần nhất định, ta dùng khối lệnh nào?', ARRAY['A. forever', 'B. repeat', 'C. if then', 'D. wait']::varchar[], ARRAY['B. repeat']::varchar[], 'Khối ''repeat (n)'' lặp lại khối lệnh bên trong đúng n lần rồi dừng. Khác với ''forever'' (lặp vô hạn). Khối ''if then'' là điều kiện, ''wait'' là chờ đợi.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Scratch', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3889,7 +3889,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-58', 'mcq', 'Lập trình - Biến', 'inf-algorithm', 'Biến (Variable) trong lập trình Scratch được dùng để làm gì?', ARRAY['A. Thay đổi ngoại hình của nhân vật', 'B. Lưu trữ dữ liệu (điểm số, thời gian, tên...) trong chương trình', 'C. Phát ra âm thanh', 'D. Điều khiển tốc độ chạy']::varchar[], ARRAY['B. Lưu trữ dữ liệu (điểm số, thời gian, tên...) trong chương trình']::varchar[], 'Biến (Variable) là vùng nhớ có tên dùng để lưu trữ và truy xuất dữ liệu trong chương trình. Trong Scratch, biến hay dùng để lưu điểm số, đếm vòng lặp, lưu tên người dùng, đếm thời gian...', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Scratch/Python', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-algorithm", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3905,7 +3905,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-59', 'mcq', 'Bảo mật thông tin - Đạo đức số', 'inf-ethics-law', 'Hành động nào sau đây vi phạm pháp luật hoặc quy tắc an toàn trên Internet?', ARRAY['A. Thay đổi mật khẩu thường xuyên và không chia sẻ cho người khác', 'B. Sử dụng các trang web uy tín để tìm kiếm bài tập', 'C. Cung cấp thông tin cá nhân (địa chỉ, số điện thoại) cho người lạ trên mạng xã hội', 'D. Cài đặt phần mềm diệt virus']::varchar[], ARRAY['C. Cung cấp thông tin cá nhân (địa chỉ, số điện thoại) cho người lạ trên mạng xã hội']::varchar[], 'Cung cấp thông tin cá nhân cho người lạ trên mạng là hành vi rủi ro cao, có thể dẫn đến bị lừa đảo, quấy rối, hoặc đánh cắp danh tính. Đây là vi phạm quy tắc an toàn thông tin cơ bản.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, An toàn Internet', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3921,7 +3921,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-60', 'mcq', 'Mạng máy tính - Địa chỉ IP', 'inf-data-manage', 'Địa chỉ IP (Internet Protocol Address) dùng để làm gì?', ARRAY['A. Xác định địa chỉ vật lý (địa chỉ nhà) của người dùng', 'B. Định danh duy nhất mỗi thiết bị trên mạng để liên lạc', 'C. Đo tốc độ kết nối Internet', 'D. Xác định tên người dùng trên mạng xã hội']::varchar[], ARRAY['B. Định danh duy nhất mỗi thiết bị trên mạng để liên lạc']::varchar[], 'Địa chỉ IP là địa chỉ logic định danh duy nhất mỗi thiết bị trên mạng IP. Tương tự địa chỉ nhà trong cuộc sống, địa chỉ IP giúp các gói tin biết phải đi đến đâu để đến đúng thiết bị đích.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-data-manage", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3937,7 +3937,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-61', 'mcq', 'Bảo mật thông tin', 'inf-ethics-law', 'Bảo vệ thông tin máy tính bao gồm việc đảm bảo sao cho các tệp dữ liệu:', ARRAY['A. Không bị hỏng và có thể mở lại được', 'B. Không bị xóa ngoài ý muốn', 'C. Không bị sao chép mà không có sự đồng ý của người sở hữu', 'D. Tất cả các phương án trên']::varchar[], ARRAY['D. Tất cả các phương án trên']::varchar[], 'Bảo vệ thông tin toàn diện bao gồm 3 mục tiêu chính (CIA): Confidentiality (Bảo mật - không bị đọc trái phép), Integrity (Toàn vẹn - không bị sửa đổi), Availability (Sẵn sàng - không bị mất/hỏng), đáp án D bao phủ cả ba.', 3, 'vietjack.com - Trắc nghiệm Tin học 9, Bảo vệ thông tin', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3953,7 +3953,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-inf-62', 'mcq', 'Bảo mật thông tin - Đạo đức số', 'inf-ethics-law', 'Khi sử dụng lại thông tin từ Internet, điều quan trọng nhất cần lưu ý là gì?', ARRAY['A. Từ khóa tìm kiếm', 'B. Bản quyền của thông tin', 'C. Thời gian tải trang web', 'D. Màu sắc của trang web']::varchar[], ARRAY['B. Bản quyền của thông tin']::varchar[], 'Thông tin trên Internet thường có bản quyền (copyright). Sử dụng lại mà không ghi nguồn hoặc xin phép là vi phạm bản quyền, có thể dẫn đến hậu quả pháp lý. Đây là vấn đề đạo đức và pháp luật quan trọng trong môi trường số.', 3, 'vietjack.com - Trắc nghiệm Tin học 9', 'informatics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["inf-ethics-law", "informatics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3969,7 +3969,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-63', 'mcq', 'Âm nhạc - Lý thuyết', 'art-music-theory', 'Trường độ trong âm nhạc là gì?', ARRAY['A. Độ cao – thấp của âm thanh', 'B. Độ dài – ngắn của âm thanh', 'C. Độ to – nhỏ của âm thanh', 'D. Màu sắc của âm thanh']::varchar[], ARRAY['B. Độ dài – ngắn của âm thanh']::varchar[], 'Trường độ là độ dài (thời gian) của âm thanh, ký hiệu bằng hình dạng nốt nhạc: nốt tròn (4 phách), nốt trắng (2 phách), nốt đen (1 phách), nốt móc đơn (1/2 phách)...', 3, 'studocu.vn - Trắc nghiệm Âm nhạc 9, Lý thuyết', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -3985,7 +3985,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-64', 'mcq', 'Âm nhạc - Nhịp', 'art-music-theory', 'Nhịp 3/4 có bao nhiêu phách trong một ô nhịp?', ARRAY['A. 2 phách', 'B. 3 phách', 'C. 4 phách', 'D. 6 phách']::varchar[], ARRAY['B. 3 phách']::varchar[], 'Nhịp 3/4: tử số 3 = số phách trong một ô nhịp, mẫu số 4 = giá trị của một phách (nốt đen). Vậy mỗi ô nhịp có 3 phách đen. Nhịp 3/4 thường dùng trong nhạc vũ điệu Valse.', 3, 'studocu.vn - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4001,7 +4001,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-65', 'mcq', 'Âm nhạc - Nhịp', 'art-music-theory', 'Trong nhịp 3/4, phách mạnh thường nằm ở đâu?', ARRAY['A. Phách 1', 'B. Phách 2', 'C. Phách 3', 'D. Không có phách mạnh']::varchar[], ARRAY['A. Phách 1']::varchar[], 'Trong nhịp 3/4: phách 1 là phách mạnh, phách 2 và 3 là phách nhẹ. Sơ đồ trọng âm: MẠNH - nhẹ - nhẹ. Đây là quy luật chung của nhịp 3/4.', 3, 'studocu.vn - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4017,7 +4017,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-66', 'mcq', 'Âm nhạc - Trường độ', 'art-music-theory', 'Ký hiệu ♪ là nốt nhạc gì?', ARRAY['A. Nốt tròn', 'B. Nốt trắng', 'C. Nốt đen', 'D. Nốt móc đơn']::varchar[], ARRAY['D. Nốt móc đơn']::varchar[], 'Ký hiệu ♪ là nốt móc đơn, có giá trị bằng 1/2 phách (nếu đơn vị là nốt đen). Nốt tròn: ○ (4 phách), Nốt trắng: ♩ không có đuôi đặc (2 phách), Nốt đen: ♩ (1 phách), Nốt móc đơn: ♪ (1/2 phách).', 3, 'scribd.com - Trắc nghiệm Lý thuyết âm nhạc', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4033,7 +4033,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-67', 'mcq', 'Âm nhạc - Lý thuyết quãng', 'art-music-theory', 'Quãng trong âm nhạc là gì?', ARRAY['A. Khoảng cách về cao độ giữa hai nốt nhạc', 'B. Khoảng cách về trường độ giữa hai nốt nhạc', 'C. Sự kết hợp giữa hai nhạc cụ', 'D. Khoảng cách giữa hai ô nhịp']::varchar[], ARRAY['A. Khoảng cách về cao độ giữa hai nốt nhạc']::varchar[], 'Quãng là khoảng cách về cao độ giữa hai âm. Tên quãng được tính theo số bậc giữa hai nốt (quãng 2, quãng 3, quãng 4...). Quãng là nền tảng để xây dựng gam, hợp âm và giai điệu.', 3, 'tech12h.com - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4049,7 +4049,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-68', 'mcq', 'Âm nhạc - Lý thuyết quãng', 'art-music-theory', 'Quãng giai điệu là khi nào?', ARRAY['A. Hai âm thanh vang lên cùng một lúc', 'B. Hai âm thanh vang lên lần lượt', 'C. Ba âm thanh vang lên lần lượt', 'D. Hai âm thanh có cùng cao độ']::varchar[], ARRAY['B. Hai âm thanh vang lên lần lượt']::varchar[], 'Quãng giai điệu: hai âm vang lên lần lượt (tuần tự), tạo thành đường giai điệu. Quãng hòa âm: hai âm vang lên cùng lúc, tạo thành hòa âm. Quãng giai điệu là cơ sở xây dựng melodie.', 3, 'kenhgiaovien.com - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4065,7 +4065,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-69', 'mcq', 'Âm nhạc - Giọng điệu', 'art-music-theory', 'Giọng Đô trưởng được ký hiệu quốc tế là gì?', ARRAY['A. D Major', 'B. C Major', 'C. F Major', 'D. G Major']::varchar[], ARRAY['B. C Major']::varchar[], 'Ký hiệu quốc tế các giọng: C = Đô, D = Rê, E = Mi, F = Fa, G = Son, A = La, B = Si. Chữ in hoa = trưởng (Major), chữ thường = thứ (minor). Giọng Đô trưởng = C Major, không có dấu hóa.', 3, 'kenhgiaovien.com - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4081,7 +4081,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-70', 'mcq', 'Âm nhạc - Giọng điệu', 'art-music-theory', 'Giọng La thứ là giọng song song với giọng nào?', ARRAY['A. Son trưởng (G Major)', 'B. Rê trưởng (D Major)', 'C. Đô trưởng (C Major)', 'D. Fa trưởng (F Major)']::varchar[], ARRAY['C. Đô trưởng (C Major)']::varchar[], 'Giọng song song là hai giọng có cùng hóa biểu (cùng dấu thăng/giáng). Giọng La thứ tự nhiên (Am) và Đô trưởng (C) đều không có dấu hóa trong hóa biểu, nên chúng là cặp song song.', 3, 'kenhgiaovien.com - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4097,7 +4097,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-71', 'mcq', 'Âm nhạc - Hợp âm', 'art-music-theory', 'Hợp âm ba là gì?', ARRAY['A. Hợp âm gồm ba nhạc cụ cùng chơi', 'B. Ba âm chồng lên nhau theo quãng ba', 'C. Gam âm nhạc có 3 nốt', 'D. Ba nốt nhạc cùng cao độ']::varchar[], ARRAY['B. Ba âm chồng lên nhau theo quãng ba']::varchar[], 'Hợp âm ba (Triad) gồm 3 âm chồng lên nhau theo quãng ba: âm 1 (âm gốc) + âm 3 + âm 5. Ví dụ hợp âm Đô trưởng: Đô - Mi - Son. Đây là loại hợp âm cơ bản nhất trong lý thuyết hòa âm.', 3, 'kenhgiaovien.com - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4113,7 +4113,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-72', 'mcq', 'Âm nhạc - Điệu thức', 'art-music-theory', 'Điệu thức trưởng có đặc điểm gì nổi bật về màu sắc âm thanh?', ARRAY['A. Âm thanh buồn bã, da diết', 'B. Âm thanh sáng, vui tươi, rõ ràng', 'C. Âm thanh trầm tối, huyền bí', 'D. Âm thanh nhẹ nhàng, u buồn']::varchar[], ARRAY['B. Âm thanh sáng, vui tươi, rõ ràng']::varchar[], 'Điệu thức trưởng (Major) mang màu sắc sáng, vui tươi, mạnh mẽ do cấu trúc quãng đặc trưng (quãng ba trưởng giữa bậc I và III). Ngược lại, điệu thức thứ (Minor) thường mang màu sắc tối, buồn, trữ tình.', 3, 'scribd.com - Trắc nghiệm Lý thuyết âm nhạc', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4129,7 +4129,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-73', 'mcq', 'Mỹ thuật - Ấn tượng', 'art-visual-history', 'Trường phái Ấn tượng (Impressionism) trong hội họa khởi nguồn từ quốc gia nào vào thời gian nào?', ARRAY['A. Đức, đầu thế kỷ XIX', 'B. Pháp, cuối thế kỷ XIX', 'C. Anh, đầu thế kỷ XX', 'D. Ý, giữa thế kỷ XIX']::varchar[], ARRAY['B. Pháp, cuối thế kỷ XIX']::varchar[], 'Trường phái Ấn tượng ra đời ở Pháp vào khoảng năm 1860-1870. Tên gọi xuất phát từ bức tranh ''Impression: Soleil levant'' (Ấn tượng: Mặt trời mọc) của Claude Monet năm 1872.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9, Lịch sử mỹ thuật', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4145,7 +4145,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-74', 'mcq', 'Mỹ thuật - Ấn tượng', 'art-visual-history', 'Tác phẩm ''Impression: Soleil levant'' (Ấn tượng: Mặt trời mọc) là kiệt tác của họa sĩ nào?', ARRAY['A. Vincent van Gogh', 'B. Pablo Picasso', 'C. Claude Monet', 'D. Paul Cézanne']::varchar[], ARRAY['C. Claude Monet']::varchar[], 'Claude Monet (1840-1926) là danh họa người Pháp, người sáng lập trường phái Ấn tượng. Bức ''Impression: Soleil levant'' (1872) được triển lãm năm 1874 và trở thành tên gọi cho cả một trào lưu nghệ thuật.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4161,7 +4161,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-75', 'mcq', 'Mỹ thuật - Ấn tượng', 'art-visual-history', 'Đặc điểm nổi bật nhất của hội họa Ấn tượng là gì?', ARRAY['A. Vẽ rất chi tiết, tỉ mỉ từng đường nét', 'B. Chú trọng sự biến đổi của ánh sáng, màu sắc tự nhiên và cảm giác tức thời', 'C. Vẽ từ nhiều điểm nhìn cùng lúc', 'D. Sử dụng màu tối và chủ đề triết học sâu sắc']::varchar[], ARRAY['B. Chú trọng sự biến đổi của ánh sáng, màu sắc tự nhiên và cảm giác tức thời']::varchar[], 'Hội họa Ấn tượng đặc trưng bởi: bút pháp ngắn và nhanh, màu sắc tươi sáng, chú trọng ánh sáng tự nhiên và sự thay đổi của nó theo thời gian trong ngày, ghi lại cảm xúc tức thời thay vì tái hiện chính xác.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4177,7 +4177,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-76', 'mcq', 'Mỹ thuật - Hậu Ấn tượng', 'art-visual-history', 'Họa sĩ nào dưới đây thuộc trường phái Hậu Ấn tượng (Post-Impressionism)?', ARRAY['A. Claude Monet', 'B. Vincent van Gogh', 'C. Pablo Picasso', 'D. Edgar Degas']::varchar[], ARRAY['B. Vincent van Gogh']::varchar[], 'Vincent van Gogh (1853-1890) là họa sĩ người Hà Lan, đại diện tiêu biểu của Hậu Ấn tượng. Phong cách đặc trưng: bút pháp soáy mạnh, màu sắc mãnh liệt, thể hiện cảm xúc sâu sắc. Tác phẩm nổi tiếng: Đêm đầy sao (Starry Night).', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4193,7 +4193,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-77', 'mcq', 'Mỹ thuật - Lập thể', 'art-visual-history', 'Đặc điểm nổi bật của hội họa Lập thể (Cubism) là gì?', ARRAY['A. Chú trọng vào ánh sáng tự nhiên và màu sắc tươi sáng', 'B. Thể hiện cảm xúc cá nhân mãnh liệt thông qua màu sắc', 'C. Nhìn đối tượng từ nhiều điểm nhìn cùng lúc, chia cắt thành các hình khối', 'D. Tái hiện cuộc sống một cách chân thực, chi tiết']::varchar[], ARRAY['C. Nhìn đối tượng từ nhiều điểm nhìn cùng lúc, chia cắt thành các hình khối']::varchar[], 'Lập thể (Cubism) do Picasso và Braque sáng lập, đặc trưng: phân tích đối tượng thành các hình học cơ bản (hình vuông, hình tròn, hình tam giác) nhìn từ nhiều góc độ cùng lúc trên một mặt phẳng.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4209,7 +4209,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-78', 'mcq', 'Mỹ thuật - Lập thể', 'art-visual-history', 'Tác phẩm nổi tiếng ''Guernica'' là của họa sĩ nào?', ARRAY['A. Claude Monet', 'B. Vincent van Gogh', 'C. Pablo Picasso', 'D. Georges Seurat']::varchar[], ARRAY['C. Pablo Picasso']::varchar[], '''Guernica'' (1937) là kiệt tác của Pablo Picasso (1881-1973), họa sĩ Tây Ban Nha. Bức tranh thể hiện nỗi đau và sự tàn phá của chiến tranh, vẽ theo phong cách Lập thể. Đây là một trong những tác phẩm chính trị nổi tiếng nhất lịch sử nghệ thuật.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4225,7 +4225,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-79', 'mcq', 'Nghệ thuật - Thiết kế đồ họa', 'art-visual-apply', 'Thiết kế đồ họa là gì?', ARRAY['A. Môn học chỉ dạy vẽ tay', 'B. Nghệ thuật kết hợp hình ảnh, chữ viết và màu sắc để truyền tải thông điệp', 'C. Kỹ thuật chụp ảnh chuyên nghiệp', 'D. Môn học về điêu khắc 3D']::varchar[], ARRAY['B. Nghệ thuật kết hợp hình ảnh, chữ viết và màu sắc để truyền tải thông điệp']::varchar[], 'Thiết kế đồ họa (Graphic Design) là lĩnh vực sáng tạo kết hợp mỹ thuật và kỹ thuật để truyền tải thông điệp thị giác. Sản phẩm gồm: logo, poster, bao bì, website, ứng dụng điện thoại, biển quảng cáo...', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9, Thiết kế đồ họa', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-apply", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4241,7 +4241,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-80', 'mcq', 'Nghệ thuật - Thiết kế đồ họa', 'art-visual-apply', 'Hệ màu nào thường được sử dụng cho các thiết kế hiển thị trên màn hình (web, app)?', ARRAY['A. CMYK', 'B. RGB', 'C. Pantone', 'D. Grayscale']::varchar[], ARRAY['B. RGB']::varchar[], 'RGB (Red-Green-Blue) là hệ màu cộng, dùng cho các thiết bị phát sáng (màn hình điện thoại, máy tính, TV). CMYK (Cyan-Magenta-Yellow-Key/Black) là hệ màu trừ, dùng trong in ấn. Pantone dùng trong ngành in đặc biệt.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9, Thiết kế đồ họa', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-apply", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4257,7 +4257,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-81', 'mcq', 'Nghệ thuật - Màu sắc', 'art-visual-history', 'Màu bổ túc (complementary colors) là gì?', ARRAY['A. Các màu nằm cạnh nhau trên vòng màu sắc', 'B. Các cặp màu đối diện nhau trên vòng thuần sắc', 'C. Các màu cùng sắc nhưng khác độ đậm', 'D. Chỉ có màu đen và màu trắng']::varchar[], ARRAY['B. Các cặp màu đối diện nhau trên vòng thuần sắc']::varchar[], 'Màu bổ túc là cặp màu đối diện nhau trên vòng màu 12 màu (Color Wheel). Ví dụ: đỏ - xanh lá, vàng - tím, cam - xanh dương. Đặt cạnh nhau, chúng tạo độ tương phản mạnh và làm nổi bật nhau.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4273,7 +4273,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-82', 'mcq', 'Nghệ thuật - Bố cục', 'art-visual-history', 'Mục đích chính của việc sắp xếp bố cục trong một tác phẩm mỹ thuật là gì?', ARRAY['A. Sử dụng càng nhiều màu sắc càng tốt', 'B. Tạo sự cân đối, hài hòa giữa các mảng chính-phụ, làm nổi bật chủ đề', 'C. Vẽ càng nhiều chi tiết càng tốt', 'D. Sử dụng màu sắc ngẫu nhiên']::varchar[], ARRAY['B. Tạo sự cân đối, hài hòa giữa các mảng chính-phụ, làm nổi bật chủ đề']::varchar[], 'Bố cục là cách sắp xếp các yếu tố trong tác phẩm (hình, màu, đường nét, chữ...) để tạo ra sự cân bằng thị giác, dẫn dắt ánh mắt người xem và làm nổi bật nội dung chủ đề.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4289,7 +4289,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-83', 'mcq', 'Nghệ thuật - Nguyên lý thiết kế', 'art-visual-apply', 'Nguyên lý ''tương phản'' trong thiết kế mỹ thuật giúp ích gì?', ARRAY['A. Tạo sự đồng đều cho tác phẩm', 'B. Tạo sự nổi bật, thu hút ánh nhìn vào các đối tượng quan trọng', 'C. Làm cho tác phẩm trở nên mờ nhạt', 'D. Làm tất cả các yếu tố có cùng tầm quan trọng']::varchar[], ARRAY['B. Tạo sự nổi bật, thu hút ánh nhìn vào các đối tượng quan trọng']::varchar[], 'Tương phản (Contrast) là nguyên lý tạo ra sự khác biệt rõ rệt giữa các yếu tố (màu sắc, kích thước, hình dạng, độ đậm nhạt). Tương phản mạnh thu hút thị giác vào điểm trọng tâm của tác phẩm.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-apply", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4305,7 +4305,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-84', 'mcq', 'Nghệ thuật - Yếu tố tạo hình', 'art-visual-history', 'Các yếu tố tạo hình cơ bản của mỹ thuật bao gồm những gì?', ARRAY['A. Chỉ có màu sắc và hình dạng', 'B. Chấm, nét, hình, khối, màu sắc, đậm nhạt, chất cảm, không gian', 'C. Chỉ có đường nét và màu sắc', 'D. Chỉ có hình và màu']::varchar[], ARRAY['B. Chấm, nét, hình, khối, màu sắc, đậm nhạt, chất cảm, không gian']::varchar[], '7-8 yếu tố tạo hình cơ bản: Điểm/Chấm (Point), Nét (Line), Hình (Shape), Khối (Form), Màu sắc (Color), Đậm nhạt/Sáng tối (Value), Chất cảm/Kết cấu (Texture), Không gian (Space). Đây là nền tảng ngôn ngữ thị giác.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4321,7 +4321,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-85', 'mcq', 'Âm nhạc - Nhạc cụ Việt Nam', 'art-music-theory', 'Nhạc cụ nào sau đây là nhạc cụ dân tộc Việt Nam?', ARRAY['A. Violin', 'B. Piano', 'C. Đàn bầu', 'D. Guitar điện']::varchar[], ARRAY['C. Đàn bầu']::varchar[], 'Đàn bầu (độc huyền cầm) là nhạc cụ truyền thống đặc trưng của Việt Nam, chỉ có một dây. Âm thanh của đàn bầu được tạo ra bằng cách gảy dây và uốn cần đàn để thay đổi cao độ. Violin, Piano, Guitar là nhạc cụ phương Tây.', 3, 'kenhgiaovien.com - Trắc nghiệm Âm nhạc 9, Nhạc cụ', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4337,7 +4337,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-86', 'mcq', 'Âm nhạc - Nhạc cụ Việt Nam', 'art-music-theory', 'Đàn tranh (đàn thập lục) là loại nhạc cụ thuộc bộ nào?', ARRAY['A. Bộ hơi (nhạc cụ thổi)', 'B. Bộ gõ', 'C. Bộ dây (gảy)', 'D. Bộ dây (kéo vĩ)']::varchar[], ARRAY['C. Bộ dây (gảy)']::varchar[], 'Đàn tranh thuộc bộ dây gảy, gồm 16-25 dây kim loại. Người chơi dùng móng gảy đeo ở ngón tay để gảy dây. Đàn tranh phổ biến trong âm nhạc truyền thống Việt Nam và nhiều nước châu Á.', 3, 'kenhgiaovien.com - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4353,7 +4353,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-87', 'mcq', 'Mỹ thuật - Lịch sử hội họa', 'art-visual-history', 'Trường phái nào trong hội họa là tiền thân trực tiếp của Ấn tượng, nhấn mạnh vào vẽ ngoài trời?', ARRAY['A. Trường phái Lãng mạn', 'B. Trường phái Hiện thực (Realism)', 'C. Trường phái Barbizon', 'D. Trường phái Siêu thực']::varchar[], ARRAY['C. Trường phái Barbizon']::varchar[], 'Trường phái Barbizon (Pháp, 1830-1870) là tiền thân của Ấn tượng. Các họa sĩ Barbizon (Corot, Millet...) đã bắt đầu vẽ phong cảnh ngoài trời (en plein air), ảnh hưởng lớn đến thế hệ họa sĩ Ấn tượng sau đó.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-history", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4369,7 +4369,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-88', 'mcq', 'Âm nhạc - Ký hiệu âm nhạc', 'art-music-theory', 'Trong âm nhạc, dấu nhắc lại (||: :||) có nghĩa là gì?', ARRAY['A. Kết thúc bài hát', 'B. Lặp lại đoạn nhạc được đặt trong dấu nhắc lại', 'C. Chơi nhỏ hơn', 'D. Chơi nhanh hơn']::varchar[], ARRAY['B. Lặp lại đoạn nhạc được đặt trong dấu nhắc lại']::varchar[], 'Dấu nhắc lại (Repeat sign: ||: ... :||) chỉ định phải chơi lại đoạn nhạc nằm trong hai dấu này một lần nữa trước khi tiếp tục. Đây là ký hiệu quy ước trong ký âm nhạc.', 3, 'studocu.vn - Trắc nghiệm Âm nhạc 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4385,7 +4385,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-89', 'mcq', 'Âm nhạc - Tiết tấu', 'art-music-theory', 'Khi trọng âm của tiết tấu không trùng với trọng âm của tiết nhịp sẽ tạo nên hiện tượng gì trong âm nhạc?', ARRAY['A. Chỉ đảo phách', 'B. Chỉ nghịch phách', 'C. Đảo phách hoặc nghịch phách', 'D. Không tạo hiện tượng đặc biệt nào']::varchar[], ARRAY['C. Đảo phách hoặc nghịch phách']::varchar[], 'Đảo phách (Syncopation): trọng âm rơi vào phách yếu hoặc phần yếu của phách. Nghịch phách: âm thanh xuất hiện trước phách mạnh và kéo dài qua phách đó. Cả hai đều tạo sự đa dạng tiết tấu trong âm nhạc.', 3, 'scribd.com - Trắc nghiệm Lý thuyết âm nhạc', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4401,7 +4401,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-90', 'mcq', 'Nghệ thuật - Thiết kế đồ họa', 'art-visual-apply', 'Trong thiết kế đồ họa, nguyên lý ''lặp lại'' (Repetition) có tác dụng gì?', ARRAY['A. Tạo sự nhàm chán', 'B. Tạo sự nhất quán và thống nhất trong thiết kế', 'C. Giảm độ phức tạp của thiết kế', 'D. Chỉ dùng trong thiết kế logo']::varchar[], ARRAY['B. Tạo sự nhất quán và thống nhất trong thiết kế']::varchar[], 'Nguyên lý lặp lại trong thiết kế: sử dụng cùng yếu tố (màu, font chữ, hình dạng, khoảng cách) xuyên suốt giúp tạo sự nhất quán thị giác, thể hiện thương hiệu và hướng dẫn người xem qua tác phẩm.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9, Thiết kế đồ họa', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-apply", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4417,7 +4417,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-91', 'mcq', 'Nghệ thuật - Thiết kế đồ họa', 'art-visual-apply', 'Logo là gì trong thiết kế đồ họa?', ARRAY['A. Một bức tranh phong cảnh', 'B. Biểu tượng nhận diện thương hiệu kết hợp hình ảnh và/hoặc chữ', 'C. Một bài thơ được viết cách điệu', 'D. Bản đồ địa lý được thiết kế lại']::varchar[], ARRAY['B. Biểu tượng nhận diện thương hiệu kết hợp hình ảnh và/hoặc chữ']::varchar[], 'Logo là biểu tượng nhận diện thương hiệu, thường kết hợp hình ảnh (icon/symbol) và/hoặc chữ (logotype/wordmark). Logo phải dễ nhận biết, dễ nhớ, có tính độc đáo và phù hợp với giá trị thương hiệu.', 3, 'vietjack.com - Trắc nghiệm Mỹ thuật 9', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-visual-apply", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4433,7 +4433,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-art-92', 'mcq', 'Âm nhạc - Nhịp', 'art-music-theory', 'Nhịp lấy đà trong âm nhạc có thể xuất hiện ở đâu?', ARRAY['A. Chỉ ở đầu tác phẩm', 'B. Chỉ ở cuối tác phẩm', 'C. Đầu tác phẩm hoặc đầu một bộ phận của tác phẩm âm nhạc', 'D. Giữa tác phẩm']::varchar[], ARRAY['C. Đầu tác phẩm hoặc đầu một bộ phận của tác phẩm âm nhạc']::varchar[], 'Nhịp lấy đà (Anacrusis/Pick-up) là ô nhịp không đầy đủ ở đầu tác phẩm hoặc đầu một phần của tác phẩm. Nhịp lấy đà giúp tạo đà cho giai điệu chính bắt đầu từ phách mạnh ô nhịp tiếp theo.', 3, 'scribd.com - Trắc nghiệm Lý thuyết âm nhạc', 'arts', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["art-music-theory", "arts"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4450,7 +4450,7 @@ ON CONFLICT (id) DO UPDATE SET
   metadata = EXCLUDED.metadata;
 
 -- Seed Subagent 2 Questions (Science, History/Geography, Civics)
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-1', 'mcq', 'Điện học - Định luật Ohm', 'sci-phy-electricity', 'Nội dung định luật Ohm là gì?', ARRAY['A. Cường độ dòng điện chạy qua dây dẫn tỉ lệ với hiệu điện thế và tỉ lệ với điện trở', 'B. Cường độ dòng điện tỉ lệ thuận với hiệu điện thế và không tỉ lệ với điện trở', 'C. Cường độ dòng điện tỉ lệ thuận với hiệu điện thế giữa hai đầu dây dẫn và tỉ lệ nghịch với điện trở của dây', 'D. Cường độ dòng điện tỉ lệ nghịch với hiệu điện thế và tỉ lệ thuận với điện trở']::varchar[], ARRAY['C. Cường độ dòng điện tỉ lệ thuận với hiệu điện thế giữa hai đầu dây dẫn và tỉ lệ nghịch với điện trở của dây']::varchar[], 'Định luật Ohm: I = U/R, trong đó I tỉ lệ thuận với U và tỉ lệ nghịch với R.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4466,7 +4466,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-2', 'mcq', 'Điện học - Định luật Ohm', 'sci-phy-electricity', 'Biểu thức đúng của định luật Ohm là gì?', ARRAY['A. R = U/I', 'B. I = U/R', 'C. U = I·R²', 'D. I = R/U']::varchar[], ARRAY['B. I = U/R']::varchar[], 'Biểu thức định luật Ohm gốc là I = U/R, biểu diễn cường độ dòng điện bằng hiệu điện thế chia cho điện trở.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4482,7 +4482,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-3', 'mcq', 'Điện học - Định luật Ohm', 'sci-phy-electricity', 'Khi đặt vào hai đầu dây dẫn một hiệu điện thế 6V thì cường độ dòng điện qua nó là 0,5A. Nếu hiệu điện thế tăng lên thành 24V thì cường độ dòng điện qua nó là bao nhiêu?', ARRAY['A. 1,5A', 'B. 2A', 'C. 3A', 'D. 1A']::varchar[], ARRAY['B. 2A']::varchar[], 'U tăng 4 lần (6V → 24V), theo định luật Ohm I cũng tăng 4 lần: 0,5A × 4 = 2A.', 3, 'Thuviendethi.com - Trắc nghiệm Vật lý 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4498,7 +4498,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-4', 'mcq', 'Điện học - Định luật Ohm', 'sci-phy-electricity', 'Đồ thị biểu diễn sự phụ thuộc của cường độ dòng điện vào hiệu điện thế giữa hai đầu dây dẫn có dạng là gì?', ARRAY['A. Một đường thẳng đi qua gốc tọa độ', 'B. Một đường thẳng không đi qua gốc tọa độ', 'C. Một đường cong đi qua gốc tọa độ', 'D. Một đường cong không đi qua gốc tọa độ']::varchar[], ARRAY['A. Một đường thẳng đi qua gốc tọa độ']::varchar[], 'Theo định luật Ohm, I tỉ lệ thuận với U, nên đồ thị I-U là đường thẳng đi qua gốc tọa độ.', 3, 'Thuviendethi.com - Trắc nghiệm Vật lý 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4514,7 +4514,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-5', 'mcq', 'Điện học - Điện trở', 'sci-phy-electricity', 'Điện trở R của dây dẫn biểu thị cho điều gì?', ARRAY['A. Tính cản trở dòng điện nhiều hay ít của dây', 'B. Tính cản trở hiệu điện thế nhiều hay ít của dây', 'C. Tính cản trở electron nhiều hay ít của dây', 'D. Tính cản trở điện lượng nhiều hay ít của dây']::varchar[], ARRAY['A. Tính cản trở dòng điện nhiều hay ít của dây']::varchar[], 'Điện trở đặc trưng cho mức độ cản trở dòng điện chạy qua dây dẫn.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4530,7 +4530,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-6', 'mcq', 'Điện học - Đoạn mạch nối tiếp', 'sci-phy-electricity', 'Trong đoạn mạch mắc nối tiếp, điện trở tương đương bằng:', ARRAY['A. Tích các điện trở thành phần', 'B. Tổng các điện trở thành phần', 'C. Hiệu các điện trở thành phần', 'D. Thương các điện trở thành phần']::varchar[], ARRAY['B. Tổng các điện trở thành phần']::varchar[], 'Trong đoạn mạch nối tiếp: R_td = R1 + R2 + ... + Rn.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4546,7 +4546,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-7', 'mcq', 'Điện học - Đoạn mạch song song', 'sci-phy-electricity', 'Trong đoạn mạch mắc song song, hiệu điện thế giữa hai đầu mỗi điện trở:', ARRAY['A. Tỉ lệ thuận với điện trở đó', 'B. Tỉ lệ nghịch với điện trở đó', 'C. Bằng nhau và bằng hiệu điện thế toàn mạch', 'D. Bằng tổng hiệu điện thế của các nhánh']::varchar[], ARRAY['C. Bằng nhau và bằng hiệu điện thế toàn mạch']::varchar[], 'Trong mạch song song, hiệu điện thế hai đầu mỗi nhánh bằng nhau và bằng hiệu điện thế hai đầu đoạn mạch.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4562,7 +4562,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-8', 'mcq', 'Điện học - Công suất', 'sci-phy-electricity', 'Công suất điện được tính theo công thức nào?', ARRAY['A. P = U/I', 'B. P = U²/R', 'C. P = U·I', 'D. Cả B và C đều đúng']::varchar[], ARRAY['D. Cả B và C đều đúng']::varchar[], 'Công suất điện: P = U·I = I²·R = U²/R. Cả B và C đều là biểu thức hợp lệ.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4578,7 +4578,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-9', 'mcq', 'Điện học - Đơn vị', 'sci-phy-electricity', 'Đơn vị đo cường độ dòng điện là gì?', ARRAY['A. Vôn (V)', 'B. Ôm (Ω)', 'C. Ampe (A)', 'D. Oát (W)']::varchar[], ARRAY['C. Ampe (A)']::varchar[], 'Đơn vị đo cường độ dòng điện là Ampe (A), ký hiệu I.', 3, 'VietJack - Trắc nghiệm KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4594,7 +4594,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-10', 'mcq', 'Điện học - Đoạn mạch nối tiếp', 'sci-phy-electricity', 'Hai điện trở R1 = 4Ω và R2 = 6Ω mắc nối tiếp. Điện trở tương đương của đoạn mạch là:', ARRAY['A. 2,4Ω', 'B. 10Ω', 'C. 24Ω', 'D. 1,5Ω']::varchar[], ARRAY['B. 10Ω']::varchar[], 'Mạch nối tiếp: R_td = R1 + R2 = 4 + 6 = 10Ω.', 3, 'VietJack - Trắc nghiệm KHTN 9 Điện học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-electricity", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4610,7 +4610,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-11', 'mcq', 'Quang học - Khúc xạ ánh sáng', 'sci-phy-optics', 'Khi ánh sáng truyền từ không khí vào nước, hiện tượng gì xảy ra?', ARRAY['A. Tia sáng bị phản xạ hoàn toàn', 'B. Tia sáng bị khúc xạ, góc khúc xạ nhỏ hơn góc tới', 'C. Tia sáng bị khúc xạ, góc khúc xạ lớn hơn góc tới', 'D. Tia sáng truyền thẳng không bị bẻ cong']::varchar[], ARRAY['B. Tia sáng bị khúc xạ, góc khúc xạ nhỏ hơn góc tới']::varchar[], 'Khi ánh sáng từ không khí vào nước (môi trường chiết quang hơn), tia sáng bị gãy khúc về phía pháp tuyến, góc khúc xạ r < góc tới i.', 3, 'VietJack - Trắc nghiệm KHTN 9 Quang học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-optics", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4626,7 +4626,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-12', 'mcq', 'Quang học - Thấu kính hội tụ', 'sci-phy-optics', 'Thấu kính hội tụ có đặc điểm nào sau đây?', ARRAY['A. Có phần rìa dày hơn phần giữa', 'B. Có phần giữa dày hơn phần rìa', 'C. Có hai mặt đều lõm', 'D. Không thể tạo ảnh thật']::varchar[], ARRAY['B. Có phần giữa dày hơn phần rìa']::varchar[], 'Thấu kính hội tụ có phần giữa dày hơn phần rìa, có khả năng hội tụ chùm tia sáng song song vào một điểm.', 3, 'VietJack - Trắc nghiệm KHTN 9 Quang học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-optics", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4642,7 +4642,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-13', 'mcq', 'Quang học - Thấu kính hội tụ', 'sci-phy-optics', 'Vật đặt ngoài tiêu cự của thấu kính hội tụ cho ảnh có tính chất gì?', ARRAY['A. Ảnh ảo, cùng chiều, lớn hơn vật', 'B. Ảnh thật, ngược chiều với vật', 'C. Ảnh ảo, ngược chiều, nhỏ hơn vật', 'D. Không tạo ảnh']::varchar[], ARRAY['B. Ảnh thật, ngược chiều với vật']::varchar[], 'Vật đặt ngoài tiêu cự của thấu kính hội tụ cho ảnh thật, ngược chiều với vật. Kích thước ảnh phụ thuộc vào khoảng cách từ vật đến thấu kính.', 3, 'VietJack - Trắc nghiệm KHTN 9 Quang học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-optics", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4658,7 +4658,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-14', 'mcq', 'Quang học - Khúc xạ ánh sáng', 'sci-phy-optics', 'Hiện tượng khúc xạ ánh sáng là gì?', ARRAY['A. Hiện tượng ánh sáng bị hắt lại khi gặp mặt phân cách', 'B. Hiện tượng tia sáng bị gãy khúc khi truyền qua mặt phân cách giữa hai môi trường trong suốt khác nhau', 'C. Hiện tượng ánh sáng bị hấp thụ hoàn toàn', 'D. Hiện tượng ánh sáng truyền thẳng']::varchar[], ARRAY['B. Hiện tượng tia sáng bị gãy khúc khi truyền qua mặt phân cách giữa hai môi trường trong suốt khác nhau']::varchar[], 'Khúc xạ ánh sáng là hiện tượng tia sáng bị bẻ cong khi đi qua mặt phân cách giữa hai môi trường trong suốt có chiết suất khác nhau.', 3, 'Loigiaihay.com - Trắc nghiệm KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-optics", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4674,7 +4674,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-15', 'mcq', 'Quang học - Kính lúp', 'sci-phy-optics', 'Kính lúp là dụng cụ quang học bổ trợ cho mắt để quan sát các vật nhỏ. Kính lúp có cấu tạo là:', ARRAY['A. Thấu kính phân kỳ có tiêu cự ngắn', 'B. Thấu kính hội tụ có tiêu cự ngắn', 'C. Gương cầu lõm', 'D. Gương phẳng']::varchar[], ARRAY['B. Thấu kính hội tụ có tiêu cự ngắn']::varchar[], 'Kính lúp là thấu kính hội tụ có tiêu cự ngắn (thường dưới 10cm), cho ảnh ảo, cùng chiều, lớn hơn vật.', 3, 'VietJack - Trắc nghiệm KHTN 9 Quang học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-optics", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4690,7 +4690,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-16', 'mcq', 'Quang học - Thấu kính hội tụ', 'sci-phy-optics', 'Vật đặt trong khoảng tiêu cự của thấu kính hội tụ cho ảnh có tính chất gì?', ARRAY['A. Ảnh thật, ngược chiều', 'B. Ảnh thật, cùng chiều', 'C. Ảnh ảo, cùng chiều, lớn hơn vật', 'D. Không tạo ảnh']::varchar[], ARRAY['C. Ảnh ảo, cùng chiều, lớn hơn vật']::varchar[], 'Vật đặt trong khoảng tiêu cự (d < f) của thấu kính hội tụ cho ảnh ảo, cùng chiều và lớn hơn vật.', 3, 'VietJack - Trắc nghiệm KHTN 9 Quang học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-optics", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4706,7 +4706,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-17', 'mcq', 'Nhiệt học - Nhiệt lượng', 'sci-phy-heat', 'Nhiệt lượng mà vật thu vào hay tỏa ra phụ thuộc vào những yếu tố nào?', ARRAY['A. Khối lượng và thể tích của vật', 'B. Khối lượng, nhiệt độ ban đầu và nhiệt độ cuối của vật', 'C. Khối lượng của vật, chất cấu tạo nên vật và độ thay đổi nhiệt độ của vật', 'D. Nhiệt độ ban đầu, chất cấu tạo nên vật và áp suất môi trường']::varchar[], ARRAY['C. Khối lượng của vật, chất cấu tạo nên vật và độ thay đổi nhiệt độ của vật']::varchar[], 'Nhiệt lượng Q phụ thuộc vào khối lượng m, chất cấu tạo (nhiệt dung riêng c) và độ biến thiên nhiệt độ Δt: Q = mcΔt.', 3, 'Tổng hợp VietJack - Trắc nghiệm KHTN 9 Nhiệt học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-heat", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4722,7 +4722,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-18', 'mcq', 'Nhiệt học - Nhiệt lượng', 'sci-phy-heat', 'Công thức tính nhiệt lượng thu vào của một vật là gì?', ARRAY['A. Q = mc(t₂ - t₁)', 'B. Q = mc(t₂ + t₁)', 'C. Q = m(t₂ - t₁)', 'D. Q = c(t₂ - t₁)']::varchar[], ARRAY['A. Q = mc(t₂ - t₁)']::varchar[], 'Công thức nhiệt lượng: Q = mc·Δt = mc(t₂ - t₁), trong đó m là khối lượng, c là nhiệt dung riêng, Δt là độ biến thiên nhiệt độ.', 3, 'VietJack - Trắc nghiệm KHTN 9 Nhiệt học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-heat", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4738,7 +4738,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-19', 'mcq', 'Nhiệt học - Nhiệt dung riêng', 'sci-phy-heat', 'Đơn vị của nhiệt dung riêng là gì?', ARRAY['A. Jun (J)', 'B. Jun trên kilôgam (J/kg)', 'C. Jun trên kilôgam độ (J/kg.K)', 'D. Jun trên độ (J/K)']::varchar[], ARRAY['C. Jun trên kilôgam độ (J/kg.K)']::varchar[], 'Từ công thức c = Q/(m·Δt), đơn vị của c là J/(kg·K) hoặc J/(kg·°C).', 3, 'VietJack - Trắc nghiệm KHTN 9 Nhiệt học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-heat", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4754,7 +4754,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-20', 'mcq', 'Nhiệt học - Nhiệt dung riêng', 'sci-phy-heat', 'Nhiệt dung riêng của đồng là 380 J/kg.K. Điều này có ý nghĩa gì?', ARRAY['A. Để làm nóng 1kg đồng tăng thêm 1°C cần cung cấp nhiệt lượng 380J', 'B. Để làm nóng 380kg đồng tăng thêm 1°C cần cung cấp nhiệt lượng 1J', 'C. Nhiệt lượng tỏa ra khi 1kg đồng nguội đi 1°C là 380J', 'D. Cả A và C đều đúng']::varchar[], ARRAY['D. Cả A và C đều đúng']::varchar[], 'Nhiệt dung riêng c = 380 J/kg.K có nghĩa là cần 380J để tăng 1kg đồng lên 1°C, và ngược lại tỏa ra 380J khi giảm 1°C.', 3, 'VietJack - Trắc nghiệm KHTN 9 Nhiệt học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-heat", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4770,7 +4770,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-21', 'mcq', 'Nhiệt học - Cân bằng nhiệt', 'sci-phy-heat', 'Nguyên lý cân bằng nhiệt được phát biểu là:', ARRAY['A. Nhiệt lượng vật lạnh tỏa ra bằng nhiệt lượng vật nóng thu vào', 'B. Nhiệt lượng vật nóng tỏa ra bằng nhiệt lượng vật lạnh thu vào', 'C. Tổng nhiệt lượng tỏa ra của mọi vật bằng tổng nhiệt lượng thu vào', 'D. Nhiệt lượng tỏa ra luôn lớn hơn nhiệt lượng thu vào']::varchar[], ARRAY['B. Nhiệt lượng vật nóng tỏa ra bằng nhiệt lượng vật lạnh thu vào']::varchar[], 'Nguyên lý cân bằng nhiệt: Q_tỏa = Q_thu, tức là nhiệt lượng vật nóng tỏa ra đúng bằng nhiệt lượng vật lạnh thu vào.', 3, 'VietJack - Trắc nghiệm KHTN 9 Nhiệt học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-phy-heat", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4786,7 +4786,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-22', 'mcq', 'Hóa học - Phi kim', 'sci-chem-inorganic', 'Ở điều kiện thường, phi kim tồn tại ở những trạng thái nào?', ARRAY['A. Chỉ ở thể khí', 'B. Chỉ ở thể rắn', 'C. Rắn, lỏng và khí', 'D. Chỉ ở thể rắn và lỏng']::varchar[], ARRAY['C. Rắn, lỏng và khí']::varchar[], 'Phi kim tồn tại ở cả 3 trạng thái: rắn (S, C, P...), lỏng (Br₂), khí (O₂, Cl₂, N₂...).', 3, 'VietJack - Trắc nghiệm KHTN 9 Hóa học Phi kim', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-chem-inorganic", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4802,7 +4802,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-23', 'mcq', 'Hóa học - Phi kim', 'sci-chem-inorganic', 'Phi kim nào tồn tại ở thể lỏng trong điều kiện thường?', ARRAY['A. Clo (Cl₂)', 'B. Lưu huỳnh (S)', 'C. Brom (Br₂)', 'D. Iot (I₂)']::varchar[], ARRAY['C. Brom (Br₂)']::varchar[], 'Brom (Br₂) là phi kim duy nhất tồn tại ở thể lỏng ở điều kiện thường (nhiệt độ phòng).', 3, 'VietJack - Trắc nghiệm KHTN 9 Hóa học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-chem-inorganic", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4818,7 +4818,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-24', 'mcq', 'Hóa học - Oxit axit', 'sci-chem-inorganic', 'Khí nào làm đục nước vôi trong và là oxit axit của phi kim?', ARRAY['A. SO₂', 'B. CO₂', 'C. NO₂', 'D. Cả A, B, C']::varchar[], ARRAY['D. Cả A, B, C']::varchar[], 'SO₂, CO₂, NO₂ đều là oxit axit của phi kim, khi sục vào nước vôi trong Ca(OH)₂ đều tạo muối kết tủa làm đục dung dịch.', 3, 'VietJack - Trắc nghiệm KHTN 9 Hóa học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-chem-inorganic", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4834,7 +4834,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-25', 'mcq', 'Vi phạm pháp luật - Dân sự', 'civ-law-order', 'Vi phạm pháp luật dân sự là hành vi vi phạm pháp luật, xâm phạm tới:', ARRAY['A. Các quan hệ công vụ và nhân thân', 'B. Các quy tắc quản lý nhà nước', 'C. Các quan hệ tài sản và quan hệ nhân thân', 'D. Các quan hệ lao động, công vụ nhà nước']::varchar[], ARRAY['C. Các quan hệ tài sản và quan hệ nhân thân']::varchar[], 'Vi phạm pháp luật dân sự xâm phạm đến quan hệ tài sản (hợp đồng, thừa kế...) và quan hệ nhân thân.', 3, 'Loigiaihay.com - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4850,7 +4850,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-26', 'mcq', 'Hóa học - Phi kim Clo', 'sci-chem-inorganic', 'Tính chất hóa học đặc trưng của Clo là gì?', ARRAY['A. Tính khử mạnh', 'B. Tính oxi hóa mạnh', 'C. Tính axit mạnh', 'D. Tính bazơ mạnh']::varchar[], ARRAY['B. Tính oxi hóa mạnh']::varchar[], 'Clo có tính oxi hóa mạnh, tác dụng mạnh với kim loại, phi kim và nước tạo hỗn hợp HCl và HClO.', 3, 'VietJack - Trắc nghiệm KHTN 9 Hóa học Phi kim', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-chem-inorganic", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4866,7 +4866,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-27', 'mcq', 'Hóa học - Phi kim Cacbon', 'sci-chem-inorganic', 'Sản phẩm khi đốt cháy Cacbon trong oxi dư là gì?', ARRAY['A. CO (cacbon monooxit)', 'B. CO₂ (cacbon đioxit)', 'C. Hỗn hợp CO và CO₂', 'D. C₂O (đicacbon oxit)']::varchar[], ARRAY['B. CO₂ (cacbon đioxit)']::varchar[], 'Khi đốt cacbon trong oxi dư: C + O₂ → CO₂. Trong điều kiện thiếu oxi sẽ tạo CO.', 3, 'VietJack - Trắc nghiệm KHTN 9 Hóa học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-chem-inorganic", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4882,7 +4882,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-28', 'mcq', 'Hóa học - Hợp chất Axit', 'sci-chem-inorganic', 'Trong phản ứng hóa học, quỳ tím chuyển sang màu đỏ khi tiếp xúc với chất nào?', ARRAY['A. Dung dịch NaOH', 'B. Nước cất', 'C. Dung dịch HCl', 'D. Dung dịch NaCl']::varchar[], ARRAY['C. Dung dịch HCl']::varchar[], 'Quỳ tím chuyển đỏ trong môi trường axit (HCl, H₂SO₄...), chuyển xanh trong môi trường bazơ, không đổi màu trong dung dịch trung tính.', 3, 'VietJack - Trắc nghiệm KHTN 9 Hóa học', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-chem-inorganic", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4898,7 +4898,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-29', 'mcq', 'Di truyền - Menđen', 'sci-bio-genetics-mendelian', 'Tính trạng tương phản là:', ARRAY['A. Các tính trạng cùng một loại nhưng biểu hiện trái ngược nhau', 'B. Những tính trạng về số lượng và chất lượng', 'C. Tính trạng do một cặp alen quy định', 'D. Các tính trạng khác biệt nhau']::varchar[], ARRAY['A. Các tính trạng cùng một loại nhưng biểu hiện trái ngược nhau']::varchar[], 'Tính trạng tương phản là những dạng biểu hiện trái ngược nhau của cùng một loại tính trạng (VD: hạt trơn/hạt nhăn, hoa đỏ/hoa trắng).', 3, 'VietJack - Trắc nghiệm Sinh học 9 Di truyền', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-bio-genetics-mendelian", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4914,7 +4914,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-30', 'mcq', 'Di truyền - Menđen', 'sci-bio-genetics-mendelian', 'Đặc điểm nào của cây Đậu Hà Lan tạo điều kiện thuận lợi cho Menđen nghiên cứu quy luật di truyền?', ARRAY['A. Sinh sản nhanh và phát triển mạnh', 'B. Có hoa lưỡng tính, tự thụ phấn nghiêm ngặt', 'C. Có hoa lưỡng tính, tự thụ phấn không nghiêm ngặt', 'D. Có hoa đơn tính, giao phấn nghiêm ngặt']::varchar[], ARRAY['B. Có hoa lưỡng tính, tự thụ phấn nghiêm ngặt']::varchar[], 'Cây đậu Hà Lan có hoa lưỡng tính, tự thụ phấn nghiêm ngặt, dễ kiểm soát giao phấn, có nhiều cặp tính trạng tương phản rõ ràng.', 3, 'VietJack - Loigiaihay - Trắc nghiệm Sinh học 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-bio-genetics-mendelian", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4930,7 +4930,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-31', 'mcq', 'Di truyền - ADN', 'sci-bio-genetics-mendelian', 'Đơn vị cấu tạo nên ADN là:', ARRAY['A. Axit ribônuclêic', 'B. Axit đêôxiribônuclêic', 'C. Axit amin', 'D. Nuclêôtit']::varchar[], ARRAY['D. Nuclêôtit']::varchar[], 'ADN (Axit đêôxiribônuclêic) được cấu tạo từ các đơn phân là nuclêôtit, mỗi nuclêôtit gồm đường deoxiribose, nhóm photphat và bazơ nitric.', 3, 'VietJack - Trắc nghiệm Sinh học 9 Di truyền', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-bio-genetics-mendelian", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4946,7 +4946,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-32', 'mcq', 'Di truyền - Nhiễm sắc thể', 'sci-bio-genetics-mendelian', 'Trong quá trình nguyên phân, có thể quan sát rõ nhất hình thái NST ở vào kì nào?', ARRAY['A. Kì trung gian', 'B. Kì đầu', 'C. Kì giữa', 'D. Kì sau']::varchar[], ARRAY['C. Kì giữa']::varchar[], 'Ở kì giữa của nguyên phân, các NST co ngắn cực đại và xếp thành hàng ở mặt phẳng xích đạo tế bào, quan sát rõ nhất hình thái NST.', 3, 'VietJack - Trắc nghiệm Sinh học 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-bio-genetics-mendelian", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4962,7 +4962,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-33', 'mcq', 'Tiến hóa - Thuyết Darwin', 'sci-bio-evolution', 'Theo Darwin, nhân tố chính quy định chiều hướng và tốc độ biến đổi của các loài là gì?', ARRAY['A. Chọn lọc nhân tạo', 'B. Chọn lọc tự nhiên', 'C. Đấu tranh sinh tồn', 'D. Biến dị và di truyền']::varchar[], ARRAY['B. Chọn lọc tự nhiên']::varchar[], 'Theo Darwin, chọn lọc tự nhiên là nhân tố chủ đạo, đào thải cá thể kém thích nghi và giữ lại cá thể có biến dị có lợi, quy định chiều hướng tiến hóa.', 3, 'Kenhgiaovien.com - Trắc nghiệm Sinh học 9 Tiến hóa', 'science', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["sci-bio-evolution", "science"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4978,7 +4978,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-34', 'mcq', 'Lịch sử thế giới - Liên Xô', 'his-world-contemporary', 'Cuộc Nội chiến Nga diễn ra từ năm nào đến năm nào?', ARRAY['A. 1914 – 1918', 'B. 1917 – 1922', 'C. 1920 – 1925', 'D. 1936 – 1939']::varchar[], ARRAY['B. 1917 – 1922']::varchar[], 'Sau Cách mạng tháng Mười 1917, nước Nga rơi vào nội chiến giữa lực lượng Bolshevik (Hồng quân) và Bạch vệ kéo dài đến năm 1922.', 3, 'Studocu.vn - Trắc nghiệm Lịch sử 9 Thế giới 1918-1945', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -4994,7 +4994,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-35', 'mcq', 'Lịch sử thế giới - Liên Xô', 'his-world-contemporary', 'Trọng tâm phát triển kinh tế của Liên Xô từ năm 1922 đến năm 1945 là gì?', ARRAY['A. Phát triển công nghiệp nhẹ', 'B. Phát triển dịch vụ, thương mại', 'C. Phát triển du lịch', 'D. Phát triển công nghiệp nặng']::varchar[], ARRAY['D. Phát triển công nghiệp nặng']::varchar[], 'Trong các kế hoạch 5 năm, Liên Xô tập trung phát triển công nghiệp nặng để biến Liên Xô từ nước nông nghiệp lạc hậu thành cường quốc công nghiệp.', 3, 'Studocu.vn - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5010,7 +5010,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-36', 'mcq', 'Lịch sử thế giới - CTTG II', 'his-world-contemporary', 'Hội nghị Ianta (tháng 2/1945) được triệu tập vào thời điểm nào của Chiến tranh thế giới thứ hai?', ARRAY['A. Khi chiến tranh thế giới thứ hai bùng nổ', 'B. Khi chiến tranh bước vào giai đoạn ác liệt nhất', 'C. Khi chiến tranh thế giới thứ hai bước vào giai đoạn kết thúc', 'D. Khi chiến tranh thế giới thứ hai đã kết thúc hoàn toàn']::varchar[], ARRAY['C. Khi chiến tranh thế giới thứ hai bước vào giai đoạn kết thúc']::varchar[], 'Đầu năm 1945, phe Đồng minh đã giành thắng lợi lớn, chiến tranh đang đi đến hồi kết. Hội nghị Ianta bàn về phân chia khu vực ảnh hưởng sau chiến tranh.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5026,7 +5026,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-37', 'mcq', 'Lịch sử thế giới - CTTG II', 'his-world-contemporary', 'Những cường quốc nào tham gia Hội nghị Ianta vào tháng 2/1945?', ARRAY['A. Anh, Pháp, Mĩ', 'B. Anh, Mĩ, Liên Xô', 'C. Anh, Pháp, Đức', 'D. Mĩ, Liên Xô, Trung Quốc']::varchar[], ARRAY['B. Anh, Mĩ, Liên Xô']::varchar[], 'Hội nghị Ianta có sự tham dự của 3 cường quốc: Mĩ (Roosevelt), Anh (Churchill) và Liên Xô (Stalin).', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5042,7 +5042,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-38', 'mcq', 'Lịch sử thế giới - Khủng hoảng 1929-1933', 'his-world-contemporary', 'Cuộc khủng hoảng kinh tế thế giới 1929-1933 bùng nổ đầu tiên ở nước nào?', ARRAY['A. Anh', 'B. Pháp', 'C. Mĩ', 'D. Đức']::varchar[], ARRAY['C. Mĩ']::varchar[], 'Cuộc khủng hoảng kinh tế thế giới 1929-1933 bùng nổ đầu tiên ở Mĩ vào tháng 10/1929 (''Thứ Năm Đen''), sau đó lan ra toàn thế giới tư bản.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5058,7 +5058,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-39', 'mcq', 'Lịch sử thế giới - Chủ nghĩa phát xít', 'his-world-contemporary', 'Chủ nghĩa phát xít hình thành đầu tiên ở nước nào?', ARRAY['A. Đức', 'B. Nhật Bản', 'C. Ý', 'D. Tây Ban Nha']::varchar[], ARRAY['C. Ý']::varchar[], 'Chủ nghĩa phát xít hình thành đầu tiên ở Ý năm 1922 khi Mussolini lên nắm quyền, sau đó mới xuất hiện ở Đức (1933) và Nhật Bản.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5074,7 +5074,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-40', 'mcq', 'Lịch sử thế giới - CTTG II', 'his-world-contemporary', 'Chiến tranh thế giới thứ hai bùng nổ vào ngày tháng năm nào?', ARRAY['A. 1/9/1939', 'B. 22/6/1941', 'C. 7/12/1941', 'D. 6/6/1944']::varchar[], ARRAY['A. 1/9/1939']::varchar[], 'Chiến tranh thế giới thứ hai chính thức bùng nổ ngày 1/9/1939 khi Đức phát xít tấn công Ba Lan, Anh và Pháp tuyên chiến với Đức.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5090,7 +5090,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-41', 'mcq', 'Lịch sử thế giới - CTTG II', 'his-world-contemporary', 'Sự kiện nào buộc Mĩ tham gia vào Chiến tranh thế giới thứ hai?', ARRAY['A. Đức tấn công Liên Xô (22/6/1941)', 'B. Nhật Bản tấn công căn cứ hải quân Trân Châu Cảng (7/12/1941)', 'C. Đức tấn công Ba Lan (1/9/1939)', 'D. Phong trào kháng chiến ở châu Âu']::varchar[], ARRAY['B. Nhật Bản tấn công căn cứ hải quân Trân Châu Cảng (7/12/1941)']::varchar[], 'Ngày 7/12/1941, Nhật Bản bất ngờ tấn công căn cứ Trân Châu Cảng của Mĩ tại Hawaii, buộc Mĩ phải tuyên chiến và tham gia CTTG II.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5106,7 +5106,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-42', 'mcq', 'Lịch sử thế giới - Khủng hoảng 1929-1933', 'his-world-contemporary', 'Khủng hoảng kinh tế 1929-1933 dẫn đến hậu quả gì nghiêm trọng nhất về mặt chính trị?', ARRAY['A. Làn sóng cách mạng công nhân bùng nổ toàn cầu', 'B. Sự ra đời và thắng lợi của chủ nghĩa phát xít ở một số nước', 'C. Các nước tư bản đoàn kết chống lại Liên Xô', 'D. Sự sụp đổ của hệ thống Véc-xai – Oasinhtơn']::varchar[], ARRAY['B. Sự ra đời và thắng lợi của chủ nghĩa phát xít ở một số nước']::varchar[], 'Khủng hoảng kinh tế 1929-1933 dẫn đến sự lên nắm quyền của phe phát xít ở Đức, Ý, Nhật — mầm mống của CTTG II.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5122,7 +5122,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-43', 'mcq', 'Lịch sử thế giới - Chủ nghĩa phát xít', 'his-world-contemporary', 'Liên minh các nước phát xít Đức - Ý - Nhật còn được gọi là gì?', ARRAY['A. Phe Đồng minh', 'B. Trục Berlin - Roma - Tokyo', 'C. Liên minh Trục', 'D. Cả B và C đều đúng']::varchar[], ARRAY['D. Cả B và C đều đúng']::varchar[], 'Liên minh Đức - Ý - Nhật (1936-1937) được gọi là ''Trục Berlin - Roma - Tokyo'' hay ''Liên minh Trục''.', 3, 'Loigiaihay.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5138,7 +5138,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-44', 'mcq', 'Lịch sử thế giới - CTTG II', 'his-world-contemporary', 'Chiến tranh thế giới thứ hai kết thúc ở châu Âu vào ngày nào?', ARRAY['A. 2/9/1945', 'B. 8/5/1945', 'C. 9/5/1945', 'D. 15/8/1945']::varchar[], ARRAY['B. 8/5/1945']::varchar[], 'Đức đầu hàng vô điều kiện ngày 8/5/1945, đánh dấu chiến tranh kết thúc ở châu Âu. Nhật Bản đầu hàng 2/9/1945 kết thúc CTTG II hoàn toàn.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-world-contemporary", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5154,7 +5154,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-45', 'mcq', 'Lịch sử Việt Nam - Cách mạng tháng Tám', 'his-vn-independence', 'Hội nghị nào quyết định phát động Tổng khởi nghĩa tháng Tám trong cả nước?', ARRAY['A. Hội nghị Trung ương Đảng lần thứ 8', 'B. Hội nghị toàn quốc của Đảng tại Tân Trào', 'C. Đại hội Quốc dân Tân Trào', 'D. Hội nghị Ban Thường vụ Trung ương Đảng']::varchar[], ARRAY['B. Hội nghị toàn quốc của Đảng tại Tân Trào']::varchar[], 'Hội nghị toàn quốc của Đảng tại Tân Trào (13-15/8/1945) đã quyết định phát động Tổng khởi nghĩa trong cả nước.', 3, 'Loigiaihay.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5170,7 +5170,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-46', 'mcq', 'Lịch sử Việt Nam - Cách mạng tháng Tám', 'his-vn-independence', 'Ngày 19/8/1945 đã diễn ra sự kiện lịch sử gì quan trọng?', ARRAY['A. Tổng khởi nghĩa tháng Tám thắng lợi trong cả nước', 'B. Khởi nghĩa giành chính quyền ở Hà Nội', 'C. Tổng khởi nghĩa tháng Tám bùng nổ', 'D. Vua Bảo Đại tuyên bố thoái vị']::varchar[], ARRAY['B. Khởi nghĩa giành chính quyền ở Hà Nội']::varchar[], 'Ngày 19/8/1945, nhân dân Hà Nội đã nổi dậy khởi nghĩa, giành chính quyền tại thủ đô — sự kiện quan trọng nhất trong Tổng khởi nghĩa.', 3, 'Loigiaihay.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5186,7 +5186,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-47', 'mcq', 'Lịch sử Việt Nam - Cách mạng tháng Tám', 'his-vn-independence', 'Sự kiện nào đánh dấu chế độ phong kiến Việt Nam hoàn toàn sụp đổ?', ARRAY['A. Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn độc lập', 'B. Cách mạng tháng Tám thành công trong cả nước', 'C. Vua Bảo Đại tuyên bố thoái vị ngày 30/8/1945', 'D. Nước Việt Nam Dân chủ Cộng hòa ra đời']::varchar[], ARRAY['C. Vua Bảo Đại tuyên bố thoái vị ngày 30/8/1945']::varchar[], 'Ngày 30/8/1945, vua Bảo Đại - vị vua cuối cùng của triều Nguyễn - tuyên bố thoái vị, đánh dấu chế độ phong kiến Việt Nam hoàn toàn sụp đổ.', 3, 'Loigiaihay.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5202,7 +5202,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-48', 'mcq', 'Lịch sử Việt Nam - Cách mạng tháng Tám', 'his-vn-independence', 'Nước Việt Nam Dân chủ Cộng hòa chính thức ra đời vào ngày nào?', ARRAY['A. 19/8/1945', 'B. 30/8/1945', 'C. 2/9/1945', 'D. 23/9/1945']::varchar[], ARRAY['C. 2/9/1945']::varchar[], 'Ngày 2/9/1945, tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5218,7 +5218,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-49', 'mcq', 'Lịch sử Việt Nam - Sau 1945', 'his-vn-independence', 'Khó khăn lớn nhất mà nước Việt Nam Dân chủ Cộng hòa gặp phải ngay sau Cách mạng tháng Tám năm 1945 là gì?', ARRAY['A. Quân đội chưa được củng cố', 'B. Nạn đói và nạn dốt hoành hành', 'C. Nạn ngoại xâm và nội phản', 'D. Ngân sách nhà nước trống rỗng']::varchar[], ARRAY['C. Nạn ngoại xâm và nội phản']::varchar[], 'Ngay sau CM tháng Tám, Việt Nam đối mặt với ''giặc ngoại xâm, giặc đói, giặc dốt''. Ngoại xâm và nội phản là khó khăn nghiêm trọng nhất vì đe dọa trực tiếp nền độc lập.', 3, 'Tech12h.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5234,7 +5234,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-50', 'mcq', 'Lịch sử Việt Nam - Sau 1945', 'his-vn-independence', 'Việt Nam ký với Pháp Hiệp định Sơ bộ ngày 6/3/1946 nhằm mục đích gì?', ARRAY['A. Chấm dứt chiến tranh, lập lại hòa bình', 'B. Hòa hoãn với Pháp để đuổi quân Trung Hoa Dân quốc, tranh thủ thời gian chuẩn bị kháng chiến', 'C. Phân hóa kẻ thù, tập trung đánh kẻ thù chủ yếu', 'D. Công nhận quyền độc lập của Việt Nam']::varchar[], ARRAY['B. Hòa hoãn với Pháp để đuổi quân Trung Hoa Dân quốc, tranh thủ thời gian chuẩn bị kháng chiến']::varchar[], 'Hiệp định Sơ bộ 6/3/1946 là sách lược hòa hoãn tạm thời với Pháp để nhanh chóng đuổi 20 vạn quân Trung Hoa Dân quốc về nước, tranh thủ thời gian xây dựng lực lượng.', 3, 'Tech12h.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5250,7 +5250,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-51', 'mcq', 'Lịch sử Việt Nam - Kháng chiến chống Pháp', 'his-vn-independence', 'Toàn quốc kháng chiến chống thực dân Pháp bùng nổ vào ngày nào?', ARRAY['A. 23/9/1945', 'B. 6/3/1946', 'C. 19/12/1946', 'D. 7/5/1954']::varchar[], ARRAY['C. 19/12/1946']::varchar[], 'Ngày 19/12/1946, Chủ tịch Hồ Chí Minh ra Lời kêu gọi Toàn quốc kháng chiến, mở đầu cuộc kháng chiến chống thực dân Pháp (1946-1954).', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5266,7 +5266,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-52', 'mcq', 'Lịch sử Việt Nam - Kháng chiến chống Pháp', 'his-vn-independence', 'Chiến thắng Điện Biên Phủ diễn ra vào ngày tháng năm nào?', ARRAY['A. 13/3/1954', 'B. 7/5/1954', 'C. 20/7/1954', 'D. 1/5/1954']::varchar[], ARRAY['B. 7/5/1954']::varchar[], 'Ngày 7/5/1954, quân và dân Việt Nam kết thúc chiến dịch Điện Biên Phủ, tiêu diệt và bắt sống toàn bộ quân địch, tướng De Castries bị bắt.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5282,7 +5282,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-53', 'mcq', 'Lịch sử Việt Nam - Kháng chiến chống Pháp', 'his-vn-independence', 'Hiệp định Giơnevơ (1954) về Đông Dương ký kết vào ngày nào?', ARRAY['A. 7/5/1954', 'B. 20/7/1954', 'C. 21/7/1954', 'D. 1/8/1954']::varchar[], ARRAY['C. 21/7/1954']::varchar[], 'Hiệp định Giơnevơ được ký kết ngày 21/7/1954, quy định tạm thời chia đôi Việt Nam ở vĩ tuyến 17, Pháp rút quân, tổng tuyển cử thống nhất vào 7/1956.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-independence", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5298,7 +5298,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-54', 'mcq', 'Lịch sử Việt Nam - Kháng chiến chống Mĩ', 'his-vn-reunification', 'Tổng tiến công và nổi dậy Xuân Mậu Thân 1968 diễn ra trong bối cảnh nào?', ARRAY['A. Mĩ vừa tăng quân vào miền Nam Việt Nam', 'B. Mĩ đang đàm phán để rút quân', 'C. Tết Nguyên Đán Mậu Thân - lúc Mĩ và ngụy mất cảnh giác nhất', 'D. Ngay sau khi Mĩ ném bom miền Bắc']::varchar[], ARRAY['C. Tết Nguyên Đán Mậu Thân - lúc Mĩ và ngụy mất cảnh giác nhất']::varchar[], 'Cuộc Tổng tiến công Xuân Mậu Thân diễn ra đúng dịp Tết Mậu Thân (1968), khi địch chủ quan mất cảnh giác, tạo bất ngờ chiến lược lớn cho Mĩ và ngụy.', 3, 'Loigiaihay.com - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-reunification", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5314,7 +5314,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-55', 'mcq', 'Lịch sử Việt Nam - Kháng chiến chống Mĩ', 'his-vn-reunification', 'Hiệp định Paris (1973) về Việt Nam quy định điều gì quan trọng nhất?', ARRAY['A. Mĩ công nhận độc lập của Việt Nam', 'B. Mĩ rút hết quân khỏi miền Nam Việt Nam', 'C. Việt Nam được thống nhất hoàn toàn', 'D. Ngừng bắn và rút quân Mĩ, trao trả tù binh']::varchar[], ARRAY['D. Ngừng bắn và rút quân Mĩ, trao trả tù binh']::varchar[], 'Hiệp định Paris ký 27/1/1973 quy định: ngừng bắn, Mĩ rút hết quân, trao trả tù binh. Miền Nam vẫn tạm thời chia cắt.', 3, 'VietJack - Trắc nghiệm Lịch sử 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["his-vn-reunification", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5330,7 +5330,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-56', 'mcq', 'Địa lý - Đông Nam Bộ', 'geo-vn-regions', 'Khoáng sản quan trọng nhất ở vùng Đông Nam Bộ là gì?', ARRAY['A. Than đá', 'B. Dầu khí', 'C. Bô-xít', 'D. Đồng']::varchar[], ARRAY['B. Dầu khí']::varchar[], 'Đông Nam Bộ có thềm lục địa với trữ lượng dầu khí lớn nhất cả nước, là nguồn tài nguyên khoáng sản quan trọng nhất của vùng.', 3, 'Itrithuc.vn - Trắc nghiệm Địa lý 9 Đông Nam Bộ', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5346,7 +5346,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-57', 'mcq', 'Địa lý - Đông Nam Bộ', 'geo-vn-regions', 'Hai loại đất chiếm diện tích lớn nhất ở Đông Nam Bộ là:', ARRAY['A. Đất badan và đất xám', 'B. Đất xám và đất phù sa', 'C. Đất badan và đất feralit', 'D. Đất xám và đất phèn']::varchar[], ARRAY['A. Đất badan và đất xám']::varchar[], 'Đông Nam Bộ có hai nhóm đất chính: đất badan (trên cao nguyên thấp, thuận lợi trồng cây công nghiệp) và đất xám (trên phù sa cổ).', 3, 'Lxi.edu.vn - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5362,7 +5362,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-58', 'mcq', 'Địa lý - Đông Nam Bộ', 'geo-vn-regions', 'Hồ chứa nước nhân tạo quan trọng cho thủy lợi và thủy điện ở Đông Nam Bộ là:', ARRAY['A. Hồ Ba Bể và hồ Lắk', 'B. Hồ Dầu Tiếng và hồ Trị An', 'C. Hồ Thác Bà và hồ Đa Nhim', 'D. Hồ Yaly và hồ Dầu Tiếng']::varchar[], ARRAY['B. Hồ Dầu Tiếng và hồ Trị An']::varchar[], 'Hồ Dầu Tiếng (cung cấp nước ngọt) và hồ Trị An (thủy điện) là hai hồ nhân tạo lớn và quan trọng nhất ở Đông Nam Bộ.', 3, 'Kenhgiaovien.com - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5378,7 +5378,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-59', 'mcq', 'Địa lý - Đồng bằng sông Cửu Long', 'geo-vn-regions', 'Loại hình giao thông vận tải phát triển nhất ở Đồng bằng sông Cửu Long là:', ARRAY['A. Đường sắt', 'B. Đường bộ', 'C. Đường biển', 'D. Đường sông']::varchar[], ARRAY['D. Đường sông']::varchar[], 'ĐBSCL có hệ thống sông ngòi, kênh rạch dày đặc, nên đường sông (giao thông thủy) là loại hình vận tải phát triển nhất và đặc trưng nhất vùng.', 3, 'VietJack - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5394,7 +5394,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-60', 'mcq', 'Địa lý - Đồng bằng sông Cửu Long', 'geo-vn-regions', 'Nhóm đất có diện tích lớn nhất ở Đồng bằng sông Cửu Long là:', ARRAY['A. Đất phèn', 'B. Đất mặn', 'C. Đất phù sa ngọt', 'D. Đất cát ven biển']::varchar[], ARRAY['A. Đất phèn']::varchar[], 'Đất phèn chiếm diện tích lớn nhất ĐBSCL (khoảng 40%), tập trung ở vùng trũng trung tâm như Đồng Tháp Mười, Tứ giác Long Xuyên.', 3, 'Tech12h.com - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5410,7 +5410,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-61', 'mcq', 'Địa lý - Tây Nguyên', 'geo-vn-regions', 'Thế mạnh đặc trưng nhất của Tây Nguyên để phát triển nông nghiệp là:', ARRAY['A. Đất phù sa màu mỡ', 'B. Khí hậu nhiệt đới gió mùa', 'C. Đất badan màu mỡ và khí hậu cận xích đạo', 'D. Nguồn nước dồi dào']::varchar[], ARRAY['C. Đất badan màu mỡ và khí hậu cận xích đạo']::varchar[], 'Tây Nguyên có đất badan màu mỡ (chiếm 1/4 diện tích đất đỏ badan cả nước) và khí hậu cận xích đạo, thích hợp trồng cây công nghiệp nhiệt đới.', 3, 'VietJack - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5426,7 +5426,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-62', 'mcq', 'Địa lý - Tây Nguyên', 'geo-vn-regions', 'Loại cây công nghiệp lâu năm được trồng nhiều nhất ở Tây Nguyên là:', ARRAY['A. Cao su', 'B. Cà phê', 'C. Hồ tiêu', 'D. Chè']::varchar[], ARRAY['B. Cà phê']::varchar[], 'Cà phê là cây công nghiệp lâu năm được trồng nhiều nhất ở Tây Nguyên, diện tích và sản lượng cà phê Tây Nguyên lớn nhất cả nước (Đắk Lắk, Lâm Đồng...).', 3, 'VietJack - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5442,7 +5442,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-63', 'mcq', 'Địa lý - Đông Nam Bộ', 'geo-vn-regions', 'Trung tâm du lịch lớn nhất của vùng Đông Nam Bộ và cả nước là:', ARRAY['A. Vũng Tàu', 'B. TP. Hồ Chí Minh', 'C. Đà Lạt', 'D. Nha Trang']::varchar[], ARRAY['B. TP. Hồ Chí Minh']::varchar[], 'TP. Hồ Chí Minh là trung tâm kinh tế, thương mại, du lịch lớn nhất cả nước, đầu mối giao thông quan trọng nhất phía Nam.', 3, 'Itrithuc.vn - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5458,7 +5458,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-64', 'mcq', 'Địa lý - Dân cư Việt Nam', 'geo-vn-population', 'Vùng kinh tế nào của Việt Nam có mật độ dân số cao nhất?', ARRAY['A. Đồng bằng sông Cửu Long', 'B. Đồng bằng sông Hồng', 'C. Đông Nam Bộ', 'D. Duyên hải miền Trung']::varchar[], ARRAY['B. Đồng bằng sông Hồng']::varchar[], 'Đồng bằng sông Hồng có mật độ dân số cao nhất Việt Nam (trên 900 người/km²), tập trung đông dân cư và lâu đời nhất.', 3, 'VietJack - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-population", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5474,7 +5474,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-65', 'mcq', 'Địa lý - Vùng kinh tế trọng điểm', 'geo-vn-regions', 'Tam giác kinh tế trọng điểm miền Nam Việt Nam gồm những tỉnh/thành phố nào?', ARRAY['A. Hà Nội - Hải Phòng - Quảng Ninh', 'B. TP.HCM - Đồng Nai - Bà Rịa - Vũng Tàu', 'C. Đà Nẵng - Thừa Thiên Huế - Quảng Nam', 'D. Cần Thơ - Kiên Giang - An Giang']::varchar[], ARRAY['B. TP.HCM - Đồng Nai - Bà Rịa - Vũng Tàu']::varchar[], 'Vùng kinh tế trọng điểm phía Nam (tam giác) gồm TP.HCM - Đồng Nai - Bà Rịa - Vũng Tàu (còn gọi là Bình Dương), là vùng kinh tế động lực quan trọng nhất phía Nam.', 3, 'VietJack - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5490,7 +5490,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-66', 'mcq', 'Địa lý - Đồng bằng sông Cửu Long', 'geo-vn-regions', 'Khó khăn lớn nhất của nông nghiệp Đồng bằng sông Cửu Long vào mùa khô là:', ARRAY['A. Cháy rừng', 'B. Triều cường', 'C. Xâm nhập mặn và thiếu nước ngọt', 'D. Sâu bệnh hại lúa']::varchar[], ARRAY['C. Xâm nhập mặn và thiếu nước ngọt']::varchar[], 'Vào mùa khô, nước biển xâm nhập sâu vào đất liền (xâm nhập mặn), kết hợp với thiếu nước ngọt là thách thức lớn nhất với nông nghiệp ĐBSCL.', 3, 'Itrithuc.vn - Trắc nghiệm Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["geo-vn-regions", "history_geography"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5506,7 +5506,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-67', 'mcq', 'Vi phạm pháp luật - Trách nhiệm pháp lý', 'civ-law-order', 'Nghĩa vụ mà các cá nhân, cơ quan, tổ chức vi phạm pháp luật phải chấp hành những biện pháp bắt buộc do Nhà nước quy định được gọi là gì?', ARRAY['A. Trách nhiệm pháp lí', 'B. Vi phạm pháp luật', 'C. Trách nhiệm gia đình', 'D. Vi phạm đạo đức']::varchar[], ARRAY['A. Trách nhiệm pháp lí']::varchar[], 'Trách nhiệm pháp lý là nghĩa vụ buộc cá nhân/tổ chức vi phạm pháp luật phải gánh chịu hậu quả pháp lý bất lợi do hành vi vi phạm của mình gây ra.', 3, 'Tech12h.com - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5522,7 +5522,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-68', 'mcq', 'Vi phạm pháp luật - Hình sự', 'civ-law-order', 'Hành vi vi phạm pháp luật, gây nguy hiểm cho xã hội, bị coi là tội phạm là hành vi vi phạm pháp luật nào?', ARRAY['A. Hình sự', 'B. Hành chính', 'C. Dân sự', 'D. Kỷ luật']::varchar[], ARRAY['A. Hình sự']::varchar[], 'Vi phạm pháp luật hình sự (tội phạm) là hành vi nguy hiểm cho xã hội, được quy định trong Bộ luật Hình sự, người phạm tội chịu trách nhiệm hình sự.', 3, 'Tech12h.com - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5538,7 +5538,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-69', 'mcq', 'Vi phạm pháp luật - Dân sự', 'civ-law-order', 'Vi phạm pháp luật dân sự là hành vi vi phạm pháp luật, xâm phạm tới các quan hệ nào?', ARRAY['A. Các quan hệ công vụ và nhân thân', 'B. Các quy tắc quản lý nhà nước', 'C. Các quan hệ tài sản và quan hệ nhân thân', 'D. Các quan hệ lao động, công vụ nhà nước']::varchar[], ARRAY['C. Các quan hệ tài sản và quan hệ nhân thân']::varchar[], 'Vi phạm dân sự xâm phạm đến quan hệ tài sản (hợp đồng, thừa kế, quyền sở hữu...) và quan hệ nhân thân (quyền đặt tên, hình ảnh, danh dự...).', 3, 'Tech12h.com - Download.vn - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5554,7 +5554,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-70', 'mcq', 'Vi phạm pháp luật - Kỷ luật', 'civ-law-order', 'Hành vi vi phạm các quy tắc, quy chế được xác lập trong một tổ chức, cơ quan, đơn vị là gì?', ARRAY['A. Vi phạm hành chính', 'B. Vi phạm dân sự', 'C. Vi phạm kỷ luật', 'D. Vi phạm hình sự']::varchar[], ARRAY['C. Vi phạm kỷ luật']::varchar[], 'Vi phạm kỷ luật là hành vi vi phạm nội quy, quy chế của cơ quan, tổ chức, đơn vị. Hình thức xử lý là trách nhiệm kỷ luật (cảnh cáo, buộc thôi việc...).', 3, 'Tech12h.com - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5570,7 +5570,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-71', 'mcq', 'Vi phạm pháp luật - Hành chính', 'civ-law-order', 'Người phải chịu trách nhiệm hành chính do mọi vi phạm hành chính mà mình gây ra theo quy định của pháp luật có độ tuổi là bao nhiêu?', ARRAY['A. Từ đủ 18 tuổi trở lên', 'B. Từ 18 tuổi trở lên', 'C. Từ đủ 16 tuổi trở lên', 'D. Từ đủ 14 tuổi trở lên']::varchar[], ARRAY['C. Từ đủ 16 tuổi trở lên']::varchar[], 'Theo Luật Xử lý vi phạm hành chính, người từ đủ 16 tuổi trở lên phải chịu trách nhiệm hành chính về mọi vi phạm hành chính do mình gây ra.', 3, 'Tech12h.com - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5586,7 +5586,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-72', 'mcq', 'Vi phạm pháp luật - Trách nhiệm pháp lý', 'civ-law-order', 'Mục đích chính của việc Nhà nước quy định trách nhiệm pháp lý đối với người vi phạm là gì?', ARRAY['A. Phạt tiền người vi phạm', 'B. Buộc chủ thể vi phạm chấm dứt hành vi, phải chịu thiệt hại nhất định; giáo dục răn đe người khác', 'C. Lập lại trật tự xã hội', 'D. Ngăn chặn người vi phạm có thể có vi phạm mới']::varchar[], ARRAY['B. Buộc chủ thể vi phạm chấm dứt hành vi, phải chịu thiệt hại nhất định; giáo dục răn đe người khác']::varchar[], 'Trách nhiệm pháp lý nhằm: (1) buộc người vi phạm chấm dứt hành vi trái pháp luật, (2) giáo dục, răn đe, ngăn ngừa vi phạm.', 3, 'Tech12h.com - Download.vn - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5602,7 +5602,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-73', 'mcq', 'Vi phạm pháp luật - Tình huống', 'civ-law-order', 'Một học sinh đánh bạn gây thương tích, hành vi này thuộc loại vi phạm pháp luật nào?', ARRAY['A. Vi phạm kỷ luật', 'B. Vi phạm hành chính', 'C. Vi phạm dân sự', 'D. Tùy mức độ, có thể là vi phạm hành chính hoặc vi phạm hình sự']::varchar[], ARRAY['D. Tùy mức độ, có thể là vi phạm hành chính hoặc vi phạm hình sự']::varchar[], 'Tùy mức độ thương tích: nếu nhẹ có thể là vi phạm hành chính (xử phạt tiền); nếu gây thương tích từ 11% trở lên là vi phạm hình sự (tội cố ý gây thương tích).', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5618,7 +5618,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-74', 'mcq', 'Vi phạm pháp luật - Hình sự', 'civ-law-order', 'Người từ đủ 14 tuổi đến dưới 16 tuổi phải chịu trách nhiệm hình sự về những loại tội nào?', ARRAY['A. Tất cả các loại tội phạm', 'B. Tội phạm rất nghiêm trọng và tội phạm đặc biệt nghiêm trọng do cố ý', 'C. Chỉ tội phạm đặc biệt nghiêm trọng', 'D. Không phải chịu trách nhiệm hình sự']::varchar[], ARRAY['B. Tội phạm rất nghiêm trọng và tội phạm đặc biệt nghiêm trọng do cố ý']::varchar[], 'Theo Bộ luật Hình sự, người từ đủ 14 đến dưới 16 tuổi chịu trách nhiệm hình sự về tội phạm rất nghiêm trọng và đặc biệt nghiêm trọng do cố ý.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5634,7 +5634,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-75', 'mcq', 'Vi phạm pháp luật - Hành chính', 'civ-law-order', 'Hành vi xây dựng công trình không phép trong đô thị thuộc loại vi phạm pháp luật nào?', ARRAY['A. Vi phạm hình sự', 'B. Vi phạm hành chính', 'C. Vi phạm dân sự', 'D. Vi phạm kỷ luật']::varchar[], ARRAY['B. Vi phạm hành chính']::varchar[], 'Xây dựng không phép, sai phép là vi phạm pháp luật hành chính (vi phạm quy định quản lý xây dựng), bị xử phạt hành chính và buộc tháo dỡ công trình.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5650,7 +5650,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-76', 'mcq', 'Vi phạm pháp luật - Nhận diện', 'civ-law-order', 'Biểu hiện nào dưới đây là vi phạm pháp luật?', ARRAY['A. Anh A không giúp người già qua đường', 'B. Chị B nói chuyện to trong thư viện', 'C. Anh C điều khiển ô tô vượt đèn đỏ', 'D. Em D không chào hỏi người lớn tuổi']::varchar[], ARRAY['C. Anh C điều khiển ô tô vượt đèn đỏ']::varchar[], 'Vượt đèn đỏ là hành vi vi phạm Luật Giao thông đường bộ — vi phạm pháp luật hành chính, bị xử phạt tiền và tước bằng lái. Các hành vi khác là thiếu đạo đức, không văn minh nhưng không vi phạm pháp luật.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5666,7 +5666,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-77', 'mcq', 'Vi phạm pháp luật - Khái niệm', 'civ-law-order', 'Hành vi vi phạm pháp luật phải có yếu tố nào bắt buộc?', ARRAY['A. Người vi phạm phải có độ tuổi từ 18 trở lên', 'B. Phải có hành vi trái pháp luật do chủ thể có năng lực trách nhiệm pháp lý thực hiện có lỗi', 'C. Hành vi phải gây thiệt hại về vật chất', 'D. Phải có quyết định xử phạt của cơ quan có thẩm quyền']::varchar[], ARRAY['B. Phải có hành vi trái pháp luật do chủ thể có năng lực trách nhiệm pháp lý thực hiện có lỗi']::varchar[], 'Vi phạm pháp luật cần có 3 yếu tố: (1) hành vi trái pháp luật, (2) do chủ thể có năng lực trách nhiệm pháp lý, (3) thực hiện có lỗi (cố ý hoặc vô ý).', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5682,7 +5682,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-78', 'mcq', 'Vi phạm pháp luật - Tình huống', 'civ-law-order', 'Khi phát hiện bạn mình đang bán ma túy trong trường học, học sinh nên làm gì?', ARRAY['A. Làm ngơ, không liên quan đến mình', 'B. Giúp bạn che giấu để tránh bị phát hiện', 'C. Báo cáo ngay cho giáo viên hoặc công an', 'D. Tự mình ngăn chặn bạn bằng vũ lực']::varchar[], ARRAY['C. Báo cáo ngay cho giáo viên hoặc công an']::varchar[], 'Mua bán ma túy là tội phạm hình sự nghiêm trọng. Học sinh có nghĩa vụ tố giác tội phạm theo pháp luật. Báo cáo cho thầy cô, công an là hành động đúng pháp luật và đạo đức.', 3, 'VietJack - Trắc nghiệm GDCD 9 Tình huống', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5698,7 +5698,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-79', 'mcq', 'Vi phạm pháp luật - Trách nhiệm hình sự', 'civ-law-order', 'Trách nhiệm hình sự là loại trách nhiệm pháp lý nghiêm khắc nhất vì:', ARRAY['A. Xử phạt tiền nhiều nhất', 'B. Có thể tước đoạt tự do hoặc tính mạng của người phạm tội', 'C. Áp dụng cho nhiều người nhất', 'D. Được quy định trong nhiều văn bản pháp luật nhất']::varchar[], ARRAY['B. Có thể tước đoạt tự do hoặc tính mạng của người phạm tội']::varchar[], 'Trách nhiệm hình sự nghiêm khắc nhất vì có thể áp dụng hình phạt tước quyền tự do (tù giam), thậm chí tử hình — là hình phạt nặng nề nhất trong hệ thống pháp luật.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5714,7 +5714,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-80', 'mcq', 'Vi phạm pháp luật - Tình huống', 'civ-law-order', 'Học sinh lớp 9 (14 tuổi) vô tình làm vỡ xe máy của người khác khi đỗ xe không đúng chỗ. Hành vi này thuộc loại vi phạm nào?', ARRAY['A. Vi phạm hình sự', 'B. Vi phạm hành chính và có thể có trách nhiệm dân sự', 'C. Vi phạm kỷ luật', 'D. Không vi phạm vì còn nhỏ tuổi']::varchar[], ARRAY['B. Vi phạm hành chính và có thể có trách nhiệm dân sự']::varchar[], 'Đỗ xe không đúng nơi quy định là vi phạm hành chính. Gây thiệt hại vật chất cho người khác cần bồi thường (trách nhiệm dân sự). Người chưa đủ tuổi, cha mẹ/người giám hộ chịu trách nhiệm.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5730,7 +5730,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-81', 'mcq', 'Quyền trẻ em - Trách nhiệm gia đình', 'civ-law-order', 'Khi thực hiện quyền trẻ em, mỗi gia đình cần phải có trách nhiệm nào dưới đây?', ARRAY['A. Tiến hành khai sinh cho trẻ', 'B. Chăm sóc, giáo dục trẻ em', 'C. Tạo điều kiện cho trẻ phát triển', 'D. Tất cả các phương án trên']::varchar[], ARRAY['D. Tất cả các phương án trên']::varchar[], 'Gia đình có trách nhiệm toàn diện với trẻ em: khai sinh (quyền có danh tính), chăm sóc sức khỏe, giáo dục và tạo điều kiện phát triển toàn diện.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5746,7 +5746,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-82', 'mcq', 'Quyền trẻ em - Khái niệm', 'civ-law-order', 'Theo Luật Trẻ em Việt Nam, trẻ em là người dưới bao nhiêu tuổi?', ARRAY['A. Dưới 15 tuổi', 'B. Dưới 16 tuổi', 'C. Dưới 18 tuổi', 'D. Dưới 21 tuổi']::varchar[], ARRAY['C. Dưới 18 tuổi']::varchar[], 'Theo Luật Trẻ em Việt Nam 2016 (Điều 1), trẻ em là người dưới 16 tuổi. Tuy nhiên, Công ước Liên Hợp Quốc về Quyền trẻ em (CRC) quy định dưới 18 tuổi. Trong ngữ cảnh Công ước LHQ thì đáp án là C.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5762,7 +5762,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-83', 'mcq', 'Quyền trẻ em - Nhóm quyền', 'civ-social-rights', 'Quyền được bảo vệ khỏi mọi hình thức bạo lực, xâm hại tình dục, bóc lột lao động thuộc nhóm quyền nào của trẻ em?', ARRAY['A. Quyền sống còn', 'B. Quyền được bảo vệ', 'C. Quyền phát triển', 'D. Quyền tham gia']::varchar[], ARRAY['B. Quyền được bảo vệ']::varchar[], 'Theo Công ước LHQ về Quyền trẻ em, quyền được bảo vệ khỏi bạo lực, xâm hại, bóc lột thuộc nhóm ''Quyền được bảo vệ'' — một trong 4 nhóm quyền cơ bản.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5778,7 +5778,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-84', 'mcq', 'Quyền trẻ em - Vi phạm', 'civ-social-rights', 'Hành vi nào dưới đây vi phạm quyền trẻ em?', ARRAY['A. Cho trẻ em đi học đúng độ tuổi', 'B. Ép trẻ em dưới 15 tuổi làm việc nặng nhọc, nguy hiểm', 'C. Tạo điều kiện cho trẻ em vui chơi giải trí', 'D. Khuyến khích trẻ em tham gia các hoạt động văn hóa']::varchar[], ARRAY['B. Ép trẻ em dưới 15 tuổi làm việc nặng nhọc, nguy hiểm']::varchar[], 'Theo Bộ luật Lao động và Luật Trẻ em, nghiêm cấm sử dụng lao động trẻ em, đặc biệt công việc nặng nhọc nguy hiểm. Đây là vi phạm nghiêm trọng quyền trẻ em.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5794,7 +5794,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-85', 'mcq', 'Quyền trẻ em - Công ước LHQ', 'civ-social-rights', 'Theo Công ước Liên Hợp Quốc về Quyền trẻ em, có bao nhiêu nhóm quyền cơ bản của trẻ em?', ARRAY['A. 2 nhóm', 'B. 3 nhóm', 'C. 4 nhóm', 'D. 5 nhóm']::varchar[], ARRAY['C. 4 nhóm']::varchar[], 'Công ước LHQ về Quyền trẻ em quy định 4 nhóm quyền: (1) Quyền sống còn, (2) Quyền được bảo vệ, (3) Quyền phát triển, (4) Quyền tham gia.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5810,7 +5810,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-86', 'mcq', 'Đạo đức - Lý tưởng sống', 'civ-personal-ideals', 'Người sống có lý tưởng sẽ được xã hội:', ARRAY['A. Tôn trọng', 'B. Đề bạt', 'C. Bổ nhiệm', 'D. Tài trợ']::varchar[], ARRAY['A. Tôn trọng']::varchar[], 'Người có lý tưởng cao đẹp, sống có mục đích và cống hiến cho xã hội sẽ nhận được sự tôn trọng của cộng đồng và xã hội.', 3, 'Studocu.vn - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-personal-ideals", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5826,7 +5826,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-87', 'mcq', 'Đạo đức - Phát triển toàn diện', 'civ-social-rights', 'Học sinh cần rèn luyện đức tính nào để trở thành công dân tốt?', ARRAY['A. Chỉ học giỏi là đủ', 'B. Chỉ ngoan ngoãn vâng lời là đủ', 'C. Kết hợp học tốt, rèn luyện đạo đức, thể chất và kỹ năng sống', 'D. Ưu tiên hoạt động ngoại khóa hơn học tập']::varchar[], ARRAY['C. Kết hợp học tốt, rèn luyện đạo đức, thể chất và kỹ năng sống']::varchar[], 'Để trở thành công dân tốt, học sinh cần phát triển toàn diện: học tập tri thức, rèn luyện đạo đức, thể chất và kỹ năng sống — không thể chỉ chú trọng một mặt.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5842,7 +5842,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-88', 'mcq', 'Đạo đức - Ý thức trách nhiệm', 'civ-law-order', 'Biểu hiện nào thể hiện học sinh có ý thức trách nhiệm với bản thân?', ARRAY['A. Chỉ học khi sắp thi', 'B. Không chuẩn bị bài trước khi đến lớp', 'C. Tự giác học tập, không đợi cha mẹ nhắc nhở', 'D. Học thêm nhiều môn để được khen thưởng']::varchar[], ARRAY['C. Tự giác học tập, không đợi cha mẹ nhắc nhở']::varchar[], 'Tự giác học tập mà không cần người khác nhắc nhở thể hiện ý thức tự giác, trách nhiệm với bản thân — phẩm chất quan trọng của học sinh.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5858,7 +5858,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-89', 'mcq', 'Đạo đức - Trung thực', 'civ-social-rights', 'Hành vi gian lận trong thi cử là:', ARRAY['A. Chấp nhận được nếu không bị phát hiện', 'B. Vi phạm nội quy nhà trường và thiếu trung thực', 'C. Bình thường vì ai cũng làm vậy', 'D. Cần thiết để đạt kết quả tốt']::varchar[], ARRAY['B. Vi phạm nội quy nhà trường và thiếu trung thực']::varchar[], 'Gian lận trong thi cử vi phạm nội quy nhà trường (trách nhiệm kỷ luật), thể hiện thiếu trung thực — phẩm chất đạo đức cơ bản mà học sinh cần có.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5874,7 +5874,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-90', 'mcq', 'Đạo đức - Biết ơn', 'civ-social-rights', 'Điều nào dưới đây thể hiện lòng biết ơn thầy cô giáo?', ARRAY['A. Chỉ chào thầy cô khi cần xin điểm', 'B. Học tốt, vâng lời, giữ gìn uy tín của thầy cô', 'C. Tặng quà đắt tiền cho thầy cô vào dịp lễ', 'D. Nói chuyện riêng trong giờ học']::varchar[], ARRAY['B. Học tốt, vâng lời, giữ gìn uy tín của thầy cô']::varchar[], 'Lòng biết ơn thầy cô thể hiện qua hành động cụ thể: học tốt để không phụ công dạy dỗ, vâng lời và không làm điều gì tổn hại đến uy tín của thầy cô.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5890,7 +5890,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-91', 'mcq', 'Đạo đức - Bản lĩnh học sinh', 'civ-social-rights', 'Khi bạn bè rủ rê tham gia các hoạt động không lành mạnh (đánh nhau, trốn học), học sinh nên:', ARRAY['A. Tham gia để không bị cô lập', 'B. Im lặng, không phản đối', 'C. Kiên quyết từ chối và khuyên bạn không nên làm vậy', 'D. Báo ngay cho cha mẹ mà không cần suy nghĩ']::varchar[], ARRAY['C. Kiên quyết từ chối và khuyên bạn không nên làm vậy']::varchar[], 'Học sinh cần có bản lĩnh và lòng dũng cảm để từ chối những hành vi không lành mạnh. Đồng thời, cần khuyên bạn tránh xa các hành vi xấu — đó là tình bạn thực sự.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5906,7 +5906,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-92', 'mcq', 'Vi phạm pháp luật - So sánh với đạo đức', 'civ-law-order', 'Khái niệm ''vi phạm pháp luật'' khác với ''vi phạm đạo đức'' ở điểm nào?', ARRAY['A. Vi phạm pháp luật luôn nghiêm trọng hơn vi phạm đạo đức', 'B. Vi phạm pháp luật bị xử lý bởi Nhà nước, vi phạm đạo đức bị xã hội lên án', 'C. Vi phạm đạo đức không liên quan đến pháp luật', 'D. Mọi vi phạm đạo đức đều là vi phạm pháp luật']::varchar[], ARRAY['B. Vi phạm pháp luật bị xử lý bởi Nhà nước, vi phạm đạo đức bị xã hội lên án']::varchar[], 'Vi phạm pháp luật: Nhà nước cưỡng chế (tòa án, công an...). Vi phạm đạo đức: xã hội lên án, phê phán (dư luận). Có hành vi vừa vi phạm pháp luật vừa vi phạm đạo đức, nhưng không phải tất cả.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5922,7 +5922,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-93', 'mcq', 'Đạo đức - Nghĩa vụ học sinh', 'civ-social-rights', 'Học sinh lớp 9 có nghĩa vụ nào sau đây theo quy định của pháp luật?', ARRAY['A. Tham gia đầy đủ các hoạt động ngoại khóa', 'B. Học tập, rèn luyện đạo đức, tôn trọng và chấp hành nội quy nhà trường', 'C. Tham gia ban cán sự lớp', 'D. Đạt học lực giỏi mỗi học kỳ']::varchar[], ARRAY['B. Học tập, rèn luyện đạo đức, tôn trọng và chấp hành nội quy nhà trường']::varchar[], 'Theo Điều lệ trường THCS và Luật Giáo dục, học sinh có nghĩa vụ: học tập, rèn luyện đạo đức, thực hiện đúng nội quy nhà trường, kính trọng thầy cô, đoàn kết bạn bè.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5938,7 +5938,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-94', 'mcq', 'Quyền trẻ em - Vi phạm', 'civ-social-rights', 'Cha mẹ có hành vi bạo lực, xâm phạm thân thể con cái là:', ARRAY['A. Quyền của cha mẹ trong việc dạy dỗ con cái', 'B. Vi phạm pháp luật và vi phạm quyền trẻ em', 'C. Bình thường trong văn hóa gia đình truyền thống', 'D. Chỉ vi phạm đạo đức, không vi phạm pháp luật']::varchar[], ARRAY['B. Vi phạm pháp luật và vi phạm quyền trẻ em']::varchar[], 'Theo Luật Trẻ em và Luật Phòng, chống bạo lực gia đình, bạo hành trẻ em là vi phạm pháp luật nghiêm trọng, vi phạm quyền được bảo vệ của trẻ em. Cha mẹ có thể bị xử lý hình sự.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5954,7 +5954,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-95', 'mcq', 'Quyền trẻ em - Nhóm quyền', 'civ-social-rights', 'Quyền được đi học miễn phí ở cấp tiểu học thuộc nhóm quyền nào của trẻ em?', ARRAY['A. Quyền sống còn', 'B. Quyền được bảo vệ', 'C. Quyền phát triển', 'D. Quyền tham gia']::varchar[], ARRAY['C. Quyền phát triển']::varchar[], 'Quyền được giáo dục, học tập thuộc nhóm ''Quyền phát triển'' — nhóm quyền giúp trẻ em phát triển đầy đủ về thể chất, tinh thần, đạo đức và xã hội.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5970,7 +5970,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-96', 'mcq', 'Vi phạm pháp luật - Hành chính', 'civ-law-order', 'Cơ quan nào có thẩm quyền xử phạt vi phạm hành chính?', ARRAY['A. Chỉ Toà án nhân dân', 'B. Chỉ Viện Kiểm sát nhân dân', 'C. Các cơ quan hành chính nhà nước có thẩm quyền (UBND, Công an, Thanh tra...)', 'D. Tổ trưởng dân phố']::varchar[], ARRAY['C. Các cơ quan hành chính nhà nước có thẩm quyền (UBND, Công an, Thanh tra...)']::varchar[], 'Theo Luật Xử lý vi phạm hành chính, nhiều cơ quan có thẩm quyền xử phạt: UBND các cấp, Công an, Thanh tra, Hải quan, Thuế... không chỉ riêng Tòa án.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -5986,7 +5986,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-97', 'mcq', 'Vi phạm pháp luật - Tình huống', 'civ-law-order', 'Hành vi của bạn M (15 tuổi) trộm cắp tài sản trị giá 5 triệu đồng. Bạn M phải chịu trách nhiệm pháp lý nào?', ARRAY['A. Không phải chịu trách nhiệm vì chưa đủ 16 tuổi', 'B. Chịu trách nhiệm hành chính', 'C. Chịu trách nhiệm hình sự và cha mẹ phải bồi thường thiệt hại', 'D. Chỉ bị nhắc nhở, không bị xử lý']::varchar[], ARRAY['C. Chịu trách nhiệm hình sự và cha mẹ phải bồi thường thiệt hại']::varchar[], 'Trộm cắp tài sản 5 triệu đồng cấu thành tội phạm hình sự. Người từ đủ 14 đến dưới 16 tuổi chịu trách nhiệm hình sự về tội rất nghiêm trọng/đặc biệt nghiêm trọng do cố ý. Bồi thường dân sự do cha mẹ thực hiện.', 3, 'VietJack - Trắc nghiệm GDCD 9 Tình huống', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6002,7 +6002,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-98', 'mcq', 'Quyền trẻ em - Nhóm quyền', 'civ-social-rights', 'Trẻ em có quyền được bày tỏ ý kiến về những vấn đề có ảnh hưởng đến mình thuộc nhóm quyền nào?', ARRAY['A. Quyền sống còn', 'B. Quyền được bảo vệ', 'C. Quyền phát triển', 'D. Quyền tham gia']::varchar[], ARRAY['D. Quyền tham gia']::varchar[], 'Quyền được tham gia, bày tỏ ý kiến, được lắng nghe thuộc nhóm ''Quyền tham gia'' — một trong 4 nhóm quyền cơ bản theo Công ước LHQ về Quyền trẻ em.', 3, 'VietJack - Trắc nghiệm GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-social-rights", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6018,7 +6018,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('batch1-sub2-99', 'mcq', 'Vi phạm pháp luật - Công nghệ', 'civ-law-order', 'Việc bán tài khoản mạng xã hội của mình cho người khác sử dụng để lừa đảo có thể dẫn đến hậu quả pháp lý nào với học sinh?', ARRAY['A. Không có hậu quả gì vì chỉ là mạng ảo', 'B. Bị nhà trường kỷ luật', 'C. Có thể bị xử lý về tội đồng phạm hoặc tiếp tay cho tội phạm lừa đảo', 'D. Chỉ mất tài khoản mạng xã hội']::varchar[], ARRAY['C. Có thể bị xử lý về tội đồng phạm hoặc tiếp tay cho tội phạm lừa đảo']::varchar[], 'Cung cấp tài khoản biết dùng vào mục đích lừa đảo có thể cấu thành đồng phạm hoặc che giấu tội phạm — vi phạm pháp luật hình sự, đặc biệt nghiêm trọng với tội lừa đảo qua mạng.', 3, 'VietJack - Trắc nghiệm GDCD 9 Tình huống mạng', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice", "tags": ["civ-law-order", "civics"]}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6035,7 +6035,7 @@ ON CONFLICT (id) DO UPDATE SET
   metadata = EXCLUDED.metadata;
 
 -- Seed Batch 2 Questions (English, Math, Lit, Science, Hist, Civics)
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q1', 'mcq', 'Ngữ âm', 'eng-pronunciation', 'Which word has the underlined part pronounced differently from that of the others?', ARRAY['A. destroys', 'B. controls', 'C. predicts', 'D. wanders']::varchar[], ARRAY['C. predicts']::varchar[], 'Trong ''predicts'', âm ''s'' được phát âm là /s/ vì đứng sau âm vô thanh /t/. Trong các từ còn lại, ''s'' được phát âm là /z/.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6051,7 +6051,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q2', 'mcq', 'Ngữ âm', 'eng-pronunciation', 'Which word has the underlined part pronounced differently from that of the others?', ARRAY['A. separate', 'B. standard', 'C. violent', 'D. satisfy']::varchar[], ARRAY['C. violent']::varchar[], 'Trong ''violent'', âm ''i'' phát âm là /aɪ/. Trong các từ còn lại, âm ''a'' hoặc ''e'' phát âm là /æ/ hoặc /ə/.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6067,7 +6067,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q3', 'mcq', 'Trọng âm', 'eng-stress', 'Which word has a different stress pattern from that of the others?', ARRAY['A. deny', 'B. visit', 'C. behave', 'D. impress']::varchar[], ARRAY['B. visit']::varchar[], '''visit'' có trọng âm rơi vào âm tiết thứ nhất. Các từ còn lại có trọng âm rơi vào âm tiết thứ hai.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6083,7 +6083,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q4', 'mcq', 'Trọng âm', 'eng-stress', 'Which word has a different stress pattern from that of the others?', ARRAY['A. official', 'B. regular', 'C. violent', 'D. wonderful']::varchar[], ARRAY['A. official']::varchar[], '''official'' có trọng âm rơi vào âm tiết thứ hai. Các từ còn lại có trọng âm rơi vào âm tiết thứ nhất.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6099,7 +6099,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q5', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-wish-suggest', 'I wish I ______ enough time to read all the books in the library.', ARRAY['A. have', 'B. had', 'C. will have', 'D. am having']::varchar[], ARRAY['B. had']::varchar[], 'Câu ước ở hiện tại sử dụng động từ ở thì Quá khứ đơn (Past Simple): S + wish + S + V2/ed.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6115,7 +6115,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q6', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-have-get-done', 'We usually ______ our house painted before the Lunar New Year.', ARRAY['A. get', 'B. make', 'C. do', 'D. take']::varchar[], ARRAY['A. get']::varchar[], 'Cấu trúc truyền khiến thụ động: have/get + something + V3/ed (nhờ/thuê ai làm gì).', 3, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6131,7 +6131,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q7', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'Are you interested ______ joining our local green campaign this weekend?', ARRAY['A. on', 'B. at', 'C. in', 'D. with']::varchar[], ARRAY['C. in']::varchar[], 'Cụm tính từ đi với giới từ: be interested in (thích thú, quan tâm đến cái gì).', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6147,7 +6147,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q8', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'Your parents never buy things online, ______?', ARRAY['A. don''t they', 'B. do they', 'C. are they', 'D. aren''t they']::varchar[], ARRAY['B. do they']::varchar[], 'Trong câu hỏi đuôi, mệnh đề chính có trạng từ phủ định ''never'' nên phần đuôi phải ở dạng khẳng định. Trợ động từ của động từ thường ở hiện tại đơn là ''do''.', 3, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6163,7 +6163,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q9', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-conditional', 'If we ______ paper, we will save many trees in the forest.', ARRAY['A. recycle', 'B. recycled', 'C. will recycle', 'D. would recycle']::varchar[], ARRAY['A. recycle']::varchar[], 'Câu điều kiện loại 1 diễn tả sự việc có thể xảy ra ở hiện tại hoặc tương lai: If + S + V(s/es), S + will + V-inf.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6179,7 +6179,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2024-q10', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'Don''t forget ______ off the lights before you leave the classroom.', ARRAY['A. turn', 'B. to turn', 'C. turning', 'D. turned']::varchar[], ARRAY['B. to turn']::varchar[], 'Cấu trúc forget/remember + to-V: nhớ/quên phải làm việc gì (chưa làm). Forget/remember + V-ing: nhớ/quên đã làm việc gì trong quá khứ.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6195,7 +6195,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q1', 'mcq', 'Ngữ âm', 'eng-pronunciation', 'Which word has the underlined part pronounced differently from that of the others?', ARRAY['A. mentioned', 'B. consisted', 'C. described', 'D. studied']::varchar[], ARRAY['B. consisted']::varchar[], 'Đuôi ''-ed'' trong ''consisted'' phát âm là /ɪd/. Trong các từ còn lại, ''-ed'' phát âm là /d/.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6211,7 +6211,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q2', 'mcq', 'Ngữ âm', 'eng-pronunciation', 'Which word has the underlined part pronounced differently from that of the others?', ARRAY['A. village', 'B. lighting', 'C. litter', 'D. river']::varchar[], ARRAY['B. lighting']::varchar[], 'Trong ''lighting'', âm ''i'' phát âm là /aɪ/. Trong các từ còn lại, phát âm là /ɪ/.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6227,7 +6227,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q3', 'mcq', 'Trọng âm', 'eng-stress', 'Which word has a different stress pattern from that of the others?', ARRAY['A. refresh', 'B. intend', 'C. excite', 'D. eager']::varchar[], ARRAY['D. eager']::varchar[], '''eager'' có trọng âm rơi vào âm tiết thứ nhất. Các từ còn lại có trọng âm rơi vào âm tiết thứ hai.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6243,7 +6243,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q4', 'mcq', 'Trọng âm', 'eng-stress', 'Which word has a different stress pattern from that of the others?', ARRAY['A. happening', 'B. responses', 'C. benefit', 'D. prisoner']::varchar[], ARRAY['B. responses']::varchar[], '''responses'' có trọng âm rơi vào âm tiết thứ hai. Các từ còn lại có trọng âm rơi vào âm tiết thứ nhất.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6259,7 +6259,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q5', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'Harry: ''When do the Vietnamese celebrate their Independence Day?'' - Lan: ''They celebrate it ______ September 2nd.''', ARRAY['A. in', 'B. at', 'C. on', 'D. of']::varchar[], ARRAY['C. on']::varchar[], 'Giới từ ''on'' dùng trước các ngày cụ thể trong tháng.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6275,7 +6275,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q6', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-conditional', 'If you don''t study hard, you ______ pass the entrance examination.', ARRAY['A. won''t', 'B. wouldn''t', 'C. didn''t', 'D. don''t']::varchar[], ARRAY['A. won''t']::varchar[], 'Câu điều kiện loại 1 có cấu trúc: If + S + V(s/es) (hiện tại), S + will/won''t + V-inf.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6291,7 +6291,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q7', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'The teacher suggested ______ some outdoor activities to help students relax.', ARRAY['A. organize', 'B. organizing', 'C. organized', 'D. to organize']::varchar[], ARRAY['B. organizing']::varchar[], 'Cấu trúc suggest + V-ing: đề nghị làm việc gì.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6307,7 +6307,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q8', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-relative-clauses', 'The heavy rain ______ fell last night caused flooding in many streets.', ARRAY['A. who', 'B. which', 'C. whom', 'D. whose']::varchar[], ARRAY['B. which']::varchar[], 'Đại từ quan hệ ''which'' được dùng để làm chủ ngữ thay thế cho danh từ chỉ vật/sự việc (''The heavy rain'').', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6323,7 +6323,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q9', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'The local authorities are trying to find a ______ to the problem of air pollution.', ARRAY['A. solution', 'B. solve', 'C. solvable', 'D. solver']::varchar[], ARRAY['A. solution']::varchar[], 'Sau mạo từ ''a'' cần một danh từ. ''solution'' (giải pháp) là danh từ phù hợp nhất về nghĩa với ''find a solution to the problem''.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6339,7 +6339,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2023-q10', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'She was ______ disappointed that she couldn''t say a word.', ARRAY['A. extreme', 'B. extremely', 'C. extremeness', 'D. extremity']::varchar[], ARRAY['B. extremely']::varchar[], 'Cần trạng từ ''extremely'' để bổ nghĩa cho tính từ ''disappointed''.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6355,7 +6355,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q1', 'mcq', 'Ngữ âm', 'eng-pronunciation', 'Which word has the underlined part pronounced differently from that of the others?', ARRAY['A. clean', 'B. great', 'C. beach', 'D. leave']::varchar[], ARRAY['B. great']::varchar[], 'Trong ''great'', âm ''ea'' phát âm là /eɪ/. Trong các từ còn lại, âm ''ea'' phát âm là /iː/.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6371,7 +6371,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q2', 'mcq', 'Ngữ âm', 'eng-pronunciation', 'Which word has the underlined part pronounced differently from that of the others?', ARRAY['A. primary', 'B. library', 'C. dynamic', 'D. typical']::varchar[], ARRAY['D. typical']::varchar[], 'Trong ''typical'', âm ''y'' phát âm là /ɪ/. Trong các từ còn lại, phát âm là /aɪ/.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6387,7 +6387,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q3', 'mcq', 'Trọng âm', 'eng-stress', 'Which word has a different stress pattern from that of the others?', ARRAY['A. provide', 'B. damage', 'C. collapse', 'D. destroy']::varchar[], ARRAY['B. damage']::varchar[], '''damage'' có trọng âm rơi vào âm tiết thứ nhất. Các từ còn lại có trọng âm rơi vào âm tiết thứ hai.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6403,7 +6403,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q4', 'mcq', 'Trọng âm', 'eng-stress', 'Which word has a different stress pattern from that of the others?', ARRAY['A. uniform', 'B. memory', 'C. candidate', 'D. computer']::varchar[], ARRAY['D. computer']::varchar[], '''computer'' có trọng âm rơi vào âm tiết thứ hai. Các từ còn lại có trọng âm rơi vào âm tiết thứ nhất.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 1: Phonetics"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6419,7 +6419,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q5', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-conditional', 'If we use water carefully, we ______ save money.', ARRAY['A. will', 'B. would', 'C. won''t', 'D. wouldn''t']::varchar[], ARRAY['A. will']::varchar[], 'Câu điều kiện loại 1 chỉ khả năng thực tế: If + S + V(s/es), S + will + V.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6435,7 +6435,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q6', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'She showed great ______ in the lesson yesterday.', ARRAY['A. interest', 'B. interested', 'C. interesting', 'D. interestingly']::varchar[], ARRAY['A. interest']::varchar[], 'Sau tính từ ''great'' cần danh từ. ''interest'' là danh từ chỉ sự quan tâm/hứng thú.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6451,7 +6451,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q7', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'The program was ______ successful; it attracted thousands of participants.', ARRAY['A. highly', 'B. high', 'C. height', 'D. heighten']::varchar[], ARRAY['A. highly']::varchar[], 'Cần trạng từ ''highly'' đứng trước để bổ nghĩa cho tính từ ''successful''.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6467,7 +6467,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q8', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-passive-voice', 'This bridge ______ built over ten years ago.', ARRAY['A. was', 'B. is', 'C. has been', 'D. were']::varchar[], ARRAY['A. was']::varchar[], 'Câu bị động ở quá khứ đơn (vì có ''ten years ago''): S + was/were + V3/ed. Chủ ngữ ''This bridge'' số ít nên dùng ''was''.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6483,7 +6483,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q9', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-tenses', 'They ______ English for five years now.', ARRAY['A. have studied', 'B. study', 'C. studied', 'D. are studying']::varchar[], ARRAY['A. have studied']::varchar[], 'Có dấu hiệu ''for five years now'' chỉ hành động bắt đầu từ quá khứ kéo dài đến hiện tại, chia ở thì Hiện tại hoàn thành: S + have/has + V3/ed.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6499,7 +6499,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-eng10-2022-q10', 'mcq', 'Ngữ pháp & Từ vựng', 'eng-vocabulary-topic', 'Please turn ______ the air conditioner before you go out.', ARRAY['A. off', 'B. on', 'C. down', 'D. up']::varchar[], ARRAY['A. off']::varchar[], 'Turn off: tắt thiết bị (phù hợp với ngữ cảnh tắt điều hòa trước khi ra ngoài). Turn on: bật, turn down: vặn nhỏ, turn up: vặn to.', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'english', 9, '{"isStandard": true, "answerMode": "single-choice", "examPart": "Part 2: Grammar & Vocabulary"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6515,7 +6515,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2024-q1', 'mcq', 'Hàm số bậc hai', 'math-quadratic-function', 'Cho hàm số \(y = ax^2\) có đồ thị đi qua điểm \(A(2; -2)\). Hệ số \(a\) nhận giá trị là bao nhiêu?', ARRAY['A. a = -1', 'B. a = -1/2', 'C. a = -2', 'D. a = 1/2']::varchar[], ARRAY['B. a = -1/2']::varchar[], 'Thay tọa độ điểm \(A(2; -2)\) vào phương trình ta được: \(-2 = a \cdot 2^2 \Rightarrow 4a = -2 \Rightarrow a = -1/2\).', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6531,7 +6531,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2024-q2', 'mcq', 'Phương trình bậc hai', 'math-quadratic-equation', 'Cho phương trình bậc hai \(x^2 - 2(m-1)x + m^2 - 3m = 0\). Tính biệt thức \(\Delta''\) của phương trình.', ARRAY['A. \(\Delta'' = m + 1\)', 'B. \(\Delta'' = m - 1\)', 'C. \(\Delta'' = 1 - m\)', 'D. \(\Delta'' = -m + 1\)']::varchar[], ARRAY['A. \(\Delta'' = m + 1\)']::varchar[], 'Ta có: \(\Delta'' = b''^2 - ac = (-(m-1))^2 - 1(m^2 - 3m) = m^2 - 2m + 1 - m^2 + 3m = m + 1\).', 3, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6547,7 +6547,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2024-q3', 'mcq', 'Định lý Vi-ét', 'math-vieta', 'Gọi \(x_1, x_2\) là hai nghiệm của phương trình \(2x^2 - 5x + 2 = 0\). Giá trị của biểu thức \(T = x_1 + x_2 + x_1 x_2\) là bao nhiêu?', ARRAY['A. T = 7/2', 'B. T = 3', 'C. T = 5/2', 'D. T = 9/2']::varchar[], ARRAY['A. T = 7/2']::varchar[], 'Theo hệ thức Vi-ét: \(x_1 + x_2 = -b/a = 5/2\), \(x_1 x_2 = c/a = 2/2 = 1\). Suy ra \(T = 5/2 + 1 = 7/2\).', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6563,7 +6563,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2024-q4', 'mcq', 'Hình học không gian', 'math-spatial-geometry', 'Một cái xô hình nón cụt có bán kính đáy nhỏ là \(15\text{ cm}\), bán kính đáy lớn là \(25\text{ cm}\), chiều cao là \(30\text{ cm}\). Tính thể tích \(V\) của cái xô (lấy \(\pi \approx 3,14\)).', ARRAY['A. V ≈ 38465 cm³', 'B. V ≈ 37680 cm³', 'C. V ≈ 32185 cm³', 'D. V ≈ 29420 cm³']::varchar[], ARRAY['B. V ≈ 37680 cm³']::varchar[], 'Công thức thể tích hình nón cụt: \(V = \frac{1}{3}\pi h (R^2 + r^2 + Rr)\). Thay số: \(V = \frac{1}{3} \cdot 3,14 \cdot 30 (25^2 + 15^2 + 25 \cdot 15) = 31,4 \cdot (625 + 225 + 375) = 31,4 \cdot 1225 \approx 37680\text{ cm}^3\).', 4, 'Đề thi tuyển sinh lớp 10 TP.HCM 2024', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6579,7 +6579,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2023-q1', 'mcq', 'Hệ phương trình bậc nhất', 'math-linear-system', 'Tìm nghiệm \((x; y)\) của hệ phương trình bậc nhất hai ẩn sau: \(\begin{cases} 2x - y = 3 \\ x + y = 3 \end{cases}\).', ARRAY['A. (2; 1)', 'B. (1; 2)', 'C. (2; -1)', 'D. (0; 3)']::varchar[], ARRAY['A. (2; 1)']::varchar[], 'Cộng hai vế phương trình: \(3x = 6 \Rightarrow x = 2\). Thay vào phương trình thứ hai: \(2 + y = 3 \Rightarrow y = 1\).', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6595,7 +6595,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2023-q2', 'mcq', 'Phương trình bậc hai', 'math-quadratic-equation', 'Cho phương trình bậc hai \(x^2 - 4x + 3 = 0\). Tập nghiệm \(S\) của phương trình là gì?', ARRAY['A. S = {1; 3}', 'B. S = {-1; -3}', 'C. S = {1; -3}', 'D. S = {-1; 3}']::varchar[], ARRAY['A. S = {1; 3}']::varchar[], 'Phương trình có các hệ số \(a = 1, b = -4, c = 3\). Vì \(a + b + c = 1 - 4 + 3 = 0\), phương trình có hai nghiệm phân biệt: \(x_1 = 1, x_2 = c/a = 3\).', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6611,7 +6611,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2023-q3', 'mcq', 'Hàm số bậc nhất', 'math-linear-function', 'Đồ thị hàm số \(y = 2x - 3\) cắt trục tung \(Oy\) tại điểm nào?', ARRAY['A. (0; -3)', 'B. (3/2; 0)', 'C. (0; 3)', 'D. (-3; 0)']::varchar[], ARRAY['A. (0; -3)']::varchar[], 'Đồ thị cắt trục tung khi hoành độ \(x = 0 \Rightarrow y = 2 \cdot 0 - 3 = -3\). Điểm cắt là \((0; -3)\).', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6627,7 +6627,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2023-q4', 'mcq', 'Hình học không gian', 'math-spatial-geometry', 'Một hình trụ có bán kính đáy \(r = 5\text{ cm}\) và chiều cao \(h = 10\text{ cm}\). Tính diện tích xung quanh \(S_{xq}\) của hình trụ (lấy \(\pi \approx 3,14\)).', ARRAY['A. S_xq ≈ 314 cm²', 'B. S_xq ≈ 157 cm²', 'C. S_xq ≈ 628 cm²', 'D. S_xq ≈ 78.5 cm²']::varchar[], ARRAY['A. S_xq ≈ 314 cm²']::varchar[], 'Diện tích xung quanh hình trụ: \(S_{xq} = 2\pi rh\). Thay số: \(S_{xq} = 2 \cdot 3,14 \cdot 5 \cdot 10 = 314\text{ cm}^2\).', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2023', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6643,7 +6643,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2022-q1', 'mcq', 'Căn thức bậc hai', 'math-square-root', 'Căn thức \(\sqrt{2x - 4}\) xác định khi và chỉ khi giá trị của \(x\) thoả mãn điều kiện gì?', ARRAY['A. x ≥ 2', 'B. x > 2', 'C. x ≤ 2', 'D. x < 2']::varchar[], ARRAY['A. x ≥ 2']::varchar[], 'Căn thức bậc hai xác định khi biểu thức dưới căn không âm: \(2x - 4 \ge 0 \Rightarrow 2x \ge 4 \Rightarrow x \ge 2\).', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6659,7 +6659,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2022-q2', 'mcq', 'Hình học không gian', 'math-spatial-geometry', 'Một quả bóng đá có dạng hình cầu với đường kính bằng \(22\text{ cm}\). Tính thể tích \(V\) của quả bóng đó (lấy \(\pi \approx 3,14\), làm tròn đến hàng đơn vị).', ARRAY['A. V ≈ 5572 cm³', 'B. V ≈ 44580 cm³', 'C. V ≈ 1393 cm³', 'D. V ≈ 11144 cm³']::varchar[], ARRAY['A. V ≈ 5572 cm³']::varchar[], 'Bán kính hình cầu \(R = d/2 = 22/2 = 11\text{ cm}\). Thể tích hình cầu: \(V = \frac{4}{3}\pi R^3 = \frac{4}{3} \cdot 3,14 \cdot 11^3 \approx 5572\text{ cm}^3\).', 3, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6675,7 +6675,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2022-q3', 'mcq', 'Đường tròn', 'math-circle', 'Cho đường tròn \((O; R)\) và một dây cung \(AB = R\sqrt{3}\). Khoảng cách từ tâm \(O\) đến dây cung \(AB\) bằng bao nhiêu?', ARRAY['A. R/2', 'B. R√3 / 2', 'C. R/4', 'D. R√2 / 2']::varchar[], ARRAY['A. R/2']::varchar[], 'Kẻ \(OH \perp AB\) tại \(H\) là trung điểm của \(AB\). Ta có: \(AH = \frac{AB}{2} = \frac{R\sqrt{3}}{2}\). Áp dụng định lý Pytago trong tam giác vuông \(OHA\): \(OH = \sqrt{OA^2 - AH^2} = \sqrt{R^2 - \frac{3R^2}{4}} = \sqrt{\frac{R^2}{4}} = \frac{R}{2}\).', 3, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6691,7 +6691,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2022-q4', 'mcq', 'Định lý Vi-ét', 'math-vieta', 'Không giải phương trình, hãy cho biết tổng \(S\) và tích \(P\) của hai nghiệm phương trình bậc hai \(3x^2 - 8x - 5 = 0\).', ARRAY['A. S = 8/3, P = -5/3', 'B. S = -8/3, P = 5/3', 'C. S = 8/3, P = 5/3', 'D. S = -8/3, P = -5/3']::varchar[], ARRAY['A. S = 8/3, P = -5/3']::varchar[], 'Theo hệ thức Vi-ét: \(S = x_1 + x_2 = -b/a = 8/3\); \(P = x_1 x_2 = c/a = -5/3\).', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2022', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6707,7 +6707,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2021-q1', 'mcq', 'Hệ phương trình bậc nhất', 'math-linear-system', 'Hệ phương trình nào sau đây có nghiệm duy nhất là \((x; y) = (1; -1)\)?', ARRAY['A. {x + y = 0; 2x - y = 3}', 'B. {x - y = 0; 2x + y = 3}', 'C. {x + y = 2; x - y = 0}', 'D. {x + y = 0; x - y = 0}']::varchar[], ARRAY['A. {x + y = 0; 2x - y = 3}']::varchar[], 'Thay \(x=1, y=-1\) vào hệ phương trình A: \(1 + (-1) = 0\) (đúng) và \(2(1) - (-1) = 3\) (đúng).', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2021', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6723,7 +6723,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2021-q2', 'mcq', 'Căn thức bậc hai', 'math-square-root', 'Rút gọn biểu thức \(A = \sqrt{(2-\sqrt{5})^2} - \sqrt{5}\).', ARRAY['A. -2', 'B. 2', 'C. 2 - 2√5', 'D. -2 - 2√5']::varchar[], ARRAY['A. -2']::varchar[], '\(A = |2-\sqrt{5}| - \sqrt{5}\). Vì \(2 < \sqrt{5}\) nên \(|2-\sqrt{5}| = \sqrt{5} - 2\). Vậy \(A = \sqrt{5} - 2 - \sqrt{5} = -2\).', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2021', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6739,7 +6739,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2021-q3', 'mcq', 'Hàm số bậc hai', 'math-quadratic-function', 'Hàm số bậc hai \(y = -2x^2\) đồng biến và nghịch biến trong các khoảng nào?', ARRAY['A. Đồng biến khi x < 0, nghịch biến khi x > 0', 'B. Đồng biến khi x > 0, nghịch biến khi x < 0', 'C. Đồng biến trên toàn tập xác định', 'D. Nghịch biến trên toàn tập xác định']::varchar[], ARRAY['A. Đồng biến khi x < 0, nghịch biến khi x > 0']::varchar[], 'Hàm số \(y = ax^2\) có hệ số \(a = -2 < 0\) nên đồng biến khi \(x < 0\) và nghịch biến khi \(x > 0\). Đồ thị có bề lõm hướng xuống dưới.', 2, 'Đề thi tuyển sinh lớp 10 TP.HCM 2021', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6755,7 +6755,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math10-2021-q4', 'mcq', 'Góc với đường tròn', 'math-circle', 'Một góc nội tiếp chắn nửa đường tròn có số đo góc bằng bao nhiêu độ?', ARRAY['A. 90 độ', 'B. 180 độ', 'C. 60 độ', 'D. 45 độ']::varchar[], ARRAY['A. 90 độ']::varchar[], 'Theo tính chất góc nội tiếp, góc nội tiếp chắn nửa đường tròn là góc vuông và bằng \(90^\circ\).', 1, 'Đề thi tuyển sinh lớp 10 TP.HCM 2021', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6771,7 +6771,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math-l9-hk2-q1', 'mcq', 'Hệ phương trình bậc nhất', 'math-linear-system', 'Tìm các giá trị của tham số \(m\) để hệ phương trình \(\begin{cases} mx + y = 1 \\ x + my = 1 \end{cases}\) vô số nghiệm.', ARRAY['A. m = 1', 'B. m = -1', 'C. m = 0', 'D. m = ±1']::varchar[], ARRAY['A. m = 1']::varchar[], 'Hệ có vô số nghiệm khi các hệ số tỷ lệ: \(\frac{m}{1} = \frac{1}{m} = \frac{1}{1} \Rightarrow m = 1\). Nếu \(m = -1\) thì \(\frac{-1}{1} = \frac{1}{-1} \neq \frac{1}{1}\) (hệ vô nghiệm).', 3, 'Đề kiểm tra học kỳ II Quận 1 - TP.HCM', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6787,7 +6787,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math-l9-hk2-q2', 'mcq', 'Tứ giác nội tiếp', 'math-circle', 'Cho tứ giác \(ABCD\) nội tiếp đường tròn. Biết góc \(A = 70^\circ\). Tính số đo của góc \(C\).', ARRAY['A. 110 độ', 'B. 70 độ', 'C. 180 độ', 'D. 90 độ']::varchar[], ARRAY['A. 110 độ']::varchar[], 'Tứ giác nội tiếp đường tròn có tổng hai góc đối diện bằng \(180^\circ\). Do đó: \(\widehat{C} = 180^\circ - \widehat{A} = 180^\circ - 70^\circ = 110^\circ\).', 2, 'Đề thi học kỳ II Toán 9 TP.HCM', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6803,7 +6803,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math-l9-hk2-q3', 'mcq', 'Hình học không gian', 'math-spatial-geometry', 'Một hình nón có bán kính đáy \(r = 3\text{ cm}\) và đường sinh \(l = 5\text{ cm}\). Tính thể tích \(V\) của hình nón (lấy \(\pi \approx 3,14\)).', ARRAY['A. V ≈ 37.68 cm³', 'B. V ≈ 113.04 cm³', 'C. V ≈ 47.1 cm³', 'D. V ≈ 15.07 cm³']::varchar[], ARRAY['A. V ≈ 37.68 cm³']::varchar[], 'Áp dụng định lý Pytago tìm chiều cao hình nón: \(h = \sqrt{l^2 - r^2} = \sqrt{5^2 - 3^2} = 4\text{ cm}\). Thể tích hình nón: \(V = \frac{1}{3}\pi r^2 h = \frac{1}{3} \cdot 3,14 \cdot 3^2 \cdot 4 = 37,68\text{ cm}^3\).', 3, 'Đề kiểm tra học kỳ II Toán 9 TP.HCM', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6819,7 +6819,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-math-l9-hk2-q4', 'mcq', 'Căn thức bậc hai', 'math-square-root', 'Tính giá trị của biểu thức \(P = \frac{2}{\sqrt{3}-1} - \sqrt{3}\).', ARRAY['A. 1', 'B. -1', 'C. √3', 'D. 2']::varchar[], ARRAY['A. 1']::varchar[], 'Trục căn thức ở mẫu: \(\frac{2(\sqrt{3}+1)}{(\sqrt{3}-1)(\sqrt{3}+1)} = \frac{2(\sqrt{3}+1)}{3-1} = \sqrt{3}+1\). Vậy \(P = \sqrt{3}+1 - \sqrt{3} = 1\).', 2, 'Đề kiểm tra học kỳ II Toán 9 TP.HCM', 'math', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6835,7 +6835,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q1', 'mcq', 'Truyện ngắn', 'lit-modern-prose', 'Trong truyện ngắn ''Lặng lẽ Sa Pa'' của Nguyễn Thành Long, nhân vật chính làm công việc gì?', ARRAY['A. Kỹ sư nông nghiệp', 'B. Người vẽ bản đồ sét', 'C. Nhân vật làm công tác khí tượng kiêm vật lý địa cầu', 'D. Họa sĩ chuyên vẽ phong cảnh Sa Pa']::varchar[], ARRAY['C. Nhân vật làm công tác khí tượng kiêm vật lý địa cầu']::varchar[], 'Nhân vật anh thanh niên làm công tác khí tượng kiêm vật lý địa cầu trên đỉnh Yên Sơn cao 2600m.', 1, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6851,7 +6851,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q2', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Bài thơ ''Đồng chí'' của Chính Hữu được viết theo thể thơ nào?', ARRAY['A. Thơ tự do', 'B. Thơ thất ngôn (bảy chữ)', 'C. Thơ lục bát', 'D. Thơ tám chữ']::varchar[], ARRAY['A. Thơ tự do']::varchar[], 'Bài thơ ''Đồng chí'' viết theo thể thơ tự do với các câu thơ dài ngắn khác nhau tạo giọng điệu tâm tình mộc mạc, tự nhiên.', 1, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6867,7 +6867,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q3', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Hình ảnh ''Đầu súng trăng treo'' trong bài thơ ''Đồng chí'' của Chính Hữu mang ý nghĩa biểu tượng gì?', ARRAY['A. Sự tàn khốc của chiến tranh', 'B. Vẻ đẹp lãng mạn hòa quyện cùng tinh thần chiến đấu thép', 'C. Nỗi nhớ quê hương da diết', 'D. Sự hi vọng vào một tương lai hòa bình tươi sáng']::varchar[], ARRAY['B. Vẻ đẹp lãng mạn hòa quyện cùng tinh thần chiến đấu thép']::varchar[], '''Súng'' đại diện cho chiến đấu, thực tại chiến tranh gian khổ; ''trăng'' đại diện cho hòa bình, vẻ đẹp lãng mạn của thiên nhiên. Sự kết hợp tạo ra biểu tượng đẹp về tình đồng chí và tâm hồn người lính.', 3, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6883,7 +6883,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q4', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Ai là tác giả của tác phẩm ''Bài thơ về tiểu đội xe không kính''?', ARRAY['A. Hữu Thỉnh', 'B. Chính Hữu', 'C. Phạm Tiến Duật', 'D. Bằng Việt']::varchar[], ARRAY['C. Phạm Tiến Duật']::varchar[], '''Bài thơ về tiểu đội xe không kính'' được sáng tác bởi nhà thơ Phạm Tiến Duật năm 1969, in trong tập ''Vầng trăng quầng lửa''.', 1, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6899,7 +6899,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q5', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Nguyên nhân chính khiến những chiếc xe trong ''Bài thơ về tiểu đội xe không kính'' không có kính là gì?', ARRAY['A. Kính tự vỡ do thời tiết quá nóng', 'B. Bom giật bom rung làm kính vỡ đi rồi', 'C. Xe đời cũ không trang bị kính', 'D. Chiến sĩ chủ động tháo kính để nhìn rõ hơn']::varchar[], ARRAY['B. Bom giật bom rung làm kính vỡ đi rồi']::varchar[], 'Câu thơ đầu tiên lý giải: ''Không có kính không phải vì xe không có kính / Bom giật bom rung kính vỡ đi rồi''.', 1, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6915,7 +6915,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q6', 'mcq', 'Truyện ngắn', 'lit-modern-prose', 'Trong truyện ngắn ''Chiếc lược ngà'' của Nguyễn Quang Sáng, chi tiết nào thể hiện bước ngoặt trong tình cảm của bé Thu dành cho ba?', ARRAY['A. Bé Thu bỏ trốn sang nhà ngoại', 'B. Bé Thu gọi tiếng ''Ba'' xé lòng trước giờ ông Sáu lên đường trở lại chiến khu', 'C. Bé Thu nhận chiếc lược ngà từ tay bác Ba', 'D. Bé Thu từ chối không cho ông Sáu gắp trứng cá']::varchar[], ARRAY['B. Bé Thu gọi tiếng ''Ba'' xé lòng trước giờ ông Sáu lên đường trở lại chiến khu']::varchar[], 'Đó là khoảnh khắc xúc động nhất, mọi sự nghi ngờ của bé Thu được giải tỏa sau khi nghe bà ngoại giải thích về vết thẹo trên mặt ba.', 2, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6931,7 +6931,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q7', 'mcq', 'Truyện ngắn', 'lit-modern-prose', 'Truyện ngắn ''Làng'' của Kim Lân phản ánh tâm lý nào của người nông dân Việt Nam trong thời kỳ đầu kháng chiến chống Pháp?', ARRAY['A. Tình yêu làng gắn liền với lòng yêu nước và tinh thần kháng chiến', 'B. Sự cam chịu số phận nghèo đói', 'C. Nỗi sợ hãi chiến tranh tàn khốc', 'D. Sự thờ ơ với vận mệnh đất nước']::varchar[], ARRAY['A. Tình yêu làng gắn liền với lòng yêu nước và tinh thần kháng chiến']::varchar[], 'Qua nhân vật ông Hai, nhà văn Kim Lân đã thể hiện sâu sắc sự phát triển trong nhận thức của người nông dân: Tình yêu làng gắn bó thống nhất với lòng yêu nước, trung thành với kháng chiến và Cụ Hồ.', 2, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6947,7 +6947,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q8', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Hoàn cảnh ra đời của bài thơ ''Đoàn thuyền đánh cá'' của Huy Cận là gì?', ARRAY['A. Viết tại chiến khu Việt Bắc trong những năm kháng chiến chống Pháp', 'B. Sáng tác năm 1958 trong chuyến đi thực tế dài ngày tại vùng mỏ Quảng Ninh', 'C. Viết sau khi đất nước hoàn toàn thống nhất năm 1975', 'D. Sáng tác tại miền Nam trong những năm chống Mỹ']::varchar[], ARRAY['B. Sáng tác năm 1958 trong chuyến đi thực tế dài ngày tại vùng mỏ Quảng Ninh']::varchar[], 'Bài thơ viết vào giữa năm 1958, thời kỳ miền Bắc được giải phóng đi vào xây dựng CNXH, Huy Cận có chuyến đi thực tế ở Quảng Ninh.', 2, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6963,7 +6963,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q9', 'mcq', 'Truyện trung đại', 'lit-medieval-poetry-prose', 'Trong tác phẩm ''Chuyện người con gái Nam Xương'' của Nguyễn Dữ, chi tiết nào đóng vai trò thắt nút và mở nút cho bi kịch của Vũ Nương?', ARRAY['A. Chiếc bóng trên vách', 'B. Chiếc trâm cài tóc', 'C. Giếng nước ở đầu làng', 'D. Chiếc hoa tai bằng vàng']::varchar[], ARRAY['A. Chiếc bóng trên vách']::varchar[], 'Chiếc bóng thắt nút bi kịch vì Trương Sinh nghi vợ thất tiết qua lời kể ngây thơ của bé Đản; cũng chính chiếc bóng trên vách do Trương Sinh tạo ra sau đó đã mở nút bi kịch giúp anh nhận ra sự oan ức của vợ.', 3, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6979,7 +6979,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q10', 'mcq', 'Văn học trung đại', 'lit-medieval-poetry-prose', 'Kiệt tác ''Truyện Kiều'' của Nguyễn Du được viết bằng chữ gì và thể thơ nào?', ARRAY['A. Chữ Hán, thể thơ thất ngôn bát cú', 'B. Chữ Nôm, thể thơ lục bát', 'C. Chữ Quốc ngữ, thể thơ tự do', 'D. Chữ Hán, thể thơ song thất lục bát']::varchar[], ARRAY['B. Chữ Nôm, thể thơ lục bát']::varchar[], '''Truyện Kiều'' (Đoạn trường tân thanh) của Nguyễn Du được viết bằng chữ Nôm nghệ thuật tinh diệu trên nền thể thơ lục bát truyền thống của dân tộc.', 1, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -6995,7 +6995,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q11', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Biểu tượng nghệ thuật cốt lõi trong bài thơ ''Ánh trăng'' của Nguyễn Duy là gì?', ARRAY['A. Vầng trăng', 'B. Dòng sông', 'C. Cánh đồng', 'D. Ánh đèn điện']::varchar[], ARRAY['A. Vầng trăng']::varchar[], 'Vầng trăng là biểu tượng của thiên nhiên nghĩa tình, quá khứ thủy chung và là tấm gương để con người tự soi chiếu lương tâm mình.', 2, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7011,7 +7011,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q12', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Nhận định nào nói đúng nhất về ý nghĩa nhan đề bài thơ ''Mùa xuân nho nhỏ'' của Thanh Hải?', ARRAY['A. Khát vọng hiến dâng phần đẹp đẽ nhất của mình cho mùa xuân đất nước', 'B. Sự mô tả mùa xuân có kích thước nhỏ', 'C. Sự tiếc nuối tuổi trẻ trôi qua nhanh', 'D. Sự miêu tả thiên nhiên xứ Huế mộng mơ']::varchar[], ARRAY['A. Khát vọng hiến dâng phần đẹp đẽ nhất của mình cho mùa xuân đất nước']::varchar[], '''Mùa xuân nho nhỏ'' là ẩn dụ độc đáo, thể hiện ước nguyện cống hiến khiêm nhường nhưng chân thành của nhà thơ cho cuộc đời chung.', 3, 'Ngữ văn 9, Tập 2', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7027,7 +7027,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q13', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Trong bài thơ ''Bếp lửa'' của Bằng Việt, hình ảnh nào luôn song hành cùng hình ảnh bếp lửa trong tâm trí người cháu?', ARRAY['A. Hình ảnh người bà', 'B. Hình ảnh khói bếp', 'C. Tiếng chim tu hú', 'D. Cánh đồng làng quê']::varchar[], ARRAY['A. Hình ảnh người bà']::varchar[], 'Bếp lửa gắn liền với bàn tay khơi nhóm đầy yêu thương và sưởi ấm của bà. Nhắc đến bếp lửa là nhớ đến bà và ngược lại.', 2, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7043,7 +7043,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q14', 'mcq', 'Văn học trung đại', 'lit-medieval-poetry-prose', 'Trong đoạn trích ''Kiều ở lầu Ngưng Bích'', Nguyễn Du đã sử dụng bút pháp nghệ thuật nổi bật nào để khắc họa tâm trạng Thúy Kiều?', ARRAY['A. Tả cảnh ngụ tình', 'B. Ước lệ tượng trưng', 'C. Tả thực chi tiết', 'D. Phóng đại khoa trương']::varchar[], ARRAY['A. Tả cảnh ngụ tình']::varchar[], 'Nguyễn Du dùng bút pháp tả cảnh ngụ tình xuất sắc, mượn cảnh thiên nhiên quanh lầu Ngưng Bích để biểu hiện trực tiếp tâm trạng cô đơn, buồn lo, bất an của Thúy Kiều.', 3, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7059,7 +7059,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q15', 'mcq', 'Nghị luận văn học', 'lit-argumentative-essay', 'Nhận định nào dưới đây nêu đúng nhất định nghĩa về phép lập luận phân tích?', ARRAY['A. Chia tách đối tượng thành các bộ phận để xem xét kỹ lưỡng', 'B. Ghép nối các ý kiến khác nhau thành một chỉnh thể', 'C. Kể lại câu chuyện theo trình tự thời gian', 'D. Sử dụng từ ngữ hoa mỹ để miêu tả hình ảnh']::varchar[], ARRAY['A. Chia tách đối tượng thành các bộ phận để xem xét kỹ lưỡng']::varchar[], 'Phân tích là phép lập luận chia nhỏ đối tượng để xem xét cụ thể cấu trúc, nội dung, khía cạnh bên trong nhằm làm sáng tỏ bản chất của nó.', 2, 'Ngữ văn 9, Tập 2', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7075,7 +7075,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q16', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Hai câu thơ ''Mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ'' (Viễn Phương) sử dụng biện pháp tu từ nào?', ARRAY['A. So sánh', 'B. Ẩn dụ', 'C. Nhân hóa', 'D. Hoán dụ']::varchar[], ARRAY['B. Ẩn dụ']::varchar[], '''Mặt trời trong lăng'' là ẩn dụ ca ngợi Bác Hồ vĩ đại - nguồn sáng ấm áp soi đường cho cách mạng Việt Nam.', 2, 'Ngữ văn 9, Tập 2', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7091,7 +7091,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q17', 'mcq', 'Truyện hiện đại', 'lit-modern-prose', 'Trong tác phẩm ''Lặng lẽ Sa Pa'', nhân vật nào đóng vai trò là điểm nhìn trần thuật giúp khách quan hóa chân dung anh thanh niên?', ARRAY['A. Ông họa sĩ', 'B. Bác lái xe', 'C. Cô kỹ sư', 'D. Tác giả tự kể trực tiếp']::varchar[], ARRAY['A. Ông họa sĩ']::varchar[], 'Dưới góc nhìn và suy tư nghệ thuật của ông họa sĩ già, chân dung anh thanh niên hiện ra chân thực, lung linh vẻ đẹp cống hiến thầm lặng.', 3, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7107,7 +7107,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q18', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Chủ đề bao trùm bài thơ ''Con cò'' của Chế Lan Viên là gì?', ARRAY['A. Ca ngợi tình mẫu tử thiêng liêng, lòng mẹ bao la qua hình ảnh con cò', 'B. Miêu tả cánh cò quê hương', 'C. Ca ngợi vẻ đẹp đồng quê Việt Nam', 'D. Thể hiện khát vọng tự do bay liệng']::varchar[], ARRAY['A. Ca ngợi tình mẫu tử thiêng liêng, lòng mẹ bao la qua hình ảnh con cò']::varchar[], 'Mượn hình ảnh cánh cò trong ca dao, Chế Lan Viên ca ngợi tình mẫu tử sâu sắc, vĩnh hằng và sự nâng đỡ âm thầm của mẹ dành cho con suốt cuộc đời.', 2, 'Ngữ văn 9, Tập 2', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7123,7 +7123,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q19', 'mcq', 'Thơ hiện đại', 'lit-modern-poetry', 'Tập thơ ''Vầng trăng quầng lửa'' của Phạm Tiến Duật chứa bài thơ nào sau đây trong chương trình lớp 9?', ARRAY['A. Bài thơ về tiểu đội xe không kính', 'B. Đồng chí', 'C. Ánh trăng', 'D. Viếng lăng Bác']::varchar[], ARRAY['A. Bài thơ về tiểu đội xe không kính']::varchar[], '''Bài thơ về tiểu đội xe không kính'' rút ra từ tập thơ nổi tiếng ''Vầng trăng quầng lửa'' (1970) của nhà thơ quân đội Phạm Tiến Duật.', 2, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7139,7 +7139,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-lit9-cur-q20', 'mcq', 'Văn học trung đại', 'lit-medieval-poetry-prose', 'Nhân vật Vũ Nương trong tác phẩm ''Chuyện người con gái Nam Xương'' gieo mình tự vẫn xuống dòng sông nào?', ARRAY['A. Sông Hoàng Giang', 'B. Sông Hồng', 'C. Sông Hương', 'D. Sông Bạch Đằng']::varchar[], ARRAY['A. Sông Hoàng Giang']::varchar[], 'Quá đau xót vì bị chồng nghi oan thất tiết, Vũ Nương đã trẫm mình xuống sông Hoàng Giang tự vẫn để minh chứng cho sự trong sạch của mình.', 1, 'Ngữ văn 9, Tập 1', 'literature', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7155,7 +7155,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-optics-q1', 'mcq', 'Quang học', 'sci-phy-optics', 'Một tia sáng đi từ không khí vào nước có góc khúc xạ r thế nào so với góc tới i?', ARRAY['A. r < i', 'B. r > i', 'C. r = i', 'D. r = 2i']::varchar[], ARRAY['A. r < i']::varchar[], 'Khi tia sáng truyền từ môi trường chiết quang kém (không khí) sang môi trường chiết quang hơn (nước), tia khúc xạ bị lệch lại gần pháp tuyến hơn, do đó góc khúc xạ nhỏ hơn góc tới (r < i).', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7171,7 +7171,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-optics-q2', 'mcq', 'Quang học', 'sci-phy-optics', 'Thấu kính phân kì có đặc điểm quang học nào sau đây?', ARRAY['A. Luôn cho ảnh ảo, cùng chiều và nhỏ hơn vật', 'B. Cho ảnh thật ngược chiều', 'C. Luôn cho ảnh ảo lớn hơn vật', 'D. Cho ảnh thật lớn hơn vật']::varchar[], ARRAY['A. Luôn cho ảnh ảo, cùng chiều và nhỏ hơn vật']::varchar[], 'Thấu kính phân kỳ luôn tạo ảnh ảo, cùng chiều và nhỏ hơn vật đối với mọi vị trí đặt vật thật.', 2, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7187,7 +7187,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-electricity-q1', 'mcq', 'Điện học', 'sci-phy-electricity', 'Hệ thức của định luật Ohm cho đoạn mạch chỉ chứa điện trở R là gì?', ARRAY['A. I = U / R', 'B. I = U * R', 'C. R = U / I', 'D. U = I / R']::varchar[], ARRAY['A. I = U / R']::varchar[], 'Định luật Ohm phát biểu: Cường độ dòng điện qua vật dẫn tỉ lệ thuận với hiệu điện thế giữa hai đầu vật dẫn và tỉ lệ nghịch với điện trở của vật dẫn đó: I = U/R.', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7203,7 +7203,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-electricity-q2', 'mcq', 'Điện học', 'sci-phy-electricity', 'Khi mắc nối tiếp hai điện trở \(R_1 = 10\,\Omega\) và \(R_2 = 20\,\Omega\), điện trở tương đương của đoạn mạch là bao nhiêu?', ARRAY['A. 30 Ω', 'B. 6.67 Ω', 'C. 15 Ω', 'D. 200 Ω']::varchar[], ARRAY['A. 30 Ω']::varchar[], 'Trong đoạn mạch mắc nối tiếp, điện trở tương đương bằng tổng các điện trở thành phần: \(R_{td} = R_1 + R_2 = 10 + 20 = 30\,\Omega\).', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7219,7 +7219,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-electricity-q3', 'mcq', 'Điện học', 'sci-phy-electricity', 'Khi mắc song song hai điện trở \(R_1 = 10\,\Omega\) và \(R_2 = 10\,\Omega\), điện trở tương đương của đoạn mạch là bao nhiêu?', ARRAY['A. 5 Ω', 'B. 20 Ω', 'C. 10 Ω', 'D. 100 Ω']::varchar[], ARRAY['A. 5 Ω']::varchar[], 'Trong đoạn mạch mắc song song hai điện trở bằng nhau: \(R_{td} = R/2 = 10/2 = 5\,\Omega\).', 2, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7235,7 +7235,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-chemistry-q1', 'mcq', 'Hóa vô cơ', 'sci-chem-inorganic', 'Dung dịch acid làm quỳ tím chuyển sang màu gì?', ARRAY['A. Đỏ', 'B. Xanh', 'C. Không màu', 'D. Vàng']::varchar[], ARRAY['A. Đỏ']::varchar[], 'Acid làm đổi màu chỉ thị quỳ tím sang màu đỏ. Dung dịch base (kiềm) làm quỳ tím chuyển sang màu xanh.', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7251,7 +7251,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-chemistry-q2', 'mcq', 'Hóa vô cơ', 'sci-chem-inorganic', 'Chất khí nào sau đây sinh ra khi nhúng lá kẽm (Zn) vào dung dịch acid Clohiđric (HCl)?', ARRAY['A. Khí Hydrogen (H₂)', 'B. Khí Oxygen (O₂)', 'C. Khí Carbon dioxide (CO₂)', 'D. Khí Clo (Cl₂)']::varchar[], ARRAY['A. Khí Hydrogen (H₂)']::varchar[], 'Kẽm đứng trước Hydrogen trong dãy hoạt động hóa học nên phản ứng với dung dịch HCl giải phóng khí H₂: Zn + 2HCl -> ZnCl₂ + H₂.', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7267,7 +7267,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-chemistry-q3', 'mcq', 'Hóa hữu cơ', 'sci-chem-organic', 'Công thức phân tử của khí Methan là gì?', ARRAY['A. CH₄', 'B. C₂H₄', 'C₂H₂', 'C₆H₆']::varchar[], ARRAY['A. CH₄']::varchar[], 'Methan có công thức phân tử là CH₄. C₂H₄ là Ethylen, C₂H₂ là Acetylen, C₆H₆ là Benzen.', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7283,7 +7283,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-chemistry-q4', 'mcq', 'Hóa hữu cơ', 'sci-chem-organic', 'Phản ứng đặc trưng của hydrocarbon no Methan (CH₄) với khí Clo khi có ánh sáng là gì?', ARRAY['A. Phản ứng thế', 'B. Phản ứng cộng', 'C. Phản ứng phân hủy', 'D. Phản ứng trùng hợp']::varchar[], ARRAY['A. Phản ứng thế']::varchar[], 'Do Methan chỉ có liên kết đơn bền vững trong phân tử nên phản ứng hóa học đặc trưng là phản ứng thế nguyên tử H bằng nguyên tử Cl khi có ánh sáng kích thích.', 2, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7299,7 +7299,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-biology-q1', 'mcq', 'Sinh học di truyền', 'sci-bio-genetics-mendelian', 'Theo quy luật phân ly độc lập của Mendel, cơ thể có kiểu gen AaBb giảm phân bình thường cho ra tối đa bao nhiêu loại giao tử?', ARRAY['A. 4 loại giao tử với tỉ lệ ngang nhau', 'B. 2 loại giao tử', 'C. 8 loại giao tử', 'D. 1 loại giao tử']::varchar[], ARRAY['A. 4 loại giao tử với tỉ lệ ngang nhau']::varchar[], 'Cơ thể dị hợp 2 cặp gen AaBb giảm phân tạo ra 4 loại giao tử với tỉ lệ 1 AB : 1 Ab : 1 aB : 1 ab (mỗi loại chiếm 25%).', 2, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7315,7 +7315,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-biology-q2', 'mcq', 'Sinh học tế bào', 'sci-bio-genetics-molecular', 'Phân tử ADN được cấu tạo từ các loại đơn phân (nucleotide) nào sau đây?', ARRAY['A. A, T, G, C', 'B. A, U, G, C', 'C. A, B, C, D', 'D. Glucozơ và Axit amin']::varchar[], ARRAY['A. A, T, G, C']::varchar[], 'Đơn phân cấu tạo nên ADN là các nucleotide thuộc 4 loại: Adenin (A), Thymin (T), Guanin (G) và Cytosin (C). Ở ARN thì loại T được thay bằng U (Uraxil).', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7331,7 +7331,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-biology-q3', 'mcq', 'Sinh học di truyền', 'sci-bio-genetics-mendelian', 'Hiện tượng tự thụ phấn bắt buộc ở cây giao phấn qua nhiều thế hệ sẽ dẫn đến hiện tượng gì?', ARRAY['A. Thoái hóa giống, xuất hiện các gen lặn có hại ở trạng thái đồng hợp', 'B. Ưu thế lai tăng lên mạnh mẽ', 'C. Cây phát triển nhanh hơn', 'D. Tránh được hoàn toàn sâu bệnh']::varchar[], ARRAY['A. Thoái hóa giống, xuất hiện các gen lặn có hại ở trạng thái đồng hợp']::varchar[], 'Tự thụ phấn ở cây giao phấn làm tăng tỉ lệ đồng hợp tử và giảm tỉ lệ dị hợp tử, tạo cơ hội cho các gen lặn có hại tổ hợp lại thành trạng thái đồng hợp gây thoái hóa giống.', 2, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7347,7 +7347,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-earth-q1', 'mcq', 'Trái đất và bầu trời', 'sci-earth-sky', 'Trong hệ Mặt Trời, hành tinh nào nằm gần Mặt Trời nhất?', ARRAY['A. Sao Thủy', 'B. Sao Kim', 'C. Trái Đất', 'D. Sao Hỏa']::varchar[], ARRAY['A. Sao Thủy']::varchar[], 'Thứ tự các hành tinh từ Mặt Trời ra ngoài: Sao Thủy -> Sao Kim -> Trái Đất -> Sao Hỏa -> Sao Mộc -> Sao Thổ -> Sao Thiên Vương -> Sao Hải Vương. Vậy Sao Thủy là gần nhất.', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7363,7 +7363,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-earth-q2', 'mcq', 'Trái đất và bầu trời', 'sci-earth-sky', 'Hiện tượng nhật thực xảy ra khi nào?', ARRAY['A. Mặt Trăng nằm giữa Mặt Trời và Trái Đất', 'B. Trái Đất nằm giữa Mặt Trời và Mặt Trăng', 'C. Mặt Trời nằm giữa Trái Đất và Mặt Trăng', 'D. Sao Kim che khuất hoàn toàn Mặt Trời']::varchar[], ARRAY['A. Mặt Trăng nằm giữa Mặt Trời và Trái Đất']::varchar[], 'Nhật thực xảy ra khi Mặt Trăng đi vào giữa Trái Đất và Mặt Trời, che khuất một phần hoặc hoàn toàn Mặt Trời dưới góc nhìn từ Trái Đất.', 2, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7379,7 +7379,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-sci9-earth-q3', 'mcq', 'Trái đất và bầu trời', 'sci-earth-sky', 'Hành tinh nào được mệnh danh là ''Hành tinh Đỏ'' trong Hệ Mặt Trời?', ARRAY['A. Sao Hỏa', 'B. Sao Kim', 'C. Sao Mộc', 'D. Sao Thiên Vương']::varchar[], ARRAY['A. Sao Hỏa']::varchar[], 'Sao Hỏa (Mars) có bề mặt chứa nhiều sắt oxit tạo nên màu đỏ đặc trưng nên được gọi là Hành tinh Đỏ.', 1, 'Sách giáo khoa KHTN 9', 'science', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7395,7 +7395,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-modern-q1', 'mcq', 'Lịch sử thế giới', 'his-world-contemporary', 'Cách mạng tháng Mười Nga năm 1917 thắng lợi đã dẫn đến sự ra đời của nhà nước xã hội chủ nghĩa đầu tiên trên thế giới do ai lãnh đạo?', ARRAY['A. V.I. Lênin', 'B. J. Xtalin', 'C. C. Mác', 'D. Ph. Ăng-ghen']::varchar[], ARRAY['A. V.I. Lênin']::varchar[], 'V.I. Lênin là lãnh tụ vĩ đại của Đảng Bolshevik chỉ đạo trực tiếp cuộc Cách mạng tháng Mười Nga lập ra nhà nước Xô viết xã hội chủ nghĩa đầu tiên.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7411,7 +7411,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-modern-q2', 'mcq', 'Lịch sử thế giới', 'his-world-contemporary', 'Cuộc đại khủng hoảng kinh tế thừa trong thế giới tư bản chủ nghĩa diễn ra vào khoảng thời gian nào?', ARRAY['A. 1929 - 1933', 'B. 1914 - 1918', 'C. 1939 - 1945', 'D. 1917 - 1923']::varchar[], ARRAY['A. 1929 - 1933']::varchar[], 'Cuộc đại khủng hoảng kinh tế thế giới diễn ra từ năm 1929 đến 1933, gây tổn thất nghiêm trọng và thúc đẩy chủ nghĩa phát xít lên nắm quyền ở Đức, Ý, Nhật.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7427,7 +7427,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-vietnam-q1', 'mcq', 'Lịch sử Việt Nam', 'his-vn-independence', 'Bản Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa được Chủ tịch Hồ Chí Minh đọc tại Quảng trường Ba Đình vào ngày tháng năm nào?', ARRAY['A. Ngày 2 tháng 9 năm 1945', 'B. Ngày 19 tháng 8 năm 1945', 'C. Ngày 22 tháng 12 năm 1944', 'D. Ngày 30 tháng 4 năm 1975']::varchar[], ARRAY['A. Ngày 2 tháng 9 năm 1945']::varchar[], 'Ngày 2-9-1945, Bác Hồ đọc Tuyên ngôn Độc lập lập nên nước VNDCCH, đánh dấu mốc lịch sử độc lập vẻ vang.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7443,7 +7443,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-vietnam-q2', 'mcq', 'Lịch sử Việt Nam', 'his-vn-independence', 'Chiến thắng quân sự nào của quân dân ta đã đập tan hoàn toàn tập đoàn cứ điểm mạnh nhất của thực dân Pháp ở Đông Dương năm 1954?', ARRAY['A. Chiến dịch Điện Biên Phủ', 'B. Chiến dịch Biên giới Thu Đông', 'C. Chiến dịch Tây Bắc', 'D. Chiến dịch Việt Bắc Thu Đông']::varchar[], ARRAY['A. Chiến dịch Điện Biên Phủ']::varchar[], 'Chiến thắng Điện Biên Phủ ''lừng lẫy năm châu, chấn động địa cầu'' năm 1954 buộc thực dân Pháp ký Hiệp định Giơ-ne-vơ lập lại hòa bình ở Đông Dương.', 2, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7459,7 +7459,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-vietnam-q3', 'mcq', 'Lịch sử Việt Nam', 'his-vn-reunification', 'Cuộc Tổng tiến công và nổi dậy Xuân 1975 kết thúc bằng thắng lợi hoàn toàn của chiến dịch lịch sử nào?', ARRAY['A. Chiến dịch Hồ Chí Minh', 'B. Chiến dịch Tây Nguyên', 'C. Chiến dịch Huế - Đà Nẵng', 'D. Chiến dịch Trị Thiên']::varchar[], ARRAY['A. Chiến dịch Hồ Chí Minh']::varchar[], 'Chiến dịch Hồ Chí Minh thắng lợi ngày 30/4/1975 giải phóng miền Nam thống nhất đất nước.', 2, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7475,7 +7475,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-resources-q1', 'mcq', 'Địa lý tự nhiên', 'geo-vn-resources', 'Địa hình nước ta chủ yếu là đồi núi thấp, chiếm khoảng bao nhiêu phần diện tích lãnh thổ đất liền?', ARRAY['A. 3/4 diện tích', 'B. 1/4 diện tích', 'C. 1/2 diện tích', 'D. 9/10 diện tích']::varchar[], ARRAY['A. 3/4 diện tích']::varchar[], 'Đồi núi chiếm 3/4 diện tích đất liền của Việt Nam, nhưng chủ yếu là đồi núi thấp (dưới 1000m chiếm tới 85%). Đồng bằng chỉ chiếm 1/4 diện tích.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7491,7 +7491,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-resources-q2', 'mcq', 'Địa lý dân cư', 'geo-vn-population', 'Dân tộc nào chiếm tỉ lệ cao nhất trong tổng dân số nước ta?', ARRAY['A. Dân tộc Kinh (Việt)', 'B. Dân tộc Tày', 'C. Dân tộc Mường', 'D. Dân tộc Thái']::varchar[], ARRAY['A. Dân tộc Kinh (Việt)']::varchar[], 'Dân tộc Kinh chiếm khoảng 85,3% dân số cả nước, các dân tộc thiểu số khác chiếm khoảng 14,7%.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7507,7 +7507,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-economy-q1', 'mcq', 'Địa lý kinh tế', 'geo-vn-agriculture', 'Hai vùng đồng bằng trồng lúa lớn nhất nước ta hiện nay là vùng nào?', ARRAY['A. Đồng bằng sông Cửu Long và Đồng bằng sông Hồng', 'B. Đồng bằng sông Hồng và Đồng bằng duyên hải miền Trung', 'C. Đồng bằng sông Cửu Long và Đông Nam Bộ', 'D. Đồng bằng Bắc Bộ và Tây Nguyên']::varchar[], ARRAY['A. Đồng bằng sông Cửu Long và Đồng bằng sông Hồng']::varchar[], 'Đồng bằng sông Cửu Long là vựa lúa lớn nhất cả nước, Đồng bằng sông Hồng là vựa lúa lớn thứ hai.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7523,7 +7523,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-economy-q2', 'mcq', 'Địa lý kinh tế', 'geo-vn-industry', 'Tỉnh thành nào là trung tâm công nghiệp lớn nhất cả nước hiện nay về quy mô và giá trị sản xuất?', ARRAY['A. Thành phố Hồ Chí Minh', 'B. Thủ đô Hà Nội', 'C. Tỉnh Bình Dương', 'D. Thành phố Hải Phòng']::varchar[], ARRAY['A. Thành phố Hồ Chí Minh']::varchar[], 'TP.HCM là đầu tàu kinh tế, có quy mô và giá trị sản xuất công nghiệp lớn nhất cả nước.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7539,7 +7539,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-economy-q3', 'mcq', 'Địa lý vùng', 'geo-vn-regions', 'Vùng kinh tế trọng điểm phía Nam bao gồm tỉnh thành nào là hạt nhân?', ARRAY['A. Thành phố Hồ Chí Minh', 'B. Tỉnh Đồng Nai', 'C. Tỉnh Bà Rịa - Vũng Tàu', 'D. Tỉnh Long An']::varchar[], ARRAY['A. Thành phố Hồ Chí Minh']::varchar[], 'TP.HCM là đô thị đặc biệt, trung tâm kinh tế và là hạt nhân tăng trưởng phát triển của toàn vùng kinh tế trọng điểm phía Nam.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7555,7 +7555,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-modern-q3', 'mcq', 'Lịch sử thế giới', 'his-world-contemporary', 'Chiến tranh thế giới thứ hai (1939 - 1945) kết thúc với sự thất bại hoàn toàn của phe nào?', ARRAY['A. Phe Phát xít (Đức, Ý, Nhật)', 'B. Phe Đồng minh (Liên Xô, Mỹ, Anh)', 'C. Phe Hiệp ước', 'D. Phe Liên minh']::varchar[], ARRAY['A. Phe Phát xít (Đức, Ý, Nhật)']::varchar[], 'Chiến tranh thế giới thứ hai kết thúc năm 1945 với sự sụp đổ hoàn toàn của chủ nghĩa phát xít Đức, Ý, Nhật trước lực lượng Đồng minh.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7571,7 +7571,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-his9-vietnam-q4', 'mcq', 'Lịch sử Việt Nam', 'his-vn-independence', 'Đại hội đại biểu toàn quốc lần thứ II của Đảng (tháng 2-1951) quyết định đổi tên Đảng ta thành gì?', ARRAY['A. Đảng Lao động Việt Nam', 'B. Đảng Cộng sản Việt Nam', 'C. Đảng Cộng sản Đông Dương', 'D. Hội nghiên cứu Chủ nghĩa Mác ở Đông Dương']::varchar[], ARRAY['A. Đảng Lao động Việt Nam']::varchar[], 'Đại hội II của Đảng họp tháng 2/1951 tại Tuyên Quang quyết định đưa Đảng ra hoạt động công khai lấy tên là Đảng Lao động Việt Nam.', 3, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7587,7 +7587,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-resources-q3', 'mcq', 'Địa lý tự nhiên', 'geo-vn-resources', 'Nước ta có khí hậu mang tính chất gì là chủ đạo?', ARRAY['A. Nhiệt đới ẩm gió mùa', 'B. Ôn đới hải dương', 'C. Cận nhiệt đới lục địa', 'D. Khô hạn hoang mạc']::varchar[], ARRAY['A. Nhiệt đới ẩm gió mùa']::varchar[], 'Lãnh thổ Việt Nam nằm trọn trong vùng nội chí tuyến nửa cầu Bắc, tạo nên khí hậu đặc trưng là nhiệt đới ẩm gió mùa.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7603,7 +7603,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-economy-q4', 'mcq', 'Địa lý kinh tế', 'geo-vn-services', 'Cửa ngõ hàng không quốc tế lớn nhất miền Nam Việt Nam hiện nay là sân bay nào?', ARRAY['A. Sân bay quốc tế Tân Sơn Nhất', 'B. Sân bay quốc tế Nội Bài', 'C. Sân bay quốc tế Đà Nẵng', 'D. Sân bay quốc tế Long Thành']::varchar[], ARRAY['A. Sân bay quốc tế Tân Sơn Nhất']::varchar[], 'Sân bay Tân Sơn Nhất (TP.HCM) hiện là phi trường nhộn nhịp nhất và là cửa ngõ quốc tế lớn nhất khu vực miền Nam Việt Nam.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7619,7 +7619,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-geo9-economy-q5', 'mcq', 'Địa lý kinh tế', 'geo-vn-regions', 'Vùng nào trồng cây công nghiệp lâu năm (cà phê, cao su, chè...) lớn nhất nước ta?', ARRAY['A. Tây Nguyên', 'B. Trung du và miền núi Bắc Bộ', 'C. Đông Nam Bộ', 'D. Duyên hải Nam Trung Bộ']::varchar[], ARRAY['A. Tây Nguyên']::varchar[], 'Nhờ đất đỏ ba-dan màu mỡ, Tây Nguyên là vùng chuyên canh cây công nghiệp lớn nhất cả nước, nổi bật nhất là cà phê.', 1, 'Sách giáo khoa Lịch sử - Địa lý 9', 'history_geography', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7635,7 +7635,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-ideals-q1', 'mcq', 'Lý tưởng sống', 'civ-personal-ideals', 'Học sinh lớp 9 sống có lý tưởng được biểu hiện qua hành động nào dưới đây?', ARRAY['A. Luôn xác định mục tiêu học tập rõ ràng, nỗ lực rèn luyện bản thân và sẵn sàng giúp đỡ cộng đồng', 'B. Chỉ quan tâm đến điểm số cá nhân', 'C. Thực hiện mọi yêu cầu của bạn bè mà không suy nghĩ', 'D. Chờ đợi cơ hội may mắn tự đến']::varchar[], ARRAY['A. Luôn xác định mục tiêu học tập rõ ràng, nỗ lực rèn luyện bản thân và sẵn sàng giúp đỡ cộng đồng']::varchar[], 'Lý tưởng sống cao đẹp của học sinh là không ngừng rèn luyện đạo đức, tri thức, tự lập và cống hiến giá trị tốt đẹp cho gia đình, xã hội.', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7651,7 +7651,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-ideals-q2', 'mcq', 'Lý tưởng sống', 'civ-personal-ideals', 'Tự lập là gì?', ARRAY['A. Tự làm lấy công việc của mình, không trông chờ ỷ lại vào người khác', 'B. Từ chối mọi sự giúp đỡ hợp pháp của người thân', 'C. Không bao giờ làm việc chung với người khác', 'D. Tự quyết định mọi việc bất chấp quy định pháp luật']::varchar[], ARRAY['A. Tự làm lấy công việc của mình, không trông chờ ỷ lại vào người khác']::varchar[], 'Tự lập là đức tính tự mình giải quyết công việc, tự lo liệu cho cuộc sống bản thân, không dựa dẫm hay phụ thuộc thụ động vào xã hội.', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7667,7 +7667,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-ethics-q1', 'mcq', 'Quan hệ với người khác', 'civ-social-interpersonal', 'Thế nào là tôn trọng người khác?', ARRAY['A. Nhìn nhận đúng mực, coi trọng danh dự, phẩm giá và lợi ích hợp pháp của người khác', 'B. Luôn đồng ý với ý kiến của người lớn hơn dù biết họ sai', 'C. Tâng bốc khen ngợi giả tạo để lấy lòng đối phương', 'D. Chỉ tôn trọng những người mang lại lợi ích kinh tế cho mình']::varchar[], ARRAY['A. Nhìn nhận đúng mực, coi trọng danh dự, phẩm giá và lợi ích hợp pháp của người khác']::varchar[], 'Tôn trọng người khác là sự ứng xử văn minh, tôn trọng phẩm giá và quyền lợi chính đáng của mọi cá nhân xung quanh mình.', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7683,7 +7683,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-ethics-q2', 'mcq', 'Quan hệ với công việc', 'civ-work-discipline', 'Hành vi nào dưới đây thể hiện sự thiếu chí công vô tư trong công việc và cuộc sống?', ARRAY['A. Giải quyết công việc dựa trên tình cảm cá nhân, thiên vị người thân quen', 'B. Đánh giá học sinh dựa trên học lực thực tế', 'C. Báo cáo trung thực lỗi sai của bản thân', 'D. Ủng hộ ý kiến đúng đắn của mọi người']::varchar[], ARRAY['A. Giải quyết công việc dựa trên tình cảm cá nhân, thiên vị người thân quen']::varchar[], 'Chí công vô tư đòi hỏi sự công bằng, khách quan, đặt lợi ích chung lên trên lợi ích cá nhân. Thiên vị người thân là trái với phẩm chất này.', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7699,7 +7699,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-law-q1', 'mcq', 'Kỷ luật và Pháp luật', 'civ-law-order', 'Pháp luật nước Cộng hòa xã hội chủ nghĩa Việt Nam do cơ quan nào ban hành?', ARRAY['A. Quốc hội', 'B. Bộ Giáo dục và Đào tạo', 'C. Ủy ban nhân dân các cấp', 'D. Tòa án nhân dân tối cao']::varchar[], ARRAY['A. Quốc hội']::varchar[], 'Quốc hội là cơ quan quyền lực nhà nước cao nhất, có quyền lập hiến và lập pháp (ban hành các bộ luật và luật).', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7715,7 +7715,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-law-q2', 'mcq', 'Kỷ luật và Pháp luật', 'civ-law-order', 'Vi phạm pháp luật là hành vi có lỗi, do ai thực hiện?', ARRAY['A. Chủ thể có năng lực trách nhiệm pháp lý thực hiện', 'B. Bất kỳ ai, kể cả người mắc bệnh tâm thần nặng', 'C. Chỉ có người trưởng thành trên 18 tuổi mới thực hiện', 'D. Động vật gây thiệt hại tài sản cho con người']::varchar[], ARRAY['A. Chủ thể có năng lực trách nhiệm pháp lý thực hiện']::varchar[], 'Vi phạm pháp luật phải do người (hoặc tổ chức) có năng lực hành vi và năng lực trách nhiệm pháp lý thực hiện (nhận thức và làm chủ được hành động).', 3, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7731,7 +7731,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-rights-q1', 'mcq', 'Quyền con người và công dân', 'civ-social-rights', 'Độ tuổi nào dưới đây được quy định là trẻ em theo Luật Trẻ em Việt Nam năm 2016?', ARRAY['A. Người dưới 16 tuổi', 'B. Người dưới 18 tuổi', 'C. Người dưới 14 tuổi', 'D. Người từ 16 đến 18 tuổi']::varchar[], ARRAY['A. Người dưới 16 tuổi']::varchar[], 'Điều 1 Luật Trẻ em 2016 quy định: ''Trẻ em là người dưới 16 tuổi''.', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7747,7 +7747,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-rights-q2', 'mcq', 'Quyền con người và công dân', 'civ-social-rights', 'Quyền tự do ngôn luận của công dân nghĩa là gì?', ARRAY['A. Công dân có quyền phát biểu ý kiến, tham gia bàn bạc công việc chung của đất nước theo quy định pháp luật', 'B. Tự do xúc phạm danh dự người khác trên mạng xã hội', 'C. Phát tán các tin đồn thất thiệt không kiểm chứng', 'D. Phát biểu mọi điều mà không cần tuân theo bất kỳ giới hạn nào']::varchar[], ARRAY['A. Công dân có quyền phát biểu ý kiến, tham gia bàn bạc công việc chung của đất nước theo quy định pháp luật']::varchar[], 'Quyền tự do ngôn luận cho phép công dân đóng góp ý kiến xây dựng xã hội và quốc gia, nhưng phải thực hiện trong khuôn khổ pháp luật quy định.', 2, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7763,7 +7763,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-rights-q3', 'mcq', 'Nghĩa vụ của công dân', 'civ-social-duty', 'Nghĩa vụ bảo vệ Tổ quốc của công dân Việt Nam bao gồm hoạt động nào?', ARRAY['A. Tham gia nghĩa vụ quân sự, bảo vệ an ninh trật tự xã hội và xây dựng nền quốc phòng toàn dân', 'B. Chỉ quyên góp tiền của cho quân đội', 'C. Chỉ tham gia khi đất nước có chiến tranh xảy ra', 'D. Đây là trách nhiệm riêng của lực lượng công an và quân đội']::varchar[], ARRAY['A. Tham gia nghĩa vụ quân sự, bảo vệ an ninh trật tự xã hội và xây dựng nền quốc phòng toàn dân']::varchar[], 'Bảo vệ Tổ quốc là nghĩa vụ thiêng liêng và quyền cao quý của công dân, bao gồm việc thực hiện nghĩa vụ quân sự và tham gia xây dựng thế trận quốc phòng.', 1, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,
@@ -7779,7 +7779,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier,
   metadata = EXCLUDED.metadata;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, metadata)
 VALUES ('hcm-civ9-rights-q4', 'mcq', 'Quyền con người và công dân', 'civ-social-rights', 'Công dân có quyền tự do kinh doanh nghĩa là gì?', ARRAY['A. Được tự do lựa chọn hình thức tổ chức kinh doanh, ngành nghề và quy mô kinh doanh theo quy định của pháp luật', 'B. Được quyền kinh doanh mọi mặt hàng kể cả chất cấm', 'C. Không cần phải thực hiện nghĩa vụ đóng thuế', 'D. Tự ý sản xuất hàng giả để kiếm thêm lợi nhuận']::varchar[], ARRAY['A. Được tự do lựa chọn hình thức tổ chức kinh doanh, ngành nghề và quy mô kinh doanh theo quy định của pháp luật']::varchar[], 'Tự do kinh doanh là quyền tự do lựa chọn ngành nghề, hình thức và quy mô, nhưng bắt buộc phải đăng ký kinh doanh và đóng thuế đầy đủ theo pháp luật.', 2, 'Sách giáo khoa GDCD 9', 'civics', 9, '{"isStandard": true, "answerMode": "single-choice"}'::jsonb)
 ON CONFLICT (id) DO UPDATE SET 
   type = EXCLUDED.type,

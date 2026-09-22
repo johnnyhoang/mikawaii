@@ -305,13 +305,14 @@ function App() {
             await state.fetchProfiles();
 
             // Auto-select saved profile if available
-            const savedProfileId = localStorage.getItem('ge10_selected_profile_id');
+            const savedProfileId = localStorage.getItem('mkw_selected_profile_id') || localStorage.getItem('ge10_selected_profile_id');
             if (savedProfileId) {
               const profiles = useGameState.getState().availableProfiles;
               const hasProfile = profiles.some((p: any) => p.id === savedProfileId);
               if (hasProfile) {
                 await state.selectProfile(savedProfileId);
               } else {
+                localStorage.removeItem('mkw_selected_profile_id');
                 localStorage.removeItem('ge10_selected_profile_id');
               }
             }

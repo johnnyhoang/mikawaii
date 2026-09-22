@@ -28,7 +28,7 @@ router.get('/profiles', authMiddleware, async (req: any, res) => {
     // Tự động liên kết lại profile cũ nếu email khớp nhưng account_id bị lệch (do đổi project/reset auth session)
     if (email) {
       await pool.query(
-        `UPDATE ge10_users 
+        `UPDATE mkw_users 
          SET account_id = $1, is_active = TRUE 
          WHERE email = $2 AND (account_id IS NULL OR account_id <> $1)`,
         [accountId, email]
@@ -38,8 +38,8 @@ router.get('/profiles', authMiddleware, async (req: any, res) => {
     // Chỉ trả về profile đang hoạt động (is_active = true) — profile bị vô hiệu hóa sẽ không hiển thị ở màn hình chọn
     const profilesRes = await pool.query(
       `SELECT u.*, p.ui_theme 
-       FROM ge10_users u
-       LEFT JOIN ge10_player_profiles p ON u.id = p.user_id
+       FROM mkw_users u
+       LEFT JOIN mkw_player_profiles p ON u.id = p.user_id
        WHERE u.account_id = $1 AND u.is_active = TRUE`,
       [accountId]
     );
@@ -74,7 +74,7 @@ router.post('/profiles/quick-start', authMiddleware, async (req: any, res) => {
   try {
     // Check if profile of this role already exists for accountId or email
     const existCheck = await pool.query(
-      `SELECT * FROM ge10_users 
+      `SELECT * FROM mkw_users 
        WHERE (account_id = $1 OR (email = $2 AND email IS NOT NULL AND email <> '')) AND role = $3`,
       [accountId, email || '', role]
     );
@@ -82,7 +82,7 @@ router.post('/profiles/quick-start', authMiddleware, async (req: any, res) => {
       const profile = existCheck.rows[0];
       if (profile.account_id !== accountId || !profile.is_active) {
         await pool.query(
-          'UPDATE ge10_users SET account_id = $1, is_active = TRUE WHERE id = $2',
+          'UPDATE mkw_users SET account_id = $1, is_active = TRUE WHERE id = $2',
           [accountId, profile.id]
         );
       }
@@ -97,14 +97,14 @@ router.post('/profiles/quick-start', authMiddleware, async (req: any, res) => {
     const avatarUrl = req.user.user_metadata?.avatar_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80';
 
     await pool.query(
-      `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+      `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
        VALUES ($1, $2, $3, $4, $5, $6, TRUE)`,
       [profileId, accountId, name, email, avatarUrl, role]
     );
 
     // Initialize stats
-    await pool.query(`INSERT INTO ge10_player_profiles (user_id) VALUES ($1)`, [profileId]);
-    await pool.query(`INSERT INTO ge10_pet_states (user_id) VALUES ($1)`, [profileId]);
+    await pool.query(`INSERT INTO mkw_player_profiles (user_id) VALUES ($1)`, [profileId]);
+    await pool.query(`INSERT INTO mkw_pet_states (user_id) VALUES ($1)`, [profileId]);
     
     // Giáo viên mới → clone Danh Mục Quà Khuyến Học của trường thành danh mục riêng của họ.
     if (role === 'tutor' || role === 'secondary_tutor') {
@@ -132,7 +132,7 @@ router.post('/profiles', authMiddleware, async (req: any, res) => {
   try {
     // Check if profile of this role already exists for this account (active or inactive)
     const existCheck = await pool.query(
-      'SELECT id, name, email, avatar_url, role, is_active FROM ge10_users WHERE account_id = $1 AND role = $2',
+      'SELECT id, name, email, avatar_url, role, is_active FROM mkw_users WHERE account_id = $1 AND role = $2',
       [accountId, role]
     );
 
@@ -141,12 +141,12 @@ router.post('/profiles', authMiddleware, async (req: any, res) => {
     if (existCheck.rows.length > 0) {
       const existing = existCheck.rows[0];
       await pool.query(
-        'UPDATE ge10_users SET name = $1, avatar_url = $2, is_active = TRUE WHERE id = $3',
+        'UPDATE mkw_users SET name = $1, avatar_url = $2, is_active = TRUE WHERE id = $3',
         [name, finalAvatar, existing.id]
       );
       // Đảm bảo các bảng liên kết của profile này tồn tại
-      await pool.query(`INSERT INTO ge10_player_profiles (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [existing.id]);
-      await pool.query(`INSERT INTO ge10_pet_states (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [existing.id]);
+      await pool.query(`INSERT INTO mkw_player_profiles (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [existing.id]);
+      await pool.query(`INSERT INTO mkw_pet_states (user_id) VALUES ($1) ON CONFLICT DO NOTHING`, [existing.id]);
       
       return res.json({
         success: true,
@@ -165,13 +165,13 @@ router.post('/profiles', authMiddleware, async (req: any, res) => {
     const profileId = 'prof-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9);
     
     await pool.query(
-      `INSERT INTO ge10_users (id, account_id, name, email, avatar_url, role, is_active)
+      `INSERT INTO mkw_users (id, account_id, name, email, avatar_url, role, is_active)
        VALUES ($1, $2, $3, $4, $5, $6, TRUE)`,
       [profileId, accountId, name, email, finalAvatar, role]
     );
     
-    await pool.query(`INSERT INTO ge10_player_profiles (user_id) VALUES ($1)`, [profileId]);
-    await pool.query(`INSERT INTO ge10_pet_states (user_id) VALUES ($1)`, [profileId]);
+    await pool.query(`INSERT INTO mkw_player_profiles (user_id) VALUES ($1)`, [profileId]);
+    await pool.query(`INSERT INTO mkw_pet_states (user_id) VALUES ($1)`, [profileId]);
 
     // Giáo viên mới → clone Danh Mục Quà Khuyến Học của trường thành danh mục riêng của họ.
     if (role === 'tutor' || role === 'secondary_tutor') {
@@ -194,7 +194,7 @@ router.get('/profile/:id', authMiddleware, async (req: any, res) => {
 
   try {
     const userRes = await pool.query(
-      'SELECT * FROM ge10_users WHERE id = $1 AND account_id = $2 AND is_active = TRUE',
+      'SELECT * FROM mkw_users WHERE id = $1 AND account_id = $2 AND is_active = TRUE',
       [profileId, accountId]
     );
     if (userRes.rowCount === 0) {
@@ -220,20 +220,20 @@ router.get('/profile/:id', authMiddleware, async (req: any, res) => {
       activitiesRes,
       activityProgressRes
     ] = await Promise.all([
-      pool.query('SELECT * FROM ge10_player_profiles WHERE user_id = $1', [userId]),
-      pool.query('SELECT * FROM ge10_pet_states WHERE user_id = $1', [userId]),
-      pool.query('SELECT * FROM ge10_category_stats WHERE user_id = $1', [userId]),
-      pool.query('SELECT * FROM ge10_history_logs WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 200', [userId]),
-      pool.query('SELECT * FROM ge10_school_reward_templates ORDER BY created_at DESC'),
-      pool.query('SELECT * FROM ge10_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [userId]),
-      pool.query('SELECT * FROM ge10_user_challenges WHERE user_id = $1', [userId]),
+      pool.query('SELECT * FROM mkw_player_profiles WHERE user_id = $1', [userId]),
+      pool.query('SELECT * FROM mkw_pet_states WHERE user_id = $1', [userId]),
+      pool.query('SELECT * FROM mkw_category_stats WHERE user_id = $1', [userId]),
+      pool.query('SELECT * FROM mkw_history_logs WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 200', [userId]),
+      pool.query('SELECT * FROM mkw_school_reward_templates ORDER BY created_at DESC'),
+      pool.query('SELECT * FROM mkw_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [userId]),
+      pool.query('SELECT * FROM mkw_user_challenges WHERE user_id = $1', [userId]),
       Promise.resolve({ rows: [] }),
       Promise.resolve({ rows: [] }),
-      pool.query('SELECT * FROM ge10_user_lessons_progress WHERE user_id = $1', [userId]),
-      pool.query('SELECT * FROM ge10_exploration_progress WHERE user_id = $1', [userId]),
-      pool.query('SELECT * FROM ge10_topics ORDER BY sort_order ASC'),
-      pool.query('SELECT * FROM ge10_activities ORDER BY sort_order ASC'),
-      pool.query('SELECT * FROM ge10_user_activity_progress WHERE user_id = $1', [userId])
+      pool.query('SELECT * FROM mkw_user_lessons_progress WHERE user_id = $1', [userId]),
+      pool.query('SELECT * FROM mkw_exploration_progress WHERE user_id = $1', [userId]),
+      pool.query('SELECT * FROM mkw_topics ORDER BY sort_order ASC'),
+      pool.query('SELECT * FROM mkw_activities ORDER BY sort_order ASC'),
+      pool.query('SELECT * FROM mkw_user_activity_progress WHERE user_id = $1', [userId])
     ]);
 
     const lessonsProgress: Record<string, boolean> = {};
@@ -444,7 +444,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
   if (userId !== req.profile.id) return res.status(403).json({ error: 'Profile ID does not match active profile.' });
   
   // Verify ownership
-  const check = await pool.query('SELECT id FROM ge10_users WHERE id = $1 AND account_id = $2', [userId, accountId]);
+  const check = await pool.query('SELECT id FROM mkw_users WHERE id = $1 AND account_id = $2', [userId, accountId]);
   if (check.rowCount === 0) return res.status(403).json({ error: 'Unauthorized' });
   const {
     player: rawPlayer,
@@ -476,7 +476,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
     // 1. Sync player profile
     if (player) {
       const currentProfileRes = await client.query(
-        'SELECT * FROM ge10_player_profiles WHERE user_id = $1',
+        'SELECT * FROM mkw_player_profiles WHERE user_id = $1',
         [userId]
       );
       // Luật Bất Thoái (CORE_SPECS §7.4.4): gộp theo giá trị CAO HƠN từng môn giữa client/DB, không
@@ -507,15 +507,15 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
             explorationRes,
             activityProgressRes
           ] = await Promise.all([
-            client.query('SELECT * FROM ge10_pet_states WHERE user_id = $1', [userId]),
-            client.query('SELECT * FROM ge10_category_stats WHERE user_id = $1', [userId]),
-            client.query('SELECT * FROM ge10_history_logs WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 200', [userId]),
-            client.query('SELECT * FROM ge10_school_reward_templates ORDER BY created_at DESC'),
-            client.query('SELECT * FROM ge10_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [userId]),
-            client.query('SELECT * FROM ge10_user_challenges WHERE user_id = $1', [userId]),
-            client.query('SELECT * FROM ge10_user_lessons_progress WHERE user_id = $1', [userId]),
-            client.query('SELECT * FROM ge10_exploration_progress WHERE user_id = $1', [userId]),
-            client.query('SELECT * FROM ge10_user_activity_progress WHERE user_id = $1', [userId])
+            client.query('SELECT * FROM mkw_pet_states WHERE user_id = $1', [userId]),
+            client.query('SELECT * FROM mkw_category_stats WHERE user_id = $1', [userId]),
+            client.query('SELECT * FROM mkw_history_logs WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 200', [userId]),
+            client.query('SELECT * FROM mkw_school_reward_templates ORDER BY created_at DESC'),
+            client.query('SELECT * FROM mkw_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [userId]),
+            client.query('SELECT * FROM mkw_user_challenges WHERE user_id = $1', [userId]),
+            client.query('SELECT * FROM mkw_user_lessons_progress WHERE user_id = $1', [userId]),
+            client.query('SELECT * FROM mkw_exploration_progress WHERE user_id = $1', [userId]),
+            client.query('SELECT * FROM mkw_user_activity_progress WHERE user_id = $1', [userId])
           ]);
 
           const lessonsProgress: Record<string, boolean> = {};
@@ -624,7 +624,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
       // maxEnergy/resetHours KHÔNG nằm trong sync này — đó là cấu hình do chủ nhiệm chỉnh riêng
       // qua /api/admin/set-energy-config, con tự sync không được phép ghi đè (SUB_SPEC_ENERGY §2).
       await client.query(
-        `INSERT INTO ge10_player_profiles (user_id, level, xp, ruby, streak, energy, energy_depleted_at, hearts, last_active, badges, max_achieved_mastery_rank, ui_theme, active_subject, active_grade_tier, server_updated_at)
+        `INSERT INTO mkw_player_profiles (user_id, level, xp, ruby, streak, energy, energy_depleted_at, hearts, last_active, badges, max_achieved_mastery_rank, ui_theme, active_subject, active_grade_tier, server_updated_at)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW())
          ON CONFLICT (user_id) DO UPDATE SET
            level = EXCLUDED.level,
@@ -663,7 +663,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
     // 2. Sync pet state
     if (pet) {
       await client.query(
-        `INSERT INTO ge10_pet_states (user_id, name, stage, level, exp, energy, mood, last_fed)
+        `INSERT INTO mkw_pet_states (user_id, name, stage, level, exp, energy, mood, last_fed)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
          ON CONFLICT (user_id) DO UPDATE SET
            name = EXCLUDED.name,
@@ -698,7 +698,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
         values.push(userId, item.category, item.totalAnswered, item.totalCorrect, item.rollingAccuracy);
       });
       await client.query(
-        `INSERT INTO ge10_category_stats (user_id, category, total_answered, total_correct, rolling_accuracy)
+        `INSERT INTO mkw_category_stats (user_id, category, total_answered, total_correct, rolling_accuracy)
          VALUES ${placeholders.join(', ')}
          ON CONFLICT (user_id, category) DO UPDATE SET
            total_answered = EXCLUDED.total_answered,
@@ -718,18 +718,18 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
         values.push(log.id, userId, log.timestamp, log.activityType, log.title, log.detail, log.rubyChanged, log.xpChanged, log.walletChanged);
       });
       await client.query(
-        `INSERT INTO ge10_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed, wallet_changed)
+        `INSERT INTO mkw_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed, xp_changed, wallet_changed)
          VALUES ${placeholders.join(', ')}
          ON CONFLICT (id) DO NOTHING`,
         values
       );
     }
 
-    // 5. Danh Mục Quà Khuyến Học toàn viện (ge10_school_reward_templates) là bảng DÙNG CHUNG
+    // 5. Danh Mục Quà Khuyến Học toàn viện (mkw_school_reward_templates) là bảng DÙNG CHUNG
     // toàn viện — KHÔNG ghi đè từ sync của từng học sinh nữa (chỉ Viện Trưởng/Viện Phó
     // được sửa, qua /api/admin/school-rewards). `rewards` trong payload sync bị bỏ qua có chủ đích.
     //
-    // 5b. Yêu cầu đổi quà (ge10_reward_redemptions) CŨNG bị bỏ qua có chủ đích — route sync
+    // 5b. Yêu cầu đổi quà (mkw_reward_redemptions) CŨNG bị bỏ qua có chủ đích — route sync
     // chung này không có transaction và tin tưởng dữ liệu client gửi lên (không trừ Ruby,
     // không trừ tồn kho, client tự set cả `status`). Toàn bộ vòng đời redemption (tạo/huỷ) giờ
     // đi qua route atomic riêng: POST/DELETE /api/school-rewards (routes/schoolRewards.ts) cho
@@ -739,7 +739,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
     // 6. Sync challenges list JSON
     if (challenges) {
       await client.query(
-        `INSERT INTO ge10_user_challenges (user_id, challenges_json)
+        `INSERT INTO mkw_user_challenges (user_id, challenges_json)
          VALUES ($1, $2)
          ON CONFLICT (user_id) DO UPDATE SET
            challenges_json = EXCLUDED.challenges_json`,
@@ -759,7 +759,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
           values.push(userId, lessonId, completed);
         });
         await client.query(
-          `INSERT INTO ge10_user_lessons_progress (user_id, lesson_id, completed, completed_at)
+          `INSERT INTO mkw_user_lessons_progress (user_id, lesson_id, completed, completed_at)
            VALUES ${placeholders.join(', ')}
            ON CONFLICT (user_id, lesson_id) DO UPDATE SET
              completed = EXCLUDED.completed,
@@ -781,7 +781,7 @@ router.post('/profile/:id/sync', authMiddleware, activeProfileMiddleware, async 
           values.push(userId, actId, (data as any).status || 'available', (data as any).completedAt || null);
         });
         await client.query(
-          `INSERT INTO ge10_user_activity_progress (user_id, activity_id, status, completed_at)
+          `INSERT INTO mkw_user_activity_progress (user_id, activity_id, status, completed_at)
            VALUES ${placeholders.join(', ')}
            ON CONFLICT (user_id, activity_id) DO UPDATE SET
              status = EXCLUDED.status,
@@ -824,7 +824,7 @@ router.patch('/profiles/rename', authMiddleware, activeProfileMiddleware, async 
   try {
     // activeProfileMiddleware has already verified that req.profile exists, is active, and is owned by accountId.
     await pool.query(
-      'UPDATE ge10_users SET name = $1 WHERE id = $2',
+      'UPDATE mkw_users SET name = $1 WHERE id = $2',
       [newName.trim(), profileId]
     );
 
@@ -848,7 +848,7 @@ router.patch('/profiles/update-avatar', authMiddleware, activeProfileMiddleware,
 
   try {
     const check = await pool.query(
-      'SELECT id FROM ge10_users WHERE id = $1 AND account_id = $2 AND is_active = TRUE',
+      'SELECT id FROM mkw_users WHERE id = $1 AND account_id = $2 AND is_active = TRUE',
       [profileId, accountId]
     );
     if (check.rowCount === 0) {
@@ -856,7 +856,7 @@ router.patch('/profiles/update-avatar', authMiddleware, activeProfileMiddleware,
     }
 
     await pool.query(
-      'UPDATE ge10_users SET avatar_url = $1 WHERE id = $2',
+      'UPDATE mkw_users SET avatar_url = $1 WHERE id = $2',
       [newAvatar.trim(), profileId]
     );
 

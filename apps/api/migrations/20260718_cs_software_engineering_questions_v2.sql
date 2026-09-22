@@ -5,9 +5,9 @@
 BEGIN;
 
 -- Xóa câu hỏi cũ của SE để insert mới (giữ nguyên lesson_id linkage)
-DELETE FROM ge10_custom_questions WHERE subject = 'cs_software_engineering' AND grade_tier = 13;
+DELETE FROM mkw_custom_questions WHERE subject = 'cs_software_engineering' AND grade_tier = 13;
 
-INSERT INTO ge10_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
+INSERT INTO mkw_custom_questions (id, type, category, topic_id, prompt, options, correct_answer, explanation, difficulty, source, subject, grade_tier, lesson_id)
 VALUES
 
 -- ===================== BÀI 1: Waterfall, V-Model, Spiral =====================

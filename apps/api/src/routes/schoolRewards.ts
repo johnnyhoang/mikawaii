@@ -4,7 +4,7 @@ import { pool } from '../db.js';
 import { activeProfileMiddleware, authMiddleware } from '../middleware/auth.js';
 
 // ─────────────────────────────────────────────
-// Danh Mục Quà Khuyến Học CHUNG toàn viện (ge10_school_reward_templates) — phía HỌC SINH:
+// Danh Mục Quà Khuyến Học CHUNG toàn viện (mkw_school_reward_templates) — phía HỌC SINH:
 // xem, đổi (redeem), tự huỷ yêu cầu đang chờ. CRUD danh mục là việc của Viện Trưởng/Viện
 // Phó, nằm ở /api/admin/school-rewards (routes/admin.ts). Duyệt/huỷ bởi Ban Lãnh Đạo Viện nằm
 // ở /api/admin/deliver-reward và /api/admin/cancel-redemption (đã atomic, đúng — không đổi).
@@ -47,8 +47,8 @@ router.get('/school-rewards', async (req: any, res) => {
   try {
     const profileId = req.profile.id;
     const [rewardsRes, redemptionsRes] = await Promise.all([
-      pool.query('SELECT * FROM ge10_school_reward_templates ORDER BY created_at DESC'),
-      pool.query('SELECT * FROM ge10_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [profileId]),
+      pool.query('SELECT * FROM mkw_school_reward_templates ORDER BY created_at DESC'),
+      pool.query('SELECT * FROM mkw_reward_redemptions WHERE user_id = $1 ORDER BY timestamp DESC', [profileId]),
     ]);
     return res.json({
       rewards: rewardsRes.rows.map(mapReward),
@@ -67,14 +67,14 @@ router.post('/school-rewards/:id/redeem', async (req: any, res) => {
   try {
     const profileId = req.profile.id;
 
-    const rewardRes = await pool.query('SELECT * FROM ge10_school_reward_templates WHERE id = $1', [rewardId]);
+    const rewardRes = await pool.query('SELECT * FROM mkw_school_reward_templates WHERE id = $1', [rewardId]);
     const reward = rewardRes.rows[0];
     if (!reward) return res.status(404).json({ error: 'Reward not found' });
     if (!reward.is_unlimited && reward.remaining_quantity <= 0) {
       return res.status(400).json({ error: 'out_of_stock' });
     }
 
-    const playerRes = await pool.query('SELECT ruby FROM ge10_player_profiles WHERE user_id = $1', [profileId]);
+    const playerRes = await pool.query('SELECT ruby FROM mkw_player_profiles WHERE user_id = $1', [profileId]);
     const player = playerRes.rows[0];
     if (!player) return res.status(404).json({ error: 'Player profile not found' });
     if (player.ruby < reward.cost_ruby) {
@@ -84,13 +84,13 @@ router.post('/school-rewards/:id/redeem', async (req: any, res) => {
     await pool.query('BEGIN');
     try {
       await pool.query(
-        'UPDATE ge10_player_profiles SET ruby = ruby - $1 WHERE user_id = $2',
+        'UPDATE mkw_player_profiles SET ruby = ruby - $1 WHERE user_id = $2',
         [reward.cost_ruby, profileId]
       );
 
       if (!reward.is_unlimited) {
         const updateRes = await pool.query(
-          'UPDATE ge10_school_reward_templates SET remaining_quantity = remaining_quantity - 1 WHERE id = $1 AND remaining_quantity > 0 RETURNING id',
+          'UPDATE mkw_school_reward_templates SET remaining_quantity = remaining_quantity - 1 WHERE id = $1 AND remaining_quantity > 0 RETURNING id',
           [rewardId]
         );
         if ((updateRes.rowCount ?? 0) === 0) {
@@ -101,7 +101,7 @@ router.post('/school-rewards/:id/redeem', async (req: any, res) => {
 
       const redemptionId = crypto.randomUUID();
       await pool.query(
-        `INSERT INTO ge10_reward_redemptions (id, user_id, reward_id, reward_title, cost_ruby, status, timestamp)
+        `INSERT INTO mkw_reward_redemptions (id, user_id, reward_id, reward_title, cost_ruby, status, timestamp)
          VALUES ($1, $2, $3, $4, $5, 'pending', $6)`,
         [redemptionId, profileId, rewardId, reward.title, reward.cost_ruby, Date.now()]
       );
@@ -126,7 +126,7 @@ router.delete('/school-rewards/redemptions/:id', async (req: any, res) => {
     const profileId = req.profile.id;
 
     const redemptionRes = await pool.query(
-      `SELECT * FROM ge10_reward_redemptions WHERE id = $1 AND user_id = $2 AND status = 'pending'`,
+      `SELECT * FROM mkw_reward_redemptions WHERE id = $1 AND user_id = $2 AND status = 'pending'`,
       [redemptionId, profileId]
     );
     const redemption = redemptionRes.rows[0];
@@ -135,19 +135,19 @@ router.delete('/school-rewards/redemptions/:id', async (req: any, res) => {
     await pool.query('BEGIN');
     try {
       await pool.query(
-        'UPDATE ge10_player_profiles SET ruby = ruby + $1 WHERE user_id = $2',
+        'UPDATE mkw_player_profiles SET ruby = ruby + $1 WHERE user_id = $2',
         [redemption.cost_ruby, profileId]
       );
 
       if (redemption.reward_id) {
         await pool.query(
-          'UPDATE ge10_school_reward_templates SET remaining_quantity = remaining_quantity + 1 WHERE id = $1 AND is_unlimited = FALSE',
+          'UPDATE mkw_school_reward_templates SET remaining_quantity = remaining_quantity + 1 WHERE id = $1 AND is_unlimited = FALSE',
           [redemption.reward_id]
         );
       }
 
       await pool.query(
-        `UPDATE ge10_reward_redemptions SET status = 'cancelled' WHERE id = $1`,
+        `UPDATE mkw_reward_redemptions SET status = 'cancelled' WHERE id = $1`,
         [redemptionId]
       );
 

@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_database_data (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('db-design', 'cs_database_data', 13, 'Thiết kế & Chuẩn hóa CSDL', 'Mô hình ER, các dạng chuẩn (1NF, 2NF, 3NF, BCNF) và kỹ thuật phân rã không mất mát thông tin.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('db-query-opt', 'cs_database_data', 13, 'Tối ưu hóa & Đánh chỉ mục', 'Cơ chế hoạt động của Index (B-Tree, Hash), tối ưu câu lệnh SQL, tránh lỗi N+1 Query và phân tích Query Plan.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_database_data (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_db_01', 

@@ -17,10 +17,10 @@ router.get('/questions/custom', async (req: any, res) => {
   }
   try {
     const qRes = await pool.query(
-      `SELECT * FROM ge10_custom_questions
+      `SELECT * FROM mkw_custom_questions
        WHERE grade_tier = $2 AND subject = $3 AND (
           user_id = $1 OR user_id IS NULL
-          OR user_id IN (SELECT id FROM ge10_users WHERE role IN ('truong_vien', 'pho_vien')))`,
+          OR user_id IN (SELECT id FROM mkw_users WHERE role IN ('truong_vien', 'pho_vien')))`,
       [userId, gradeTier, subject]
     );
     res.json(qRes.rows.map((row: any) => ({
@@ -76,7 +76,7 @@ router.put('/questions/custom/:questionId', requireProfileRoles('tutor', 'second
   const userId = req.profile.id;
   const { questionId } = req.params;
   try {
-    const exists = await pool.query('SELECT id FROM ge10_custom_questions WHERE id = $1 AND user_id = $2', [questionId, userId]);
+    const exists = await pool.query('SELECT id FROM mkw_custom_questions WHERE id = $1 AND user_id = $2', [questionId, userId]);
     if (exists.rowCount === 0) {
       return res.status(404).json({ error: 'Question not found.' });
     }
@@ -99,7 +99,7 @@ router.delete('/questions/custom/:questionId', requireProfileRoles('tutor', 'sec
   const userId = req.profile.id;
   const { questionId } = req.params;
   try {
-    const result = await pool.query('DELETE FROM ge10_custom_questions WHERE id = $1 AND user_id = $2', [questionId, userId]);
+    const result = await pool.query('DELETE FROM mkw_custom_questions WHERE id = $1 AND user_id = $2', [questionId, userId]);
     if (result.rowCount === 0) {
       return res.status(404).json({ error: 'Question not found.' });
     }
@@ -128,7 +128,7 @@ router.get('/questions/stats', requireProfileRoles('truong_vien', 'pho_vien'), a
       times_skipped,
       last_opened_at,
       updated_at
-    FROM ge10_custom_questions
+    FROM mkw_custom_questions
     WHERE 1=1`;
 
     const params: any[] = [];
@@ -182,8 +182,8 @@ router.get('/questions/stats/student/:studentId', async (req: any, res) => {
         p.times_skipped,
         p.last_attempted_at,
         ROUND(CAST(p.times_correct AS FLOAT) / NULLIF(p.times_attempted, 0), 3) as accuracy
-      FROM ge10_student_question_performance p
-      JOIN ge10_custom_questions q ON p.question_id = q.id
+      FROM mkw_student_question_performance p
+      JOIN mkw_custom_questions q ON p.question_id = q.id
       WHERE p.student_id = $1
       ORDER BY p.last_attempted_at DESC
       LIMIT 100`,

@@ -1,8 +1,8 @@
--- Migration: Create ge10_curriculum_textbooks table and upgrade lessons & custom questions schema
+-- Migration: Create mkw_curriculum_textbooks table and upgrade lessons & custom questions schema
 -- Date: 2026-07-25
 
--- 1. Create ge10_curriculum_textbooks table
-CREATE TABLE IF NOT EXISTS ge10_curriculum_textbooks (
+-- 1. Create mkw_curriculum_textbooks table
+CREATE TABLE IF NOT EXISTS mkw_curriculum_textbooks (
     id VARCHAR(100) PRIMARY KEY,
     subject VARCHAR(50) NOT NULL,
     grade_tier INTEGER NOT NULL,
@@ -17,18 +17,18 @@ CREATE TABLE IF NOT EXISTS ge10_curriculum_textbooks (
 );
 
 -- Indexes for fast lookup by subject & grade_tier
-CREATE INDEX IF NOT EXISTS idx_ge10_curriculum_subj_grade ON ge10_curriculum_textbooks(subject, grade_tier);
+CREATE INDEX IF NOT EXISTS idx_mkw_curriculum_subj_grade ON mkw_curriculum_textbooks(subject, grade_tier);
 
--- 2. Upgrade ge10_lessons table
-ALTER TABLE ge10_lessons ADD COLUMN IF NOT EXISTS chapter_name VARCHAR(300);
-ALTER TABLE ge10_lessons ADD COLUMN IF NOT EXISTS lesson_name VARCHAR(300);
+-- 2. Upgrade mkw_lessons table
+ALTER TABLE mkw_lessons ADD COLUMN IF NOT EXISTS chapter_name VARCHAR(300);
+ALTER TABLE mkw_lessons ADD COLUMN IF NOT EXISTS lesson_name VARCHAR(300);
 
--- 3. Upgrade ge10_custom_questions table
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS chapter_name VARCHAR(300);
-ALTER TABLE ge10_custom_questions ADD COLUMN IF NOT EXISTS lesson_name VARCHAR(300);
+-- 3. Upgrade mkw_custom_questions table
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS chapter_name VARCHAR(300);
+ALTER TABLE mkw_custom_questions ADD COLUMN IF NOT EXISTS lesson_name VARCHAR(300);
 
 -- 4. Seed Authentic Math Curriculum Data for Grade 9 (Toán 9 GDPT 2018)
-INSERT INTO ge10_curriculum_textbooks (id, subject, grade_tier, chapter_number, chapter_title, chapter_full_name, lesson_number, lesson_title, lesson_full_name, display_order)
+INSERT INTO mkw_curriculum_textbooks (id, subject, grade_tier, chapter_number, chapter_title, chapter_full_name, lesson_number, lesson_title, lesson_full_name, display_order)
 VALUES
 -- Chương I: Phương trình và hệ hai phương trình bậc nhất hai ẩn
 ('math_g9_c1_l1', 'toan', 9, 'Chương I', 'PHƯƠNG TRÌNH VÀ HỆ HAI PHƯƠNG TRÌNH BẬC NHẤT HAI ẨN', 'Chương I. PHƯƠNG TRÌNH VÀ HỆ HAI PHƯƠNG TRÌNH BẬC NHẤT HAI ẨN', 'Bài 1', 'Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn', 'Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn', 1),

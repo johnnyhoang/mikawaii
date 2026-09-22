@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_algorithms_structures (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('algorithm-fundamentals', 'cs_algorithms_structures', 13, 'Nền tảng Thuật toán', 'Phân tích Big O, thuật toán sắp xếp (Quick/Merge/Heap) và kỹ thuật Chia để trị (Divide and Conquer).', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('basic-data-structures', 'cs_algorithms_structures', 13, 'Cấu trúc dữ liệu Tuyến tính & Băm', 'Lập trình mảng tĩnh/động, danh sách liên kết, cơ chế Stack/Queue/Heap và thiết kế bảng băm giải quyết xung đột.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_algorithms_structures (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_algo_01', 
@@ -276,8 +276,8 @@ Quy hoạch động (Dynamic Programming - DP) là kỹ thuật giải quyết b
     'advanced-data-structures'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_algo_01', 'algorithm-fundamentals', 'lesson', 'Độ phức tạp Thuật toán (Big O Notation)', '{"lesson_id": "cs_algo_01"}'::jsonb, 10, 10, 20, 'cs_algorithms_structures', 13),
   ('act-lesson-cs_algo_02', 'basic-data-structures', 'lesson', 'Mạng & Danh sách liên kết (Arrays & Linked Lists)', '{"lesson_id": "cs_algo_02"}'::jsonb, 10, 10, 20, 'cs_algorithms_structures', 13),

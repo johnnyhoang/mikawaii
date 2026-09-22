@@ -1,7 +1,7 @@
 import type { SubjectId } from '../types/game';
 
 // Bộ Nội Công Cốt Lõi (Core Knowledge Bank) — CORE_SPECS §9
-// Tất cả chuyên đề (Topics) đã được đưa hoàn toàn vào Database (bảng ge10_topics)
+// Tất cả chuyên đề (Topics) đã được đưa hoàn toàn vào Database (bảng mkw_topics)
 // và nạp động thông qua Zustand Store. File này chỉ còn giữ lại helper inferTopicId
 // phục vụ cho việc khớp chuyên đề động ở Frontend.
 

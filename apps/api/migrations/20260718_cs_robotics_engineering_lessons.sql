@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_robotics_engineering (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('design-simulation', 'cs_robotics_engineering', 13, 'Thiết kế & Mô phỏng', 'Tính toán chọn động cơ hộp số, viết file URDF cấu trúc link/joint, mô phỏng Gazebo.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('integration-qos', 'cs_robotics_engineering', 13, 'Tích hợp hệ thống & Mạng', 'Tích hợp phần mềm, middleware DDS, cấu hình chất lượng dịch vụ QoS, Fleet Management.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_robotics_engineering (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_robeng_01', 
@@ -241,8 +241,8 @@ Robot tự hành mang nhiều cảm biến đặt ở các góc khác nhau (ví 
     'testing-calibration'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_robeng_01', 'design-simulation', 'lesson', 'Quy trình chọn lựa Động cơ & Hộp số giảm tốc cho Robot', '{"lesson_id": "cs_robeng_01"}'::jsonb, 10, 10, 20, 'cs_robotics_engineering', 13),
   ('act-lesson-cs_robeng_02', 'design-simulation', 'lesson', 'Mô tả cấu trúc Robot bằng URDF & Mô phỏng vật lý trong Gazebo', '{"lesson_id": "cs_robeng_02"}'::jsonb, 20, 10, 20, 'cs_robotics_engineering', 13),

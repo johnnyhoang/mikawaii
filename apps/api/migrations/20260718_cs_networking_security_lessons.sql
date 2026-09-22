@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_networking_security (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('network-architecture', 'cs_networking_security', 13, 'Kiến trúc & Phân tầng Mạng', 'Mô hình OSI và TCP/IP, các giao thức tầng ứng dụng, tầng liên kết dữ liệu ARP và hoạt động của Switch.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('data-transmission', 'cs_networking_security', 13, 'Truyền tải & Định tuyến dữ liệu', 'Giao thức giao vận TCP vs UDP, thuật toán kiểm soát tắc nghẽn, giao thức định tuyến IPv4/IPv6 và chia mạng con.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_networking_security (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_net_01', 
@@ -307,8 +307,8 @@ Gửi các gói tin phản hồi ARP Reply giả mạo trong mạng LAN để li
     'system-defenses'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_net_01', 'network-architecture', 'lesson', 'Mô hình mạng phân tầng (OSI vs TCP/IP)', '{"lesson_id": "cs_net_01"}'::jsonb, 10, 10, 20, 'cs_networking_security', 13),
   ('act-lesson-cs_net_02', 'network-architecture', 'lesson', 'Tầng Ứng dụng & Các giao thức cốt lõi (HTTP, DNS)', '{"lesson_id": "cs_net_02"}'::jsonb, 20, 10, 20, 'cs_networking_security', 13),

@@ -149,7 +149,7 @@ def main():
 
     insert_block = f"""
 -- Seed Informatics grade 9 lessons
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard)
 VALUES 
 {",\\n".join(sql_inserts)}
 ON CONFLICT (id) DO UPDATE SET

@@ -3,8 +3,8 @@
 
 BEGIN;
 
--- 1. Seed ge10_subject_exam_blueprints for cs_software_engineering
-INSERT INTO ge10_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
+-- 1. Seed mkw_subject_exam_blueprints for cs_software_engineering
+INSERT INTO mkw_subject_exam_blueprints (subject, part, title, focus, common_question_forms, answer_modes, import_hint)
 VALUES 
   (
     'cs_software_engineering', 'Part I', 'Quy trình phần mềm & Phân tích yêu cầu', 
@@ -37,7 +37,7 @@ ON CONFLICT (id) DO UPDATE SET
   import_hint = EXCLUDED.import_hint;
 
 -- 2. Seed Boss Activities for 4 topics of cs_software_engineering
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-boss-se-processes', 'software-processes', 'boss', 'Ma Vương Waterfall Cứng Nhắc', '{"boss_id": "b-se-processes", "boss_tag": "Waterfall", "energy": 100}'::jsonb, 100, 100, 150, 'cs_software_engineering', 13),
   ('act-boss-se-requirements', 'software-requirements', 'boss', 'Ác Thần Mất Kết Nối UML', '{"boss_id": "b-se-requirements", "boss_tag": "UML", "energy": 100}'::jsonb, 100, 100, 150, 'cs_software_engineering', 13),
@@ -55,7 +55,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 3. Seed Quiz Activities for 4 topics of cs_software_engineering
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-quiz-se-processes', 'software-processes', 'quiz', 'Luyện tập Mô hình & Agile/Scrum', '{"mode": "grammar", "reward": "Ưu tiên mô hình thác nước, xoắn ốc và quy trình Scrum"}'::jsonb, 50, 10, 20, 'cs_software_engineering', 13),
   ('act-quiz-se-requirements', 'software-requirements', 'quiz', 'Luyện tập Yêu cầu & Thiết kế UML', '{"mode": "vocabulary", "reward": "Ưu tiên yêu cầu chức năng/phi chức năng, sơ đồ class và sequence"}'::jsonb, 50, 10, 20, 'cs_software_engineering', 13),
@@ -73,7 +73,7 @@ ON CONFLICT (id) DO UPDATE SET
   grade_tier = EXCLUDED.grade_tier;
 
 -- 4. Seed Textbook Mappings for cs_software_engineering
-INSERT INTO ge10_textbook_mappings (category_key, subject, loai, bai, ham)
+INSERT INTO mkw_textbook_mappings (category_key, subject, loai, bai, ham)
 VALUES
   ('cs-se-models', 'cs_software_engineering', 'Quy trình', 1, 'thach'),
   ('cs-se-scrum', 'cs_software_engineering', 'Quy trình', 2, 'thach'),

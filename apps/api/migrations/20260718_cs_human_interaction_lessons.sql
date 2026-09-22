@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_human_interaction (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('cobot-safety', 'cs_human_interaction', 13, 'Robot cộng tác & An toàn', 'Robot cộng tác Cobots, tiêu chuẩn ISO/TS 15066 giới hạn lực va chạm, nút dừng khẩn vật lý E-Stop, Teach Pendant.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('uncanny-social', 'cs_human_interaction', 13, 'Thung lũng kỳ lạ & Robot xã hội', 'Thung lũng kỳ lạ Uncanny Valley, tương tác ánh mắt xã hội Mutual Gaze, giao tiếp phi ngôn ngữ, robot hỗ trợ xã hội.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_human_interaction (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_humint_01', 
@@ -228,8 +228,8 @@ Giúp robot di chuyển liên tục êm dịu, tự động lách qua người �
     'safe-zones'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_humint_01', 'cobot-safety', 'lesson', 'Robot cộng tác (Cobots) & Tiêu chuẩn an toàn ISO/TS 15066', '{"lesson_id": "cs_humint_01"}'::jsonb, 10, 10, 20, 'cs_human_interaction', 13),
   ('act-lesson-cs_humint_02', 'uncanny-social', 'lesson', 'Hiện tượng Thung lũng kỳ lạ (Uncanny Valley)', '{"lesson_id": "cs_humint_02"}'::jsonb, 10, 10, 20, 'cs_human_interaction', 13),

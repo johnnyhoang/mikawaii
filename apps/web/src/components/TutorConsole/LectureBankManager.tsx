@@ -177,7 +177,7 @@ export const LectureBankManager: React.FC = () => {
         const token = session.data.session?.access_token;
         if (!token) return;
         const res = await fetch(`${backendUrl}/api/curriculum/textbooks?subject=${formSubject}&gradeTier=${formGradeTier}`, {
-          headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('ge10_selected_profile_id') || '' }
+          headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('mkw_selected_profile_id') || '' }
         });
         if (res.ok) {
           const data = await res.json();
@@ -213,7 +213,7 @@ export const LectureBankManager: React.FC = () => {
       if (!token) return;
 
       const res = await fetch(`${backendUrl}/api/admin/lessons?gradeTier=${activeGradeTier}`, {
-        headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('ge10_selected_profile_id') || '' }
+        headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('mkw_selected_profile_id') || '' }
       });
       if (res.ok) {
         const data = await res.json();
@@ -390,7 +390,7 @@ export const LectureBankManager: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-          'X-Profile-Id': localStorage.getItem('ge10_selected_profile_id') || ''
+          'X-Profile-Id': localStorage.getItem('mkw_selected_profile_id') || ''
         },
         body: JSON.stringify(payload)
       });
@@ -429,7 +429,7 @@ export const LectureBankManager: React.FC = () => {
 
       const res = await fetch(`${backendUrl}/api/admin/lessons/${lessonId}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('ge10_selected_profile_id') || '' }
+        headers: { Authorization: `Bearer ${token}`, 'X-Profile-Id': localStorage.getItem('mkw_selected_profile_id') || '' }
       });
 
       if (res.ok) {

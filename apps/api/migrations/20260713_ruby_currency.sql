@@ -3,15 +3,15 @@
 
 BEGIN;
 
-ALTER TABLE ge10_player_profiles
+ALTER TABLE mkw_player_profiles
   ADD COLUMN IF NOT EXISTS ruby INTEGER,
   ADD COLUMN IF NOT EXISTS daily_ruby_earned INTEGER,
   ADD COLUMN IF NOT EXISTS last_ruby_earned_date VARCHAR(10);
-UPDATE ge10_player_profiles
+UPDATE mkw_player_profiles
 SET ruby = COALESCE(ruby, coins, 200),
     daily_ruby_earned = COALESCE(daily_ruby_earned, daily_np_earned, 0),
     last_ruby_earned_date = COALESCE(last_ruby_earned_date, last_np_earned_date, '');
-ALTER TABLE ge10_player_profiles
+ALTER TABLE mkw_player_profiles
   ALTER COLUMN ruby SET DEFAULT 200,
   ALTER COLUMN ruby SET NOT NULL,
   ALTER COLUMN daily_ruby_earned SET DEFAULT 0,
@@ -19,32 +19,32 @@ ALTER TABLE ge10_player_profiles
   ALTER COLUMN last_ruby_earned_date SET DEFAULT '',
   ALTER COLUMN last_ruby_earned_date SET NOT NULL;
 
-ALTER TABLE ge10_history_logs ADD COLUMN IF NOT EXISTS ruby_changed INTEGER;
-UPDATE ge10_history_logs SET ruby_changed = COALESCE(ruby_changed, coins_changed, 0);
-ALTER TABLE ge10_history_logs ALTER COLUMN ruby_changed SET DEFAULT 0;
+ALTER TABLE mkw_history_logs ADD COLUMN IF NOT EXISTS ruby_changed INTEGER;
+UPDATE mkw_history_logs SET ruby_changed = COALESCE(ruby_changed, coins_changed, 0);
+ALTER TABLE mkw_history_logs ALTER COLUMN ruby_changed SET DEFAULT 0;
 
--- ge10_parent_rewards đã được đổi tên thành ge10_tutor_rewards (xem 20260716_rename_parent_to_tutor.sql).
+-- mkw_parent_rewards đã được đổi tên thành mkw_tutor_rewards (xem 20260716_rename_parent_to_tutor.sql).
 -- Guard bằng to_regclass để migration cũ này vẫn idempotent trên DB đã chạy rename.
 DO $$
 BEGIN
-  IF to_regclass('public.ge10_parent_rewards') IS NOT NULL THEN
-    ALTER TABLE ge10_parent_rewards ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
-    UPDATE ge10_parent_rewards SET cost_ruby = COALESCE(cost_ruby, cost_coins);
-    ALTER TABLE ge10_parent_rewards ALTER COLUMN cost_ruby SET NOT NULL;
+  IF to_regclass('public.mkw_parent_rewards') IS NOT NULL THEN
+    ALTER TABLE mkw_parent_rewards ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
+    UPDATE mkw_parent_rewards SET cost_ruby = COALESCE(cost_ruby, cost_coins);
+    ALTER TABLE mkw_parent_rewards ALTER COLUMN cost_ruby SET NOT NULL;
   END IF;
 END $$;
 
-ALTER TABLE ge10_reward_redemptions ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
-UPDATE ge10_reward_redemptions SET cost_ruby = COALESCE(cost_ruby, cost_coins);
-ALTER TABLE ge10_reward_redemptions ALTER COLUMN cost_ruby SET NOT NULL;
+ALTER TABLE mkw_reward_redemptions ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
+UPDATE mkw_reward_redemptions SET cost_ruby = COALESCE(cost_ruby, cost_coins);
+ALTER TABLE mkw_reward_redemptions ALTER COLUMN cost_ruby SET NOT NULL;
 
-ALTER TABLE ge10_game_sessions
+ALTER TABLE mkw_game_sessions
   ADD COLUMN IF NOT EXISTS ruby_gained INTEGER,
   ADD COLUMN IF NOT EXISTS coins_gained INTEGER DEFAULT 0;
-UPDATE ge10_game_sessions SET ruby_gained = COALESCE(ruby_gained, coins_gained, 0);
-ALTER TABLE ge10_game_sessions ALTER COLUMN ruby_gained SET DEFAULT 0;
+UPDATE mkw_game_sessions SET ruby_gained = COALESCE(ruby_gained, coins_gained, 0);
+ALTER TABLE mkw_game_sessions ALTER COLUMN ruby_gained SET DEFAULT 0;
 
-CREATE OR REPLACE FUNCTION ge10_sync_session_ruby_legacy()
+CREATE OR REPLACE FUNCTION mkw_sync_session_ruby_legacy()
 RETURNS TRIGGER AS $$
 BEGIN
   IF TG_OP = 'INSERT' THEN
@@ -59,13 +59,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS trg_ge10_session_ruby_legacy ON ge10_game_sessions;
-CREATE TRIGGER trg_ge10_session_ruby_legacy BEFORE INSERT OR UPDATE ON ge10_game_sessions
-FOR EACH ROW EXECUTE FUNCTION ge10_sync_session_ruby_legacy();
+DROP TRIGGER IF EXISTS trg_mkw_session_ruby_legacy ON mkw_game_sessions;
+CREATE TRIGGER trg_mkw_session_ruby_legacy BEFORE INSERT OR UPDATE ON mkw_game_sessions
+FOR EACH ROW EXECUTE FUNCTION mkw_sync_session_ruby_legacy();
 
-CREATE TABLE IF NOT EXISTS ge10_class_rewards (
+CREATE TABLE IF NOT EXISTS mkw_class_rewards (
   id VARCHAR(255) PRIMARY KEY,
-  teacher_id VARCHAR(255) NOT NULL REFERENCES ge10_users(id) ON DELETE CASCADE,
+  teacher_id VARCHAR(255) NOT NULL REFERENCES mkw_users(id) ON DELETE CASCADE,
   title VARCHAR(500) NOT NULL,
   cost_ruby INTEGER NOT NULL DEFAULT 200,
   cost_coins INTEGER,
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS ge10_class_rewards (
   remaining INTEGER NOT NULL DEFAULT 5,
   created_at BIGINT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS ge10_class_reward_redemptions (
+CREATE TABLE IF NOT EXISTS mkw_class_reward_redemptions (
   id VARCHAR(255) PRIMARY KEY,
-  class_reward_id VARCHAR(255) NOT NULL REFERENCES ge10_class_rewards(id) ON DELETE CASCADE,
-  student_id VARCHAR(255) NOT NULL REFERENCES ge10_users(id) ON DELETE CASCADE,
+  class_reward_id VARCHAR(255) NOT NULL REFERENCES mkw_class_rewards(id) ON DELETE CASCADE,
+  student_id VARCHAR(255) NOT NULL REFERENCES mkw_users(id) ON DELETE CASCADE,
   reward_title VARCHAR(500) NOT NULL,
   cost_ruby INTEGER NOT NULL,
   cost_coins INTEGER,
@@ -84,25 +84,25 @@ CREATE TABLE IF NOT EXISTS ge10_class_reward_redemptions (
   requested_at BIGINT NOT NULL,
   delivered_at BIGINT
 );
-CREATE INDEX IF NOT EXISTS idx_ge10_class_rewards_teacher ON ge10_class_rewards(teacher_id);
-CREATE INDEX IF NOT EXISTS idx_ge10_crr_student ON ge10_class_reward_redemptions(student_id);
-CREATE INDEX IF NOT EXISTS idx_ge10_crr_reward ON ge10_class_reward_redemptions(class_reward_id);
+CREATE INDEX IF NOT EXISTS idx_mkw_class_rewards_teacher ON mkw_class_rewards(teacher_id);
+CREATE INDEX IF NOT EXISTS idx_mkw_crr_student ON mkw_class_reward_redemptions(student_id);
+CREATE INDEX IF NOT EXISTS idx_mkw_crr_reward ON mkw_class_reward_redemptions(class_reward_id);
 
 DO $$
 BEGIN
-  IF to_regclass('public.ge10_class_rewards') IS NOT NULL THEN
-    ALTER TABLE ge10_class_rewards ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
-    UPDATE ge10_class_rewards SET cost_ruby = COALESCE(cost_ruby, cost_coins);
-    ALTER TABLE ge10_class_rewards ALTER COLUMN cost_ruby SET NOT NULL;
+  IF to_regclass('public.mkw_class_rewards') IS NOT NULL THEN
+    ALTER TABLE mkw_class_rewards ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
+    UPDATE mkw_class_rewards SET cost_ruby = COALESCE(cost_ruby, cost_coins);
+    ALTER TABLE mkw_class_rewards ALTER COLUMN cost_ruby SET NOT NULL;
   END IF;
-  IF to_regclass('public.ge10_class_reward_redemptions') IS NOT NULL THEN
-    ALTER TABLE ge10_class_reward_redemptions ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
-    UPDATE ge10_class_reward_redemptions SET cost_ruby = COALESCE(cost_ruby, cost_coins);
-    ALTER TABLE ge10_class_reward_redemptions ALTER COLUMN cost_ruby SET NOT NULL;
+  IF to_regclass('public.mkw_class_reward_redemptions') IS NOT NULL THEN
+    ALTER TABLE mkw_class_reward_redemptions ADD COLUMN IF NOT EXISTS cost_ruby INTEGER;
+    UPDATE mkw_class_reward_redemptions SET cost_ruby = COALESCE(cost_ruby, cost_coins);
+    ALTER TABLE mkw_class_reward_redemptions ALTER COLUMN cost_ruby SET NOT NULL;
   END IF;
 END $$;
 
-CREATE OR REPLACE FUNCTION ge10_sync_player_ruby_legacy()
+CREATE OR REPLACE FUNCTION mkw_sync_player_ruby_legacy()
 RETURNS TRIGGER AS $$
 BEGIN
   IF TG_OP = 'INSERT' THEN
@@ -127,23 +127,23 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS trg_ge10_sync_player_ruby_legacy ON ge10_player_profiles;
-CREATE TRIGGER trg_ge10_sync_player_ruby_legacy
-BEFORE INSERT OR UPDATE ON ge10_player_profiles
-FOR EACH ROW EXECUTE FUNCTION ge10_sync_player_ruby_legacy();
+DROP TRIGGER IF EXISTS trg_mkw_sync_player_ruby_legacy ON mkw_player_profiles;
+CREATE TRIGGER trg_mkw_sync_player_ruby_legacy
+BEFORE INSERT OR UPDATE ON mkw_player_profiles
+FOR EACH ROW EXECUTE FUNCTION mkw_sync_player_ruby_legacy();
 
-CREATE OR REPLACE FUNCTION ge10_sync_ruby_pair()
+CREATE OR REPLACE FUNCTION mkw_sync_ruby_pair()
 RETURNS TRIGGER AS $$
 BEGIN
   IF TG_OP = 'INSERT' THEN
-    IF TG_TABLE_NAME = 'ge10_history_logs' THEN
+    IF TG_TABLE_NAME = 'mkw_history_logs' THEN
       NEW.ruby_changed := COALESCE(NEW.ruby_changed, NEW.coins_changed, 0);
       NEW.coins_changed := NEW.ruby_changed;
     ELSE
       NEW.cost_ruby := COALESCE(NEW.cost_ruby, NEW.cost_coins);
       NEW.cost_coins := NEW.cost_ruby;
     END IF;
-  ELSIF TG_TABLE_NAME = 'ge10_history_logs' THEN
+  ELSIF TG_TABLE_NAME = 'mkw_history_logs' THEN
     IF NEW.ruby_changed IS DISTINCT FROM OLD.ruby_changed THEN NEW.coins_changed := NEW.ruby_changed;
     ELSIF NEW.coins_changed IS DISTINCT FROM OLD.coins_changed THEN NEW.ruby_changed := NEW.coins_changed;
     END IF;
@@ -156,58 +156,58 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS trg_ge10_history_ruby_legacy ON ge10_history_logs;
-CREATE TRIGGER trg_ge10_history_ruby_legacy BEFORE INSERT OR UPDATE ON ge10_history_logs
-FOR EACH ROW EXECUTE FUNCTION ge10_sync_ruby_pair();
+DROP TRIGGER IF EXISTS trg_mkw_history_ruby_legacy ON mkw_history_logs;
+CREATE TRIGGER trg_mkw_history_ruby_legacy BEFORE INSERT OR UPDATE ON mkw_history_logs
+FOR EACH ROW EXECUTE FUNCTION mkw_sync_ruby_pair();
 DO $$
 BEGIN
-  IF to_regclass('public.ge10_parent_rewards') IS NOT NULL THEN
-    DROP TRIGGER IF EXISTS trg_ge10_parent_reward_ruby_legacy ON ge10_parent_rewards;
-    CREATE TRIGGER trg_ge10_parent_reward_ruby_legacy BEFORE INSERT OR UPDATE ON ge10_parent_rewards
-    FOR EACH ROW EXECUTE FUNCTION ge10_sync_ruby_pair();
+  IF to_regclass('public.mkw_parent_rewards') IS NOT NULL THEN
+    DROP TRIGGER IF EXISTS trg_mkw_parent_reward_ruby_legacy ON mkw_parent_rewards;
+    CREATE TRIGGER trg_mkw_parent_reward_ruby_legacy BEFORE INSERT OR UPDATE ON mkw_parent_rewards
+    FOR EACH ROW EXECUTE FUNCTION mkw_sync_ruby_pair();
   END IF;
 END $$;
-DROP TRIGGER IF EXISTS trg_ge10_redemption_ruby_legacy ON ge10_reward_redemptions;
-CREATE TRIGGER trg_ge10_redemption_ruby_legacy BEFORE INSERT OR UPDATE ON ge10_reward_redemptions
-FOR EACH ROW EXECUTE FUNCTION ge10_sync_ruby_pair();
+DROP TRIGGER IF EXISTS trg_mkw_redemption_ruby_legacy ON mkw_reward_redemptions;
+CREATE TRIGGER trg_mkw_redemption_ruby_legacy BEFORE INSERT OR UPDATE ON mkw_reward_redemptions
+FOR EACH ROW EXECUTE FUNCTION mkw_sync_ruby_pair();
 
 DO $$
 BEGIN
-  IF to_regclass('public.ge10_class_rewards') IS NOT NULL THEN
-    DROP TRIGGER IF EXISTS trg_ge10_class_reward_ruby_legacy ON ge10_class_rewards;
-    CREATE TRIGGER trg_ge10_class_reward_ruby_legacy BEFORE INSERT OR UPDATE ON ge10_class_rewards
-    FOR EACH ROW EXECUTE FUNCTION ge10_sync_ruby_pair();
+  IF to_regclass('public.mkw_class_rewards') IS NOT NULL THEN
+    DROP TRIGGER IF EXISTS trg_mkw_class_reward_ruby_legacy ON mkw_class_rewards;
+    CREATE TRIGGER trg_mkw_class_reward_ruby_legacy BEFORE INSERT OR UPDATE ON mkw_class_rewards
+    FOR EACH ROW EXECUTE FUNCTION mkw_sync_ruby_pair();
   END IF;
-  IF to_regclass('public.ge10_class_reward_redemptions') IS NOT NULL THEN
-    DROP TRIGGER IF EXISTS trg_ge10_class_redemption_ruby_legacy ON ge10_class_reward_redemptions;
-    CREATE TRIGGER trg_ge10_class_redemption_ruby_legacy BEFORE INSERT OR UPDATE ON ge10_class_reward_redemptions
-    FOR EACH ROW EXECUTE FUNCTION ge10_sync_ruby_pair();
+  IF to_regclass('public.mkw_class_reward_redemptions') IS NOT NULL THEN
+    DROP TRIGGER IF EXISTS trg_mkw_class_redemption_ruby_legacy ON mkw_class_reward_redemptions;
+    CREATE TRIGGER trg_mkw_class_redemption_ruby_legacy BEFORE INSERT OR UPDATE ON mkw_class_reward_redemptions
+    FOR EACH ROW EXECUTE FUNCTION mkw_sync_ruby_pair();
   END IF;
 END $$;
 
-INSERT INTO ge10_game_settings (setting_key, setting_json)
+INSERT INTO mkw_game_settings (setting_key, setting_json)
 SELECT 'boss_completion_bonus_ruby', setting_json
-FROM ge10_game_settings
+FROM mkw_game_settings
 WHERE setting_key = 'boss_completion_bonus_np'
 ON CONFLICT (setting_key) DO NOTHING;
 
-INSERT INTO ge10_game_settings (setting_key, setting_json)
+INSERT INTO mkw_game_settings (setting_key, setting_json)
 SELECT 'base_ruby', setting_json
-FROM ge10_game_settings
+FROM mkw_game_settings
 WHERE setting_key = 'base_coins'
 ON CONFLICT (setting_key) DO NOTHING;
 
-CREATE OR REPLACE FUNCTION ge10_process_ruby_transaction(p_user_id VARCHAR, p_amount INTEGER)
+CREATE OR REPLACE FUNCTION mkw_process_ruby_transaction(p_user_id VARCHAR, p_amount INTEGER)
 RETURNS BOOLEAN AS $$
 DECLARE
   current_ruby INTEGER;
 BEGIN
   SELECT ruby INTO current_ruby
-  FROM ge10_player_profiles
+  FROM mkw_player_profiles
   WHERE user_id = p_user_id
   FOR UPDATE;
   IF NOT FOUND OR current_ruby + p_amount < 0 THEN RETURN FALSE; END IF;
-  UPDATE ge10_player_profiles
+  UPDATE mkw_player_profiles
   SET ruby = ruby + p_amount, server_updated_at = NOW()
   WHERE user_id = p_user_id;
   RETURN TRUE;

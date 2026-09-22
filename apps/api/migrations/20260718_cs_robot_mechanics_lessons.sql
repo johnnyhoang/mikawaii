@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_robot_mechanics (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('mechanics-dynamics', 'cs_robot_mechanics', 13, 'Động lực học Robot', 'Ma trận Jacobian vi phân, công thức Euler-Lagrange, ma trận quán tính, Coriolis và Newton-Euler.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('contact-grippers', 'cs_robot_mechanics', 13, 'Cơ cấu chấp hành & Tiếp xúc', 'Cơ chế truyền tải cơ khí, ma sát khớp Coulomb/Viscous, cơ cấu kẹp và cơ học ma sát tiếp xúc vật.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_robot_mechanics (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_robmec_01', 
@@ -250,8 +250,8 @@ Trong đó $P$ là áp suất chất lưu, $A$ là diện tích tiết diện p�
     'physics-simulation'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_robmec_01', 'mechanics-dynamics', 'lesson', 'Động học vi phân & Ma trận Jacobian hình học', '{"lesson_id": "cs_robmec_01"}'::jsonb, 10, 10, 20, 'cs_robot_mechanics', 13),
   ('act-lesson-cs_robmec_02', 'mechanics-dynamics', 'lesson', 'Động lực học Robot: Công thức Euler-Lagrange', '{"lesson_id": "cs_robmec_02"}'::jsonb, 20, 10, 20, 'cs_robot_mechanics', 13),

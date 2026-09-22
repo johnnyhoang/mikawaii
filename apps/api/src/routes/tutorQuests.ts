@@ -20,8 +20,8 @@ router.get('/tutor-quests', async (req: any, res) => {
       // Teacher: Get all quests created by this teacher
       const questsRes = await pool.query(
         `SELECT q.*, u.name AS student_name, u.avatar_url AS student_avatar
-         FROM ge10_tutor_quests q
-         JOIN ge10_users u ON u.id = q.student_id
+         FROM mkw_tutor_quests q
+         JOIN mkw_users u ON u.id = q.student_id
          WHERE q.tutor_id = $1
          ORDER BY q.created_at DESC`,
         [profileId]
@@ -31,8 +31,8 @@ router.get('/tutor-quests', async (req: any, res) => {
       // Student: Get all quests assigned to this student
       const questsRes = await pool.query(
         `SELECT q.*, u.name AS tutor_name, u.avatar_url AS tutor_avatar
-         FROM ge10_tutor_quests q
-         JOIN ge10_users u ON u.id = q.tutor_id
+         FROM mkw_tutor_quests q
+         JOIN mkw_users u ON u.id = q.tutor_id
          WHERE q.student_id = $1 AND q.status != 'claimed'
          ORDER BY q.created_at DESC`,
         [profileId]
@@ -75,7 +75,7 @@ router.post('/tutor-quests', async (req: any, res) => {
       for (const studentId of students) {
         // Verify connection exists
         const linkCheck = await client.query(
-          `SELECT 1 FROM ge10_class_links 
+          `SELECT 1 FROM mkw_class_links 
            WHERE tutor_id = $1 AND student_id = $2 AND status = 'active'`,
           [profileId, studentId]
         );
@@ -87,7 +87,7 @@ router.post('/tutor-quests', async (req: any, res) => {
 
         const questId = 'tq-' + crypto.randomUUID();
         const insertRes = await client.query(
-          `INSERT INTO ge10_tutor_quests (id, tutor_id, student_id, title, description, reward_ruby, status)
+          `INSERT INTO mkw_tutor_quests (id, tutor_id, student_id, title, description, reward_ruby, status)
            VALUES ($1, $2, $3, $4, $5, $6, 'assigned')
            RETURNING *`,
           [questId, profileId, studentId, title, description, rewardRuby]
@@ -125,7 +125,7 @@ router.post('/tutor-quests/:id/complete', async (req: any, res) => {
 
     // Check ownership
     const checkRes = await pool.query(
-      `SELECT tutor_id, status FROM ge10_tutor_quests WHERE id = $1`,
+      `SELECT tutor_id, status FROM mkw_tutor_quests WHERE id = $1`,
       [questId]
     );
 
@@ -143,7 +143,7 @@ router.post('/tutor-quests/:id/complete', async (req: any, res) => {
     }
 
     const updateRes = await pool.query(
-      `UPDATE ge10_tutor_quests
+      `UPDATE mkw_tutor_quests
        SET status = 'completed', completed_at = CURRENT_TIMESTAMP
        WHERE id = $1
        RETURNING *`,
@@ -169,7 +169,7 @@ router.post('/tutor-quests/:id/claim', async (req: any, res) => {
 
     // SELECT and LOCK the quest row
     const questRes = await client.query(
-      `SELECT * FROM ge10_tutor_quests WHERE id = $1 FOR UPDATE`,
+      `SELECT * FROM mkw_tutor_quests WHERE id = $1 FOR UPDATE`,
       [questId]
     );
 
@@ -191,7 +191,7 @@ router.post('/tutor-quests/:id/claim', async (req: any, res) => {
 
     // Call stored procedure to process ruby transaction
     const txRes = await client.query(
-      `SELECT ge10_process_ruby_transaction($1, $2) AS success`,
+      `SELECT mkw_process_ruby_transaction($1, $2) AS success`,
       [profileId, quest.reward_ruby]
     );
 
@@ -204,7 +204,7 @@ router.post('/tutor-quests/:id/claim', async (req: any, res) => {
     const logId = 'log-' + crypto.randomUUID();
     const timestamp = Date.now();
     await client.query(
-      `INSERT INTO ge10_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed)
+      `INSERT INTO mkw_history_logs (id, user_id, timestamp, activity_type, title, detail, ruby_changed)
        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [
         logId,
@@ -219,7 +219,7 @@ router.post('/tutor-quests/:id/claim', async (req: any, res) => {
 
     // Update quest status
     const updateRes = await client.query(
-      `UPDATE ge10_tutor_quests
+      `UPDATE mkw_tutor_quests
        SET status = 'claimed', claimed_at = CURRENT_TIMESTAMP
        WHERE id = $1
        RETURNING *`,
@@ -253,7 +253,7 @@ router.delete('/tutor-quests/:id', async (req: any, res) => {
 
     // Check ownership
     const checkRes = await pool.query(
-      `SELECT tutor_id FROM ge10_tutor_quests WHERE id = $1`,
+      `SELECT tutor_id FROM mkw_tutor_quests WHERE id = $1`,
       [questId]
     );
 
@@ -266,7 +266,7 @@ router.delete('/tutor-quests/:id', async (req: any, res) => {
       return res.status(403).json({ error: 'Forbidden: Bạn không tạo bài tập này.' });
     }
 
-    await pool.query('DELETE FROM ge10_tutor_quests WHERE id = $1', [questId]);
+    await pool.query('DELETE FROM mkw_tutor_quests WHERE id = $1', [questId]);
     res.json({ success: true, message: 'Quest deleted successfully.' });
   } catch (err: any) {
     console.error('[DELETE /tutor-quests/:id] Error:', err);

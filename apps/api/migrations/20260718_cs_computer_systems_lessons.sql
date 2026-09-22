@@ -4,7 +4,7 @@
 BEGIN;
 
 -- 1. Seed Topics for cs_computer_systems (grade_tier = 13)
-INSERT INTO ge10_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
+INSERT INTO mkw_topics (id, subject, grade_tier, name, description, sort_order, ham_nguyen_to, exam_relevance, min_questions, question_types)
 VALUES 
   ('computer-arithmetic', 'cs_computer_systems', 13, 'Số học & Biểu diễn dữ liệu', 'Biểu diễn bit nhị phân, hệ bù 2 của số nguyên và chuẩn dấu phẩy động IEEE 754 cho số thực.', 1, 'thach', 'high', 30, ARRAY['mcq']::varchar[]),
   ('processor-architecture', 'cs_computer_systems', 13, 'Kiến trúc CPU & Tập lệnh', 'Kiến trúc tập lệnh Assembly, cơ chế biên dịch/liên kết, chu kỳ lệnh Pipelining và superscalar CPU.', 2, 'hoa', 'high', 30, ARRAY['mcq']::varchar[]),
@@ -20,7 +20,7 @@ ON CONFLICT (id) DO UPDATE SET
   question_types = EXCLUDED.question_types;
 
 -- 2. Seed Lessons for cs_computer_systems (grade_tier = 13)
-INSERT INTO ge10_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
+INSERT INTO mkw_lessons (id, subject, grade_tier, topic, title, theory, category, examples, practice_points, difficulty, is_standard, topic_id)
 VALUES
   (
     'cs_sys_01', 
@@ -281,8 +281,8 @@ Nếu hàm sử dụng các lệnh đọc dữ liệu không kiểm tra biên (n
     'system-security-io'
   );
 
--- 3. Create ge10_activities for these lessons to unlock them in the learning path
-INSERT INTO ge10_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
+-- 3. Create mkw_activities for these lessons to unlock them in the learning path
+INSERT INTO mkw_activities (id, topic_id, activity_type, title, config, sort_order, reward_np, reward_xp, subject, grade_tier)
 VALUES
   ('act-lesson-cs_sys_01', 'computer-arithmetic', 'lesson', 'Biểu diễn thông tin trong máy tính (Bù 2 & IEEE 754)', '{"lesson_id": "cs_sys_01"}'::jsonb, 10, 10, 20, 'cs_computer_systems', 13),
   ('act-lesson-cs_sys_02', 'processor-architecture', 'lesson', 'Kiến trúc Tập lệnh CPU (ISA) & Hợp ngữ Assembly', '{"lesson_id": "cs_sys_02"}'::jsonb, 10, 10, 20, 'cs_computer_systems', 13),
