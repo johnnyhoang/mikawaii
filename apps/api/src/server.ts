@@ -22,7 +22,7 @@ import referenceExamsRouter from './routes/referenceExams.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5003;
 
 // Danh sách domain frontend được phép gọi API, phân tách bằng dấu phẩy (CORS_ALLOWED_ORIGINS
 // trong .env, ví dụ "https://game10.vercel.app,http://localhost:5173"). Chưa cấu hình thì giữ

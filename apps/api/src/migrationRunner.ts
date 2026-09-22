@@ -182,7 +182,10 @@ export async function runMigrations(): Promise<void> {
   // Seed ngân hàng câu hỏi gốc (trước đây hardcode trong src/data/questions.ts phía frontend,
   // mỗi client tự trộn vào bộ nhớ) — nay là dữ liệu hệ thống thật trong DB (user_id = NULL),
   // trả về cho MỌI hồ sơ qua GET /api/profile/:id (WHERE user_id IS NULL đã có sẵn).
-  const seedQuestionsPath = path.join(__dirname, 'questionsData.json');
+  let seedQuestionsPath = path.join(__dirname, 'questionsData.json');
+  if (!fs.existsSync(seedQuestionsPath)) {
+    seedQuestionsPath = path.join(__dirname, '..', 'src', 'questionsData.json');
+  }
   if (!fs.existsSync(seedQuestionsPath)) {
     throw new Error(`Missing required base question bank seed: ${seedQuestionsPath}`);
   }

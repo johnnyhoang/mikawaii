@@ -3,20 +3,20 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend
+      context: ./apps/api
       dockerfile: Dockerfile
     ports:
-      - "3001:3000"
+      - "5003:5003"
     volumes:
-      - ./backend/.env:/app/.env
+      - ./apps/api/.env:/app/.env
     restart: always
 
   frontend:
     build:
-      context: .
+      context: ./apps/web
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "5176:80"
     depends_on:
       - backend
     restart: always
