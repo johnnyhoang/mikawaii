@@ -2,7 +2,7 @@ import { supabase } from '../utils/supabaseClient';
 import { activeProfileHeaders } from './profileHeaders';
 import { useGameState } from '../hooks/useGameState';
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+import { backendUrl } from '../config/api';
 
 export interface StartSessionParams {
   profileId: string;

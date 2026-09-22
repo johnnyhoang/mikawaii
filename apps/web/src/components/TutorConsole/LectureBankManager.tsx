@@ -29,7 +29,7 @@ interface Lesson {
   created_at?: string;
 }
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:5003');
 
 interface TypeableComboboxProps {
   value: string;

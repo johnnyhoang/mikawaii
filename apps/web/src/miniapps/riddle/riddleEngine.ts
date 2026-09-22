@@ -91,7 +91,7 @@ export function isRiddleAnswerCorrect(selected: string, correctAnswer: string | 
   });
 }
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:5003');
 
 async function getAuthHeaders(): Promise<Record<string, string>> {
   const session = (await supabase.auth.getSession()).data.session;

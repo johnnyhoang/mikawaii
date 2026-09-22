@@ -34,7 +34,7 @@ export interface MissionEventInput {
   metadata?: Record<string, unknown>;
 }
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+import { backendUrl } from '../config/api';
 
 async function headers(profileId: string, json = false): Promise<Record<string, string>> {
   const session = (await supabase.auth.getSession()).data.session;

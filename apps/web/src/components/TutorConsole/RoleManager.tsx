@@ -4,7 +4,7 @@ import { isSuperAdmin } from '../../utils/roleHelpers';
 import { toast } from '../../utils/toast';
 import { authService } from '../../services/authService';
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:5003');
 
 const ROLES_CONFIG = [
   { key: 'student',     label: 'Học Sinh',    icon: '🌱', color: 'synth-cyan' },

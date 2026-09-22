@@ -331,7 +331,7 @@ export const QuestionBankManager: React.FC<QuestionBankManagerProps> = ({
       const token = session?.access_token;
       if (!token) throw new Error('No auth token');
 
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:5003');
       const res = await fetch(`${backendUrl}/api/ai/ingest`, {
         method: 'POST',
         headers: {

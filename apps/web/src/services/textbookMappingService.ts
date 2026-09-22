@@ -2,7 +2,7 @@ import { supabase } from '../utils/supabaseClient';
 import type { TextbookMapping } from '../types/game';
 import { activeProfileHeaders } from './profileHeaders';
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+import { backendUrl } from '../config/api';
 
 async function getToken(): Promise<string | null> {
   const sessionRes = await supabase.auth.getSession();

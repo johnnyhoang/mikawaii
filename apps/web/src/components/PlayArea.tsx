@@ -557,7 +557,7 @@ export const PlayArea: React.FC<PlayAreaProps> = ({ mode, bossId, lessonId, less
         const token = session?.access_token;
         if (!token) throw new Error('No auth token available');
 
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:5003');
         const assessmentResult = await assessmentProvider.assess({
           question: activeQuestion,
           answer: typedAnswer,

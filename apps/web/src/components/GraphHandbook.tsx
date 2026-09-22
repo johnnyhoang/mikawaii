@@ -155,7 +155,7 @@ export function GraphHandbook({ problemText = '' }: GraphHandbookProps) {
       const token = session?.access_token;
       if (!token) throw new Error('Chưa có phiên đăng nhập Supabase.');
 
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:5003');
       const res = await fetch(`${backendUrl}/api/ai/function-graph`, {
         method: 'POST',
         headers: {

@@ -1,7 +1,7 @@
 import { authService } from './authService';
 import { activeProfileHeaders } from './profileHeaders';
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+import { backendUrl } from '../config/api';
 
 export const learningService = {
   fetchContentAll: async (gradeTier: number, subjectId: string): Promise<{ questions: any[]; lessons: any[] }> => {
