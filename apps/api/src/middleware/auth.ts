@@ -3,8 +3,21 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const supabaseUrl = process.env.SUPABASE_URL || 'https://czngbleeeiljsrpbaksg.supabase.co';
-const JWKS = createRemoteJWKSet(new URL(`${supabaseUrl}/auth/v1/.well-known/jwks.json`));
+function getSupabaseUrl(): string {
+  return process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || 'https://czngbleeeiljsrpbaksg.supabase.co';
+}
+
+let cachedJWKS: any = null;
+let cachedUrl: string | null = null;
+
+function getJWKS() {
+  const url = getSupabaseUrl().replace(/\/+$/, '');
+  if (!cachedJWKS || cachedUrl !== url) {
+    cachedUrl = url;
+    cachedJWKS = createRemoteJWKSet(new URL(`${url}/auth/v1/.well-known/jwks.json`));
+  }
+  return { jwks: cachedJWKS, url };
+}
 
 export const authMiddleware = async (req: any, res: any, next: any) => {
   const authHeader = req.headers.authorization;
@@ -15,8 +28,9 @@ export const authMiddleware = async (req: any, res: any, next: any) => {
   const token = authHeader.split(' ')[1];
   
   try {
-    const { payload } = await jwtVerify(token, JWKS, {
-      issuer: `${supabaseUrl}/auth/v1`,
+    const { jwks, url } = getJWKS();
+    const { payload } = await jwtVerify(token, jwks, {
+      issuer: `${url}/auth/v1`,
       algorithms: ['ES256', 'RS256', 'ES384', 'ES512', 'RS384', 'RS512', 'HS256']
     });
 
