@@ -2,6 +2,26 @@
 -- Chỉ đổi display text/nội dung cẩm nang — không đổi id, cột hay cấu trúc bảng nào.
 -- Sĩ Tử -> Học Sinh; Chủ Nhiệm Chính -> Chủ Nhiệm.
 
+CREATE TABLE IF NOT EXISTS mkw_handbook_pages (
+    id VARCHAR(100) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    bullets JSONB DEFAULT '[]'::jsonb,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS mkw_mission_definitions (
+    id VARCHAR(100) PRIMARY KEY,
+    mission_key VARCHAR(100) UNIQUE NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    reward_ruby INTEGER NOT NULL DEFAULT 0,
+    reward_xp INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
 UPDATE mkw_handbook_pages SET content =
   'Học vấn (XP) đo lường trình độ kiến thức của Học Sinh trên học đường. Khi làm đúng mỗi câu hỏi thường ở Học Đường, con sẽ tích lũy được +15 XP.'
   WHERE id = 'hb-1';

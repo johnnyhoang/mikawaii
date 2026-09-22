@@ -17,7 +17,7 @@ const MIGRATION_FILES = [
   '20260713_learning_context.sql',
   '20260713_canonical_content_payload.sql',
   '20260713_seed_canonical_learning_content.sql',
-  '20260713_harden_mkw_data_api.sql',
+  '20260713_harden_ge10_data_api.sql',
   '20260713_isolate_profile_identity.sql',
   '20260713_remove_profile_pin.sql',
   '20260713_normalize_legacy_pet_name.sql',
@@ -88,9 +88,9 @@ const MIGRATION_FILES = [
   '20260725_curriculum_textbooks_schema.sql',
   '20260814_format_math_latex.sql',
   '20260815_reward_unlimited_and_class_ownership.sql',
+  '20260922_rename_ge10_to_mkw.sql',
   '20260815_terminology_wording_fix.sql',
   '20260816_reference_exams.sql',
-  '20260922_rename_ge10_to_mkw.sql',
 ];
 
 async function ensureMigrationsTable() {
@@ -141,19 +141,17 @@ async function applyMigrationFile(filename: string) {
  * lần process khởi động.
  */
 export async function runMigrations(): Promise<void> {
-  // schema.sql chỉ dùng CREATE TABLE IF NOT EXISTS nên an toàn khi áp lại nhiều lần — không
-  // track trong schema_migrations, để bảng mới thêm vào schema.sql sau này luôn được tạo.
+  await ensureMigrationsTable();
+  for (const filename of MIGRATION_FILES) {
+    await applyMigrationFile(filename);
+  }
+
   let schemaPath = path.join(__dirname, 'schema.sql');
   if (!fs.existsSync(schemaPath)) {
     schemaPath = path.join(__dirname, '..', 'src', 'schema.sql');
   }
   await pool.query(fs.readFileSync(schemaPath, 'utf8'));
   console.log('[migrate] schema.sql applied');
-
-  await ensureMigrationsTable();
-  for (const filename of MIGRATION_FILES) {
-    await applyMigrationFile(filename);
-  }
 
   // Các ALTER TABLE lẻ này chưa được gộp vào file migration riêng — giữ nguyên hành vi cũ
   // (IF NOT EXISTS nên an toàn khi lặp lại) thay vì tách migration mới trong lúc chỉ đang
