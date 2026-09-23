@@ -7,9 +7,7 @@ import { backendUrl } from '../config/api';
 export const authService = {
   getAccessToken: async (): Promise<string | null> => {
     const state = useGameState.getState();
-    if (state.currentUser?.id?.startsWith('mock-dev-')) {
-      return state.currentUser.id;
-    }
+    // Mock dev bypassed
     const sessionRes = await supabase.auth.getSession();
     return sessionRes.data.session?.access_token || null;
   },
@@ -138,3 +136,4 @@ export const authService = {
     return res.ok;
   }
 };
+

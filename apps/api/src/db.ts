@@ -4,7 +4,7 @@ dotenv.config();
 
 const { Pool } = pg;
 
-const defaultDatabaseUrl = 'postgresql://postgres.tyjddesxeqiujegqvyvd:XlCff1Z6H4W529H2@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres';
+const defaultDatabaseUrl = 'postgresql://postgres.czngbleeeiljsrpbaksg:B1gh13u1977dtnt@aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres';
 
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL || defaultDatabaseUrl,
