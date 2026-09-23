@@ -1,12 +1,9 @@
 import { supabase } from '../utils/supabaseClient';
 import { activeProfileHeaders } from './profileHeaders';
-import { useGameState } from '../hooks/useGameState';
-
 import { backendUrl } from '../config/api';
 
 export const authService = {
   getAccessToken: async (): Promise<string | null> => {
-    const state = useGameState.getState();
     // Mock dev bypassed
     const sessionRes = await supabase.auth.getSession();
     return sessionRes.data.session?.access_token || null;
