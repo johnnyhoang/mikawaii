@@ -286,11 +286,6 @@ function App() {
   useEffect(() => {
     let mounted = true;
 
-    // Detect if we are handling an OAuth return callback
-    const hasAuthCallbackInUrl =
-      window.location.hash.includes('access_token') ||
-      window.location.search.includes('code=');
-
     const handleSession = async (session: Session | null) => {
       if (!mounted) return;
       if (session && session.user) {
@@ -318,38 +313,21 @@ function App() {
           }
         }
         if (mounted) setAuthLoading(false);
-      } else {
-        // Only set authLoading false if we are NOT waiting for an OAuth callback to exchange
-        if (!hasAuthCallbackInUrl && mounted) {
-          setAuthLoading(false);
-        }
+      } else if (mounted) {
+        setAuthLoading(false);
       }
     };
 
+    // INITIAL_SESSION fires after supabase-js has processed OAuth tokens in the URL.
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
       setTimeout(() => {
         void handleSession(session);
       }, 0);
     });
 
-    // Check initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        void handleSession(session);
-      } else if (!hasAuthCallbackInUrl && mounted) {
-        setAuthLoading(false);
-      }
-    });
-
-    // Liveness fallback: stop spinner after 5s max
-    const timer = setTimeout(() => {
-      if (mounted) setAuthLoading(false);
-    }, 5000);
-
     return () => {
       mounted = false;
       subscription.unsubscribe();
-      clearTimeout(timer);
     };
   }, []);
 
