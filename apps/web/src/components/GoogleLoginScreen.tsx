@@ -26,7 +26,9 @@ export const GoogleLoginScreen: React.FC = () => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? window.location.origin
+            : 'https://mikawaii.minkoi.org/',
           queryParams: {
             access_type: 'offline',
             prompt: 'select_account',
